@@ -48,6 +48,14 @@ export function ContactCTA() {
             >
               {t("nav.gitHub")}
             </a>
+            <a
+              href={PROFILE.cvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 items-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+            >
+              {t("nav.cv")}
+            </a>
           </div>
         </motion.div>
       </div>

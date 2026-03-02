@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { fadeUp } from "@/lib/motion"
 import { GyozaIcon } from "@/components/icons"
+import { PROFILE } from "@/lib/site-config"
 
 const SKILL_TAGS: Record<string, string[]> = {
   programming: [
@@ -213,6 +214,19 @@ export function AboutContent() {
           <p className="text-sm leading-relaxed text-muted-foreground">
             {t("about.coreStack.text")}
           </p>
+        </motion.div>
+
+        <div className="h-px bg-border/60" aria-hidden />
+
+        <motion.div {...fadeUp} className="flex flex-col items-start gap-3">
+          <a
+            href={PROFILE.cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-11 items-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+          >
+            {t("nav.cv")}
+          </a>
         </motion.div>
       </div>
     </div>
