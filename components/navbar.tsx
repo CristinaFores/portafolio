@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { EmailIcon, LinkedInIcon } from "@/components/icons"
+import { EmailIcon, GitHubIcon, LinkedInIcon } from "@/components/icons"
 import { cn } from "@/lib/utils"
 import { useLocale } from "@/lib/locale-context"
 import { EASE } from "@/lib/motion"
@@ -74,6 +74,15 @@ function NavControls({
         aria-label={t("nav.linkedIn")}
       >
         <LinkedInIcon className="h-4 w-4" />
+      </a>
+      <a
+        href={PROFILE.gitHubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={ICON_BTN}
+        aria-label={t("nav.gitHub")}
+      >
+        <GitHubIcon className="h-4 w-4" />
       </a>
       <button
         type="button"

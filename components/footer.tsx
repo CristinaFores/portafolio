@@ -1,6 +1,6 @@
 "use client"
 
-import { EmailIcon, LinkedInIcon } from "@/components/icons"
+import { EmailIcon, GitHubIcon, LinkedInIcon } from "@/components/icons"
 import { useLocale } from "@/lib/locale-context"
 import { PROFILE } from "@/lib/site-config"
 
@@ -32,6 +32,15 @@ export function Footer() {
             aria-label={t("nav.linkedIn")}
           >
             <LinkedInIcon className="h-4 w-4" />
+          </a>
+          <a
+            href={PROFILE.gitHubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            aria-label={t("nav.gitHub")}
+          >
+            <GitHubIcon className="h-4 w-4" />
           </a>
         </div>
       </div>
