@@ -83,6 +83,10 @@ export const translations = {
       "UI reutilizable y mantenible con SCSS/Sass + BEM, diseño responsive y arquitectura basada en componentes.",
       "Colaboración estrecha con equipos de backend, producto y diseño para entregar funcionalidades listas para producción.",
     ],
+    "about.experience.freelance.title": "Software Developer — Freelancer · Remoto (España)",
+    "about.experience.freelance.date": "Feb 2022 – Agosto 2023",
+    "about.experience.freelance.summary":
+      "Desarrollo de UI web con React y APIs Node.js/Express, incluyendo integración con MongoDB. Trabajé en proyectos pequeños y medianos: formularios, autenticación, integración/consumo de APIs y componentes reutilizables.",
     "about.education.items": [
       {
         year: "2022",
@@ -90,8 +94,8 @@ export const translations = {
           "ISDI Coders — Full Stack Web Development · Barcelona\nJun 2022 – Dic 2022\nReact, JavaScript/TypeScript, Node.js/Express, MongoDB, testing (Jest/Cypress), Figma, Scrum.",
       },
     ],
-    "about.skills.langs.native": "Español (nativo)",
-    "about.skills.langs.english": "Inglés – Intermedio-Alto (B2+)",
+    "about.skills.langs.native": "Español / Catalán (nativo)",
+    "about.skills.langs.english": "Inglés (Intermedio)",
     "about.coreStack.text":
       "React · React Native · Expo · Vite · Next.js · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
   },
@@ -171,6 +175,10 @@ export const translations = {
       "Built reusable, maintainable UI with SCSS/Sass + BEM, responsive design, and component-based architecture.",
       "Collaborated closely with backend, product, and design teams to deliver production-ready features.",
     ],
+    "about.experience.freelance.title": "Software Developer — Freelancer · Remote (Spain)",
+    "about.experience.freelance.date": "Feb 2022 – Aug 2023",
+    "about.experience.freelance.summary":
+      "Web UI development with React and Node.js/Express APIs, including MongoDB integration. Worked on small to mid-sized projects: forms, authentication, API integration/consumption, and reusable components.",
     "about.education.items": [
       {
         year: "2022",
@@ -178,8 +186,8 @@ export const translations = {
           "ISDI Coders — Full Stack Web Development · Barcelona\nJun 2022 – Dec 2022\nReact, JavaScript/TypeScript, Node.js/Express, MongoDB, testing (Jest/Cypress), Figma, Scrum.",
       },
     ],
-    "about.skills.langs.native": "Spanish (Native)",
-    "about.skills.langs.english": "English – Upper-Intermediate (B2+)",
+    "about.skills.langs.native": "Spanish / Catalan (Native)",
+    "about.skills.langs.english": "English (Intermediate)",
     "about.coreStack.text":
       "React · React Native · Expo · Vite · Next.js · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git",
   },

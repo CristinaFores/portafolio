@@ -13,7 +13,6 @@ const SKILL_TAGS: Record<string, string[]> = {
     "React",
     "React Native",
     "Next.js",
-    "Vue 3",
     "Expo",
     "Vite",
   ],
@@ -21,8 +20,8 @@ const SKILL_TAGS: Record<string, string[]> = {
     "Zustand",
     "TanStack Query",
     "TanStack Table",
-    "Pinia",
-    "Vuex",
+    "React Context",
+    "Redux",
     "REST APIs",
     "Firebase",
     "Axios",
@@ -37,7 +36,7 @@ const SKILL_TAGS: Record<string, string[]> = {
     "WebView",
     "Push Notifications",
   ],
-  automation: ["n8n", "OpenAI", "RAG Systems", "Pinecone", "Cursor"],
+  automation: ["n8n", "OpenAI", "Claude Code", "MCP", "RAG Systems", "Pinecone", "ChromaDB", "Cursor"],
   ui: [
     "HTML5",
     "CSS3",
@@ -53,6 +52,8 @@ const SKILL_TAGS: Record<string, string[]> = {
     "CI/CD",
     "Git",
     "GitHub",
+    "Bitbucket",
+    "Jira",
     "Babel",
     "SWC",
   ],
@@ -140,6 +141,20 @@ export function AboutContent() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="flex flex-col gap-3 pt-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+              <h3 className="font-medium text-foreground">
+                {t("about.experience.freelance.title")}
+              </h3>
+              <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground/60">
+                {t("about.experience.freelance.date")}
+              </span>
+            </div>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {t("about.experience.freelance.summary")}
+            </p>
           </div>
         </motion.div>
 
