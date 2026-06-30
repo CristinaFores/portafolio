@@ -1,20 +1,20 @@
 # Cristina Forés Campos Portfolio
 
-Portfolio personal construido con Next.js, TypeScript, Tailwind CSS y Framer Motion.
+Portfolio personal de Product / AI Engineer. Next.js App Router, i18n ES/EN, animaciones con Framer Motion y despliegue en Vercel.
 
 ## Stack
 
-- `Next.js 16` (App Router)
-- `React 19`
-- `TypeScript`
-- `Tailwind CSS`
-- `Framer Motion`
-- `next-themes`
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Vercel Analytics
 
 ## Requisitos
 
-- `Node.js 20+`
-- `pnpm`
+- Node.js 20+
+- pnpm
 
 ## Desarrollo local
 
@@ -23,39 +23,60 @@ pnpm install
 pnpm dev
 ```
 
-App disponible en `http://localhost:3000`.
+App en `http://localhost:3000`.
 
 ## Scripts
 
-```bash
-pnpm dev    # entorno de desarrollo
-pnpm build  # build de producción
-pnpm start  # servidor de producción
-pnpm lint   # análisis estático
+| Comando       | Descripción              |
+| ------------- | ------------------------ |
+| `pnpm dev`    | Servidor de desarrollo   |
+| `pnpm build`  | Build de producción      |
+| `pnpm start`  | Servidor de producción   |
+| `pnpm lint`   | ESLint                   |
+
+## Rutas
+
+| Ruta                 | Descripción                          |
+| -------------------- | ------------------------------------ |
+| `/`                  | Home — hero, Now, Lab, proyectos     |
+| `/about`             | Sobre mí                             |
+| `/lab`               | design-context-bridge (MCP)          |
+| `/projects`          | Listado completo de proyectos      |
+| `/projects/[slug]`   | Detalle de cada case study           |
+
+## Estructura
+
+```
+app/              Rutas y layout global
+components/       UI (hero, navbar, project-detail, page-template…)
+hooks/            use-motion, use-translated-project
+lib/
+  data/           projects, lab-project, now, traducciones
+  motion.ts       Variantes compartidas de animación
+  site-config.ts  Perfil, links, metadata
+  translations.ts Diccionario i18n ES/EN
+public/images/    Capturas de proyectos
 ```
 
-## Estructura del proyecto
+## Personalización
 
-- `app/`: rutas y layout global.
-- `components/`: componentes de UI reutilizables.
-- `hooks/`: hooks de aplicación.
-- `lib/`: configuración, utilidades, i18n y datos de proyectos.
-- `public/images/`: imágenes usadas por las cards y detalles de proyectos.
+| Qué                    | Dónde                                      |
+| ---------------------- | ------------------------------------------ |
+| Perfil y links         | `lib/site-config.ts`                       |
+| Proyectos              | `lib/data/projects.ts`                     |
+| Traducciones proyectos | `lib/data/project-translations.ts`         |
+| Textos UI              | `lib/translations.ts`                      |
+| Sección Now            | `lib/data/now.ts`                          |
+| Lab / MCP              | `lib/data/lab-project.ts`                  |
+| Home                   | `components/hero.tsx`, `featured-projects.tsx`, `contact-cta.tsx` |
+| About                  | `components/about-content.tsx`             |
+| Nav / footer           | `components/navbar.tsx`, `components/footer.tsx` |
 
-## Personalización rápida
+## Animaciones
 
-- Perfil principal: `lib/site-config.ts`.
-- Página home: `components/hero.tsx`, `components/featured-projects.tsx`, `components/contact-cta.tsx`.
-- Página about: `components/about-content.tsx`.
-- Navbar y footer: `components/navbar.tsx`, `components/footer.tsx`.
-- Proyectos base: `lib/data/projects.ts`.
-- Traducciones de proyectos: `lib/data/project-translations.ts`.
-- Diccionario general i18n: `lib/translations.ts`.
-
-## Convenciones de documentación
-
-- El código público (componentes y utilidades exportadas) usa comentarios `JSDoc/TSDoc` breves.
-- Se han eliminado comentarios decorativos o redundantes para mantener foco en comportamiento y contratos.
+- Transición entre páginas: `components/page-template.tsx` (curtain fade)
+- Scroll / entrada: `hooks/use-motion.ts` + `lib/motion.ts`
+- Respeta `prefers-reduced-motion`
 
 ## Build de producción
 
@@ -63,6 +84,7 @@ pnpm lint   # análisis estático
 pnpm build
 pnpm start
 ```
-# porfolio
-# porfolio
-# porfolio
+
+## Deploy
+
+Configurado para Vercel (`vercel.json` usa `pnpm install`).
