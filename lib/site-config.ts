@@ -8,6 +8,7 @@ export const PROFILE = {
   gitHubUrl: "https://github.com/CristinaFores",
   cvUrl: "/CV-cristina-fores-en.pdf",
   designContextBridgeUrl: "https://github.com/CristinaFores/design-context-bridge",
+  gyozaUrl: "https://gyoza.es/",
   role: "Product / AI Engineer",
   tagline:
     "Product / AI Engineer. Interfaces web y móviles para flujos reales de producto: pedidos, pagos, acceso y herramientas MCP. Barcelona.",

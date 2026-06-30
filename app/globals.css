@@ -9,6 +9,39 @@
   .text-pretty {
     text-wrap: pretty;
   }
+
+  .link-underline {
+    @apply relative underline-offset-4;
+  }
+
+  .link-underline::after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-300 ease-out;
+  }
+
+  .link-underline:hover::after {
+    @apply scale-x-100;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground transition-all duration-200 hover:-translate-y-px hover:opacity-90 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply border border-border text-foreground transition-all duration-200 hover:-translate-y-px hover:bg-secondary active:translate-y-0;
+  }
+
+  .home-section {
+    @apply flex min-h-svh snap-start snap-always flex-col justify-center border-t border-border px-6 py-24 md:py-28;
+  }
+
+  .home-section-muted {
+    @apply bg-muted/30;
+  }
+
+  .home-hero {
+    @apply snap-start snap-always;
+  }
 }
 
 @layer base {
@@ -107,6 +140,16 @@
     text-size-adjust: 100%;
   }
 
+  html.home-snap {
+    scroll-snap-type: y proximity;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html.home-snap {
+      scroll-snap-type: y mandatory;
+    }
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
     line-height: 1.65;
@@ -134,5 +177,19 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(from var(--muted-foreground) r g b / 0.4);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

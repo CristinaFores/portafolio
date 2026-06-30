@@ -1,8 +1,10 @@
 "use client"
 
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
-import { fadeUp } from "@/lib/motion"
+import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
 
 const SKILL_TAGS: Record<string, string[]> = {
@@ -26,11 +28,16 @@ const SKILL_ORDER = [
 type SectionProps = {
   label: string
   children: React.ReactNode
+  sectionIndex?: number
 }
 
-function Section({ label, children }: SectionProps) {
+function Section({ label, children, sectionIndex = 0 }: SectionProps) {
+  const { fadeUp } = useMotion()
   return (
-    <motion.section {...fadeUp} className="grid gap-4 border-t border-border py-8 md:grid-cols-[180px_1fr]">
+    <motion.section
+      {...fadeUp({ delay: sectionIndex * 0.04, y: 16 })}
+      className="grid gap-4 border-t border-border py-8 md:grid-cols-[180px_1fr]"
+    >
       <h2 className="font-mono text-xs text-muted-foreground">{label}</h2>
       <div>{children}</div>
     </motion.section>
@@ -42,6 +49,7 @@ function Section({ label, children }: SectionProps) {
  */
 export function AboutContent() {
   const { t, dict } = useLocale()
+  const { fadeUp, enter } = useMotion()
   const bullets = dict["about.experience.gyoza.bullets"] as readonly string[]
   const educationItems = dict["about.education.items"] as readonly {
     year: string
@@ -51,7 +59,7 @@ export function AboutContent() {
   return (
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
-        <motion.header {...fadeUp} className="flex max-w-3xl flex-col gap-5">
+        <motion.header {...enter({ y: 16 })} className="flex max-w-3xl flex-col gap-5">
           <p className="font-mono text-xs text-muted-foreground">Product / AI Engineer</p>
           <h1
             className="font-semibold leading-tight tracking-[-0.02em]"
@@ -68,11 +76,22 @@ export function AboutContent() {
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>
         </motion.header>
 
-        <Section label={t("about.experience.title")}>
+        <Section label={t("about.experience.title")} sectionIndex={0}>
           <div className="flex max-w-3xl flex-col gap-10">
             <article className="flex flex-col gap-3">
               <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                <h3 className="font-medium text-foreground">{t("about.experience.gyoza.title")}</h3>
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="font-medium text-foreground">{t("about.experience.gyoza.title")}</h3>
+                  <Link
+                    href={PROFILE.gyozaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline inline-flex w-fit items-center gap-1 font-mono text-xs text-accent"
+                  >
+                    gyoza.es
+                    <ArrowUpRight className="h-3 w-3" aria-hidden />
+                  </Link>
+                </div>
                 <span className="shrink-0 font-mono text-xs text-muted-foreground/70">
                   {t("about.experience.gyoza.date")}
                 </span>
@@ -105,7 +124,7 @@ export function AboutContent() {
           </div>
         </Section>
 
-        <Section label={t("about.skills.title")}>
+        <Section label={t("about.skills.title")} sectionIndex={1}>
           <div className="grid max-w-3xl gap-x-8 gap-y-6 sm:grid-cols-2">
             {SKILL_ORDER.map((key) => (
               <div key={key} className="flex flex-col gap-2 border-t border-border pt-3">
@@ -128,7 +147,7 @@ export function AboutContent() {
           </div>
         </Section>
 
-        <Section label={t("about.education.title")}>
+        <Section label={t("about.education.title")} sectionIndex={2}>
           <ul className="flex max-w-2xl flex-col gap-3">
             {educationItems.map((item, i) => (
               <li key={i} className="grid gap-2 sm:grid-cols-[72px_1fr]">
@@ -141,12 +160,12 @@ export function AboutContent() {
           </ul>
         </Section>
 
-        <motion.div {...fadeUp} className="border-t border-border pt-8">
+        <motion.div {...fadeUp()} className="border-t border-border pt-8">
           <a
             href={PROFILE.cvUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center border border-border px-5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+            className="btn-outline inline-flex h-10 items-center px-5 text-sm font-medium"
           >
             {t("nav.cv")}
           </a>

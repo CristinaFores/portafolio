@@ -8,7 +8,7 @@ import { getProjectTranslation } from "@/lib/data/project-translations"
 import { ImageCarousel } from "@/components/image-carousel"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useLocale } from "@/lib/locale-context"
-import { fadeUp, EASE } from "@/lib/motion"
+import { useMotion } from "@/hooks/use-motion"
 import { cn } from "@/lib/utils"
 
 /** Splits "Project Name — Description" into parts for styling; returns null if no separator. */
@@ -45,6 +45,7 @@ function ProjectNavLabel({ title, align = "left" }: { title: string; align?: "le
 type SectionProps = {
   label: string
   children: React.ReactNode
+  sectionIndex?: number
 }
 
 type BulletItemProps = {
@@ -55,9 +56,13 @@ type ProjectDetailProps = {
   slug: string
 }
 
-function Section({ label, children }: SectionProps) {
+function Section({ label, children, sectionIndex = 0 }: SectionProps) {
+  const { fadeUp } = useMotion()
   return (
-    <motion.section {...fadeUp} className="grid gap-4 border-t border-border py-8 md:grid-cols-[180px_1fr]">
+    <motion.section
+      {...fadeUp({ delay: sectionIndex * 0.04, y: 16 })}
+      className="grid gap-4 border-t border-border py-8 md:grid-cols-[180px_1fr]"
+    >
       <h2 className="font-mono text-xs text-muted-foreground">
         {label}
       </h2>
@@ -81,6 +86,7 @@ function BulletItem({ text }: BulletItemProps) {
 export function ProjectDetail({ slug }: ProjectDetailProps) {
   const project = useTranslatedProject(slug)
   const { t, locale } = useLocale()
+  const { enter, fadeUp } = useMotion()
 
   if (!project) return null
 
@@ -90,11 +96,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
         <header className="flex flex-col gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: EASE }}
-          >
+          <motion.div {...enter({ y: 10, duration: 0.45 })}>
             <Link
               href="/#projects"
               className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -106,9 +108,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
 
           <motion.div
             className="grid gap-8 md:grid-cols-[1fr_280px] md:items-end"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.07, ease: EASE }}
+            {...enter({ y: 16, duration: 0.5, delay: 0.07 })}
           >
             <div className="flex max-w-3xl flex-col gap-4">
               <h1
@@ -127,7 +127,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm text-foreground underline-offset-4 transition-colors hover:text-accent hover:underline"
+                      className="link-underline inline-flex items-center gap-1 text-sm text-foreground hover:text-accent"
                     >
                       {t("project.visitProject")}
                       <ArrowUpRight className="h-3 w-3" />
@@ -138,7 +138,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
                       href={project.figmaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm text-foreground underline-offset-4 transition-colors hover:text-accent hover:underline"
+                      className="link-underline inline-flex items-center gap-1 text-sm text-foreground hover:text-accent"
                     >
                       {t("project.viewInFigma")}
                       <ArrowUpRight className="h-3 w-3" />
@@ -157,19 +157,19 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
         </header>
 
         <div className="flex flex-col">
-          <Section label={t("project.theChallenge")}>
+          <Section label={t("project.theChallenge")} sectionIndex={0}>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               {project.challenge}
             </p>
           </Section>
 
-          <Section label={t("project.myRole")}>
+          <Section label={t("project.myRole")} sectionIndex={1}>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               {project.myRole}
             </p>
           </Section>
 
-          <Section label={t("project.keyFeatures")}>
+          <Section label={t("project.keyFeatures")} sectionIndex={2}>
             <ul className="flex max-w-2xl flex-col gap-2">
               {project.features.map((feature, i) => (
                 <BulletItem key={i} text={feature} />
@@ -177,7 +177,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
             </ul>
           </Section>
 
-          <Section label={t("project.theOutcome")}>
+          <Section label={t("project.theOutcome")} sectionIndex={3}>
             <ul className="flex max-w-2xl flex-col gap-2">
               {project.results.map((result, i) => (
                 <BulletItem key={i} text={result} />
@@ -186,7 +186,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           </Section>
 
           {project.howItWorks && (
-            <Section label={t("project.howItWorks")}>
+            <Section label={t("project.howItWorks")} sectionIndex={4}>
               <ol className="flex max-w-2xl flex-col gap-2">
                 {project.howItWorks.map((step, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
@@ -201,7 +201,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           )}
 
           {project.whyBuilt && (
-            <Section label={t("project.whyIBuiltThis")}>
+            <Section label={t("project.whyIBuiltThis")} sectionIndex={5}>
               <ul className="flex max-w-2xl flex-col gap-2">
                 {project.whyBuilt.map((reason, i) => (
                   <BulletItem key={i} text={reason} />
@@ -211,7 +211,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           )}
 
           {project.uxProcess && (
-            <Section label={t("project.uxProcess")}>
+            <Section label={t("project.uxProcess")} sectionIndex={6}>
               <div className="grid max-w-3xl gap-5 sm:grid-cols-2">
                 {project.uxProcess.map((step, i) => (
                   <div key={i} className="flex flex-col gap-1 border-t border-border pt-3">
@@ -227,7 +227,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           )}
 
           {project.userTestInsights && (
-            <Section label={t("project.userTestInsights")}>
+            <Section label={t("project.userTestInsights")} sectionIndex={7}>
               <div className="flex max-w-2xl flex-col gap-4">
                 {project.userTestInsights.map((insight, i) => (
                   <div key={i} className="flex flex-col gap-1">
@@ -242,7 +242,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           )}
 
           {project.keyFindings && (
-            <Section label={t("project.keyFindings")}>
+            <Section label={t("project.keyFindings")} sectionIndex={8}>
               <ul className="flex max-w-2xl flex-col gap-2">
                 {project.keyFindings.map((finding, i) => (
                   <BulletItem key={i} text={finding} />
@@ -253,7 +253,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
         </div>
 
         {project.images.length > 0 && (
-          <motion.div {...fadeUp} className="flex flex-col gap-4 border-t border-border pt-8">
+          <motion.div {...fadeUp()} className="flex flex-col gap-4 border-t border-border pt-8">
             <h2 className="font-mono text-xs text-muted-foreground">
               {t("project.gallery")}
             </h2>
@@ -261,7 +261,8 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           </motion.div>
         )}
 
-        <div
+        <motion.div
+          {...fadeUp({ delay: 0.06 })}
           className={`flex items-center justify-between ${project.images.length > 0 ? "border-t border-border pt-6" : ""}`}
         >
           {prev ? (
@@ -286,7 +287,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           ) : (
             <span />
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   )

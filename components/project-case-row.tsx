@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
-import { EASE } from "@/lib/motion"
+import { useMotion } from "@/hooks/use-motion"
 
 type ProjectCaseRowProps = {
   slug: string
@@ -20,6 +20,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
   const project = useTranslatedProject(slug)
   const pathname = usePathname()
   const router = useRouter()
+  const { staggerItem } = useMotion()
 
   if (!project) return null
 
@@ -36,12 +37,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
   }
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, delay: index * 0.03, ease: EASE }}
-    >
+    <motion.article {...staggerItem(index, { step: 0.03, y: 12 })}>
       <Link
         href={href}
         onClick={handleClick}
@@ -53,7 +49,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
             alt=""
             width={96}
             height={96}
-            className="h-full w-full object-cover object-center opacity-90 transition-opacity group-hover:opacity-100"
+            className="h-full w-full object-cover object-center opacity-90 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100"
           />
         </div>
 
@@ -83,7 +79,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
         </div>
 
         <ArrowUpRight
-          className="mt-1 hidden h-4 w-4 shrink-0 text-muted-foreground/0 transition-all group-hover:text-muted-foreground/50 md:block"
+          className="mt-1 hidden h-4 w-4 shrink-0 translate-x-0 text-muted-foreground/0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-muted-foreground/60 md:block"
           aria-hidden
         />
       </Link>

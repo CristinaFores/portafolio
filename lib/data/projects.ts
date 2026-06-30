@@ -591,9 +591,14 @@ export const projects: Project[] = [
   },
 ]
 
-/** Goiko first — flagship ordering, then the rest of the suite. */
+/** Slugs hidden from listings (still reachable by direct URL if needed). */
+const HIDDEN_FROM_DISPLAY = new Set<string>([
+  "goiko-ordering", // Goiko — Pedidos online — hidden for now
+])
+
+/** Goiko suite order when shown in listings. */
 const GOIKO_DISPLAY_ORDER = [
-  "goiko-ordering",
+  // "goiko-ordering",
   "goiko-customer-area",
   "goiko-table-ordering",
   "goiko-online-menu",
@@ -609,7 +614,7 @@ export function getProjectsForDisplay(): Project[] {
   )
   const goikoSlugs = new Set<string>(GOIKO_DISPLAY_ORDER)
   const rest = projects.filter((p) => !goikoSlugs.has(p.slug))
-  return [...goiko, ...rest]
+  return [...goiko, ...rest].filter((p) => !HIDDEN_FROM_DISPLAY.has(p.slug))
 }
 
 /**

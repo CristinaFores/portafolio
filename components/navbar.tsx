@@ -5,11 +5,11 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
-import { Moon, Sun } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { useLocale } from "@/lib/locale-context"
 import { EASE } from "@/lib/motion"
+import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
 
 function isActive(href: string, pathname: string): boolean {
@@ -23,9 +23,6 @@ const navLinks = [
   { href: "/lab", labelKey: "nav.lab" as const },
   { href: "/projects", labelKey: "nav.work" as const },
 ]
-
-const ICON_BTN =
-  "flex h-8 w-8 shrink-0 items-center justify-center border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
 
 type NavControlsProps = {
   locale: "es" | "en"
@@ -52,38 +49,33 @@ function NavControls({
 
   return (
     <>
-      {/* Dark mode disabled for now. Uncomment to bring the toggle back
-          (and remove forcedTheme="light" in app/layout.tsx).
-      <button
-        type="button"
-        onClick={() => { toggleTheme(); onClose?.() }}
-        className={ICON_BTN}
-        aria-label={isDark ? t("nav.themeLight") : t("nav.themeDark")}
-      >
-        {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-      </button>
-      */}
       <div className="flex h-8 overflow-hidden border border-border">
         <button
           type="button"
-          onClick={() => { setLocale("es"); onClose?.() }}
+          onClick={() => {
+            setLocale("es")
+            onClose?.()
+          }}
           className={cn(
             "flex h-full min-h-8 flex-1 items-center justify-center px-2.5 text-xs font-medium transition-colors",
             locale === "es"
               ? "bg-primary text-primary-foreground"
-              : "bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground"
+              : "bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground",
           )}
         >
           ES
         </button>
         <button
           type="button"
-          onClick={() => { setLocale("en"); onClose?.() }}
+          onClick={() => {
+            setLocale("en")
+            onClose?.()
+          }}
           className={cn(
             "flex h-full min-h-8 flex-1 items-center justify-center border-l border-border px-2.5 text-xs font-medium transition-colors",
             locale === "en"
               ? "bg-primary text-primary-foreground"
-              : "bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground"
+              : "bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground",
           )}
         >
           EN
@@ -93,27 +85,71 @@ function NavControls({
   )
 }
 
+type NavLinkProps = {
+  href: string
+  label: string
+  active: boolean
+  onClick?: () => void
+  layoutId?: string
+}
+
+function NavLinkItem({ href, label, active, onClick, layoutId = "nav-underline" }: NavLinkProps) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className={cn(
+        "relative py-1 text-sm transition-colors",
+        active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+      )}
+    >
+      {label}
+      {active && (
+        <motion.span
+          layoutId={layoutId}
+          className="absolute -bottom-0.5 left-0 right-0 h-px bg-accent"
+          transition={{ duration: 0.25, ease: EASE }}
+        />
+      )}
+    </Link>
+  )
+}
+
 /**
- * Sticky top navigation with locale/theme controls. Social links live only
- * in the footer to avoid repeating the same contact CTAs in every section.
+ * Sticky top navigation with locale/theme controls.
  */
 export function Navbar() {
   const pathname = usePathname()
+  const { reduced } = useMotion()
   const mounted = useSyncExternalStore(
     () => () => {},
     () => true,
-    () => false
+    () => false,
   )
   const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { setTheme, resolvedTheme } = useTheme()
   const { locale, setLocale, t } = useLocale()
+  const lastScrollY = useRef(0)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 20)
+
+      if (reduced || y < 20) {
+        setVisible(true)
+      } else if (y > lastScrollY.current && y > 80) {
+        setVisible(false)
+      } else if (y < lastScrollY.current) {
+        setVisible(true)
+      }
+      lastScrollY.current = y
+    }
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  }, [reduced])
 
   const headerRef = useRef<HTMLElement>(null)
 
@@ -136,8 +172,9 @@ export function Navbar() {
     <header
       ref={headerRef}
       className={cn(
-        "fixed left-0 right-0 top-0 z-50 border-b border-border transition-all duration-300",
-        scrolled ? "bg-background/90" : "bg-transparent"
+        "fixed left-0 right-0 top-0 z-50 border-b border-border backdrop-blur-md transition-all duration-300",
+        scrolled ? "bg-background/90" : "bg-transparent",
+        visible ? "translate-y-0" : "-translate-y-full",
       )}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
@@ -149,27 +186,26 @@ export function Navbar() {
               width={30}
               height={30}
               priority
-              className="max-w-none object-contain object-[center_12%]"
+              className="max-w-none object-contain object-[center_12%] transition-transform duration-300 group-hover:scale-105"
             />
           </span>
-          <span className="text-sm font-medium tracking-tight text-foreground transition-colors group-hover:text-accent">
-            {PROFILE.name}
+          <span className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-3">
+            <span className="text-sm font-medium tracking-tight text-foreground transition-colors group-hover:text-accent">
+              {PROFILE.name}
+            </span>
+            <span className="hidden font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground/70 sm:inline">
+              {t("nav.tagline")}
+            </span>
           </span>
         </Link>
         <ul className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link
+              <NavLinkItem
                 href={link.href}
-                className={cn(
-                  "text-sm transition-colors",
-                  isActive(link.href, pathname)
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {t(link.labelKey)}
-              </Link>
+                label={t(link.labelKey)}
+                active={isActive(link.href, pathname)}
+              />
             </li>
           ))}
           <li className="flex items-center gap-2">
@@ -194,13 +230,13 @@ export function Navbar() {
             <span
               className={cn(
                 "block h-px w-5 bg-foreground transition-all duration-300",
-                mobileOpen && "translate-y-[3.5px] rotate-45"
+                mobileOpen && "translate-y-[3.5px] rotate-45",
               )}
             />
             <span
               className={cn(
                 "block h-px w-5 bg-foreground transition-all duration-300",
-                mobileOpen && "-translate-y-[3.5px] -rotate-45"
+                mobileOpen && "-translate-y-[3.5px] -rotate-45",
               )}
             />
           </div>
@@ -219,18 +255,13 @@ export function Navbar() {
             <ul className="mx-auto flex max-w-5xl flex-col gap-5 px-6 py-6">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <NavLinkItem
                     href={link.href}
+                    label={t(link.labelKey)}
+                    active={isActive(link.href, pathname)}
                     onClick={() => setMobileOpen(false)}
-                    className={cn(
-                      "text-sm transition-colors",
-                      isActive(link.href, pathname)
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
-                  >
-                    {t(link.labelKey)}
-                  </Link>
+                    layoutId="nav-underline-mobile"
+                  />
                 </li>
               ))}
               <li className="flex flex-wrap items-center gap-2 pt-1">

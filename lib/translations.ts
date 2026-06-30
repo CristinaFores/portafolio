@@ -19,6 +19,7 @@ export const translations = {
     "nav.toggleMenu": "Abrir o cerrar menú",
     "nav.themeLight": "Usar tema claro",
     "nav.themeDark": "Usar tema oscuro",
+    "nav.tagline": "Front-end · Móvil · IA",
 
     "hero.label": "React · React Native · MCP",
     "hero.headline": "Product / AI Engineer",
@@ -71,7 +72,7 @@ export const translations = {
 
     "contact.headline": "¿Hablamos?",
     "contact.subline":
-      "Disponible en remoto para roles de front-end y móvil donde la calidad de interfaz y el tooling de IA formen parte del día a día.",
+      "Disponible en remoto para front-end, móvil y producto con IA — interfaces en producción, MCP y tooling para equipos que trabajan con agentes.",
     "contact.title": "¿Hablamos?",
     "contact.sectionIndex": "04 — CONTACTO",
 
@@ -158,6 +159,7 @@ export const translations = {
     "nav.toggleMenu": "Toggle menu",
     "nav.themeLight": "Use light theme",
     "nav.themeDark": "Use dark theme",
+    "nav.tagline": "Front-end · Mobile · AI",
 
     "hero.label": "React · React Native · MCP",
     "hero.headline": "Product / AI Engineer",
@@ -210,7 +212,7 @@ export const translations = {
 
     "contact.headline": "Get in touch",
     "contact.subline":
-      "Available remotely for front-end and mobile roles where interface quality and AI tooling are part of the day-to-day.",
+      "Available remotely for front-end, mobile, and AI product roles — production interfaces, MCP, and tooling for teams building with agents.",
     "contact.title": "Get in touch",
     "contact.sectionIndex": "04 — CONTACT",
 

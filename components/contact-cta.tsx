@@ -2,20 +2,21 @@
 
 import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
-import { fadeUp } from "@/lib/motion"
+import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
 
 /**
- * Contact section with inverse band and direct outreach links.
+ * Contact section with direct outreach links.
  */
 export function ContactCTA() {
   const { t } = useLocale()
+  const { fadeUp } = useMotion()
 
   return (
-    <section id="connect" className="border-t border-border px-6 py-24">
-      <div className="mx-auto max-w-5xl">
+    <section id="connect" className="home-section">
+      <div className="mx-auto w-full max-w-5xl">
         <motion.div
-          {...fadeUp}
+          {...fadeUp()}
           className="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between"
         >
           <div className="flex max-w-xl flex-col gap-4">
@@ -34,7 +35,7 @@ export function ContactCTA() {
           <div className="flex w-full flex-col gap-3 sm:w-auto">
             <a
               href={`mailto:${PROFILE.email}`}
-              className="inline-flex h-10 items-center justify-center bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
+              className="btn-primary inline-flex h-10 items-center justify-center px-5 text-sm font-medium"
             >
               {PROFILE.email}
             </a>
@@ -43,7 +44,7 @@ export function ContactCTA() {
                 href={PROFILE.linkedInUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                className="link-underline hover:text-foreground"
               >
                 {t("nav.linkedIn")}
               </a>
@@ -52,7 +53,7 @@ export function ContactCTA() {
                 href={PROFILE.gitHubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                className="link-underline hover:text-foreground"
               >
                 {t("nav.gitHub")}
               </a>
@@ -61,7 +62,7 @@ export function ContactCTA() {
                 href={PROFILE.cvUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                className="link-underline hover:text-foreground"
               >
                 {t("nav.cv")}
               </a>
