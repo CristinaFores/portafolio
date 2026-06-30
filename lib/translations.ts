@@ -31,6 +31,10 @@ export const translations = {
       "Conecta Figma con agentes de IA mediante MCP. El diseño llega como contexto estructurado — tokens, capas y espaciado —, no como capturas sueltas.",
     "hero.visualLink": "Ver cómo funciona →",
 
+    "now.sectionIndex": "01 — AHORA",
+    "now.headline": "Ahora",
+    "now.subhead": "Una foto en vivo de en qué estoy trabajando y qué estoy construyendo.",
+
     "mcp.sectionIndex": "02 — LAB",
     "mcp.headline": "design-context-bridge",
     "mcp.subhead":
@@ -152,6 +156,10 @@ export const translations = {
     "hero.visualCaption":
       "Connects Figma to AI agents via MCP. Design arrives as structured context — tokens, layers, and spacing — not loose screenshots.",
     "hero.visualLink": "See how it works →",
+
+    "now.sectionIndex": "01 — NOW",
+    "now.headline": "Now",
+    "now.subhead": "A live snapshot of what I'm working on and what I'm building.",
 
     "mcp.sectionIndex": "02 — LAB",
     "mcp.headline": "design-context-bridge",

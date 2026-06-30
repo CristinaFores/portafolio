@@ -120,7 +120,7 @@ export function Hero() {
             width={760}
             height={760}
             priority
-            className="mx-auto h-auto w-full max-w-xs opacity-80 contrast-75 lg:max-w-sm"
+            className="mx-auto h-auto w-full max-w-xs opacity-80 contrast-75 lg:max-w-sm dark:invert"
           />
         </motion.div>
       </div>
