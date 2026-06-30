@@ -86,7 +86,7 @@ function BulletItem({ text }: BulletItemProps) {
 export function ProjectDetail({ slug }: ProjectDetailProps) {
   const project = useTranslatedProject(slug)
   const { t, locale } = useLocale()
-  const { enter, fadeUp } = useMotion()
+  const { fadeUp } = useMotion()
 
   if (!project) return null
 
@@ -96,7 +96,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
         <header className="flex flex-col gap-8">
-          <motion.div {...enter({ y: 10, duration: 0.45 })}>
+          <div>
             <Link
               href="/#projects"
               className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -104,12 +104,9 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
               <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
               {t("project.allProjects")}
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="grid gap-8 md:grid-cols-[1fr_280px] md:items-end"
-            {...enter({ y: 16, duration: 0.5, delay: 0.07 })}
-          >
+          <div className="grid gap-8 md:grid-cols-[1fr_280px] md:items-end">
             <div className="flex max-w-3xl flex-col gap-4">
               <h1
                 className="font-semibold leading-tight tracking-[-0.025em]"
@@ -153,7 +150,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
                 {project.stack.slice(0, 6).join(" · ")}
               </p>
             </div>
-          </motion.div>
+          </div>
         </header>
 
         <div className="flex flex-col">

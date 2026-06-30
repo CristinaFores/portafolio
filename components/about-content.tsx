@@ -49,7 +49,7 @@ function Section({ label, children, sectionIndex = 0 }: SectionProps) {
  */
 export function AboutContent() {
   const { t, dict } = useLocale()
-  const { fadeUp, enter } = useMotion()
+  const { fadeUp } = useMotion()
   const bullets = dict["about.experience.gyoza.bullets"] as readonly string[]
   const educationItems = dict["about.education.items"] as readonly {
     year: string
@@ -59,7 +59,7 @@ export function AboutContent() {
   return (
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
-        <motion.header {...enter({ y: 16 })} className="flex max-w-3xl flex-col gap-5">
+        <header className="flex max-w-3xl flex-col gap-5">
           <p className="font-mono text-xs text-muted-foreground">Product / AI Engineer</p>
           <h1
             className="font-semibold leading-tight tracking-[-0.02em]"
@@ -74,7 +74,7 @@ export function AboutContent() {
             <p>{t("about.bio.4")}</p>
           </div>
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>
-        </motion.header>
+        </header>
 
         <Section label={t("about.experience.title")} sectionIndex={0}>
           <div className="flex max-w-3xl flex-col gap-10">

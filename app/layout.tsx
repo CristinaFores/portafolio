@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { PageTransition } from "@/components/page-transition"
+import { MainShell } from "@/components/main-shell"
 import { ScrollProgress } from "@/components/scroll-progress"
 import { ThemeProvider } from "@/components/theme-provider"
 import { LocaleProvider } from "@/lib/locale-context"
@@ -46,9 +46,7 @@ export default function RootLayout({
           <LocaleProvider>
             <Navbar />
             <ScrollProgress />
-            <main>
-              <PageTransition>{children}</PageTransition>
-            </main>
+            <MainShell>{children}</MainShell>
             <Footer />
             <Analytics />
           </LocaleProvider>

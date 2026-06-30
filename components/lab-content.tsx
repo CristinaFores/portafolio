@@ -35,13 +35,13 @@ function Section({ label, children, sectionIndex = 0 }: SectionProps) {
  */
 export function LabContent() {
   const { t, locale } = useLocale()
-  const { enter, fadeUp } = useMotion()
+  const { fadeUp } = useMotion()
 
   return (
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
         <header className="flex flex-col gap-8">
-          <motion.div {...enter({ y: 10, duration: 0.45 })}>
+          <div>
             <Link
               href="/"
               className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -49,9 +49,9 @@ export function LabContent() {
               <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
               {t("lab.backToHome")}
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div {...enter({ y: 16, delay: 0.06 })} className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
               <span>{t("lab.sectionIndex")}</span>
               <span className="border border-border px-1.5 py-0.5 text-[10px] uppercase tracking-wider text-accent">
@@ -77,7 +77,7 @@ export function LabContent() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         </header>
 
         <TerminalSnippet

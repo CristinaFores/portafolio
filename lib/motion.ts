@@ -23,7 +23,7 @@ type FadeOptions = {
 
 /** Fade + rise on viewport entry. */
 export function fadeUpProps(reduced: boolean | null, opts: FadeOptions = {}) {
-  const { delay = 0, y = 20, duration = 0.5, margin = VIEWPORT.margin } = opts
+  const { delay = 0, y = 14, duration = 0.38, margin = VIEWPORT.margin } = opts
   if (reduced) {
     return {
       initial: { opacity: 1, y: 0 },
@@ -40,9 +40,9 @@ export function fadeUpProps(reduced: boolean | null, opts: FadeOptions = {}) {
   } as const
 }
 
-/** Fade + rise on mount (hero, page headers). */
+/** Fade + rise on mount (hero). */
 export function enterProps(reduced: boolean | null, opts: FadeOptions = {}) {
-  const { delay = 0, y = 16, duration = 0.6 } = opts
+  const { delay = 0, y = 12, duration = 0.45 } = opts
   if (reduced) {
     return {
       initial: { opacity: 1, y: 0 },
@@ -64,24 +64,23 @@ export function staggerItemProps(
   opts: { step?: number; y?: number } = {},
 ) {
   const { step = STAGGER_CHILD, y = 12 } = opts
-  return fadeUpProps(reduced, { delay: index * step, y, duration: 0.45, margin: "-40px" })
+  return fadeUpProps(reduced, { delay: index * step, y, duration: 0.35, margin: "-40px" })
 }
 
-/** Page route transition wrapper props. */
-export function pageTransitionProps(reduced: boolean | null) {
+/** Quick fade for inner page headers — no stagger, minimal movement. */
+export function pageEnterProps(reduced: boolean | null, opts: FadeOptions = {}) {
+  const { delay = 0, y = 4, duration = 0.2 } = opts
   if (reduced) {
     return {
       initial: { opacity: 1, y: 0 },
       animate: { opacity: 1, y: 0 },
-      exit: { opacity: 1, y: 0 },
       transition: INSTANT,
     } as const
   }
   return {
-    initial: { opacity: 0, y: 8 },
+    initial: { opacity: 0, y },
     animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -6 },
-    transition: { duration: 0.28, ease: EASE },
+    transition: { duration, delay, ease: EASE },
   } as const
 }
 

@@ -14,7 +14,7 @@ export function NowSection() {
   const { fadeUp, staggerItem } = useMotion()
 
   return (
-    <section className="home-section home-section-muted">
+    <section className="home-section home-section-vcenter home-section-muted">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10">
         <div className="flex items-baseline justify-between gap-4">
           <SectionHeading index={t("now.sectionIndex")} title={t("now.headline")} subtitle={t("now.subhead")} />

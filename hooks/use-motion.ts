@@ -4,7 +4,7 @@ import { useReducedMotion } from "framer-motion"
 import {
   enterProps,
   fadeUpProps,
-  pageTransitionProps,
+  pageEnterProps,
   staggerItemProps,
 } from "@/lib/motion"
 
@@ -18,8 +18,8 @@ export function useMotion() {
     reduced,
     fadeUp: fadeUpProps.bind(null, reduced),
     enter: enterProps.bind(null, reduced),
+    pageEnter: pageEnterProps.bind(null, reduced),
     staggerItem: (index: number, opts?: { step?: number; y?: number }) =>
       staggerItemProps(reduced, index, opts),
-    pageTransition: () => pageTransitionProps(reduced),
   }
 }

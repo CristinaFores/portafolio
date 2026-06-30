@@ -13,7 +13,7 @@ export function ContactCTA() {
   const { fadeUp } = useMotion()
 
   return (
-    <section id="connect" className="home-section">
+    <section id="connect" className="home-section home-section-vcenter">
       <div className="mx-auto w-full max-w-5xl">
         <motion.div
           {...fadeUp()}

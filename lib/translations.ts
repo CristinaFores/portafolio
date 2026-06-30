@@ -19,7 +19,7 @@ export const translations = {
     "nav.toggleMenu": "Abrir o cerrar menú",
     "nav.themeLight": "Usar tema claro",
     "nav.themeDark": "Usar tema oscuro",
-    "nav.tagline": "Front-end · Móvil · IA",
+    "nav.tagline": "Product · AI Engineer",
 
     "hero.label": "React · React Native · MCP",
     "hero.headline": "Product / AI Engineer",
@@ -159,7 +159,7 @@ export const translations = {
     "nav.toggleMenu": "Toggle menu",
     "nav.themeLight": "Use light theme",
     "nav.themeDark": "Use dark theme",
-    "nav.tagline": "Front-end · Mobile · AI",
+    "nav.tagline": "Product · AI Engineer",
 
     "hero.label": "React · React Native · MCP",
     "hero.headline": "Product / AI Engineer",
