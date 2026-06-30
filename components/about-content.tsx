@@ -145,7 +145,7 @@ export function AboutContent() {
             href={PROFILE.cvUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center rounded border border-border px-5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+            className="inline-flex h-10 items-center border border-border px-5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
           >
             {t("nav.cv")}
           </a>

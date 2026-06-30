@@ -82,7 +82,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
         : "h-[480px]"
 
   return (
-    <div className="overflow-hidden rounded-xl bg-secondary/50">
+    <div className="overflow-hidden bg-secondary/50">
       <div className={`relative flex ${viewportHeight} items-center justify-center overflow-hidden pt-[37px] pb-[21px] transition-[height] duration-300`}>
         <button
           onClick={goPrev}

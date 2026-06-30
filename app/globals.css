@@ -13,94 +13,86 @@
 
 @layer base {
   :root {
-    --radius: 0.5rem;
+    --radius: 0rem;
 
-    /* Cristina Soft Core — Light palette */
-    --light-cream-blush: #fff7f0; /* Fondo principal */
-    --light-cocoa-ink: #2b2023; /* Texto principal */
-    --light-soft-white: #ffffff; /* Cards */
-    --light-soft-apricot: #f3e3d8; /* Fondo secundario */
-    --light-muted-blush: #f7ebe3; /* Muted background */
-    --light-warm-taupe: #7e6d68; /* Texto secundario */
-    --light-soft-rose-stone: #e6d3c9; /* Bordes */
-    --light-rose-terracotta: #d9897a; /* Acento principal */
-    --light-soft-coral: #ea7a67; /* Coral de energía */
-    --light-sage-olive: #9ca77a; /* Estabilidad / proceso */
-    --light-dusty-rose-mauve: #b98fa0; /* Parte personal */
-    --light-honey-gold: #e7b85a; /* Logro / claridad */
-    --light-soft-aqua: #5bb8ad; /* Técnica / frontend / IA */
+    /* Bone & Sienna — Light palette */
+    --light-bone: #f5f1ea; /* Fondo principal */
+    --light-ink: #1a1816; /* Texto principal */
+    --light-panel: #faf7f1; /* Cards */
+    --light-surface: #efeae0; /* Fondo secundario / muted */
+    --light-taupe: #6b635a; /* Texto secundario */
+    --light-taupe-soft: #8b8278; /* Texto terciario */
+    --light-sand: #d6cebd; /* Bordes */
+    --light-sienna: #b8502e; /* Acento principal — terracota quemada */
+    --light-sienna-deep: #6b3520; /* Acento profundo */
 
-    /* Cristina Soft Core — Dark palette */
-    --dark-warm-plum-night: #1c1318; /* Fondo principal */
-    --dark-cream-light: #fff3ea; /* Texto principal */
-    --dark-plum-card: #2a1d22; /* Cards */
-    --dark-plum-secondary: #24191e; /* Fondo secundario */
-    --dark-plum-muted: #2f2227; /* Muted background */
-    --dark-warm-mist: #c4b2ac; /* Texto secundario */
-    --dark-plum-border: #4a3940; /* Bordes */
-    --dark-peach-rose: #e09a8b; /* Acento principal */
-    --dark-soft-coral: #ff8a75; /* Coral de energía */
-    --dark-sage-olive: #b3ba8a; /* Estabilidad / proceso */
-    --dark-muted-mauve: #d3a3b7; /* Parte personal */
-    --dark-honey-gold: #f0c76b; /* Logro / claridad */
-    --dark-soft-aqua: #74cfc4; /* Técnica / frontend / IA */
+    /* Bone & Sienna — Dark palette (espresso cálido) */
+    --dark-espresso: #17120e; /* Fondo principal */
+    --dark-cream: #f5f1ea; /* Texto principal */
+    --dark-panel: #211913; /* Cards */
+    --dark-surface: #1f1813; /* Fondo secundario / muted */
+    --dark-mist: #b3a596; /* Texto secundario */
+    --dark-mist-soft: #8a7d70; /* Texto terciario */
+    --dark-cocoa-border: #3a2f26; /* Bordes */
+    --dark-sienna: #d4663f; /* Acento principal */
+    --dark-sienna-deep: #e07a4f; /* Acento claro */
   }
 
   /* Light — primary theme */
   :root,
   .light {
-    --background: var(--light-cream-blush);
-    --foreground: var(--light-cocoa-ink);
-    --card: var(--light-soft-white);
-    --card-foreground: var(--light-cocoa-ink);
-    --popover: var(--light-soft-white);
-    --popover-foreground: var(--light-cocoa-ink);
-    --primary: var(--light-rose-terracotta);
-    --primary-foreground: var(--light-cocoa-ink);
-    --secondary: var(--light-soft-apricot);
-    --secondary-foreground: var(--light-cocoa-ink);
-    --muted: var(--light-muted-blush);
-    --muted-foreground: var(--light-warm-taupe);
-    --accent: var(--light-rose-terracotta);
-    --accent-foreground: var(--light-cocoa-ink);
-    --destructive: var(--light-soft-coral);
-    --destructive-foreground: var(--light-cream-blush);
-    --border: var(--light-soft-rose-stone);
-    --input: var(--light-soft-rose-stone);
-    --ring: var(--light-rose-terracotta);
-    --olive: var(--light-sage-olive);
-    --mauve: var(--light-dusty-rose-mauve);
-    --signal: var(--light-honey-gold);
-    --coral: var(--light-soft-coral);
-    --aqua: var(--light-soft-aqua);
+    --background: var(--light-bone);
+    --foreground: var(--light-ink);
+    --card: var(--light-panel);
+    --card-foreground: var(--light-ink);
+    --popover: var(--light-panel);
+    --popover-foreground: var(--light-ink);
+    --primary: var(--light-sienna);
+    --primary-foreground: var(--light-bone);
+    --secondary: var(--light-surface);
+    --secondary-foreground: var(--light-ink);
+    --muted: var(--light-surface);
+    --muted-foreground: var(--light-taupe);
+    --accent: var(--light-sienna);
+    --accent-foreground: var(--light-bone);
+    --destructive: var(--light-sienna);
+    --destructive-foreground: var(--light-bone);
+    --border: var(--light-sand);
+    --input: var(--light-sand);
+    --ring: var(--light-sienna);
+    --olive: var(--light-taupe-soft);
+    --mauve: var(--light-taupe-soft);
+    --signal: var(--light-sienna);
+    --coral: var(--light-sienna);
+    --aqua: var(--light-sienna);
   }
 
-  /* Dark — warm editorial alternative */
+  /* Dark — warm espresso alternative */
   .dark {
-    --background: var(--dark-warm-plum-night);
-    --foreground: var(--dark-cream-light);
-    --card: var(--dark-plum-card);
-    --card-foreground: var(--dark-cream-light);
-    --popover: var(--dark-plum-card);
-    --popover-foreground: var(--dark-cream-light);
-    --primary: var(--dark-peach-rose);
-    --primary-foreground: var(--dark-warm-plum-night);
-    --secondary: var(--dark-plum-secondary);
-    --secondary-foreground: var(--dark-cream-light);
-    --muted: var(--dark-plum-muted);
-    --muted-foreground: var(--dark-warm-mist);
-    --accent: var(--dark-peach-rose);
-    --accent-foreground: var(--dark-warm-plum-night);
-    --destructive: var(--dark-soft-coral);
-    --destructive-foreground: var(--dark-warm-plum-night);
-    --border: var(--dark-plum-border);
-    --input: var(--dark-plum-border);
-    --ring: var(--dark-peach-rose);
-    --olive: var(--dark-sage-olive);
-    --mauve: var(--dark-muted-mauve);
-    --signal: var(--dark-honey-gold);
-    --coral: var(--dark-soft-coral);
-    --aqua: var(--dark-soft-aqua);
+    --background: var(--dark-espresso);
+    --foreground: var(--dark-cream);
+    --card: var(--dark-panel);
+    --card-foreground: var(--dark-cream);
+    --popover: var(--dark-panel);
+    --popover-foreground: var(--dark-cream);
+    --primary: var(--dark-sienna);
+    --primary-foreground: var(--dark-espresso);
+    --secondary: var(--dark-surface);
+    --secondary-foreground: var(--dark-cream);
+    --muted: var(--dark-surface);
+    --muted-foreground: var(--dark-mist);
+    --accent: var(--dark-sienna);
+    --accent-foreground: var(--dark-espresso);
+    --destructive: var(--dark-sienna);
+    --destructive-foreground: var(--dark-espresso);
+    --border: var(--dark-cocoa-border);
+    --input: var(--dark-cocoa-border);
+    --ring: var(--dark-sienna);
+    --olive: var(--dark-mist-soft);
+    --mauve: var(--dark-mist-soft);
+    --signal: var(--dark-sienna);
+    --coral: var(--dark-sienna);
+    --aqua: var(--dark-sienna);
   }
 }
 

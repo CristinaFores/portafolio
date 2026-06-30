@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
@@ -24,11 +25,12 @@ function isActive(href: string, pathname: string, hash: string): boolean {
 const navLinks = [
   { href: "/", labelKey: "nav.home" as const },
   { href: "/about", labelKey: "nav.about" as const },
+  { href: "/#lab", labelKey: "nav.lab" as const },
   { href: "/projects", labelKey: "nav.work" as const },
 ]
 
 const ICON_BTN =
-  "flex h-8 w-8 shrink-0 items-center justify-center rounded border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+  "flex h-8 w-8 shrink-0 items-center justify-center border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
 
 const getCurrentHash = () => {
   if (typeof window === "undefined") return ""
@@ -92,7 +94,7 @@ function NavControls({
       >
         {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </button>
-      <div className="flex h-8 overflow-hidden rounded border border-border">
+      <div className="flex h-8 overflow-hidden border border-border">
         <button
           type="button"
           onClick={() => { setLocale("es"); onClose?.() }}
@@ -165,6 +167,10 @@ export function Navbar() {
   const scrollToSection = (href: string) => {
     if (href === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+    if (href === "/#lab") {
+      document.getElementById("lab")?.scrollIntoView({ behavior: "smooth" })
     }
   }
 
@@ -180,7 +186,7 @@ export function Navbar() {
   }, [mobileOpen, pendingScrollHref])
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
-    const isInPageSectionLink = pathname === "/" && href === "/"
+    const isInPageSectionLink = pathname === "/" && (href === "/" || href === "/#lab")
     const menuWasOpen = mobileOpen
 
     setMobileOpen(false)
@@ -208,9 +214,21 @@ export function Navbar() {
         <Link
           href="/"
           onClick={(e) => handleNavClick(e, "/")}
-          className="text-sm font-medium tracking-tight text-muted-foreground transition-colors hover:text-foreground"
+          className="group flex items-center gap-2.5"
         >
-          {PROFILE.name}
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-[#f5f1ea]">
+            <Image
+              src="/cristina-portrait.webp"
+              alt={PROFILE.name}
+              width={30}
+              height={30}
+              priority
+              className="max-w-none object-contain object-[center_12%]"
+            />
+          </span>
+          <span className="text-sm font-medium tracking-tight text-foreground transition-colors group-hover:text-accent">
+            {PROFILE.name}
+          </span>
         </Link>
         <ul className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => (

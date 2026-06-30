@@ -10,6 +10,7 @@ export const translations = {
   es: {
     "nav.home": "Inicio",
     "nav.about": "Sobre mí",
+    "nav.lab": "Lab",
     "nav.work": "Proyectos",
     "nav.linkedIn": "LinkedIn ↗",
     "nav.gitHub": "GitHub ↗",
@@ -30,7 +31,7 @@ export const translations = {
       "Conecta Figma con agentes de IA mediante MCP. El diseño llega como contexto estructurado — tokens, capas y espaciado —, no como capturas sueltas.",
     "hero.visualLink": "Ver cómo funciona →",
 
-    "mcp.sectionIndex": "02 — MCP",
+    "mcp.sectionIndex": "02 — LAB",
     "mcp.headline": "design-context-bridge",
     "mcp.subhead":
       "Servidor MCP que expone Figma a agentes de IA: tokens, capas y espaciado, sin capturas de pantalla.",
@@ -131,6 +132,7 @@ export const translations = {
   en: {
     "nav.home": "Home",
     "nav.about": "About",
+    "nav.lab": "Lab",
     "nav.work": "Projects",
     "nav.linkedIn": "LinkedIn ↗",
     "nav.gitHub": "GitHub ↗",
@@ -151,7 +153,7 @@ export const translations = {
       "Connects Figma to AI agents via MCP. Design arrives as structured context — tokens, layers, and spacing — not loose screenshots.",
     "hero.visualLink": "See how it works →",
 
-    "mcp.sectionIndex": "02 — MCP",
+    "mcp.sectionIndex": "02 — LAB",
     "mcp.headline": "design-context-bridge",
     "mcp.subhead":
       "An MCP server that exposes Figma to AI agents: tokens, layers, and spacing — not screenshots.",

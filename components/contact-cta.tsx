@@ -34,7 +34,7 @@ export function ContactCTA() {
           <div className="flex w-full flex-col gap-3 sm:w-auto">
             <a
               href={`mailto:${PROFILE.email}`}
-              className="inline-flex h-10 items-center justify-center rounded bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
+              className="inline-flex h-10 items-center justify-center bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
             >
               {PROFILE.email}
             </a>

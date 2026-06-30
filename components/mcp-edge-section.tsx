@@ -17,7 +17,7 @@ export function McpEdgeSection() {
   const { t } = useLocale()
 
   return (
-    <section id="mcp-edge" className="border-t border-border bg-muted/30 px-6 py-20">
+    <section id="lab" className="border-t border-border bg-muted/30 px-6 py-20">
       <div className="mx-auto flex max-w-5xl flex-col gap-10">
         <motion.div {...fadeUp}>
           <SectionHeading

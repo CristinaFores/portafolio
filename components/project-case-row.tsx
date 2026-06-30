@@ -47,7 +47,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
         onClick={handleClick}
         className="group flex items-start gap-5 border-b border-border/50 py-8 transition-colors hover:border-border md:gap-6 md:py-10"
       >
-        <div className="relative hidden h-12 w-12 shrink-0 overflow-hidden rounded md:block">
+        <div className="relative hidden h-12 w-12 shrink-0 overflow-hidden md:block">
           <Image
             src={project.cover || "/placeholder.svg"}
             alt=""
@@ -73,7 +73,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
               {stackTags.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded border border-border bg-secondary px-2 py-0.5 font-mono text-[11px] text-foreground/80"
+                  className="border border-border bg-secondary px-2 py-0.5 font-mono text-[11px] text-foreground/80"
                 >
                   {tech}
                 </span>
