@@ -15,7 +15,7 @@ export function NowSection() {
 
   return (
     <section className="home-section home-section-vcenter home-section-muted">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-10">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 max-lg:gap-6">
         <div className="flex items-baseline justify-between gap-4">
           <SectionHeading index={t("now.sectionIndex")} title={t("now.headline")} subtitle={t("now.subhead")} />
           <motion.span

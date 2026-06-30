@@ -32,11 +32,15 @@
   }
 
   .home-section {
-    @apply flex min-h-svh flex-col justify-start border-t border-border px-6 py-28 md:py-32;
+    @apply flex min-h-svh flex-col border-t border-border px-6;
+    /* mobile: full viewport, content centered */
+    @apply justify-center py-20;
+    /* desktop: unchanged */
+    @apply md:justify-start md:py-28 lg:py-32;
   }
 
   .home-section-vcenter {
-    @apply justify-center;
+    @apply md:justify-center;
   }
 
   .home-section-compact {

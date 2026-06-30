@@ -1,10 +1,13 @@
 "use client"
 
+import { useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
+import { useParallaxY } from "@/hooks/use-parallax-y"
 import { PROFILE } from "@/lib/site-config"
 
 /** Renders the headline with the "AI" keyword in the accent color. */
@@ -25,11 +28,20 @@ function Headline({ text }: { text: string }) {
 }
 
 /**
- * Hero — copy on the left, portrait on the right.
+ * Hero — copy on the left, portrait on the right (desktop only).
+ * Mobile: typography-first; avatar lives in the navbar.
  */
 export function Hero() {
   const { t } = useLocale()
   const { reduced } = useMotion()
+  const sectionRef = useRef<HTMLElement>(null)
+  const { y: portraitY, enabled: parallaxOn } = useParallaxY(sectionRef, { range: 44 })
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  })
+  const copyY = useTransform(scrollYProgress, [0, 1], [0, -28])
 
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -46,20 +58,26 @@ export function Hero() {
   }
 
   return (
-    <section className="relative flex min-h-svh flex-col justify-center px-6 pb-16 pt-28">
-      <div className="mx-auto grid w-full max-w-5xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-14">
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-5">
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-svh flex-col justify-center overflow-hidden px-6 pb-14 pt-28 md:pb-16"
+    >
+      <div className="mx-auto flex w-full max-w-5xl flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-14">
+        <motion.div
+          className="flex flex-col gap-6 md:gap-8"
+          style={parallaxOn ? { y: copyY } : undefined}
+        >
+          <div className="flex flex-col gap-4 md:gap-5">
             <p className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
               <span className="size-[6px] shrink-0 rounded-full bg-accent animate-pulse-dot" aria-hidden />
               {t("hero.meta")}
             </p>
-            <h1
-              className="text-balance font-semibold leading-[1.05] tracking-[-0.03em] text-foreground"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)" }}
-            >
+            <h1 className="text-balance font-semibold leading-[1.05] tracking-[-0.03em] text-foreground max-lg:text-[clamp(2.125rem,9vw,2.875rem)] lg:text-[clamp(2.5rem,6vw,4rem)]">
               <Headline text={t("hero.headline")} />
             </h1>
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground/70 lg:hidden">
+              {t("nav.tagline")}
+            </p>
             <p className="max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
               {t("hero.subtitle")}
             </p>
@@ -82,25 +100,28 @@ export function Hero() {
               {t("contact.title")}
             </Link>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="order-first lg:order-last">
+        <motion.div
+          className="hidden justify-end lg:flex"
+          style={parallaxOn ? { y: portraitY } : undefined}
+        >
           <Image
             src="/cristina-portrait.webp"
             alt={PROFILE.name}
             width={760}
             height={760}
             priority
-            className="mx-auto h-auto w-full max-w-xs opacity-80 contrast-75 transition-transform duration-500 hover:scale-[1.02] lg:max-w-sm dark:invert"
+            className="h-auto w-full max-w-sm opacity-80 contrast-75 transition-transform duration-500 hover:scale-[1.02] dark:invert"
           />
-        </div>
+        </motion.div>
       </div>
 
       {!reduced && (
         <a
           href="/#projects"
           onClick={scrollToProjects}
-          className="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 font-mono text-[10px] text-muted-foreground/50 transition-colors hover:text-muted-foreground"
+          className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 font-mono text-[10px] text-muted-foreground/50 transition-colors hover:text-muted-foreground md:flex"
           aria-label={t("hero.viewWork")}
         >
           <ChevronDown className="h-4 w-4 animate-bounce-subtle" aria-hidden />
