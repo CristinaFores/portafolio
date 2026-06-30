@@ -18,14 +18,14 @@ interface NowRow {
 export const NOW_ROWS: NowRow[] = [
   {
     status: "active",
-    label: { es: "Trabajo", en: "Work" },
+    label: { es: "Enfoque", en: "Focus" },
     title: {
-      es: "Frontend en Gyoza Technology Studio",
-      en: "Frontend at Gyoza Technology Studio",
+      es: "Frontend con foco en IA aplicada",
+      en: "Frontend focused on applied AI",
     },
     description: {
-      es: "Interfaces de producto en React, React Native y Next.js para clientes y plataformas internas.",
-      en: "Product interfaces in React, React Native and Next.js for clients and internal platforms.",
+      es: "Integrando herramientas de IA (Cursor, MCP, automatización con n8n) en el flujo de desarrollo frontend del día a día.",
+      en: "Integrating AI tooling (Cursor, MCP, n8n automation) into the everyday frontend development workflow.",
     },
   },
   {
