@@ -47,9 +47,13 @@ function NavControls({
   onClose,
 }: NavControlsProps) {
   const isDark = mounted && resolvedTheme === "dark"
+  void isDark
+  void toggleTheme
 
   return (
     <>
+      {/* Dark mode disabled for now. Uncomment to bring the toggle back
+          (and remove forcedTheme="light" in app/layout.tsx).
       <button
         type="button"
         onClick={() => { toggleTheme(); onClose?.() }}
@@ -58,6 +62,7 @@ function NavControls({
       >
         {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </button>
+      */}
       <div className="flex h-8 overflow-hidden border border-border">
         <button
           type="button"

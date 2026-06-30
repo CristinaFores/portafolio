@@ -37,6 +37,9 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
+          // Dark mode disabled for now — forcing light. Remove forcedTheme
+          // and uncomment the toggle in navbar.tsx to bring it back.
+          forcedTheme="light"
         >
           <LocaleProvider>
             <Navbar />
