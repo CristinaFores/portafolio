@@ -51,9 +51,9 @@ export function ProjectCard({
       <Link
         href={href}
         onClick={handleClick}
-        className="group flex h-full min-h-[140px] items-start gap-5 rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-foreground/20 hover:shadow-lg hover:shadow-foreground/[0.04]"
+        className="group flex h-full min-h-[140px] items-start gap-5 rounded border border-border bg-card p-5 transition-colors duration-300 hover:border-foreground/30"
       >
-        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-border/80 sm:h-24 sm:w-24">
+        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded border border-border/80 sm:h-24 sm:w-24">
           <Image
             src={project.cover || "/placeholder.svg"}
             alt={`${project.title} cover`}
@@ -67,13 +67,10 @@ export function ProjectCard({
         </div>
         <div className="flex min-h-0 flex-1 flex-col gap-2 self-stretch">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="text-base font-medium leading-snug text-foreground transition-colors group-hover:text-primary">
+            <h3 className="text-base font-medium leading-snug text-foreground transition-colors group-hover:text-accent">
               {project.title}
             </h3>
             <div className="flex shrink-0 items-center gap-2">
-              <span className="text-xs tabular-nums text-muted-foreground/70">
-                {project.year}
-              </span>
               <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/0 transition-all duration-300 group-hover:text-muted-foreground/60" />
             </div>
           </div>

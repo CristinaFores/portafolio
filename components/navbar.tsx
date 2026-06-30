@@ -28,7 +28,7 @@ const navLinks = [
 ]
 
 const ICON_BTN =
-  "flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+  "flex h-8 w-8 shrink-0 items-center justify-center rounded border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
 
 const getCurrentHash = () => {
   if (typeof window === "undefined") return ""
@@ -92,7 +92,7 @@ function NavControls({
       >
         {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </button>
-      <div className="flex h-8 overflow-hidden rounded-md border border-border">
+      <div className="flex h-8 overflow-hidden rounded border border-border">
         <button
           type="button"
           onClick={() => { setLocale("es"); onClose?.() }}
@@ -225,7 +225,7 @@ export function Navbar() {
       ref={headerRef}
       className={cn(
         "fixed left-0 right-0 top-0 z-50 border-b border-border transition-all duration-300",
-        scrolled ? "bg-background/80 backdrop-blur-md" : "bg-transparent"
+        scrolled ? "bg-background/90" : "bg-transparent"
       )}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">

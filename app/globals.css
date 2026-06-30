@@ -12,54 +12,87 @@
 }
 
 @layer base {
-  /* Dark (night) — default when system prefers dark or user chose dark */
-  :root,
-  .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 100%;
-    /* Solid button = white (no colored buttons) */
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 72%;
-    --accent: 0 0% 14%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 0% 30%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 0 0% 60%;
-    --radius: 0.625rem;
+  :root {
+    --radius: 0.25rem;
+
+    /* Light palette */
+    --light-warm-paper: #f7f0e6;
+    --light-soft-clay: #e9ddd0;
+    --light-almost-white: #fffdfc;
+    --light-deep-ink: #1b2226;
+    --light-calm-grey: #66706e;
+    --light-electric-teal: #00a6a6;
+    --light-living-coral: #e85d4a;
+    --light-olive-ground: #6b7d4f;
+    --light-dusty-mauve: #a77c8a;
+    --light-warm-signal: #f2c94c;
+    --light-soft-stone: #d8cfc2;
+
+    /* Dark palette */
+    --dark-deep-nervous-system: #071317;
+    --dark-midnight-surface: #102329;
+    --dark-focus-panel: #162d33;
+    --dark-warm-light: #f5efe6;
+    --dark-soft-fog: #a7b2ae;
+    --dark-neon-teal-soft: #35d0c7;
+    --dark-hot-coral: #ff6b57;
+    --dark-soft-olive: #8fa76b;
+    --dark-muted-mauve: #c496a6;
+    --dark-warm-yellow: #ffd166;
+    --dark-deep-border: #263a3f;
   }
 
-  /* Light (day) — when system prefers light or user chose light */
+  /* Dark — default theme */
+  :root,
+  .dark {
+    --background: var(--dark-deep-nervous-system);
+    --foreground: var(--dark-warm-light);
+    --card: var(--dark-focus-panel);
+    --card-foreground: var(--dark-warm-light);
+    --popover: var(--dark-focus-panel);
+    --popover-foreground: var(--dark-warm-light);
+    --primary: var(--dark-warm-light);
+    --primary-foreground: var(--dark-deep-nervous-system);
+    --secondary: var(--dark-midnight-surface);
+    --secondary-foreground: var(--dark-warm-light);
+    --muted: var(--dark-midnight-surface);
+    --muted-foreground: var(--dark-soft-fog);
+    --accent: var(--dark-neon-teal-soft);
+    --accent-foreground: var(--dark-deep-nervous-system);
+    --destructive: var(--dark-hot-coral);
+    --destructive-foreground: var(--dark-deep-nervous-system);
+    --border: var(--dark-deep-border);
+    --input: var(--dark-deep-border);
+    --ring: var(--dark-neon-teal-soft);
+    --olive: var(--dark-soft-olive);
+    --mauve: var(--dark-muted-mauve);
+    --signal: var(--dark-warm-yellow);
+  }
+
+  /* Light */
   .light {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 4%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 4%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 4%;
-    /* Solid button = black */
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 92%;
-    --secondary-foreground: 0 0% 4%;
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 0 0% 92%;
-    --accent-foreground: 0 0% 4%;
-    --destructive: 0 0% 85%;
-    --destructive-foreground: 0 0% 4%;
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
-    --ring: 0 0% 25%;
+    --background: var(--light-warm-paper);
+    --foreground: var(--light-deep-ink);
+    --card: var(--light-almost-white);
+    --card-foreground: var(--light-deep-ink);
+    --popover: var(--light-almost-white);
+    --popover-foreground: var(--light-deep-ink);
+    --primary: var(--light-deep-ink);
+    --primary-foreground: var(--light-warm-paper);
+    --secondary: var(--light-soft-clay);
+    --secondary-foreground: var(--light-deep-ink);
+    --muted: var(--light-soft-clay);
+    --muted-foreground: var(--light-calm-grey);
+    --accent: var(--light-electric-teal);
+    --accent-foreground: var(--light-warm-paper);
+    --destructive: var(--light-living-coral);
+    --destructive-foreground: var(--light-warm-paper);
+    --border: var(--light-soft-stone);
+    --input: var(--light-soft-stone);
+    --ring: var(--light-electric-teal);
+    --olive: var(--light-olive-ground);
+    --mauve: var(--light-dusty-mauve);
+    --signal: var(--light-warm-signal);
   }
 }
 
@@ -75,7 +108,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -83,13 +116,11 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Refined text selection */
   ::selection {
-    background: hsl(var(--foreground) / 0.15);
-    color: hsl(var(--foreground));
+    background: rgb(from var(--accent) r g b / 0.25);
+    color: var(--foreground);
   }
 
-  /* Minimal custom scrollbar */
   ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -98,10 +129,10 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
+    background: var(--border);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground) / 0.4);
+    background: rgb(from var(--muted-foreground) r g b / 0.4);
   }
 }

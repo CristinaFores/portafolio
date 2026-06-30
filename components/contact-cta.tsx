@@ -6,56 +6,66 @@ import { fadeUp } from "@/lib/motion"
 import { PROFILE } from "@/lib/site-config"
 
 /**
- * Contact section with direct email and LinkedIn call-to-action links.
+ * Contact section with inverse band and direct outreach links.
  */
 export function ContactCTA() {
   const { t } = useLocale()
 
   return (
-    <section className="px-6 py-28">
+    <section id="connect" className="border-t border-border px-6 py-24">
       <div className="mx-auto max-w-5xl">
         <motion.div
           {...fadeUp}
-          className="flex flex-col items-center gap-8 text-center"
+          className="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between"
         >
-          <h2
-            className="text-balance font-semibold leading-[1.15] tracking-[-0.02em]"
-            style={{ fontSize: "clamp(1.8rem, 4.5vw, 3rem)" }}
-          >
-            {t("contact.title")}
-          </h2>
+          <div className="flex max-w-xl flex-col gap-4">
+            <p className="font-mono text-xs text-muted-foreground">{t("contact.sectionIndex")}</p>
+            <h2
+              className="text-balance font-semibold leading-[1.15] tracking-[-0.02em] text-foreground"
+              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)" }}
+            >
+              {t("contact.headline")}
+            </h2>
+            <p className="text-pretty text-base leading-relaxed text-muted-foreground">
+              {t("contact.subline")}
+            </p>
+          </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex w-full flex-col gap-3 sm:w-auto">
             <a
               href={`mailto:${PROFILE.email}`}
-              className="inline-flex h-11 items-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
+              className="inline-flex h-10 items-center justify-center rounded bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
             >
               {PROFILE.email}
             </a>
-            <a
-              href={PROFILE.linkedInUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              {t("nav.linkedIn")}
-            </a>
-            <a
-              href={PROFILE.gitHubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              {t("nav.gitHub")}
-            </a>
-            <a
-              href={PROFILE.cvUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              {t("nav.cv")}
-            </a>
+            <div className="flex flex-wrap gap-3 font-mono text-xs text-muted-foreground">
+              <a
+                href={PROFILE.linkedInUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                {t("nav.linkedIn")}
+              </a>
+              <span className="text-muted-foreground/30">·</span>
+              <a
+                href={PROFILE.gitHubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                {t("nav.gitHub")}
+              </a>
+              <span className="text-muted-foreground/30">·</span>
+              <a
+                href={PROFILE.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                {t("nav.cv")}
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>

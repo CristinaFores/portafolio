@@ -1,6 +1,5 @@
 "use client"
 
-import { EmailIcon, GitHubIcon, LinkedInIcon } from "@/components/icons"
 import { useLocale } from "@/lib/locale-context"
 import { PROFILE } from "@/lib/site-config"
 
@@ -11,36 +10,33 @@ export function Footer() {
   const { t } = useLocale()
 
   return (
-    <footer className="border-t border-border">
+    <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-5xl flex-row flex-wrap items-center justify-between gap-4 px-6 py-5">
-        <p className="font-mono text-xs text-muted-foreground/40">
-          © {new Date().getFullYear()} {PROFILE.name}
+        <p className="font-mono text-xs text-muted-foreground">
+          © {new Date().getFullYear()} {PROFILE.name} · {t("footer.tagline")}
         </p>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4 font-mono text-xs">
           <a
             href={`mailto:${PROFILE.email}`}
-            className="flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-            aria-label={t("nav.email")}
+            className="text-muted-foreground underline-offset-4 transition-colors hover:text-accent hover:underline"
           >
-            <EmailIcon className="h-4 w-4" />
+            Email
           </a>
           <a
             href={PROFILE.linkedInUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-            aria-label={t("nav.linkedIn")}
+            className="text-muted-foreground underline-offset-4 transition-colors hover:text-accent hover:underline"
           >
-            <LinkedInIcon className="h-4 w-4" />
+            LinkedIn
           </a>
           <a
             href={PROFILE.gitHubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center rounded-md border border-border p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-            aria-label={t("nav.gitHub")}
+            className="text-muted-foreground underline-offset-4 transition-colors hover:text-accent hover:underline"
           >
-            <GitHubIcon className="h-4 w-4" />
+            GitHub
           </a>
         </div>
       </div>

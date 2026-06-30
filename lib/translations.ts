@@ -4,7 +4,7 @@
 
 export type Locale = "es" | "en"
 
-export const defaultLocale: Locale = "en"
+export const defaultLocale: Locale = "es"
 
 export const translations = {
   es: {
@@ -19,16 +19,58 @@ export const translations = {
     "nav.themeLight": "Usar tema claro",
     "nav.themeDark": "Usar tema oscuro",
 
-    "hero.role": "Frontend Developer",
+    "hero.label": "React · React Native · MCP",
+    "hero.headline": "Product / AI Engineer",
     "hero.subtitle":
-      "Hago que productos complejos se sientan simples. Especializada en React y React Native (Expo / Expo Router / EAS), con experiencia en Next.js (App Router).Habilidades en arquitectura de UI, manejo de estado (Zustand), y gestión de datos asíncronos (TanStack Query).",
-    "hero.location": "Barcelona, España · Remoto y reubicación",
-    "hero.viewWork": "Proyectos",
-    "hero.aboutMe": "Sobre mí",
+      "Desarrollo interfaces web y móviles para flujos reales de producto: pedidos, pagos, acceso, dispositivos Android y datos asíncronos. También construyo herramientas MCP como design-context-bridge.",
+    "hero.meta": "Barcelona · Disponible en remoto",
+    "hero.viewWork": "Ver proyectos",
+    "hero.visualLabel": "Herramienta propia · design-context-bridge",
+    "hero.visualCaption":
+      "Conecta Figma con agentes de IA mediante MCP. El diseño llega como contexto estructurado — tokens, capas y espaciado —, no como capturas sueltas.",
+    "hero.visualLink": "Ver cómo funciona →",
 
-    "contact.title": "Trabajemos juntos",
+    "mcp.sectionIndex": "02 — MCP",
+    "mcp.headline": "design-context-bridge",
+    "mcp.subhead":
+      "Servidor MCP que expone Figma a agentes de IA: tokens, capas y espaciado, sin capturas de pantalla.",
+    "mcp.explainer":
+      "MCP (Model Context Protocol) es el estándar para que herramientas como Cursor accedan a contexto estructurado del diseño. Lo he desarrollado para que el código respete el sistema de diseño desde el primer prompt.",
+    "mcp.cta": "Ver en GitHub",
+    "mcp.cap1": "Tokens y variables de Figma",
+    "mcp.cap2": "Capas y componentes",
+    "mcp.cap3": "Plugin en directo o API headless",
 
-    "work.sectionTitle": "Proyectos destacados",
+    "work.sectionIndex": "03 — PROYECTOS",
+    "work.sectionTitle": "Proyectos en producción",
+    "work.subhead":
+      "Interfaces web y móvil con React y React Native, aplicadas en producto real.",
+
+    "writing.sectionIndex": "04 — ESCRITOS",
+    "writing.headline": "Sobre interfaz, móvil e IA",
+    "writing.intro":
+      "Reflexiones alineadas con lo que hago: React Native en producción, arquitectura front-end y MCP para conectar diseño e IA.",
+    "writing.comingSoon": "Próximamente",
+    "writing.article1.title":
+      "Por qué tu sistema de diseño es invisible para la IA (y cómo lo soluciona MCP)",
+    "writing.article1.thesis":
+      "Los PDF de entrega y las capturas no sobreviven al contexto de un LLM; el contexto de diseño estructurado sí.",
+    "writing.article2.title":
+      "Expo Router en producción: qué falla después del flujo ideal",
+    "writing.article2.thesis":
+      "Deep linking, control de acceso y pilas de navegación: decisiones que separan un prototipo de una app móvil lista para producción.",
+    "writing.article3.title":
+      "TanStack Query no es una capa de datos, es un contrato de experiencia de usuario",
+    "writing.article3.thesis":
+      "Política de caché, tiempo de obsolescencia y actualizaciones optimistas son decisiones de producto, no detalles de implementación.",
+
+    "contact.headline": "¿Hablamos?",
+    "contact.subline":
+      "Disponible en remoto para roles de front-end y móvil donde la calidad de interfaz y el tooling de IA formen parte del día a día.",
+    "contact.title": "¿Hablamos?",
+    "contact.sectionIndex": "05 — CONTACTO",
+
+    "footer.tagline": "Product / AI Engineer · Barcelona",
     "work.companyBadge": "Proyecto Gyoza",
 
     "project.allProjects": "Todos los proyectos",
@@ -50,15 +92,15 @@ export const translations = {
 
     "about.title": "Sobre mí",
     "about.bio.1":
-      "Desarrolladora Frontend especializada en React y React Native (Expo / Expo Router / EAS), con experiencia en Next.js (App Router). Fuerte en arquitectura de UI, manejo de estado (Zustand), datos asíncronos (TanStack Query) y consumo de APIs con Axios.",
+      "Product / AI Engineer especializada en interfaces web y móviles con React, React Native y Next.js.",
     "about.bio.2":
-      "He trabajado en proyectos complejos desde la fase inicial hasta producción, incluyendo flujos con RBAC, dispositivos Android y terminales de pago. Participo en decisiones técnicas, optimización de rendimiento y mejora continua del producto.",
+      "He trabajado en producto real: Goiko, Wetour y Turbowash, incluyendo flujos de compra, control de acceso, dispositivos Android y terminales de pago.",
     "about.bio.3":
-      "Integro herramientas de IA y desarrollo asistido (Cursor, MCP servers, OpenAI) en mi flujo diario para acelerar entregas y mejorar la calidad del código. También automatizo procesos internos con n8n.",
+      "Mi foco está en arquitectura de interfaz, estado y datos asíncronos con Zustand y TanStack Query. También construyo design-context-bridge, un servidor MCP que conecta Figma con agentes de IA.",
     "about.bio.4":
-      "Me caracterizo por ser constante, responsable y orientada a la calidad del código. Disfruto colaborando en equipos ágiles, resolviendo problemas reales y construyendo soluciones que aporten valor a largo plazo.",
+      "Me gusta colaborar en equipos ágiles, resolver problemas concretos y mantener código claro y mantenible.",
     "about.bio.availability":
-      "Actualmente abierta a oportunidades remotas o híbridas en entornos de producto y tecnología.",
+      "Barcelona · Disponible en remoto.",
     "about.skills.title": "Skills",
     "about.skills.programming": "Lenguajes y frameworks",
     "about.skills.state": "Estado y datos",
@@ -72,16 +114,16 @@ export const translations = {
     "about.education.title": "Educación",
     "about.experience.title": "Experiencia profesional",
     "about.coreStack.title": "Stack principal",
-    "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Frontend Developer (Remoto)",
-    "about.experience.gyoza.date": "Agosto 2023 – Actualidad",
+    "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Desarrollo front-end (Remoto)",
+    "about.experience.gyoza.date": "Agosto 2023 – Marzo 2026",
     "about.experience.gyoza.summary":
       "Desarrollo de productos web y móviles para clientes y plataformas internas, contribuyendo en proyectos como <strong>Goiko</strong>, <strong>Wetour</strong>, <strong>Turbowash</strong> e integraciones con dispositivos de pago.",
     "about.experience.gyoza.bullets": [
+      "Planteamiento de arquitecturas React escalables y adaptadas a las necesidades de producto.",
       "Construcción de interfaces y funcionalidades con React, React Native (Expo) y Next.js.",
-      "Implementación de pantallas de compra/pago, validaciones y experiencias de usuario end-to-end desde cero.",
-      "Integración de APIs y servicios externos (Axios), gestión de datos asíncronos (TanStack Query) y estado global (Zustand).",
-      "UI reutilizable y mantenible con SCSS/Sass + BEM, diseño responsive y arquitectura basada en componentes.",
-      "Colaboración estrecha con equipos de backend, producto y diseño para entregar funcionalidades listas para producción.",
+      "Implementación de flujos de compra, pago, validación y experiencia end-to-end.",
+      "Integración de APIs, servicios externos y datos asíncronos con Axios, TanStack Query y Zustand.",
+      "Trabajo en productos con dispositivos Android, terminales de pago, loyalty y activación de máquinas vía pulsos.",
     ],
     "about.experience.freelance.title": "Software Developer — Freelancer · Remoto (España)",
     "about.experience.freelance.date": "Feb 2022 – Agosto 2023",
@@ -111,16 +153,59 @@ export const translations = {
     "nav.themeLight": "Use light theme",
     "nav.themeDark": "Use dark theme",
 
-    "hero.role": "Frontend Developer",
+    "hero.label": "React · React Native · MCP",
+    "hero.headline": "Product / AI Engineer",
     "hero.subtitle":
-      " I make complex products feel simple. Specializing in React and React Native (Expo / Expo Router / EAS), with experience in Next.js (App Router). Skilled in UI architecture, state management (Zustand), and asynchronous data management (TanStack Query)",
-    "hero.location": "Barcelona, Spain · Open to Remote & Relocation",
-    "hero.viewWork": "Projects",
-    "hero.aboutMe": "About Me",
+      "I build web and mobile interfaces for real product flows: ordering, payments, access control, Android devices, and async data. I also build MCP tooling like design-context-bridge.",
+    "hero.meta": "Barcelona · Available for remote work",
+    "hero.viewWork": "View projects",
+    "hero.visualLabel": "Own tooling · design-context-bridge",
+    "hero.visualCaption":
+      "Connects Figma to AI agents via MCP. Design arrives as structured context — tokens, layers, and spacing — not loose screenshots.",
+    "hero.visualLink": "See how it works →",
 
-    "contact.title": "Let's work together",
+    "mcp.sectionIndex": "02 — MCP",
+    "mcp.headline": "design-context-bridge",
+    "mcp.subhead":
+      "An MCP server that exposes Figma to AI agents: tokens, layers, and spacing — not screenshots.",
+    "mcp.explainer":
+      "MCP (Model Context Protocol) is the standard for tools like Cursor to access structured design context. I built this so code respects the design system from the first prompt.",
+    "mcp.cta": "View on GitHub",
+    "mcp.cap1": "Figma tokens & variables",
+    "mcp.cap2": "Layers & components",
+    "mcp.cap3": "Live plugin or headless API",
 
-    "work.sectionTitle": "Selected Work",
+    "work.sectionIndex": "03 — SELECTED WORK",
+    "work.sectionTitle": "Production projects",
+    "work.subhead":
+      "Web and mobile interfaces with React and React Native, shipped in production.",
+
+    "writing.sectionIndex": "04 — WRITING",
+    "writing.headline": "On interface, mobile, and AI",
+    "writing.intro":
+      "Notes aligned with what I do: React Native in production, front-end architecture, and MCP to connect design and AI.",
+    "writing.comingSoon": "Coming soon",
+    "writing.article1.title":
+      "Why Your Design System Is Invisible to AI (And How MCP Fixes It)",
+    "writing.article1.thesis":
+      "Handoff PDFs and screenshots don't survive LLM context — structured design context does.",
+    "writing.article2.title":
+      "Expo Router at Production Scale: What Breaks After the Happy Path",
+    "writing.article2.thesis":
+      "Deep linking, auth gates, and tab stacks — decisions that separate prototype apps from shippable mobile product.",
+    "writing.article3.title":
+      "TanStack Query Isn't a Data Layer — It's a UX Contract",
+    "writing.article3.thesis":
+      "Cache policy, stale time, and optimistic updates are product decisions, not implementation details.",
+
+    "contact.headline": "Get in touch",
+    "contact.subline":
+      "Available remotely for front-end and mobile roles where interface quality and AI tooling are part of the day-to-day.",
+    "contact.title": "Get in touch",
+    "contact.sectionIndex": "05 — CONTACT",
+
+    "footer.tagline": "Product / AI Engineer · Barcelona",
+
     "work.companyBadge": "Gyoza project",
 
     "project.allProjects": "All Projects",
@@ -142,15 +227,15 @@ export const translations = {
 
     "about.title": "About Me",
     "about.bio.1":
-      "Frontend developer specialized in React and React Native (Expo / Expo Router / EAS), with experience in Next.js (App Router). Strong in UI architecture, state management (Zustand), async data (TanStack Query) and API consumption with Axios.",
+      "Product / AI Engineer specialized in web and mobile interfaces with React, React Native, and Next.js.",
     "about.bio.2":
-      "I have worked on complex projects from inception to production, including RBAC flows, Android devices and payment terminals. I contribute to technical decisions, performance optimization and continuous product improvement.",
+      "I have worked on real product work across Goiko, Wetour, and Turbowash, including purchase flows, access control, Android devices, and payment terminals.",
     "about.bio.3":
-      "I integrate AI-assisted development tools (Cursor, MCP servers, OpenAI) into my daily workflow to ship faster and improve code quality. I also automate internal processes with n8n.",
+      "My focus is UI architecture, state, and async data with Zustand and TanStack Query. I also build design-context-bridge, an MCP server that connects Figma to AI agents.",
     "about.bio.4":
-      "I am consistent, responsible and focused on code quality. I enjoy collaborating in agile teams, solving real problems and building solutions that add long-term value.",
+      "I enjoy working in agile teams, solving concrete problems, and keeping code clear and maintainable.",
     "about.bio.availability":
-      "Currently open to remote or hybrid opportunities in product and technology environments.",
+      "Barcelona · Available for remote work.",
     "about.skills.title": "Skills",
     "about.skills.programming": "Programming Languages & Frameworks",
     "about.skills.state": "State Management & Data",
@@ -164,16 +249,16 @@ export const translations = {
     "about.education.title": "Education",
     "about.experience.title": "Professional Experience",
     "about.coreStack.title": "Core Stack",
-    "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Frontend Developer (Remote)",
-    "about.experience.gyoza.date": "February 2024 – Present",
+    "about.experience.gyoza.title": "GYOZA TECHNOLOGY STUDIO S.L. — Front-end development (Remote)",
+    "about.experience.gyoza.date": "Aug 2023 – Mar 2026",
     "about.experience.gyoza.summary":
       "Developed web and mobile products for clients and internal platforms, contributing to projects such as <strong>Goiko</strong>, <strong>Wetour</strong>, <strong>Turbowash</strong>, and payment-device integrations.",
     "about.experience.gyoza.bullets": [
+      "Defined scalable React architectures tailored to product needs.",
       "Built interfaces and features using React, React Native (Expo), and Next.js.",
-      "Implemented purchase/payment screens, validations, and end-to-end user experiences from start to finish.",
-      "Integrated APIs and external services (Axios), managing async data (TanStack Query) and global state (Zustand).",
-      "Built reusable, maintainable UI with SCSS/Sass + BEM, responsive design, and component-based architecture.",
-      "Collaborated closely with backend, product, and design teams to deliver production-ready features.",
+      "Implemented purchase, payment, validation, and end-to-end user flows.",
+      "Integrated APIs, external services, and async data with Axios, TanStack Query, and Zustand.",
+      "Worked on products involving Android devices, payment terminals, loyalty, and machine activation through pulses.",
     ],
     "about.experience.freelance.title": "Software Developer — Freelancer · Remote (Spain)",
     "about.experience.freelance.date": "Feb 2022 – Aug 2023",

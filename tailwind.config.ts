@@ -12,42 +12,49 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-syne)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        // HEX tokens live in app/globals.css. Relative color syntax keeps
+        // Tailwind opacity modifiers (e.g. bg-accent/40) working with hex vars.
+        background: 'rgb(from var(--background) r g b / <alpha-value>)',
+        foreground: 'rgb(from var(--foreground) r g b / <alpha-value>)',
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          DEFAULT: 'rgb(from var(--card) r g b / <alpha-value>)',
+          foreground: 'rgb(from var(--card-foreground) r g b / <alpha-value>)',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: 'rgb(from var(--popover) r g b / <alpha-value>)',
+          foreground: 'rgb(from var(--popover-foreground) r g b / <alpha-value>)',
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: 'rgb(from var(--primary) r g b / <alpha-value>)',
+          foreground: 'rgb(from var(--primary-foreground) r g b / <alpha-value>)',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: 'rgb(from var(--secondary) r g b / <alpha-value>)',
+          foreground: 'rgb(from var(--secondary-foreground) r g b / <alpha-value>)',
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          DEFAULT: 'rgb(from var(--muted) r g b / <alpha-value>)',
+          foreground: 'rgb(from var(--muted-foreground) r g b / <alpha-value>)',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          DEFAULT: 'rgb(from var(--accent) r g b / <alpha-value>)',
+          foreground: 'rgb(from var(--accent-foreground) r g b / <alpha-value>)',
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+          DEFAULT: 'rgb(from var(--destructive) r g b / <alpha-value>)',
+          foreground: 'rgb(from var(--destructive-foreground) r g b / <alpha-value>)',
         },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
+        border: 'rgb(from var(--border) r g b / <alpha-value>)',
+        input: 'rgb(from var(--input) r g b / <alpha-value>)',
+        ring: 'rgb(from var(--ring) r g b / <alpha-value>)',
+        olive: 'rgb(from var(--olive) r g b / <alpha-value>)',
+        mauve: 'rgb(from var(--mauve) r g b / <alpha-value>)',
+        signal: 'rgb(from var(--signal) r g b / <alpha-value>)',
       },
       borderRadius: {
         lg: 'var(--radius)',

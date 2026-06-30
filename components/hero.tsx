@@ -2,99 +2,106 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ChevronDown } from "lucide-react"
+import { HeroMcpVisual } from "@/components/hero-mcp-visual"
 import { useLocale } from "@/lib/locale-context"
 import { EASE } from "@/lib/motion"
-import { PROFILE } from "@/lib/site-config"
 
 /**
- * Hero section of the portfolio landing page.
+ * Hero — copy on the left, explained visual on the right.
  */
 export function Hero() {
   const { t } = useLocale()
 
+  const scrollToProjects = (e: React.MouseEvent) => {
+    e.preventDefault()
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+    history.replaceState(null, "", "/#projects")
+    window.dispatchEvent(new HashChangeEvent("hashchange"))
+  }
+
+  const scrollToMcp = (e: React.MouseEvent) => {
+    e.preventDefault()
+    document.getElementById("mcp-edge")?.scrollIntoView({ behavior: "smooth" })
+    history.replaceState(null, "", "/#mcp-edge")
+    window.dispatchEvent(new HashChangeEvent("hashchange"))
+  }
+
   return (
-    <section className="relative flex min-h-[100vh] flex-col justify-center px-6 pb-16 pt-28">
-      <div className="mx-auto w-full max-w-5xl">
-        <div className="flex flex-col gap-7">
-          <motion.p
-            className="font-mono text-xs tracking-[0.2em] text-muted-foreground/70 uppercase"
+    <section className="flex min-h-[88vh] flex-col justify-center px-6 pb-20 pt-28">
+      <div className="mx-auto grid w-full max-w-5xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14">
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-5">
+            <motion.p
+              className="font-mono text-xs text-muted-foreground"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: EASE }}
+            >
+              {t("hero.label")}
+            </motion.p>
+            <motion.h1
+              className="text-balance font-semibold leading-[1.15] tracking-[-0.02em] text-foreground"
+              style={{ fontSize: "clamp(2rem, 4.5vw, 3rem)" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.06, ease: EASE }}
+            >
+              {t("hero.headline")}
+            </motion.h1>
+            <motion.p
+              className="max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.12, ease: EASE }}
+            >
+              {t("hero.subtitle")}
+            </motion.p>
+            <motion.p
+              className="text-sm text-muted-foreground/75"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.18, ease: EASE }}
+            >
+              {t("hero.meta")}
+            </motion.p>
+          </div>
+
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE }}
-          >
-            {t("hero.role")}
-          </motion.p>
-          <motion.h1
-            className="text-balance font-semibold leading-[1.06] tracking-[-0.025em]"
-            style={{ fontSize: "clamp(2.6rem, 7.5vw, 5.5rem)" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.08, ease: EASE }}
-          >
-            {PROFILE.name}
-          </motion.h1>
-          <motion.p
-            className="max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.18, ease: EASE }}
-          >
-            {t("hero.subtitle")}
-          </motion.p>
-          <motion.p
-            className="text-sm text-muted-foreground/55"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.26, ease: EASE }}
-          >
-            {t("hero.location")}
-          </motion.p>
-          <motion.div
-            className="flex flex-wrap items-center gap-3 pt-1"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.34, ease: EASE }}
+            transition={{ duration: 0.6, delay: 0.24, ease: EASE }}
           >
             <Link
               href="/#projects"
-              className="inline-flex h-11 items-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-85"
+              onClick={scrollToProjects}
+              className="inline-flex h-10 items-center rounded bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               {t("hero.viewWork")}
             </Link>
-            <Link
-              href="/about"
-              className="inline-flex h-11 items-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              {t("hero.aboutMe")}
-            </Link>
-            <a
-              href={PROFILE.cvUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center rounded-lg border border-border px-6 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              {t("nav.cv")}
-            </a>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.16, ease: EASE }}
+        >
+          <Link
+            href="/#mcp-edge"
+            onClick={scrollToMcp}
+            aria-label={t("hero.visualLink")}
+            className="group flex flex-col gap-4"
+          >
+            <HeroMcpVisual className="h-auto w-full transition-transform duration-300 group-hover:-translate-y-0.5" />
+            <figcaption className="flex flex-col gap-1.5 border-l-2 border-accent pl-4">
+              <p className="font-mono text-xs text-accent">{t("hero.visualLabel")}</p>
+              <p className="text-sm leading-relaxed text-muted-foreground transition-colors group-hover:text-foreground/80">
+                {t("hero.visualCaption")}
+              </p>
+            </figcaption>
+          </Link>
+        </motion.div>
       </div>
-      <motion.a
-        href="/#projects"
-        onClick={(e) => {
-          e.preventDefault()
-          document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
-          history.replaceState(null, "", "/#projects")
-          window.dispatchEvent(new HashChangeEvent("hashchange"))
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center rounded-full p-2 text-muted-foreground/35 transition-colors hover:bg-secondary/50 hover:text-muted-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2, ease: EASE }}
-        aria-label={t("nav.work")}
-      >
-        <ChevronDown className="h-4 w-4 animate-bounce-subtle" />
-      </motion.a>
     </section>
   )
 }

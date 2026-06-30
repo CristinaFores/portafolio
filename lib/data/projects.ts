@@ -591,6 +591,27 @@ export const projects: Project[] = [
   },
 ]
 
+/** Goiko first — flagship ordering, then the rest of the suite. */
+const GOIKO_DISPLAY_ORDER = [
+  "goiko-ordering",
+  "goiko-customer-area",
+  "goiko-table-ordering",
+  "goiko-online-menu",
+] as const
+
+/**
+ * Projects ordered for listings: Goiko suite first, then the rest unchanged.
+ */
+export function getProjectsForDisplay(): Project[] {
+  const bySlug = new Map(projects.map((p) => [p.slug, p]))
+  const goiko = GOIKO_DISPLAY_ORDER.map((slug) => bySlug.get(slug)).filter(
+    (p): p is Project => p != null,
+  )
+  const goikoSlugs = new Set<string>(GOIKO_DISPLAY_ORDER)
+  const rest = projects.filter((p) => !goikoSlugs.has(p.slug))
+  return [...goiko, ...rest]
+}
+
 /**
  * Returns a project by slug.
  */
@@ -602,8 +623,9 @@ export function getProject(slug: string): Project | undefined {
  * Returns previous and next projects for detail page navigation.
  */
 export function getAdjacentProjects(slug: string) {
-  const index = projects.findIndex((p) => p.slug === slug)
-  const prev = index > 0 ? projects[index - 1] : null
-  const next = index < projects.length - 1 ? projects[index + 1] : null
+  const ordered = getProjectsForDisplay()
+  const index = ordered.findIndex((p) => p.slug === slug)
+  const prev = index > 0 ? ordered[index - 1] : null
+  const next = index < ordered.length - 1 ? ordered[index + 1] : null
   return { prev, next }
 }

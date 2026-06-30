@@ -3,9 +3,9 @@ import { AboutContent } from "@/components/about-content"
 import { PROFILE } from "@/lib/site-config"
 
 export const metadata: Metadata = {
-  title: `About — ${PROFILE.name}`,
+  title: `Sobre mí — ${PROFILE.name}`,
   description:
-    "Frontend Developer. React, React Native, Next.js. Experience in web and mobile applications.",
+    "Product / AI Engineer especializada en React, React Native, Next.js, arquitectura de interfaz, Zustand, TanStack Query y herramientas MCP.",
 }
 
 export default function AboutPage() {
