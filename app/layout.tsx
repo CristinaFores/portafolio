@@ -16,7 +16,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#071317",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFF7F0" },
+    { media: "(prefers-color-scheme: dark)", color: "#1C1318" },
+  ],
 }
 
 export default function RootLayout({
@@ -31,7 +34,7 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
         >

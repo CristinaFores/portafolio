@@ -24,10 +24,10 @@ export function HeroMcpVisual({ className = "" }: HeroMcpVisualProps) {
         Figma
       </text>
 
-      <path d="M 92 62 L 112 62" className="stroke-accent" strokeWidth="1.5" />
-      <path d="M 108 58 L 112 62 L 108 66" className="stroke-accent" strokeWidth="1.5" />
+      <path d="M 92 62 L 112 62" className="stroke-border" strokeWidth="1.5" />
+      <path d="M 108 58 L 112 62 L 108 66" className="stroke-border" strokeWidth="1.5" />
 
-      <rect x="116" y="36" width="84" height="52" rx="3" className="fill-accent/15 stroke-accent" strokeWidth="1.5" />
+      <rect x="116" y="36" width="84" height="52" rx="3" className="fill-accent/10 stroke-accent" strokeWidth="1.5" />
       <text x="158" y="58" textAnchor="middle" className="fill-accent text-[10px] font-mono font-medium">
         MCP
       </text>
@@ -35,16 +35,16 @@ export function HeroMcpVisual({ className = "" }: HeroMcpVisualProps) {
         servidor
       </text>
 
-      <path d="M 204 62 L 224 62" className="stroke-accent" strokeWidth="1.5" />
-      <path d="M 220 58 L 224 62 L 220 66" className="stroke-accent" strokeWidth="1.5" />
+      <path d="M 204 62 L 224 62" className="stroke-border" strokeWidth="1.5" />
+      <path d="M 220 58 L 224 62 L 220 66" className="stroke-border" strokeWidth="1.5" />
 
       <rect x="228" y="44" width="68" height="36" rx="3" className="fill-muted stroke-border" />
       <text x="262" y="66" textAnchor="middle" className="fill-muted-foreground text-[10px] font-mono">
         Agente
       </text>
 
-      <path d="M 300 62 L 320 62" className="stroke-accent" strokeWidth="1.5" />
-      <path d="M 316 58 L 320 62 L 316 66" className="stroke-accent" strokeWidth="1.5" />
+      <path d="M 300 62 L 320 62" className="stroke-border" strokeWidth="1.5" />
+      <path d="M 316 58 L 320 62 L 316 66" className="stroke-border" strokeWidth="1.5" />
 
       <rect x="324" y="44" width="68" height="36" rx="3" className="fill-muted stroke-border" />
       <text x="358" y="66" textAnchor="middle" className="fill-muted-foreground text-[10px] font-mono">

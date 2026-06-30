@@ -1,6 +1,8 @@
 "use client"
 
+import Link from "next/link"
 import { motion } from "framer-motion"
+import { ArrowRight } from "lucide-react"
 import { getProjectsForDisplay } from "@/lib/data/projects"
 import { ProjectCaseRow } from "@/components/project-case-row"
 import { SectionHeading } from "@/components/section-heading"
@@ -32,6 +34,16 @@ export function FeaturedProjects() {
             <ProjectCaseRow key={project.slug} slug={project.slug} index={i} />
           ))}
         </div>
+
+        <motion.div {...fadeUp}>
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-foreground underline-offset-4 transition-colors hover:text-accent"
+          >
+            {t("work.viewAll")}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   )

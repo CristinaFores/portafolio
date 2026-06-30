@@ -45,30 +45,17 @@ export const translations = {
     "work.sectionTitle": "Proyectos en producción",
     "work.subhead":
       "Interfaces web y móvil con React y React Native, aplicadas en producto real.",
-
-    "writing.sectionIndex": "04 — ESCRITOS",
-    "writing.headline": "Sobre interfaz, móvil e IA",
-    "writing.intro":
-      "Reflexiones alineadas con lo que hago: React Native en producción, arquitectura front-end y MCP para conectar diseño e IA.",
-    "writing.comingSoon": "Próximamente",
-    "writing.article1.title":
-      "Por qué tu sistema de diseño es invisible para la IA (y cómo lo soluciona MCP)",
-    "writing.article1.thesis":
-      "Los PDF de entrega y las capturas no sobreviven al contexto de un LLM; el contexto de diseño estructurado sí.",
-    "writing.article2.title":
-      "Expo Router en producción: qué falla después del flujo ideal",
-    "writing.article2.thesis":
-      "Deep linking, control de acceso y pilas de navegación: decisiones que separan un prototipo de una app móvil lista para producción.",
-    "writing.article3.title":
-      "TanStack Query no es una capa de datos, es un contrato de experiencia de usuario",
-    "writing.article3.thesis":
-      "Política de caché, tiempo de obsolescencia y actualizaciones optimistas son decisiones de producto, no detalles de implementación.",
+    "work.viewAll": "Ver todos los proyectos",
+    "work.allIndex": "PROYECTOS",
+    "work.allTitle": "Todos los proyectos",
+    "work.allSubhead":
+      "Trabajo web y móvil en producción con React, React Native, Next.js y Vue.",
 
     "contact.headline": "¿Hablamos?",
     "contact.subline":
       "Disponible en remoto para roles de front-end y móvil donde la calidad de interfaz y el tooling de IA formen parte del día a día.",
     "contact.title": "¿Hablamos?",
-    "contact.sectionIndex": "05 — CONTACTO",
+    "contact.sectionIndex": "04 — CONTACTO",
 
     "footer.tagline": "Product / AI Engineer · Barcelona",
     "work.companyBadge": "Proyecto Gyoza",
@@ -179,30 +166,17 @@ export const translations = {
     "work.sectionTitle": "Production projects",
     "work.subhead":
       "Web and mobile interfaces with React and React Native, shipped in production.",
-
-    "writing.sectionIndex": "04 — WRITING",
-    "writing.headline": "On interface, mobile, and AI",
-    "writing.intro":
-      "Notes aligned with what I do: React Native in production, front-end architecture, and MCP to connect design and AI.",
-    "writing.comingSoon": "Coming soon",
-    "writing.article1.title":
-      "Why Your Design System Is Invisible to AI (And How MCP Fixes It)",
-    "writing.article1.thesis":
-      "Handoff PDFs and screenshots don't survive LLM context — structured design context does.",
-    "writing.article2.title":
-      "Expo Router at Production Scale: What Breaks After the Happy Path",
-    "writing.article2.thesis":
-      "Deep linking, auth gates, and tab stacks — decisions that separate prototype apps from shippable mobile product.",
-    "writing.article3.title":
-      "TanStack Query Isn't a Data Layer — It's a UX Contract",
-    "writing.article3.thesis":
-      "Cache policy, stale time, and optimistic updates are product decisions, not implementation details.",
+    "work.viewAll": "View all projects",
+    "work.allIndex": "PROJECTS",
+    "work.allTitle": "All projects",
+    "work.allSubhead":
+      "Web and mobile work shipped in production with React, React Native, Next.js and Vue.",
 
     "contact.headline": "Get in touch",
     "contact.subline":
       "Available remotely for front-end and mobile roles where interface quality and AI tooling are part of the day-to-day.",
     "contact.title": "Get in touch",
-    "contact.sectionIndex": "05 — CONTACT",
+    "contact.sectionIndex": "04 — CONTACT",
 
     "footer.tagline": "Product / AI Engineer · Barcelona",
 

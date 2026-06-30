@@ -55,6 +55,8 @@ const config: Config = {
         olive: 'rgb(from var(--olive) r g b / <alpha-value>)',
         mauve: 'rgb(from var(--mauve) r g b / <alpha-value>)',
         signal: 'rgb(from var(--signal) r g b / <alpha-value>)',
+        coral: 'rgb(from var(--coral) r g b / <alpha-value>)',
+        aqua: 'rgb(from var(--aqua) r g b / <alpha-value>)',
       },
       borderRadius: {
         lg: 'var(--radius)',

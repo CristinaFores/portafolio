@@ -1,0 +1,36 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { getProjectsForDisplay } from "@/lib/data/projects"
+import { ProjectCaseRow } from "@/components/project-case-row"
+import { SectionHeading } from "@/components/section-heading"
+import { useLocale } from "@/lib/locale-context"
+import { fadeUp } from "@/lib/motion"
+
+/**
+ * Full project listing for the /projects route.
+ */
+export function AllProjects() {
+  const { t } = useLocale()
+  const projects = getProjectsForDisplay()
+
+  return (
+    <div className="px-6 pb-28 pt-28 md:pt-32">
+      <div className="mx-auto flex max-w-5xl flex-col gap-14 md:gap-16">
+        <motion.div {...fadeUp}>
+          <SectionHeading
+            index={t("work.allIndex")}
+            title={t("work.allTitle")}
+            subtitle={t("work.allSubhead")}
+          />
+        </motion.div>
+
+        <div className="flex flex-col">
+          {projects.map((project, i) => (
+            <ProjectCaseRow key={project.slug} slug={project.slug} index={i} />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

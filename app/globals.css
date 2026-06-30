@@ -13,86 +13,94 @@
 
 @layer base {
   :root {
-    --radius: 0.25rem;
+    --radius: 0.5rem;
 
-    /* Light palette */
-    --light-warm-paper: #f7f0e6;
-    --light-soft-clay: #e9ddd0;
-    --light-almost-white: #fffdfc;
-    --light-deep-ink: #1b2226;
-    --light-calm-grey: #66706e;
-    --light-electric-teal: #00a6a6;
-    --light-living-coral: #e85d4a;
-    --light-olive-ground: #6b7d4f;
-    --light-dusty-mauve: #a77c8a;
-    --light-warm-signal: #f2c94c;
-    --light-soft-stone: #d8cfc2;
+    /* Cristina Soft Core — Light palette */
+    --light-cream-blush: #fff7f0; /* Fondo principal */
+    --light-cocoa-ink: #2b2023; /* Texto principal */
+    --light-soft-white: #ffffff; /* Cards */
+    --light-soft-apricot: #f3e3d8; /* Fondo secundario */
+    --light-muted-blush: #f7ebe3; /* Muted background */
+    --light-warm-taupe: #7e6d68; /* Texto secundario */
+    --light-soft-rose-stone: #e6d3c9; /* Bordes */
+    --light-rose-terracotta: #d9897a; /* Acento principal */
+    --light-soft-coral: #ea7a67; /* Coral de energía */
+    --light-sage-olive: #9ca77a; /* Estabilidad / proceso */
+    --light-dusty-rose-mauve: #b98fa0; /* Parte personal */
+    --light-honey-gold: #e7b85a; /* Logro / claridad */
+    --light-soft-aqua: #5bb8ad; /* Técnica / frontend / IA */
 
-    /* Dark palette */
-    --dark-deep-nervous-system: #071317;
-    --dark-midnight-surface: #102329;
-    --dark-focus-panel: #162d33;
-    --dark-warm-light: #f5efe6;
-    --dark-soft-fog: #a7b2ae;
-    --dark-neon-teal-soft: #35d0c7;
-    --dark-hot-coral: #ff6b57;
-    --dark-soft-olive: #8fa76b;
-    --dark-muted-mauve: #c496a6;
-    --dark-warm-yellow: #ffd166;
-    --dark-deep-border: #263a3f;
+    /* Cristina Soft Core — Dark palette */
+    --dark-warm-plum-night: #1c1318; /* Fondo principal */
+    --dark-cream-light: #fff3ea; /* Texto principal */
+    --dark-plum-card: #2a1d22; /* Cards */
+    --dark-plum-secondary: #24191e; /* Fondo secundario */
+    --dark-plum-muted: #2f2227; /* Muted background */
+    --dark-warm-mist: #c4b2ac; /* Texto secundario */
+    --dark-plum-border: #4a3940; /* Bordes */
+    --dark-peach-rose: #e09a8b; /* Acento principal */
+    --dark-soft-coral: #ff8a75; /* Coral de energía */
+    --dark-sage-olive: #b3ba8a; /* Estabilidad / proceso */
+    --dark-muted-mauve: #d3a3b7; /* Parte personal */
+    --dark-honey-gold: #f0c76b; /* Logro / claridad */
+    --dark-soft-aqua: #74cfc4; /* Técnica / frontend / IA */
   }
 
-  /* Dark — default theme */
+  /* Light — primary theme */
   :root,
-  .dark {
-    --background: var(--dark-deep-nervous-system);
-    --foreground: var(--dark-warm-light);
-    --card: var(--dark-focus-panel);
-    --card-foreground: var(--dark-warm-light);
-    --popover: var(--dark-focus-panel);
-    --popover-foreground: var(--dark-warm-light);
-    --primary: var(--dark-warm-light);
-    --primary-foreground: var(--dark-deep-nervous-system);
-    --secondary: var(--dark-midnight-surface);
-    --secondary-foreground: var(--dark-warm-light);
-    --muted: var(--dark-midnight-surface);
-    --muted-foreground: var(--dark-soft-fog);
-    --accent: var(--dark-neon-teal-soft);
-    --accent-foreground: var(--dark-deep-nervous-system);
-    --destructive: var(--dark-hot-coral);
-    --destructive-foreground: var(--dark-deep-nervous-system);
-    --border: var(--dark-deep-border);
-    --input: var(--dark-deep-border);
-    --ring: var(--dark-neon-teal-soft);
-    --olive: var(--dark-soft-olive);
-    --mauve: var(--dark-muted-mauve);
-    --signal: var(--dark-warm-yellow);
+  .light {
+    --background: var(--light-cream-blush);
+    --foreground: var(--light-cocoa-ink);
+    --card: var(--light-soft-white);
+    --card-foreground: var(--light-cocoa-ink);
+    --popover: var(--light-soft-white);
+    --popover-foreground: var(--light-cocoa-ink);
+    --primary: var(--light-rose-terracotta);
+    --primary-foreground: var(--light-cocoa-ink);
+    --secondary: var(--light-soft-apricot);
+    --secondary-foreground: var(--light-cocoa-ink);
+    --muted: var(--light-muted-blush);
+    --muted-foreground: var(--light-warm-taupe);
+    --accent: var(--light-rose-terracotta);
+    --accent-foreground: var(--light-cocoa-ink);
+    --destructive: var(--light-soft-coral);
+    --destructive-foreground: var(--light-cream-blush);
+    --border: var(--light-soft-rose-stone);
+    --input: var(--light-soft-rose-stone);
+    --ring: var(--light-rose-terracotta);
+    --olive: var(--light-sage-olive);
+    --mauve: var(--light-dusty-rose-mauve);
+    --signal: var(--light-honey-gold);
+    --coral: var(--light-soft-coral);
+    --aqua: var(--light-soft-aqua);
   }
 
-  /* Light */
-  .light {
-    --background: var(--light-warm-paper);
-    --foreground: var(--light-deep-ink);
-    --card: var(--light-almost-white);
-    --card-foreground: var(--light-deep-ink);
-    --popover: var(--light-almost-white);
-    --popover-foreground: var(--light-deep-ink);
-    --primary: var(--light-deep-ink);
-    --primary-foreground: var(--light-warm-paper);
-    --secondary: var(--light-soft-clay);
-    --secondary-foreground: var(--light-deep-ink);
-    --muted: var(--light-soft-clay);
-    --muted-foreground: var(--light-calm-grey);
-    --accent: var(--light-electric-teal);
-    --accent-foreground: var(--light-warm-paper);
-    --destructive: var(--light-living-coral);
-    --destructive-foreground: var(--light-warm-paper);
-    --border: var(--light-soft-stone);
-    --input: var(--light-soft-stone);
-    --ring: var(--light-electric-teal);
-    --olive: var(--light-olive-ground);
-    --mauve: var(--light-dusty-mauve);
-    --signal: var(--light-warm-signal);
+  /* Dark — warm editorial alternative */
+  .dark {
+    --background: var(--dark-warm-plum-night);
+    --foreground: var(--dark-cream-light);
+    --card: var(--dark-plum-card);
+    --card-foreground: var(--dark-cream-light);
+    --popover: var(--dark-plum-card);
+    --popover-foreground: var(--dark-cream-light);
+    --primary: var(--dark-peach-rose);
+    --primary-foreground: var(--dark-warm-plum-night);
+    --secondary: var(--dark-plum-secondary);
+    --secondary-foreground: var(--dark-cream-light);
+    --muted: var(--dark-plum-muted);
+    --muted-foreground: var(--dark-warm-mist);
+    --accent: var(--dark-peach-rose);
+    --accent-foreground: var(--dark-warm-plum-night);
+    --destructive: var(--dark-soft-coral);
+    --destructive-foreground: var(--dark-warm-plum-night);
+    --border: var(--dark-plum-border);
+    --input: var(--dark-plum-border);
+    --ring: var(--dark-peach-rose);
+    --olive: var(--dark-sage-olive);
+    --mauve: var(--dark-muted-mauve);
+    --signal: var(--dark-honey-gold);
+    --coral: var(--dark-soft-coral);
+    --aqua: var(--dark-soft-aqua);
   }
 }
 
