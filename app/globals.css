@@ -191,3 +191,20 @@
     }
   }
 }
+
+@layer utilities {
+  .hero-portrait-fade {
+    -webkit-mask-image: radial-gradient(
+      ellipse 105% 95% at 58% 28%,
+      #000 0%,
+      #000 38%,
+      transparent 76%
+    );
+    mask-image: radial-gradient(
+      ellipse 105% 95% at 58% 28%,
+      #000 0%,
+      #000 38%,
+      transparent 76%
+    );
+  }
+}
