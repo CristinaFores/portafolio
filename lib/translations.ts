@@ -26,10 +26,6 @@ export const translations = {
       "Desarrollo interfaces web y móviles para flujos reales de producto: pedidos, pagos, acceso, dispositivos Android y datos asíncronos. También construyo herramientas MCP como design-context-bridge.",
     "hero.meta": "Barcelona · Disponible en remoto",
     "hero.viewWork": "Ver proyectos",
-    "hero.visualLabel": "Herramienta propia · design-context-bridge",
-    "hero.visualCaption":
-      "Conecta Figma con agentes de IA mediante MCP. El diseño llega como contexto estructurado — tokens, capas y espaciado —, no como capturas sueltas.",
-    "hero.visualLink": "Ver cómo funciona →",
 
     "now.sectionIndex": "01 — AHORA",
     "now.headline": "Ahora",
@@ -45,6 +41,21 @@ export const translations = {
     "mcp.cap1": "Tokens y variables de Figma",
     "mcp.cap2": "Capas y componentes",
     "mcp.cap3": "Plugin en directo o API headless",
+    "mcp.viewLab": "Ver el lab completo →",
+
+    "lab.sectionIndex": "LAB",
+    "lab.title": "design-context-bridge",
+    "lab.status": "WIP",
+    "lab.backToHome": "Volver al inicio",
+    "lab.howItWorks.title": "Cómo funciona",
+    "lab.howItWorks.step1":
+      "El servidor MCP se conecta al archivo de Figma vía API y expone su estructura — nodos, estilos, variables — como herramientas que cualquier agente compatible puede invocar.",
+    "lab.howItWorks.step2":
+      "Cuando un agente de IA (Cursor, Claude) necesita contexto de diseño, llama a esas herramientas en vez de pedir una captura de pantalla.",
+    "lab.howItWorks.step3":
+      "El agente recibe datos estructurados — tokens, capas, espaciado — y los usa para generar código que respeta el sistema de diseño desde el primer prompt.",
+    "lab.capabilities.title": "Qué expone",
+    "lab.about.title": "Sobre MCP",
 
     "work.sectionIndex": "03 — PROYECTOS",
     "work.sectionTitle": "Proyectos en producción",
@@ -152,10 +163,6 @@ export const translations = {
       "I build web and mobile interfaces for real product flows: ordering, payments, access control, Android devices, and async data. I also build MCP tooling like design-context-bridge.",
     "hero.meta": "Barcelona · Available for remote work",
     "hero.viewWork": "View projects",
-    "hero.visualLabel": "Own tooling · design-context-bridge",
-    "hero.visualCaption":
-      "Connects Figma to AI agents via MCP. Design arrives as structured context — tokens, layers, and spacing — not loose screenshots.",
-    "hero.visualLink": "See how it works →",
 
     "now.sectionIndex": "01 — NOW",
     "now.headline": "Now",
@@ -171,6 +178,21 @@ export const translations = {
     "mcp.cap1": "Figma tokens & variables",
     "mcp.cap2": "Layers & components",
     "mcp.cap3": "Live plugin or headless API",
+    "mcp.viewLab": "View the full lab →",
+
+    "lab.sectionIndex": "LAB",
+    "lab.title": "design-context-bridge",
+    "lab.status": "WIP",
+    "lab.backToHome": "Back to home",
+    "lab.howItWorks.title": "How it works",
+    "lab.howItWorks.step1":
+      "The MCP server connects to the Figma file via API and exposes its structure — nodes, styles, variables — as tools any compatible agent can call.",
+    "lab.howItWorks.step2":
+      "When an AI agent (Cursor, Claude) needs design context, it calls those tools instead of asking for a screenshot.",
+    "lab.howItWorks.step3":
+      "The agent receives structured data — tokens, layers, spacing — and uses it to generate code that respects the design system from the first prompt.",
+    "lab.capabilities.title": "What it exposes",
+    "lab.about.title": "About MCP",
 
     "work.sectionIndex": "03 — SELECTED WORK",
     "work.sectionTitle": "Production projects",

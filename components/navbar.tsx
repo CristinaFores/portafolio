@@ -7,40 +7,25 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { EmailIcon, GitHubIcon, LinkedInIcon } from "@/components/icons"
 import { cn } from "@/lib/utils"
 import { useLocale } from "@/lib/locale-context"
 import { EASE } from "@/lib/motion"
 import { PROFILE } from "@/lib/site-config"
 
-function isActive(href: string, pathname: string, hash: string): boolean {
-  if (href.includes("#")) {
-    const [hrefPath, hrefHash] = href.split("#")
-    return pathname === hrefPath && hash === `#${hrefHash}`
-  }
-  if (href === "/") return pathname === "/" && hash === ""
-  return pathname === href
+function isActive(href: string, pathname: string): boolean {
+  if (href === "/") return pathname === "/"
+  return pathname === href || pathname.startsWith(`${href}/`)
 }
 
 const navLinks = [
   { href: "/", labelKey: "nav.home" as const },
   { href: "/about", labelKey: "nav.about" as const },
-  { href: "/#lab", labelKey: "nav.lab" as const },
+  { href: "/lab", labelKey: "nav.lab" as const },
   { href: "/projects", labelKey: "nav.work" as const },
 ]
 
 const ICON_BTN =
   "flex h-8 w-8 shrink-0 items-center justify-center border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-
-const getCurrentHash = () => {
-  if (typeof window === "undefined") return ""
-  return new URL(window.document.URL).hash
-}
-
-const subscribeToHashChange = (callback: () => void) => {
-  window.addEventListener("hashchange", callback)
-  return () => window.removeEventListener("hashchange", callback)
-}
 
 type NavControlsProps = {
   locale: "es" | "en"
@@ -65,27 +50,6 @@ function NavControls({
 
   return (
     <>
-      <a href={`mailto:${PROFILE.email}`} className={ICON_BTN} aria-label={t("nav.email")}>
-        <EmailIcon className="h-4 w-4" />
-      </a>
-      <a
-        href={PROFILE.linkedInUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={ICON_BTN}
-        aria-label={t("nav.linkedIn")}
-      >
-        <LinkedInIcon className="h-4 w-4" />
-      </a>
-      <a
-        href={PROFILE.gitHubUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={ICON_BTN}
-        aria-label={t("nav.gitHub")}
-      >
-        <GitHubIcon className="h-4 w-4" />
-      </a>
       <button
         type="button"
         onClick={() => { toggleTheme(); onClose?.() }}
@@ -125,7 +89,8 @@ function NavControls({
 }
 
 /**
- * Sticky top navigation with locale/theme controls and hash-aware active links.
+ * Sticky top navigation with locale/theme controls. Social links live only
+ * in the footer to avoid repeating the same contact CTAs in every section.
  */
 export function Navbar() {
   const pathname = usePathname()
@@ -136,8 +101,6 @@ export function Navbar() {
   )
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const hash = useSyncExternalStore(subscribeToHashChange, getCurrentHash, () => "")
-  const [pendingScrollHref, setPendingScrollHref] = useState<string | null>(null)
   const { setTheme, resolvedTheme } = useTheme()
   const { locale, setLocale, t } = useLocale()
 
@@ -164,44 +127,6 @@ export function Navbar() {
     setTheme(resolvedTheme === "dark" ? "light" : "dark")
   }
 
-  const scrollToSection = (href: string) => {
-    if (href === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-      return
-    }
-    if (href === "/#lab") {
-      document.getElementById("lab")?.scrollIntoView({ behavior: "smooth" })
-    }
-  }
-
-  useEffect(() => {
-    if (mobileOpen || !pendingScrollHref) return
-
-    const timeoutId = window.setTimeout(() => {
-      scrollToSection(pendingScrollHref)
-      setPendingScrollHref(null)
-    }, 280)
-
-    return () => window.clearTimeout(timeoutId)
-  }, [mobileOpen, pendingScrollHref])
-
-  const handleNavClick = (e: React.MouseEvent, href: string) => {
-    const isInPageSectionLink = pathname === "/" && (href === "/" || href === "/#lab")
-    const menuWasOpen = mobileOpen
-
-    setMobileOpen(false)
-    if (!isInPageSectionLink) return
-
-    e.preventDefault()
-
-    if (menuWasOpen) {
-      setPendingScrollHref(href)
-      return
-    }
-
-    scrollToSection(href)
-  }
-
   return (
     <header
       ref={headerRef}
@@ -211,11 +136,7 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          onClick={(e) => handleNavClick(e, "/")}
-          className="group flex items-center gap-2.5"
-        >
+        <Link href="/" className="group flex items-center gap-2.5">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-[#f5f1ea]">
             <Image
               src="/cristina-portrait.webp"
@@ -235,10 +156,9 @@ export function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
                 className={cn(
                   "text-sm transition-colors",
-                  isActive(link.href, pathname, hash)
+                  isActive(link.href, pathname)
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 )}
@@ -296,10 +216,10 @@ export function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                    onClick={() => setMobileOpen(false)}
                     className={cn(
                       "text-sm transition-colors",
-                      isActive(link.href, pathname, hash)
+                      isActive(link.href, pathname)
                         ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground"
                     )}
