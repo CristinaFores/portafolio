@@ -38,9 +38,6 @@ export const translations = {
     "mcp.explainer":
       "MCP (Model Context Protocol) es el estándar para que herramientas como Cursor accedan a contexto estructurado del diseño. Lo he desarrollado para que el código respete el sistema de diseño desde el primer prompt.",
     "mcp.cta": "Ver en GitHub",
-    "mcp.cap1": "Tokens y variables de Figma",
-    "mcp.cap2": "Capas y componentes",
-    "mcp.cap3": "Plugin en directo o API headless",
     "mcp.viewLab": "Ver el lab completo →",
 
     "lab.sectionIndex": "LAB",
@@ -56,6 +53,11 @@ export const translations = {
       "El agente recibe datos estructurados — tokens, capas, espaciado — y los usa para generar código que respeta el sistema de diseño desde el primer prompt.",
     "lab.capabilities.title": "Qué expone",
     "lab.about.title": "Sobre MCP",
+    "lab.modes.title": "Modos de uso",
+    "lab.clients.title": "Clientes compatibles",
+    "lab.install.title": "Instalación",
+    "lab.security.title": "Privacidad",
+    "lab.disclaimer": "Independiente — no afiliado a Figma, Inc.",
 
     "work.sectionIndex": "03 — PROYECTOS",
     "work.sectionTitle": "Proyectos en producción",
@@ -175,9 +177,6 @@ export const translations = {
     "mcp.explainer":
       "MCP (Model Context Protocol) is the standard for tools like Cursor to access structured design context. I built this so code respects the design system from the first prompt.",
     "mcp.cta": "View on GitHub",
-    "mcp.cap1": "Figma tokens & variables",
-    "mcp.cap2": "Layers & components",
-    "mcp.cap3": "Live plugin or headless API",
     "mcp.viewLab": "View the full lab →",
 
     "lab.sectionIndex": "LAB",
@@ -193,6 +192,11 @@ export const translations = {
       "The agent receives structured data — tokens, layers, spacing — and uses it to generate code that respects the design system from the first prompt.",
     "lab.capabilities.title": "What it exposes",
     "lab.about.title": "About MCP",
+    "lab.modes.title": "Usage modes",
+    "lab.clients.title": "Supported clients",
+    "lab.install.title": "Install",
+    "lab.security.title": "Privacy",
+    "lab.disclaimer": "Independent — not affiliated with Figma, Inc.",
 
     "work.sectionIndex": "03 — SELECTED WORK",
     "work.sectionTitle": "Production projects",

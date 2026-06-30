@@ -3,12 +3,12 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowUpRight } from "lucide-react"
-import { HeroMcpVisual } from "@/components/hero-mcp-visual"
+import { LAB_PROJECT } from "@/lib/data/lab-project"
+import { TerminalSnippet } from "@/components/terminal-snippet"
 import { useLocale } from "@/lib/locale-context"
 import { fadeUp } from "@/lib/motion"
 import { PROFILE } from "@/lib/site-config"
 
-const CAP_KEYS = ["mcp.cap1", "mcp.cap2", "mcp.cap3"] as const
 const STEP_KEYS = ["lab.howItWorks.step1", "lab.howItWorks.step2", "lab.howItWorks.step3"] as const
 
 type SectionProps = {
@@ -26,10 +26,12 @@ function Section({ label, children }: SectionProps) {
 }
 
 /**
- * Dedicated page for the design-context-bridge MCP project.
+ * Dedicated page for the design-context-bridge MCP project. Content is
+ * sourced from the project's own README (lib/data/lab-project.ts) — keep
+ * both in sync rather than inventing features here.
  */
 export function LabContent() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
 
   return (
     <div className="px-6 pb-24 pt-28">
@@ -58,26 +60,57 @@ export function LabContent() {
             >
               {t("lab.title")}
             </h1>
-            <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {t("mcp.subhead")}
+            <p className="max-w-2xl text-pretty text-lg leading-relaxed text-foreground/85 sm:text-xl">
+              “{LAB_PROJECT.quote[locale]}”
             </p>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {LAB_PROJECT.techBadges.map((badge) => (
+                <span
+                  key={badge}
+                  className="border border-border px-2 py-1 font-mono text-[11px] text-muted-foreground"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </header>
 
         <motion.div {...fadeUp}>
-          <HeroMcpVisual className="h-auto w-full" />
+          <TerminalSnippet
+            command={LAB_PROJECT.installCommand}
+            output={[
+              "✓ MCP server ready",
+              `✓ ${LAB_PROJECT.supportedClients.length} compatible clients detected`,
+              "→ listening on stdio",
+            ]}
+          />
         </motion.div>
 
         <div className="flex flex-col">
-          <Section label={t("lab.capabilities.title")}>
-            <ul className="flex max-w-2xl flex-col gap-2">
-              {CAP_KEYS.map((key) => (
-                <li key={key} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
-                  <span className="mt-[9px] block h-px w-3 shrink-0 bg-muted-foreground/50" />
-                  {t(key)}
-                </li>
+          <Section label={t("lab.modes.title")}>
+            <div className="grid max-w-2xl gap-5 sm:grid-cols-2">
+              {LAB_PROJECT.modes.map((mode) => (
+                <div key={mode.name.en} className="flex flex-col gap-1.5 border-t border-border/60 pt-3">
+                  <h3 className="text-sm font-medium text-foreground">{mode.name[locale]}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{mode.description[locale]}</p>
+                  <span className="font-mono text-[11px] text-muted-foreground/60">{mode.status[locale]}</span>
+                </div>
               ))}
-            </ul>
+            </div>
+          </Section>
+
+          <Section label={t("lab.capabilities.title")}>
+            <div className="flex max-w-2xl flex-col gap-4">
+              {LAB_PROJECT.toolGroups.map((group) => (
+                <div key={group.label.en} className="flex flex-col gap-1.5">
+                  <h3 className="text-sm font-medium text-foreground">{group.label[locale]}</h3>
+                  <p className="font-mono text-[12px] leading-relaxed text-muted-foreground">
+                    {group.tools.join(" · ")}
+                  </p>
+                </div>
+              ))}
+            </div>
           </Section>
 
           <Section label={t("lab.howItWorks.title")}>
@@ -93,6 +126,18 @@ export function LabContent() {
             </ol>
           </Section>
 
+          <Section label={t("lab.clients.title")}>
+            <p className="max-w-2xl font-mono text-sm leading-relaxed text-muted-foreground">
+              {LAB_PROJECT.supportedClients.join(" · ")}
+            </p>
+          </Section>
+
+          <Section label={t("lab.security.title")}>
+            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              {LAB_PROJECT.security[locale]}
+            </p>
+          </Section>
+
           <Section label={t("lab.about.title")}>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               {t("mcp.explainer")}
@@ -100,16 +145,17 @@ export function LabContent() {
           </Section>
         </div>
 
-        <motion.div {...fadeUp} className="border-t border-border pt-8">
+        <motion.div {...fadeUp} className="flex flex-col gap-3 border-t border-border pt-8">
           <a
             href={PROFILE.designContextBridgeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex h-10 items-center gap-1.5 bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            className="group inline-flex h-10 w-fit items-center gap-1.5 bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             {t("mcp.cta")}
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
+          <p className="font-mono text-[11px] text-muted-foreground/55">{t("lab.disclaimer")}</p>
         </motion.div>
       </div>
     </div>
