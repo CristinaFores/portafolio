@@ -23,7 +23,7 @@ export const translations = {
     "hero.label": "React · React Native · MCP",
     "hero.headline": "Product / AI Engineer",
     "hero.subtitle":
-      "Desarrollo interfaces web y móviles para flujos reales de producto: pedidos, pagos, acceso, dispositivos Android y datos asíncronos. También construyo herramientas MCP como design-context-bridge.",
+      "Llevo interfaces de producto a producción con React y React Native — flujos de compra, pagos físicos y control de acceso, de principio a fin. Y construyo mis propias herramientas de IA, como design-context-bridge, un servidor MCP.",
     "hero.meta": "Barcelona · Disponible en remoto",
     "hero.viewWork": "Ver proyectos",
 
@@ -99,11 +99,11 @@ export const translations = {
     "about.bio.1":
       "Product / AI Engineer especializada en interfaces web y móviles con React, React Native y Next.js.",
     "about.bio.2":
-      "He trabajado en producto real: Goiko, Wetour y Turbowash, incluyendo flujos de compra, control de acceso, dispositivos Android y terminales de pago.",
+      "En Gyoza lideré la implementación de proyectos como Wetour (comunidad en Next.js con foco en SEO) y Turbowash (app IoT en React Native que controla pagos físicos, loyalty y la activación de máquinas), además de contribuir en Goiko.",
     "about.bio.3":
-      "Mi foco está en arquitectura de interfaz, estado y datos asíncronos con Zustand y TanStack Query. También construyo design-context-bridge, un servidor MCP que conecta Figma con agentes de IA.",
+      "Mi trabajo se apoya en arquitecturas de interfaz escalables y en la gestión de estado y datos asíncronos con Zustand y TanStack Query. En paralelo construyo design-context-bridge, un servidor MCP que da a los agentes de IA contexto real de diseño desde Figma.",
     "about.bio.4":
-      "Me gusta colaborar en equipos ágiles, resolver problemas concretos y mantener código claro y mantenible.",
+      "Más allá del código: propongo mejoras de forma proactiva, doy feedback útil a producto y diseño, y me responsabilizo de que las cosas lleguen a producción a tiempo.",
     "about.bio.availability":
       "Barcelona · Disponible en remoto.",
     "about.skills.title": "Skills",
@@ -124,7 +124,7 @@ export const translations = {
     "about.experience.gyoza.summary":
       "Desarrollo de productos web y móviles para clientes y plataformas internas, contribuyendo en proyectos como <strong>Goiko</strong>, <strong>Wetour</strong>, <strong>Turbowash</strong> e integraciones con dispositivos de pago.",
     "about.experience.gyoza.bullets": [
-      "Planteamiento de arquitecturas React escalables y adaptadas a las necesidades de producto.",
+      "Liderazgo en la implementación de proyectos clave, planteando arquitecturas React escalables y adaptadas a cada cliente.",
       "Construcción de interfaces y funcionalidades con React, React Native (Expo) y Next.js.",
       "Implementación de flujos de compra, pago, validación y experiencia end-to-end.",
       "Integración de APIs, servicios externos y datos asíncronos con Axios, TanStack Query y Zustand.",
@@ -162,7 +162,7 @@ export const translations = {
     "hero.label": "React · React Native · MCP",
     "hero.headline": "Product / AI Engineer",
     "hero.subtitle":
-      "I build web and mobile interfaces for real product flows: ordering, payments, access control, Android devices, and async data. I also build MCP tooling like design-context-bridge.",
+      "I take product interfaces to production with React and React Native — purchase flows, physical payments, and access control, end to end. And I build my own AI tooling, like design-context-bridge, an MCP server.",
     "hero.meta": "Barcelona · Available for remote work",
     "hero.viewWork": "View projects",
 
@@ -239,11 +239,11 @@ export const translations = {
     "about.bio.1":
       "Product / AI Engineer specialized in web and mobile interfaces with React, React Native, and Next.js.",
     "about.bio.2":
-      "I have worked on real product work across Goiko, Wetour, and Turbowash, including purchase flows, access control, Android devices, and payment terminals.",
+      "At Gyoza I led the implementation of projects like Wetour (a Next.js community with an SEO focus) and Turbowash (a React Native IoT app controlling physical payments, loyalty, and machine activation), alongside contributing to Goiko.",
     "about.bio.3":
-      "My focus is UI architecture, state, and async data with Zustand and TanStack Query. I also build design-context-bridge, an MCP server that connects Figma to AI agents.",
+      "My work is grounded in scalable UI architecture and in state and async data management with Zustand and TanStack Query. In parallel I build design-context-bridge, an MCP server that gives AI agents real design context from Figma.",
     "about.bio.4":
-      "I enjoy working in agile teams, solving concrete problems, and keeping code clear and maintainable.",
+      "Beyond the code: I propose improvements proactively, give useful feedback to product and design, and take ownership of getting things to production on time.",
     "about.bio.availability":
       "Barcelona · Available for remote work.",
     "about.skills.title": "Skills",
@@ -264,7 +264,7 @@ export const translations = {
     "about.experience.gyoza.summary":
       "Developed web and mobile products for clients and internal platforms, contributing to projects such as <strong>Goiko</strong>, <strong>Wetour</strong>, <strong>Turbowash</strong>, and payment-device integrations.",
     "about.experience.gyoza.bullets": [
-      "Defined scalable React architectures tailored to product needs.",
+      "Led the implementation of key projects, defining scalable React architectures tailored to each client.",
       "Built interfaces and features using React, React Native (Expo), and Next.js.",
       "Implemented purchase, payment, validation, and end-to-end user flows.",
       "Integrated APIs, external services, and async data with Axios, TanStack Query, and Zustand.",

@@ -9,7 +9,7 @@ const SKILL_TAGS: Record<string, string[]> = {
   programming: ["TypeScript", "React", "React Native", "Next.js", "Expo", "Vue 3"],
   state: ["Zustand", "TanStack Query", "TanStack Table", "Axios", "Firebase"],
   mobile: ["Expo Router", "Expo EAS", "React Navigation", "React Native Maps", "FCM"],
-  automation: ["Cursor", "MCP", "OpenAI", "n8n", "Embeddings", "Basic RAG"],
+  automation: ["MCP", "Multi-tool Agents", "Vector DB (Chroma/Redis)", "Embeddings + RAG", "n8n", "Cursor"],
   ui: ["Sass", "BEM", "Responsive UI", "i18n", "UI/Logic separation"],
   quality: ["ESLint", "Testing Library", "Prettier", "Git", "Docker", "CI/CD"],
 }
@@ -63,6 +63,7 @@ export function AboutContent() {
             <p>{t("about.bio.1")}</p>
             <p>{t("about.bio.2")}</p>
             <p>{t("about.bio.3")}</p>
+            <p>{t("about.bio.4")}</p>
           </div>
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>
         </motion.header>
