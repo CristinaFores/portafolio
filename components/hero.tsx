@@ -75,7 +75,7 @@ export function Hero() {
             <div className="relative">
               {/* Portrait floats into the top-right; headline wraps beside it, then flows full width below */}
               <div
-                className="hero-portrait-fade pointer-events-none float-right ml-4 mb-1 h-40 w-28 opacity-[0.28] contrast-75 saturate-75 sm:h-52 sm:w-40 lg:hidden"
+                className="hero-portrait-fade pointer-events-none absolute top-0 right-0 h-36 w-24 opacity-[0.22] contrast-75 saturate-75 sm:h-52 sm:w-40 lg:hidden"
                 aria-hidden
               >
                 <Image
