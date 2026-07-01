@@ -22,7 +22,7 @@ export const translations = {
     "nav.tagline": "Product · AI Engineer",
 
     "hero.label": "React · React Native · MCP",
-    "hero.headline": "Construyo las herramientas de IA que otros esperan que existan.",
+    "hero.headline": "Si no existe, lo construyo.",
     "hero.subtitle":
       "Frontend de producto en React y React Native — agentes, servidores MCP y automatización.",
     "hero.meta": "Barcelona · Disponible en remoto",
@@ -162,7 +162,7 @@ export const translations = {
     "nav.tagline": "Product · AI Engineer",
 
     "hero.label": "React · React Native · MCP",
-    "hero.headline": "I build the AI tools others are waiting for.",
+    "hero.headline": "If it doesn't exist, I build it.",
     "hero.subtitle":
       "Product frontend in React and React Native — agents, MCP servers, and automation.",
     "hero.meta": "Barcelona · Available for remote work",
