@@ -37,9 +37,7 @@ export function LabDetailContent({ slug }: Props) {
 
           <div className="flex items-start gap-4">
             <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden border border-border bg-secondary">
-              {isDCB ? (
-                <Blocks className="h-6 w-6 text-accent" />
-              ) : (
+              {project.icon ? (
                 <Image
                   src={project.icon}
                   alt={project.name}
@@ -47,6 +45,8 @@ export function LabDetailContent({ slug }: Props) {
                   height={56}
                   className="h-full w-full object-cover"
                 />
+              ) : (
+                <Blocks className="h-6 w-6 text-accent" />
               )}
             </div>
             <div className="flex flex-col gap-2">

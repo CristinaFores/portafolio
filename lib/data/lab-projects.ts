@@ -27,7 +27,7 @@ export const LAB_PROJECTS: LabProject[] = [
     slug: "design-context-bridge",
     name: "design-context-bridge",
     status: "wip",
-    icon: "/images/dcb-cover.png",
+    icon: "",
     tagline: {
       es: "Servidor MCP que expone Figma a agentes de IA: tokens, capas y espaciado, sin capturas de pantalla.",
       en: "MCP server that exposes Figma to AI agents: tokens, layers and spacing — no screenshots.",
@@ -68,13 +68,13 @@ export const LAB_PROJECTS: LabProject[] = [
       },
     ],
     techBadges: ["TypeScript", "Node ≥ 18", "MIT License", "Claude Code", "Cursor", "Windsurf", "VS Code", "OpenCode"],
-    coverImage: "/images/dcb-cover.png",
+    coverImage: "/images/dcb/02-thumbnail-1920x1080.png",
   },
   {
     slug: "auralang",
     name: "AuraLang",
     status: "wip",
-    icon: "/images/auralang/logo-app.webp",
+    icon: "/images/auralang/icon128.png",
     tagline: {
       es: "Extensión de Chrome que traduce el audio de cualquier pestaña en tiempo real — Whisper local, sin clave de API.",
       en: "Chrome extension that translates any tab's audio in real time — local Whisper, no API key.",
@@ -98,7 +98,7 @@ export const LAB_PROJECTS: LabProject[] = [
       },
     ],
     techBadges: ["Chrome MV3", "React 18", "TypeScript", "Whisper", "Vite", "Tailwind CSS"],
-    coverImage: "/images/auralang/ui-board.png",
+    coverImage: "/images/auralang/logo-card-presentation-1024.png",
   },
 ]
 

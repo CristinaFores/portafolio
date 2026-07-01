@@ -46,9 +46,7 @@ export function LabContent() {
               className="group grid gap-6 border-t border-border py-8 transition-colors hover:border-foreground/30 sm:grid-cols-[64px_1fr]"
             >
               <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden border border-border bg-secondary">
-                {project.slug === "design-context-bridge" ? (
-                  <Blocks className="h-6 w-6 text-accent" />
-                ) : (
+                {project.icon ? (
                   <Image
                     src={project.icon}
                     alt={project.name}
@@ -56,6 +54,8 @@ export function LabContent() {
                     height={64}
                     className="h-full w-full object-cover"
                   />
+                ) : (
+                  <Blocks className="h-6 w-6 text-accent" />
                 )}
               </div>
 
