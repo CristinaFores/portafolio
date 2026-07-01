@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { createPortal } from "react-dom"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
@@ -91,15 +92,17 @@ type NavLinkProps = {
   active: boolean
   onClick?: () => void
   layoutId?: string
+  size?: "sm" | "lg"
 }
 
-function NavLinkItem({ href, label, active, onClick, layoutId = "nav-underline" }: NavLinkProps) {
+function NavLinkItem({ href, label, active, onClick, layoutId = "nav-underline", size = "sm" }: NavLinkProps) {
   return (
     <Link
       href={href}
       onClick={onClick}
       className={cn(
-        "relative py-1 text-sm transition-colors",
+        "relative inline-block w-fit py-1 transition-colors",
+        size === "lg" ? "text-3xl font-semibold tracking-tight" : "text-sm",
         active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
       )}
     >
@@ -152,16 +155,41 @@ export function Navbar() {
   }, [reduced])
 
   const headerRef = useRef<HTMLElement>(null)
+  const overlayRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!mobileOpen) return
     const handler = (e: PointerEvent) => {
-      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+      const target = e.target as Node
+      const insideHeader = headerRef.current?.contains(target)
+      const insideOverlay = overlayRef.current?.contains(target)
+      if (!insideHeader && !insideOverlay) {
         setMobileOpen(false)
       }
     }
     document.addEventListener("pointerdown", handler)
     return () => document.removeEventListener("pointerdown", handler)
+  }, [mobileOpen])
+
+  // Lock body scroll while the full-screen mobile menu is open.
+  useEffect(() => {
+    if (!mobileOpen) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = previous
+    }
+  }, [mobileOpen])
+
+  // Close the mobile menu when resizing up to the desktop breakpoint.
+  useEffect(() => {
+    if (!mobileOpen) return
+    const mq = window.matchMedia("(min-width: 768px)")
+    const onChange = () => {
+      if (mq.matches) setMobileOpen(false)
+    }
+    mq.addEventListener("change", onChange)
+    return () => mq.removeEventListener("change", onChange)
   }, [mobileOpen])
 
   const toggleTheme = () => {
@@ -242,43 +270,48 @@ export function Navbar() {
           </div>
         </button>
       </nav>
-      <AnimatePresence initial={false}>
-        {mobileOpen && (
-          <motion.div
-            key="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.28, ease: EASE }}
-            className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-md md:hidden"
-          >
-            <ul className="mx-auto flex max-w-5xl flex-col gap-5 px-6 py-6">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <NavLinkItem
-                    href={link.href}
-                    label={t(link.labelKey)}
-                    active={isActive(link.href, pathname)}
-                    onClick={() => setMobileOpen(false)}
-                    layoutId="nav-underline-mobile"
-                  />
-                </li>
-              ))}
-              <li className="flex flex-wrap items-center gap-2 pt-1">
-                <NavControls
-                  locale={locale}
-                  setLocale={setLocale}
-                  mounted={mounted}
-                  resolvedTheme={resolvedTheme}
-                  toggleTheme={toggleTheme}
-                  t={t}
-                  onClose={() => setMobileOpen(false)}
-                />
-              </li>
-            </ul>
-          </motion.div>
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {mobileOpen && (
+              <motion.div
+                ref={overlayRef}
+                initial={{ y: "-100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-100%" }}
+                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                className="fixed inset-0 z-40 h-[100dvh] bg-background md:hidden"
+              >
+                <ul className="mx-auto flex h-full max-w-5xl flex-col gap-7 px-6 pb-16 pt-28">
+                  {navLinks.map((link) => (
+                    <li key={link.href}>
+                      <NavLinkItem
+                        href={link.href}
+                        label={t(link.labelKey)}
+                        active={isActive(link.href, pathname)}
+                        onClick={() => setMobileOpen(false)}
+                        layoutId="nav-underline-mobile"
+                        size="lg"
+                      />
+                    </li>
+                  ))}
+                  <li className="mt-auto flex flex-wrap items-center gap-2">
+                    <NavControls
+                      locale={locale}
+                      setLocale={setLocale}
+                      mounted={mounted}
+                      resolvedTheme={resolvedTheme}
+                      toggleTheme={toggleTheme}
+                      t={t}
+                      onClose={() => setMobileOpen(false)}
+                    />
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </header>
   )
 }

@@ -1,12 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { ArrowLeft, ArrowUpRight } from "lucide-react"
 import { LAB_PROJECT } from "@/lib/data/lab-project"
 import { TerminalSnippet } from "@/components/terminal-snippet"
 import { useLocale } from "@/lib/locale-context"
-import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
 
 const STEP_KEYS = ["lab.howItWorks.step1", "lab.howItWorks.step2", "lab.howItWorks.step3"] as const
@@ -14,19 +12,14 @@ const STEP_KEYS = ["lab.howItWorks.step1", "lab.howItWorks.step2", "lab.howItWor
 type SectionProps = {
   label: string
   children: React.ReactNode
-  sectionIndex?: number
 }
 
-function Section({ label, children, sectionIndex = 0 }: SectionProps) {
-  const { fadeUp } = useMotion()
+function Section({ label, children }: SectionProps) {
   return (
-    <motion.section
-      {...fadeUp({ delay: sectionIndex * 0.04, y: 16 })}
-      className="grid gap-4 border-t border-border py-8 md:grid-cols-[180px_1fr]"
-    >
+    <section className="grid gap-4 border-t border-border py-8 md:grid-cols-[180px_1fr]">
       <h2 className="font-mono text-xs text-muted-foreground">{label}</h2>
       <div>{children}</div>
-    </motion.section>
+    </section>
   )
 }
 
@@ -35,7 +28,6 @@ function Section({ label, children, sectionIndex = 0 }: SectionProps) {
  */
 export function LabContent() {
   const { t, locale } = useLocale()
-  const { fadeUp } = useMotion()
 
   return (
     <div className="px-6 pb-24 pt-28">
@@ -90,7 +82,7 @@ export function LabContent() {
         />
 
         <div className="flex flex-col">
-          <Section label={t("lab.modes.title")} sectionIndex={0}>
+          <Section label={t("lab.modes.title")}>
             <div className="grid max-w-2xl gap-5 sm:grid-cols-2">
               {LAB_PROJECT.modes.map((mode) => (
                 <div key={mode.name.en} className="flex flex-col gap-1.5 border-t border-border/60 pt-3">
@@ -102,7 +94,7 @@ export function LabContent() {
             </div>
           </Section>
 
-          <Section label={t("lab.capabilities.title")} sectionIndex={1}>
+          <Section label={t("lab.capabilities.title")}>
             <div className="flex max-w-2xl flex-col gap-4">
               {LAB_PROJECT.toolGroups.map((group) => (
                 <div key={group.label.en} className="flex flex-col gap-1.5">
@@ -115,7 +107,7 @@ export function LabContent() {
             </div>
           </Section>
 
-          <Section label={t("lab.howItWorks.title")} sectionIndex={2}>
+          <Section label={t("lab.howItWorks.title")}>
             <ol className="flex max-w-2xl flex-col gap-4">
               {STEP_KEYS.map((key, i) => (
                 <li key={key} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
@@ -128,26 +120,26 @@ export function LabContent() {
             </ol>
           </Section>
 
-          <Section label={t("lab.clients.title")} sectionIndex={3}>
+          <Section label={t("lab.clients.title")}>
             <p className="max-w-2xl font-mono text-sm leading-relaxed text-muted-foreground">
               {LAB_PROJECT.supportedClients.join(" · ")}
             </p>
           </Section>
 
-          <Section label={t("lab.security.title")} sectionIndex={4}>
+          <Section label={t("lab.security.title")}>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
               {LAB_PROJECT.security[locale]}
             </p>
           </Section>
 
-          <Section label={t("lab.about.title")} sectionIndex={5}>
+          <Section label={t("lab.about.title")}>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               {t("mcp.explainer")}
             </p>
           </Section>
         </div>
 
-        <motion.div {...fadeUp()} className="flex flex-col gap-3 border-t border-border pt-8">
+        <div className="flex flex-col gap-3 border-t border-border pt-8">
           <a
             href={PROFILE.designContextBridgeUrl}
             target="_blank"
@@ -158,7 +150,7 @@ export function LabContent() {
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
           <p className="font-mono text-[11px] text-muted-foreground/55">{t("lab.disclaimer")}</p>
-        </motion.div>
+        </div>
       </div>
     </div>
   )

@@ -64,8 +64,8 @@
     --light-taupe: #6b635a; /* Texto secundario */
     --light-taupe-soft: #8b8278; /* Texto terciario */
     --light-sand: #d6cebd; /* Bordes */
-    --light-sienna: #b8502e; /* Acento principal — terracota quemada */
-    --light-sienna-deep: #6b3520; /* Acento profundo */
+    --light-sienna: #b82848; /* Acento principal — rosa carmín */
+    --light-sienna-deep: #7a1830; /* Acento profundo */
 
     /* Bone & Sienna — Dark palette (espresso cálido) */
     --dark-espresso: #17120e; /* Fondo principal */
@@ -75,8 +75,8 @@
     --dark-mist: #b3a596; /* Texto secundario */
     --dark-mist-soft: #8a7d70; /* Texto terciario */
     --dark-cocoa-border: #3a2f26; /* Bordes */
-    --dark-sienna: #d4663f; /* Acento principal */
-    --dark-sienna-deep: #e07a4f; /* Acento claro */
+    --dark-sienna: #e05878; /* Acento principal */
+    --dark-sienna-deep: #f07898; /* Acento claro */
   }
 
   /* Light — primary theme */
@@ -206,5 +206,33 @@
       #000 38%,
       transparent 76%
     );
+  }
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-menu-in {
+    animation: menu-in 0.24s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  @keyframes hero-headline-in {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+
+  .hero-headline {
+    animation: hero-headline-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-headline { animation: none; }
   }
 }

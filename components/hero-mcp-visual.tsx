@@ -29,7 +29,7 @@ function FlowLine({
       fill="none"
       initial={{ pathLength: 0, opacity: 0 }}
       whileInView={{ pathLength: 1, opacity: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.45, delay, ease: EASE }}
     />
   )
@@ -89,7 +89,7 @@ function FlowNode({
     <motion.g
       initial={{ opacity: 0, scale: 0.92 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.4, delay, ease: EASE }}
     >
       <motion.rect
@@ -183,7 +183,7 @@ export function HeroMcpVisual({ className = "" }: HeroMcpVisualProps) {
           key={tag}
           initial={reduced ? false : { opacity: 0, y: 6 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.35, delay: 0.85 + i * 0.08, ease: EASE }}
         >
           <rect
