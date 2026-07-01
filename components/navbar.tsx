@@ -6,7 +6,7 @@ import { createPortal } from "react-dom"
 import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { useLocale } from "@/lib/locale-context"
 import { EASE } from "@/lib/motion"
@@ -271,38 +271,45 @@ export function Navbar() {
         </button>
       </nav>
       {mounted &&
-        mobileOpen &&
         createPortal(
-          <div
-            ref={overlayRef}
-            className="fixed inset-0 z-40 h-[100dvh] bg-background md:hidden motion-safe:animate-menu-in"
-          >
-            <ul className="mx-auto flex h-full max-w-5xl flex-col gap-7 px-6 pb-16 pt-28">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <NavLinkItem
-                    href={link.href}
-                    label={t(link.labelKey)}
-                    active={isActive(link.href, pathname)}
-                    onClick={() => setMobileOpen(false)}
-                    layoutId="nav-underline-mobile"
-                    size="lg"
-                  />
-                </li>
-              ))}
-              <li className="mt-auto flex flex-wrap items-center gap-2">
-                <NavControls
-                  locale={locale}
-                  setLocale={setLocale}
-                  mounted={mounted}
-                  resolvedTheme={resolvedTheme}
-                  toggleTheme={toggleTheme}
-                  t={t}
-                  onClose={() => setMobileOpen(false)}
-                />
-              </li>
-            </ul>
-          </div>,
+          <AnimatePresence>
+            {mobileOpen && (
+              <motion.div
+                ref={overlayRef}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}
+                className="fixed inset-0 z-40 h-[100dvh] bg-background md:hidden"
+              >
+                <ul className="mx-auto flex h-full max-w-5xl flex-col gap-7 px-6 pb-16 pt-28">
+                  {navLinks.map((link) => (
+                    <li key={link.href}>
+                      <NavLinkItem
+                        href={link.href}
+                        label={t(link.labelKey)}
+                        active={isActive(link.href, pathname)}
+                        onClick={() => setMobileOpen(false)}
+                        layoutId="nav-underline-mobile"
+                        size="lg"
+                      />
+                    </li>
+                  ))}
+                  <li className="mt-auto flex flex-wrap items-center gap-2">
+                    <NavControls
+                      locale={locale}
+                      setLocale={setLocale}
+                      mounted={mounted}
+                      resolvedTheme={resolvedTheme}
+                      toggleTheme={toggleTheme}
+                      t={t}
+                      onClose={() => setMobileOpen(false)}
+                    />
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>,
           document.body,
         )}
     </header>
