@@ -24,8 +24,8 @@ export const NOW_ROWS: NowRow[] = [
       en: "Frontend focused on applied AI",
     },
     description: {
-      es: "Integrando herramientas de IA (Cursor, MCP, automatización con n8n) en el flujo de desarrollo frontend del día a día.",
-      en: "Integrating AI tooling (Cursor, MCP, n8n automation) into the everyday frontend development workflow.",
+      es: "Agentes multi-tool, MCP y automatización con n8n en el desarrollo del día a día — con RAG y bases vectoriales cuando el problema lo pide.",
+      en: "Multi-tool agents, MCP and n8n automation in day-to-day development — with RAG and vector databases when the problem calls for it.",
     },
   },
   {

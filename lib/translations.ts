@@ -22,15 +22,15 @@ export const translations = {
     "nav.tagline": "Product · AI Engineer",
 
     "hero.label": "React · React Native · MCP",
-    "hero.headline": "Product / AI Engineer",
+    "hero.headline": "Construyo las herramientas de IA que otros esperan que existan.",
     "hero.subtitle":
-      "Llevo interfaces de producto a producción con React y React Native — flujos de compra, pagos físicos y control de acceso, de principio a fin. Y construyo mis propias herramientas de IA, como design-context-bridge, un servidor MCP.",
+      "Frontend de producto en React y React Native. Y cuando el tooling no existe, lo construyo: agentes, servidores MCP propios y automatización.",
     "hero.meta": "Barcelona · Disponible en remoto",
     "hero.viewWork": "Ver proyectos",
 
     "now.sectionIndex": "01 — AHORA",
     "now.headline": "Ahora",
-    "now.subhead": "Una foto en vivo de en qué estoy trabajando y qué estoy construyendo.",
+    "now.subhead": "En qué estoy trabajando y qué estoy construyendo ahora mismo.",
 
     "mcp.sectionIndex": "02 — LAB",
     "mcp.headline": "design-context-bridge",
@@ -98,13 +98,13 @@ export const translations = {
 
     "about.title": "Sobre mí",
     "about.bio.1":
-      "Product / AI Engineer especializada en interfaces web y móviles con React, React Native y Next.js.",
+      "Product / AI Engineer. Construyo interfaces de producto en React, React Native y Next.js — y las herramientas de IA que las rodean.",
     "about.bio.2":
       "En Gyoza lideré la implementación de proyectos como Wetour (comunidad en Next.js con foco en SEO) y Turbowash (app IoT en React Native que controla pagos físicos, loyalty y la activación de máquinas), además de contribuir en Goiko.",
     "about.bio.3":
       "Mi trabajo se apoya en arquitecturas de interfaz escalables y en la gestión de estado y datos asíncronos con Zustand y TanStack Query. En paralelo construyo design-context-bridge, un servidor MCP que da a los agentes de IA contexto real de diseño desde Figma.",
     "about.bio.4":
-      "Más allá del código: propongo mejoras de forma proactiva, doy feedback útil a producto y diseño, y me responsabilizo de que las cosas lleguen a producción a tiempo.",
+      "En poco más de un año pasé de frontend a construir mi propio servidor MCP en producción, compatible con Cursor, Claude Code y Windsurf. Cuando una herramienta no existe, la construyo — y me aseguro de que llegue a producción.",
     "about.bio.availability":
       "Barcelona · Disponible en remoto.",
     "about.skills.title": "Skills",
@@ -162,15 +162,15 @@ export const translations = {
     "nav.tagline": "Product · AI Engineer",
 
     "hero.label": "React · React Native · MCP",
-    "hero.headline": "Product / AI Engineer",
+    "hero.headline": "I build the AI tools others are waiting for.",
     "hero.subtitle":
-      "I take product interfaces to production with React and React Native — purchase flows, physical payments, and access control, end to end. And I build my own AI tooling, like design-context-bridge, an MCP server.",
+      "Product frontend in React and React Native. And when the tooling doesn't exist, I build it: agents, my own MCP servers, and automation.",
     "hero.meta": "Barcelona · Available for remote work",
     "hero.viewWork": "View projects",
 
     "now.sectionIndex": "01 — NOW",
     "now.headline": "Now",
-    "now.subhead": "A live snapshot of what I'm working on and what I'm building.",
+    "now.subhead": "What I'm working on and building right now.",
 
     "mcp.sectionIndex": "02 — LAB",
     "mcp.headline": "design-context-bridge",
@@ -239,13 +239,13 @@ export const translations = {
 
     "about.title": "About Me",
     "about.bio.1":
-      "Product / AI Engineer specialized in web and mobile interfaces with React, React Native, and Next.js.",
+      "Product / AI Engineer. I build product interfaces in React, React Native, and Next.js — and the AI tooling around them.",
     "about.bio.2":
       "At Gyoza I led the implementation of projects like Wetour (a Next.js community with an SEO focus) and Turbowash (a React Native IoT app controlling physical payments, loyalty, and machine activation), alongside contributing to Goiko.",
     "about.bio.3":
       "My work is grounded in scalable UI architecture and in state and async data management with Zustand and TanStack Query. In parallel I build design-context-bridge, an MCP server that gives AI agents real design context from Figma.",
     "about.bio.4":
-      "Beyond the code: I propose improvements proactively, give useful feedback to product and design, and take ownership of getting things to production on time.",
+      "In little over a year I went from frontend to shipping my own MCP server in production — compatible with Cursor, Claude Code, and Windsurf. When a tool doesn't exist, I build it, and I make sure it ships.",
     "about.bio.availability":
       "Barcelona · Available for remote work.",
     "about.skills.title": "Skills",
