@@ -75,7 +75,7 @@ export function Hero() {
             <div className="relative">
               {/* Portrait fills the right gutter beside the wrapped headline */}
               <div
-                className="hero-portrait-fade pointer-events-none absolute right-0 -top-6 z-0 h-48 w-36 opacity-[0.32] contrast-75 saturate-75 sm:-top-7 sm:h-52 sm:w-40 lg:hidden"
+                className="hero-portrait-fade pointer-events-none absolute right-0 top-0 z-0 h-44 w-32 opacity-[0.28] contrast-75 saturate-75 sm:h-52 sm:w-40 lg:hidden"
                 aria-hidden
               >
                 <Image
@@ -87,7 +87,7 @@ export function Hero() {
                   className="h-full w-full object-contain object-top"
                 />
               </div>
-              <h1 className="relative z-10 max-lg:pr-40 text-balance font-semibold leading-[1.05] tracking-[-0.03em] text-foreground sm:max-lg:pr-44 max-lg:text-[clamp(2.125rem,9vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
+              <h1 className="relative z-10 max-lg:pr-36 text-balance font-semibold leading-[1.05] tracking-[-0.03em] text-foreground sm:max-lg:pr-44 max-lg:text-[clamp(2rem,8.5vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
                 <Headline text={t("hero.headline")} />
               </h1>
             </div>
