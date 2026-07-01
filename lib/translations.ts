@@ -24,7 +24,7 @@ export const translations = {
     "hero.label": "React · React Native · MCP",
     "hero.headline": "Construyo las herramientas de IA que otros esperan que existan.",
     "hero.subtitle":
-      "Frontend de producto en React y React Native. Y cuando el tooling no existe, lo construyo: agentes, servidores MCP propios y automatización.",
+      "Frontend de producto en React y React Native — agentes, servidores MCP y automatización.",
     "hero.meta": "Barcelona · Disponible en remoto",
     "hero.viewWork": "Ver proyectos",
 
@@ -164,7 +164,7 @@ export const translations = {
     "hero.label": "React · React Native · MCP",
     "hero.headline": "I build the AI tools others are waiting for.",
     "hero.subtitle":
-      "Product frontend in React and React Native. And when the tooling doesn't exist, I build it: agents, my own MCP servers, and automation.",
+      "Product frontend in React and React Native — agents, MCP servers, and automation.",
     "hero.meta": "Barcelona · Available for remote work",
     "hero.viewWork": "View projects",
 
