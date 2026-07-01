@@ -37,7 +37,7 @@ export const translations = {
     "mcp.subhead":
       "Servidor MCP que expone Figma a agentes de IA: tokens, capas y espaciado, sin capturas de pantalla.",
     "mcp.explainer":
-      "MCP (Model Context Protocol) es el estándar para que herramientas como Cursor accedan a contexto estructurado del diseño. Lo he desarrollado para que el código respete el sistema de diseño desde el primer prompt.",
+      "MCP (Model Context Protocol) es el protocolo que permite a los agentes de IA llamar a herramientas externas en lugar de interpretar capturas de pantalla. Cuando vi que nadie había conectado Figma con los agentes de forma que expusiera los tokens reales — no los píxeles — lo construí.",
     "mcp.cta": "Ver en GitHub",
     "mcp.viewLab": "Ver el lab completo →",
 
@@ -63,12 +63,12 @@ export const translations = {
     "work.sectionIndex": "03 — PROYECTOS",
     "work.sectionTitle": "Proyectos en producción",
     "work.subhead":
-      "Interfaces web y móvil con React y React Native, aplicadas en producto real.",
+      "Cada proyecto de esta lista está en producción. Ninguno es un ejercicio.",
     "work.viewAll": "Ver todos los proyectos",
     "work.allIndex": "PROYECTOS",
     "work.allTitle": "Todos los proyectos",
     "work.allSubhead":
-      "Trabajo web y móvil en producción con React, React Native, Next.js y Vue.",
+      "Trabajo web y móvil en producción con React, React Native, Next.js y Vue. Ningún proyecto de demostración.",
 
     "contact.headline": "¿Hablamos?",
     "contact.subline":
@@ -177,7 +177,7 @@ export const translations = {
     "mcp.subhead":
       "An MCP server that exposes Figma to AI agents: tokens, layers, and spacing — not screenshots.",
     "mcp.explainer":
-      "MCP (Model Context Protocol) is the standard for tools like Cursor to access structured design context. I built this so code respects the design system from the first prompt.",
+      "MCP (Model Context Protocol) is the protocol that lets AI agents call external tools instead of interpreting screenshots. When I saw that nobody had connected Figma to agents in a way that exposed the actual tokens — not the pixels — I built it.",
     "mcp.cta": "View on GitHub",
     "mcp.viewLab": "View the full lab →",
 
@@ -203,12 +203,12 @@ export const translations = {
     "work.sectionIndex": "03 — SELECTED WORK",
     "work.sectionTitle": "Production projects",
     "work.subhead":
-      "Web and mobile interfaces with React and React Native, shipped in production.",
+      "Every project on this list is in production. None of them are exercises.",
     "work.viewAll": "View all projects",
     "work.allIndex": "PROJECTS",
     "work.allTitle": "All projects",
     "work.allSubhead":
-      "Web and mobile work shipped in production with React, React Native, Next.js and Vue.",
+      "Web and mobile work in production with React, React Native, Next.js and Vue. No demo projects.",
 
     "contact.headline": "Get in touch",
     "contact.subline":
