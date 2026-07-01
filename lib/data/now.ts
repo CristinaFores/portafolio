@@ -40,6 +40,18 @@ export const NOW_ROWS: NowRow[] = [
       en: "MCP server exposing Figma to AI agents — tokens, layers and spacing, no screenshots.",
     },
   },
+  {
+    status: "wip",
+    label: { es: "También construyendo", en: "Also building" },
+    title: {
+      es: "AuraLang",
+      en: "AuraLang",
+    },
+    description: {
+      es: "Extensión de Chrome que traduce el audio de cualquier pestaña en tiempo real — Whisper local, sin clave de API.",
+      en: "Chrome extension that translates any tab's audio in real time — local Whisper, no API key.",
+    },
+  },
 ]
 
 export const NOW_UPDATED: Record<Locale, string> = {

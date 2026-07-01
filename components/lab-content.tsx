@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, ArrowUpRight } from "lucide-react"
 import { LAB_PROJECT } from "@/lib/data/lab-project"
 import { TerminalSnippet } from "@/components/terminal-snippet"
@@ -137,6 +138,42 @@ export function LabContent() {
               {t("mcp.explainer")}
             </p>
           </Section>
+        </div>
+
+        <div className="flex flex-col gap-6 border-t border-border pt-8">
+          <p className="font-mono text-xs text-muted-foreground">{t("lab.alsoBuilding")}</p>
+          <a
+            href="https://github.com/CristinaFores/auralang"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col gap-4 rounded-none border border-border p-5 transition-colors hover:border-foreground/30 sm:flex-row sm:items-start sm:gap-6"
+          >
+            <Image
+              src="/images/auralang/logo-app.webp"
+              alt="AuraLang"
+              width={48}
+              height={48}
+              className="shrink-0 rounded-lg"
+            />
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-sm font-medium text-foreground">AuraLang</span>
+                <span className="border border-border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
+                  {t("lab.status")}
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {t("lab.auralang.description")}
+              </p>
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {["Chrome MV3", "React 18", "TypeScript", "Whisper", "Vite"].map((badge) => (
+                  <span key={badge} className="border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+                    {badge}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </a>
         </div>
 
         <div className="flex flex-col gap-3 border-t border-border pt-8">

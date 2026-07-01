@@ -59,6 +59,8 @@ export const translations = {
     "lab.install.title": "Instalación",
     "lab.security.title": "Privacidad",
     "lab.disclaimer": "Independiente — no afiliado a Figma, Inc.",
+    "lab.alsoBuilding": "También en proceso",
+    "lab.auralang.description": "Extensión de Chrome que traduce el audio de cualquier pestaña en tiempo real — Whisper local, sin clave de API.",
 
     "work.sectionIndex": "03 — PROYECTOS",
     "work.sectionTitle": "Proyectos en producción",
@@ -199,6 +201,8 @@ export const translations = {
     "lab.install.title": "Install",
     "lab.security.title": "Privacy",
     "lab.disclaimer": "Independent — not affiliated with Figma, Inc.",
+    "lab.alsoBuilding": "Also in progress",
+    "lab.auralang.description": "Chrome extension that translates any tab's audio in real time — local Whisper, no API key.",
 
     "work.sectionIndex": "03 — SELECTED WORK",
     "work.sectionTitle": "Production projects",
