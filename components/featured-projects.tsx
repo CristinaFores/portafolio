@@ -3,21 +3,19 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
-import { getProjectsForDisplay } from "@/lib/data/projects"
+import { getFeaturedProjects } from "@/lib/data/projects"
 import { ProjectCaseRow } from "@/components/project-case-row"
 import { SectionHeading } from "@/components/section-heading"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 
-const HOME_PROJECT_LIMIT = 6
-
 /**
- * Project case-study rows on the home page.
+ * Project case-study rows on the home page (one per client, curated set).
  */
 export function FeaturedProjects() {
   const { t } = useLocale()
   const { fadeUp } = useMotion()
-  const projects = getProjectsForDisplay().slice(0, HOME_PROJECT_LIMIT)
+  const projects = getFeaturedProjects()
 
   return (
     <section id="projects" className="home-section home-section-muted">

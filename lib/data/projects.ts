@@ -19,6 +19,8 @@ export interface Project {
   slug: string
   /** When set (e.g. "Gyoza"), a company badge is shown on the card and detail. */
   company?: "Gyoza"
+  /** When true, shown on the home page featured section (one per client). */
+  featured?: boolean
   title: string
   subtitle: string
   year: string
@@ -43,6 +45,7 @@ export const projects: Project[] = [
   {
     slug: "wayvo",
     company: "Gyoza",
+    featured: true,
     title: "Wayvo — Trip Planner",
     subtitle: "Plan trips and follow day-by-day itineraries on your phone",
     year: "2025-2026",
@@ -160,6 +163,7 @@ export const projects: Project[] = [
   {
     slug: "turbowash-terminal",
     company: "Gyoza",
+    featured: true,
     title: "Turbowash — Payment Kiosk",
     subtitle: "The app that runs on the car wash kiosk screen",
     url: "https://turbowash.es/",
@@ -196,6 +200,7 @@ export const projects: Project[] = [
   {
     slug: "pulse-video-manager",
     company: "Gyoza",
+    featured: true,
     title: "Pulse — Video Library and Playlists",
     subtitle: "Video library, playlists and daily workout schedule",
     year: "2025",
@@ -278,6 +283,7 @@ export const projects: Project[] = [
   {
     slug: "wetour",
     company: "Gyoza",
+    featured: true,
     title: "Wetour — Community Platform",
     subtitle: "Wezone network: events, centres and community feed",
     url: "https://wetourfit.com/",
@@ -321,6 +327,7 @@ export const projects: Project[] = [
   {
     slug: "aee-corporate-web",
     company: "Gyoza",
+    featured: true,
     title: "AEE — Corporate Website",
     subtitle: "Company site with CMS content and multiple languages",
     year: "2024",
@@ -513,6 +520,7 @@ export const projects: Project[] = [
   {
     slug: "goiko-ordering",
     company: "Gyoza",
+    featured: true,
     title: "Goiko — Online Ordering",
     subtitle: "Delivery and pickup orders across 100+ restaurants",
     url: "https://www.goiko.com/es/delivery",
@@ -591,30 +599,34 @@ export const projects: Project[] = [
   },
 ]
 
-/** Slugs hidden from listings (still reachable by direct URL if needed). */
-const HIDDEN_FROM_DISPLAY = new Set<string>([
-  "goiko-ordering", // Goiko — Pedidos online — hidden for now
-])
-
-/** Goiko suite order when shown in listings. */
-const GOIKO_DISPLAY_ORDER = [
-  // "goiko-ordering",
-  "goiko-customer-area",
-  "goiko-table-ordering",
-  "goiko-online-menu",
+/**
+ * Home page: one project per client, chosen for technical depth.
+ * Order: Goiko ordering → Turbowash terminal → Wetour → Wayvo → AEE → Pulse
+ */
+const FEATURED_ORDER = [
+  "goiko-ordering",
+  "turbowash-terminal",
+  "wetour",
+  "wayvo",
+  "aee-corporate-web",
+  "pulse-video-manager",
 ] as const
 
 /**
- * Projects ordered for listings: Goiko suite first, then the rest unchanged.
+ * Returns the curated featured set for the home page (one per client).
  */
-export function getProjectsForDisplay(): Project[] {
+export function getFeaturedProjects(): Project[] {
   const bySlug = new Map(projects.map((p) => [p.slug, p]))
-  const goiko = GOIKO_DISPLAY_ORDER.map((slug) => bySlug.get(slug)).filter(
+  return FEATURED_ORDER.map((slug) => bySlug.get(slug)).filter(
     (p): p is Project => p != null,
   )
-  const goikoSlugs = new Set<string>(GOIKO_DISPLAY_ORDER)
-  const rest = projects.filter((p) => !goikoSlugs.has(p.slug))
-  return [...goiko, ...rest].filter((p) => !HIDDEN_FROM_DISPLAY.has(p.slug))
+}
+
+/**
+ * All projects for the /projects listing page.
+ */
+export function getProjectsForDisplay(): Project[] {
+  return projects
 }
 
 /**
