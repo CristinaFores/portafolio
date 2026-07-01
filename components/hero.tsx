@@ -10,12 +10,12 @@ import { useMotion } from "@/hooks/use-motion"
 import { useParallaxY } from "@/hooks/use-parallax-y"
 import { PROFILE } from "@/lib/site-config"
 
-/** Renders the headline with the "AI" keyword in the accent color. */
+/** Renders the headline with the "AI"/"IA" keyword in the accent color. */
 function Headline({ text }: { text: string }) {
   return (
     <>
-      {text.split(/(\bAI\b)/).map((part, i) =>
-        part === "AI" ? (
+      {text.split(/(\bAI\b|\bIA\b)/).map((part, i) =>
+        part === "AI" || part === "IA" ? (
           <span key={i} className="text-accent">
             {part}
           </span>
@@ -73,9 +73,9 @@ export function Hero() {
               {t("hero.meta")}
             </p>
             <div className="relative">
-              {/* Portrait fills the right gutter beside the wrapped headline */}
+              {/* Portrait floats into the top-right; headline wraps beside it, then flows full width below */}
               <div
-                className="hero-portrait-fade pointer-events-none absolute right-0 top-0 z-0 h-44 w-32 opacity-[0.28] contrast-75 saturate-75 sm:h-52 sm:w-40 lg:hidden"
+                className="hero-portrait-fade pointer-events-none float-right ml-4 mb-1 h-40 w-28 opacity-[0.28] contrast-75 saturate-75 sm:h-52 sm:w-40 lg:hidden"
                 aria-hidden
               >
                 <Image
@@ -87,7 +87,7 @@ export function Hero() {
                   className="h-full w-full object-contain object-top"
                 />
               </div>
-              <h1 className="relative z-10 max-lg:pr-36 text-balance font-semibold leading-[1.05] tracking-[-0.03em] text-foreground sm:max-lg:pr-44 max-lg:text-[clamp(2rem,8.5vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
+              <h1 className="font-semibold leading-[1.05] tracking-[-0.03em] text-foreground max-lg:text-[clamp(2rem,8.5vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
                 <Headline text={t("hero.headline")} />
               </h1>
             </div>
