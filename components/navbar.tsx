@@ -276,10 +276,10 @@ export function Navbar() {
             {mobileOpen && (
               <motion.div
                 ref={overlayRef}
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}
+                initial={{ y: "-100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-100%" }}
+                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                 className="fixed inset-0 z-40 h-[100dvh] bg-background md:hidden"
               >
                 <ul className="mx-auto flex h-full max-w-5xl flex-col gap-7 px-6 pb-16 pt-28">
