@@ -87,7 +87,7 @@ export function Hero() {
                   className="h-full w-full object-contain object-top"
                 />
               </div>
-              <h1 className="font-semibold leading-[1.05] tracking-[-0.03em] text-foreground max-lg:text-[clamp(2rem,8.5vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
+              <h1 className="hero-headline font-semibold leading-[1.05] tracking-[-0.03em] text-foreground max-lg:text-[clamp(2rem,8.5vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
                 <Headline text={t("hero.headline")} />
               </h1>
             </div>

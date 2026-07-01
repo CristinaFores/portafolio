@@ -222,4 +222,17 @@
   .animate-menu-in {
     animation: menu-in 0.24s cubic-bezier(0.4, 0, 0.2, 1) both;
   }
+
+  @keyframes hero-headline-in {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+
+  .hero-headline {
+    animation: hero-headline-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-headline { animation: none; }
+  }
 }
