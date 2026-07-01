@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, ArrowUpRight } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, Blocks, ArrowRight } from "lucide-react"
 import { LAB_PROJECT } from "@/lib/data/lab-project"
 import { TerminalSnippet } from "@/components/terminal-snippet"
 import { useLocale } from "@/lib/locale-context"
@@ -10,22 +10,10 @@ import { PROFILE } from "@/lib/site-config"
 
 const STEP_KEYS = ["lab.howItWorks.step1", "lab.howItWorks.step2", "lab.howItWorks.step3"] as const
 
-type SectionProps = {
-  label: string
-  children: React.ReactNode
-}
-
-function Section({ label, children }: SectionProps) {
-  return (
-    <section className="grid gap-4 border-t border-border py-8 md:grid-cols-[180px_1fr]">
-      <h2 className="font-mono text-xs text-muted-foreground">{label}</h2>
-      <div>{children}</div>
-    </section>
-  )
-}
+const AURALANG_PIPELINE = ["Tab audio", "Whisper (local)", "Google Translate", "Web Speech API"]
 
 /**
- * Dedicated page for the design-context-bridge MCP project.
+ * Lab index — list of in-progress projects with their details.
  */
 export function LabContent() {
   const { t, locale } = useLocale()
@@ -33,161 +21,188 @@ export function LabContent() {
   return (
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
-        <header className="flex flex-col gap-8">
-          <div>
-            <Link
-              href="/"
-              className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
-              {t("lab.backToHome")}
-            </Link>
-          </div>
 
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-              <span>{t("lab.sectionIndex")}</span>
-              <span className="border border-border px-1.5 py-0.5 text-[10px] uppercase tracking-wider text-accent">
-                {t("lab.status")}
-              </span>
-            </div>
+        <header className="flex flex-col gap-6">
+          <Link
+            href="/"
+            className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
+            {t("lab.backToHome")}
+          </Link>
+          <div className="flex flex-col gap-3">
+            <p className="font-mono text-xs text-muted-foreground">{t("lab.sectionIndex")}</p>
             <h1
               className="font-semibold leading-tight tracking-[-0.025em]"
               style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
             >
-              {t("lab.title")}
+              Lab
             </h1>
-            <p className="max-w-2xl text-pretty text-lg leading-relaxed text-foreground/85 sm:text-xl">
-              “{LAB_PROJECT.quote[locale]}”
+            <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
+              {t("lab.pageSubtitle")}
             </p>
-            <div className="flex flex-wrap gap-2 pt-1">
-              {LAB_PROJECT.techBadges.map((badge) => (
-                <span
-                  key={badge}
-                  className="border border-border px-2 py-1 font-mono text-[11px] text-muted-foreground"
-                >
-                  {badge}
-                </span>
-              ))}
-            </div>
           </div>
         </header>
 
-        <TerminalSnippet
-          command={LAB_PROJECT.installCommand}
-          output={[
-            "✓ MCP server ready",
-            `✓ ${LAB_PROJECT.supportedClients.length} compatible clients detected`,
-            "→ listening on stdio",
-          ]}
-        />
-
         <div className="flex flex-col">
-          <Section label={t("lab.modes.title")}>
-            <div className="grid max-w-2xl gap-5 sm:grid-cols-2">
-              {LAB_PROJECT.modes.map((mode) => (
-                <div key={mode.name.en} className="flex flex-col gap-1.5 border-t border-border/60 pt-3">
-                  <h3 className="text-sm font-medium text-foreground">{mode.name[locale]}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{mode.description[locale]}</p>
-                  <span className="font-mono text-[11px] text-muted-foreground/60">{mode.status[locale]}</span>
-                </div>
-              ))}
-            </div>
-          </Section>
 
-          <Section label={t("lab.capabilities.title")}>
-            <div className="flex max-w-2xl flex-col gap-4">
-              {LAB_PROJECT.toolGroups.map((group) => (
-                <div key={group.label.en} className="flex flex-col gap-1.5">
-                  <h3 className="text-sm font-medium text-foreground">{group.label[locale]}</h3>
-                  <p className="font-mono text-[12px] leading-relaxed text-muted-foreground">
-                    {group.tools.join(" · ")}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Section>
-
-          <Section label={t("lab.howItWorks.title")}>
-            <ol className="flex max-w-2xl flex-col gap-4">
-              {STEP_KEYS.map((key, i) => (
-                <li key={key} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
-                  <span className="font-mono text-xs text-muted-foreground/60">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {t(key)}
-                </li>
-              ))}
-            </ol>
-          </Section>
-
-          <Section label={t("lab.clients.title")}>
-            <p className="max-w-2xl font-mono text-sm leading-relaxed text-muted-foreground">
-              {LAB_PROJECT.supportedClients.join(" · ")}
-            </p>
-          </Section>
-
-          <Section label={t("lab.security.title")}>
-            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              {LAB_PROJECT.security[locale]}
-            </p>
-          </Section>
-
-          <Section label={t("lab.about.title")}>
-            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {t("mcp.explainer")}
-            </p>
-          </Section>
-        </div>
-
-        <div className="flex flex-col gap-6 border-t border-border pt-8">
-          <p className="font-mono text-xs text-muted-foreground">{t("lab.alsoBuilding")}</p>
-          <a
-            href="https://github.com/CristinaFores/auralang"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col gap-4 rounded-none border border-border p-5 transition-colors hover:border-foreground/30 sm:flex-row sm:items-start sm:gap-6"
-          >
-            <Image
-              src="/images/auralang/logo-app.webp"
-              alt="AuraLang"
-              width={48}
-              height={48}
-              className="shrink-0 rounded-lg"
-            />
-            <div className="flex flex-col gap-2">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-sm font-medium text-foreground">AuraLang</span>
-                <span className="border border-border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
-                  {t("lab.status")}
-                </span>
+          {/* design-context-bridge */}
+          <article className="flex flex-col gap-8 border-t border-border py-10">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-border bg-secondary">
+                <Blocks className="h-5 w-5 text-accent" />
               </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {t("lab.auralang.description")}
-              </p>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {["Chrome MV3", "React 18", "TypeScript", "Whisper", "Vite"].map((badge) => (
+              <div className="flex flex-col gap-1.5">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h2 className="text-base font-semibold text-foreground">design-context-bridge</h2>
+                  <span className="border border-border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
+                    {t("lab.status")}
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {t("mcp.subhead")}
+                </p>
+              </div>
+            </div>
+
+            <TerminalSnippet
+              command={LAB_PROJECT.installCommand}
+              output={[
+                "✓ MCP server ready",
+                `✓ ${LAB_PROJECT.supportedClients.length} compatible clients detected`,
+                "→ listening on stdio",
+              ]}
+            />
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="flex flex-col gap-3">
+                <p className="font-mono text-xs text-muted-foreground">{t("lab.modes.title")}</p>
+                <div className="flex flex-col gap-3">
+                  {LAB_PROJECT.modes.map((mode) => (
+                    <div key={mode.name.en} className="flex flex-col gap-0.5">
+                      <span className="text-sm font-medium text-foreground">{mode.name[locale]}</span>
+                      <span className="font-mono text-[11px] text-muted-foreground/60">{mode.status[locale]}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <p className="font-mono text-xs text-muted-foreground">{t("lab.howItWorks.title")}</p>
+                <ol className="flex flex-col gap-2">
+                  {STEP_KEYS.map((key, i) => (
+                    <li key={key} className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
+                      <span className="shrink-0 font-mono text-[11px] text-muted-foreground/50">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {t(key)}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <p className="font-mono text-xs text-muted-foreground">{t("lab.capabilities.title")}</p>
+              <div className="flex flex-col gap-2">
+                {LAB_PROJECT.toolGroups.map((group) => (
+                  <div key={group.label.en} className="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
+                    <span className="shrink-0 text-sm font-medium text-foreground sm:w-48">{group.label[locale]}</span>
+                    <span className="font-mono text-[11px] leading-relaxed text-muted-foreground">
+                      {group.tools.join(" · ")}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-wrap gap-1.5">
+                {LAB_PROJECT.techBadges.map((badge) => (
+                  <span key={badge} className="border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+                    {badge}
+                  </span>
+                ))}
+                {LAB_PROJECT.supportedClients.map((client) => (
+                  <span key={client} className="border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+                    {client}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={PROFILE.designContextBridgeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent"
+              >
+                {t("mcp.cta")}
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            </div>
+          </article>
+
+          {/* AuraLang */}
+          <article className="flex flex-col gap-8 border-t border-border py-10">
+            <div className="flex items-start gap-4">
+              <Image
+                src="/images/auralang/logo-app.webp"
+                alt="AuraLang"
+                width={48}
+                height={48}
+                className="shrink-0 rounded-xl"
+              />
+              <div className="flex flex-col gap-1.5">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h2 className="text-base font-semibold text-foreground">AuraLang</h2>
+                  <span className="border border-border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
+                    {t("lab.status")}
+                  </span>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {t("lab.auralang.description")}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <p className="font-mono text-xs text-muted-foreground">{t("lab.howItWorks.title")}</p>
+              <div className="flex flex-wrap items-center gap-2">
+                {AURALANG_PIPELINE.map((step, i) => (
+                  <span key={step} className="flex items-center gap-2">
+                    <span className="border border-border px-2 py-1 font-mono text-[11px] text-foreground">
+                      {step}
+                    </span>
+                    {i < AURALANG_PIPELINE.length - 1 && (
+                      <ArrowRight className="h-3 w-3 shrink-0 text-muted-foreground/40" />
+                    )}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-wrap gap-1.5">
+                {["Chrome MV3", "React 18", "TypeScript", "Whisper", "Vite", "Tailwind CSS"].map((badge) => (
                   <span key={badge} className="border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
                     {badge}
                   </span>
                 ))}
               </div>
+              <a
+                href="https://github.com/CristinaFores/auralang"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent"
+              >
+                GitHub
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
             </div>
-          </a>
+          </article>
+
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-border pt-8">
-          <a
-            href={PROFILE.designContextBridgeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary group inline-flex h-10 w-fit items-center gap-1.5 px-5 text-sm font-medium"
-          >
-            {t("mcp.cta")}
-            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
-          <p className="font-mono text-[11px] text-muted-foreground/55">{t("lab.disclaimer")}</p>
-        </div>
+        <p className="font-mono text-[11px] text-muted-foreground/55">{t("lab.disclaimer")}</p>
       </div>
     </div>
   )
