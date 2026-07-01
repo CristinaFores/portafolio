@@ -62,6 +62,9 @@ export const translations = {
     "lab.pageSubtitle": "Proyectos que construyo cuando la herramienta no existe.",
     "lab.alsoBuilding": "También en proceso",
     "lab.auralang.description": "Extensión de Chrome que traduce el audio de cualquier pestaña en tiempo real — Whisper local, sin clave de API.",
+    "lab.viewDetails": "Ver detalles",
+    "lab.links": "Enlaces",
+    "lab.pending": "Pendiente",
 
     "work.sectionIndex": "03 — PROYECTOS",
     "work.sectionTitle": "Proyectos en producción",
@@ -205,6 +208,9 @@ export const translations = {
     "lab.pageSubtitle": "Projects I build when the tool doesn't exist.",
     "lab.alsoBuilding": "Also in progress",
     "lab.auralang.description": "Chrome extension that translates any tab's audio in real time — local Whisper, no API key.",
+    "lab.viewDetails": "View details",
+    "lab.links": "Links",
+    "lab.pending": "Pending",
 
     "work.sectionIndex": "03 — SELECTED WORK",
     "work.sectionTitle": "Production projects",
