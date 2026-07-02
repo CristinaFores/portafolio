@@ -17,8 +17,8 @@ export const NOW_ROWS: NowRow[] = [
     href: "/lab/design-context-bridge",
   },
   {
-    status: "review",
-    label: { es: "En revisión", en: "In review" },
+    status: "active",
+    label: { es: "En producción", en: "Live" },
     title: { es: "AuraLang", en: "AuraLang" },
     href: "/lab/auralang",
   },
