@@ -68,7 +68,7 @@ export function LabContent() {
                     {project.name}
                   </h2>
                   <span className="border border-border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
-                    {t("lab.status")}
+                    {t(`lab.status.${project.status}`)}
                   </span>
                 </div>
                 <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">

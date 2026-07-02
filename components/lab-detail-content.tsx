@@ -16,7 +16,7 @@ export function LabDetailContent({ slug }: Props) {
 
   if (!project) return null
 
-  const isDCB = slug === "design-context-bridge"
+const isDCB = slug === "design-context-bridge"
 
   return (
     <div className="px-6 pb-24 pt-28">
@@ -54,7 +54,7 @@ export function LabDetailContent({ slug }: Props) {
                   {project.name}
                 </h1>
                 <span className="border border-border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
-                  {t("lab.status")}
+                  {t(`lab.status.${project.status}`)}
                 </span>
               </div>
               <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
@@ -64,14 +64,14 @@ export function LabDetailContent({ slug }: Props) {
           </div>
         </header>
 
-        {/* Cover image */}
+       {/* Cover image */}
         {project.coverImage && (
           <div className="overflow-hidden border border-border max-h-[520px]">
             <Image
               src={project.coverImage}
               alt={project.name}
               width={1200}
-              height={isDCB ? 675 : 800}
+              height={800}
               className="w-full object-cover object-top"
             />
           </div>

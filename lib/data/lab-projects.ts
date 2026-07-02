@@ -9,7 +9,7 @@ export interface LabLink {
 export interface LabProject {
   slug: string
   name: string
-  status: "wip" | "active"
+  status: "wip" | "review" | "active"
   icon: string
   iconBg?: string
   tagline: Record<Locale, string>
@@ -29,9 +29,9 @@ export const LAB_PROJECTS: LabProject[] = [
   {
     slug: "design-context-bridge",
     name: "design-context-bridge",
-    status: "wip",
-    icon: "/images/dcb/01-plugin-icon-128.png",
-    iconBg: "#0f0e1a",
+    status: "active",
+    icon: "/images/dcb/logo-128.png",
+    iconBg: "transparent",
     tagline: {
       es: "Servidor MCP que expone Figma a agentes de IA: tokens, capas y espaciado, sin capturas de pantalla.",
       en: "MCP server that exposes Figma to AI agents: tokens, layers and spacing — no screenshots.",
@@ -77,15 +77,15 @@ export const LAB_PROJECTS: LabProject[] = [
   {
     slug: "auralang",
     name: "AuraLang",
-    status: "wip",
+    status: "review",
     icon: "/images/auralang/chrome-icon128.png",
     tagline: {
       es: "Extensión de Chrome que traduce el audio de cualquier pestaña en tiempo real — Whisper local, sin clave de API.",
       en: "Chrome extension that translates any tab's audio in real time — local Whisper, no API key.",
     },
     whyBuilt: {
-      es: "Usaba herramientas de IA y recursos técnicos en inglés constantemente y perdía contexto cada vez que tenía que pausar y traducir manualmente. Quería escuchar el audio traducido en tiempo real, sin enviar nada a servicios externos ni depender de claves de API. La transcripción ocurre en el dispositivo con Whisper — solo la traducción usa red.",
-      en: "I constantly used AI tools and technical content in English and kept losing context whenever I had to pause and translate manually. I wanted to hear translated audio in real time, without sending anything to external services or depending on API keys. Transcription happens on-device with Whisper — only translation uses the network.",
+      es: "Usaba herramientas de IA y recursos técnicos en inglés constantemente y perdía contexto cada vez que tenía que pausar y traducir manualmente. Quería escuchar el audio traducido en tiempo real, sin depender de claves de API ni de un backend propio. La transcripción ocurre en el dispositivo con Whisper — solo el texto transcrito sale a red para traducirse.",
+      en: "I constantly used AI tools and technical content in English and kept losing context whenever I had to pause and translate manually. I wanted to hear translated audio in real time, without depending on API keys or a backend of my own. Transcription happens on-device with Whisper — only the transcribed text goes out over the network to be translated.",
     },
     features: [
       {
@@ -124,7 +124,7 @@ export const LAB_PROJECTS: LabProject[] = [
       },
     ],
     techBadges: ["Chrome MV3", "React 18", "TypeScript", "Whisper", "Vite", "Tailwind CSS"],
-    coverImage: "/images/auralang/chrome-captura-dark-resize.jpg",
+    coverImage: "/images/auralang/hero-light.png",
   },
 ]
 
