@@ -30,8 +30,8 @@ export const LAB_PROJECTS: LabProject[] = [
     slug: "design-context-bridge",
     name: "design-context-bridge",
     status: "active",
-    icon: "/images/dcb/01-plugin-icon-128.png",
-    iconBg: "#0f0e1a",
+    icon: "/images/dcb/logo-128.png",
+    iconBg: "transparent",
     tagline: {
       es: "Servidor MCP que expone Figma a agentes de IA: tokens, capas y espaciado, sin capturas de pantalla.",
       en: "MCP server that exposes Figma to AI agents: tokens, layers and spacing — no screenshots.",
@@ -124,7 +124,7 @@ export const LAB_PROJECTS: LabProject[] = [
       },
     ],
     techBadges: ["Chrome MV3", "React 18", "TypeScript", "Whisper", "Vite", "Tailwind CSS"],
-    coverImage: "/images/auralang/chrome-captura-dark-resize.jpg",
+    coverImage: "/images/auralang/hero-light.png",
   },
 ]
 
