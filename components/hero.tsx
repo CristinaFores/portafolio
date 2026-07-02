@@ -91,13 +91,9 @@ export function Hero() {
                 <Headline text={t("hero.headline")} />
               </h1>
             </div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground/70 lg:hidden">
-              {t("nav.tagline")}
-            </p>
             <p className="max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
               {t("hero.subtitle")}
             </p>
-            <p className="font-mono text-xs text-muted-foreground/60">{t("hero.label")}</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">

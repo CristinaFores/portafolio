@@ -21,7 +21,6 @@ export const translations = {
     "nav.themeDark": "Usar tema oscuro",
     "nav.tagline": "Product · AI Engineer",
 
-    "hero.label": "React · React Native · MCP",
     "hero.headline": "Si no existe, lo construyo.",
     "hero.subtitle":
       "Frontend de producto en React y React Native — agentes, servidores MCP y automatización.",
@@ -43,7 +42,9 @@ export const translations = {
 
     "lab.sectionIndex": "LAB",
     "lab.title": "design-context-bridge",
-    "lab.status": "WIP",
+    "lab.status.wip": "WIP",
+    "lab.status.review": "En revisión",
+    "lab.status.active": "En producción",
     "lab.backToHome": "Volver al inicio",
     "lab.howItWorks.title": "Cómo funciona",
     "lab.howItWorks.step1":
@@ -168,7 +169,6 @@ export const translations = {
     "nav.themeDark": "Use dark theme",
     "nav.tagline": "Product · AI Engineer",
 
-    "hero.label": "React · React Native · MCP",
     "hero.headline": "If it doesn't exist, I build it.",
     "hero.subtitle":
       "Product frontend in React and React Native — agents, MCP servers, and automation.",
@@ -190,7 +190,9 @@ export const translations = {
 
     "lab.sectionIndex": "LAB",
     "lab.title": "design-context-bridge",
-    "lab.status": "WIP",
+    "lab.status.wip": "WIP",
+    "lab.status.review": "In review",
+    "lab.status.active": "Live",
     "lab.backToHome": "Back to home",
     "lab.howItWorks.title": "How it works",
     "lab.howItWorks.step1":

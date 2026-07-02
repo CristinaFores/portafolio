@@ -33,31 +33,24 @@ export function NowSection() {
             <motion.div
               key={row.title.en}
               {...staggerItem(i, { step: 0.05, y: 12 })}
-              className="grid gap-2 border-t border-border/50 py-6 sm:grid-cols-[140px_1fr] sm:gap-6"
+              className="flex items-center gap-3 border-t border-border/50 py-4"
             >
-              <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-                <span
-                  className="size-[6px] shrink-0 rounded-full bg-muted-foreground/40"
-                  aria-hidden
-                />
-                {row.label[locale]}
-              </div>
-              <div className="flex flex-col gap-1.5">
-                {row.href ? (
-                  <Link
-                    href={row.href}
-                    className="group inline-flex w-fit items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-accent"
-                  >
-                    {row.title[locale]}
-                    <ArrowUpRight className="h-3 w-3 opacity-0 transition-all group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </Link>
-                ) : (
-                  <h3 className="text-sm font-medium text-foreground">{row.title[locale]}</h3>
-                )}
-                <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  {row.description[locale]}
-                </p>
-              </div>
+              <span
+                className="size-[6px] shrink-0 rounded-full bg-muted-foreground/40"
+                aria-hidden
+              />
+              <span className="font-mono text-xs text-muted-foreground">{row.label[locale]}</span>
+              {row.href ? (
+                <Link
+                  href={row.href}
+                  className="group inline-flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-accent"
+                >
+                  {row.title[locale]}
+                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-all group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+              ) : (
+                <span className="text-sm font-medium text-foreground">{row.title[locale]}</span>
+              )}
             </motion.div>
           ))}
         </div>
