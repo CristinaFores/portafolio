@@ -48,7 +48,7 @@
   }
 
   .home-section-muted {
-    @apply bg-muted/30;
+    @apply bg-muted;
   }
 }
 
