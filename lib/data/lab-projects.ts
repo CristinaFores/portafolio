@@ -11,12 +11,15 @@ export interface LabProject {
   name: string
   status: "wip" | "active"
   icon: string
+  iconBg?: string
   tagline: Record<Locale, string>
   whyBuilt: Record<Locale, string>
+  features?: Record<Locale, string>[]
   howItWorks: {
     steps?: Record<Locale, string>[]
     pipeline?: string[]
   }
+  privacy?: Record<Locale, string>
   links: LabLink[]
   techBadges: string[]
   coverImage?: string
@@ -27,7 +30,8 @@ export const LAB_PROJECTS: LabProject[] = [
     slug: "design-context-bridge",
     name: "design-context-bridge",
     status: "wip",
-    icon: "",
+    icon: "/images/dcb/01-plugin-icon-128.png",
+    iconBg: "#0f0e1a",
     tagline: {
       es: "Servidor MCP que expone Figma a agentes de IA: tokens, capas y espaciado, sin capturas de pantalla.",
       en: "MCP server that exposes Figma to AI agents: tokens, layers and spacing — no screenshots.",
@@ -74,7 +78,7 @@ export const LAB_PROJECTS: LabProject[] = [
     slug: "auralang",
     name: "AuraLang",
     status: "wip",
-    icon: "/images/auralang/icon128.png",
+    icon: "/images/auralang/chrome-icon128.png",
     tagline: {
       es: "Extensión de Chrome que traduce el audio de cualquier pestaña en tiempo real — Whisper local, sin clave de API.",
       en: "Chrome extension that translates any tab's audio in real time — local Whisper, no API key.",
@@ -83,8 +87,30 @@ export const LAB_PROJECTS: LabProject[] = [
       es: "Usaba herramientas de IA y recursos técnicos en inglés constantemente y perdía contexto cada vez que tenía que pausar y traducir manualmente. Quería escuchar el audio traducido en tiempo real, sin enviar nada a servicios externos ni depender de claves de API. La transcripción ocurre en el dispositivo con Whisper — solo la traducción usa red.",
       en: "I constantly used AI tools and technical content in English and kept losing context whenever I had to pause and translate manually. I wanted to hear translated audio in real time, without sending anything to external services or depending on API keys. Transcription happens on-device with Whisper — only translation uses the network.",
     },
+    features: [
+      {
+        es: "Cualquier pestaña con audio — vídeos, llamadas, podcasts, directos.",
+        en: "Any tab with audio — videos, calls, podcasts, live streams.",
+      },
+      {
+        es: "Transcripción en el dispositivo — Whisper corre en local; el audio nunca sale de tu máquina.",
+        en: "On-device transcription — Whisper runs locally; audio never leaves your machine.",
+      },
+      {
+        es: "Traducción hablada — el audio original se silencia; solo escuchas la traducción.",
+        en: "Spoken translation — the original tab audio is muted; you only hear the translation.",
+      },
+      {
+        es: "Sin clave, sin cuenta, sin backend — la configuración vive solo en tu navegador.",
+        en: "No key, no account, no backend — settings live only in your browser.",
+      },
+    ],
     howItWorks: {
       pipeline: ["Tab audio", "Whisper (local)", "Google Translate", "Web Speech API"],
+    },
+    privacy: {
+      es: "Sin backend, sin telemetría, sin cuenta. La transcripción ocurre en tu dispositivo; solo el texto transcrito se envía a Google Translate para obtener la traducción. La configuración (idiomas, tema) se almacena en chrome.storage.local en tu máquina.",
+      en: "No backend, no telemetry, no account. Transcription happens on your device; only the transcribed text is sent to Google Translate to get the translation back. Settings (languages, theme) are stored in chrome.storage.local on your machine.",
     },
     links: [
       {
@@ -98,7 +124,7 @@ export const LAB_PROJECTS: LabProject[] = [
       },
     ],
     techBadges: ["Chrome MV3", "React 18", "TypeScript", "Whisper", "Vite", "Tailwind CSS"],
-    coverImage: "/images/auralang/logo-card-presentation-1024.png",
+    coverImage: "/images/auralang/chrome-captura-dark-resize.jpg",
   },
 ]
 

@@ -45,14 +45,17 @@ export function LabContent() {
               href={`/lab/${project.slug}`}
               className="group grid gap-6 border-t border-border py-8 transition-colors hover:border-foreground/30 sm:grid-cols-[64px_1fr]"
             >
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden border border-border bg-secondary">
+              <div
+                className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden"
+                style={project.iconBg ? { backgroundColor: project.iconBg } : undefined}
+              >
                 {project.icon ? (
                   <Image
                     src={project.icon}
                     alt={project.name}
                     width={64}
                     height={64}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                   />
                 ) : (
                   <Blocks className="h-6 w-6 text-accent" />

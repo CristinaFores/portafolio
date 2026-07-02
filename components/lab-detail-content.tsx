@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, ArrowUpRight, ArrowRight, Blocks } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, ArrowRight } from "lucide-react"
 import { getLabProject } from "@/lib/data/lab-projects"
 import { LAB_PROJECT } from "@/lib/data/lab-project"
 import { TerminalSnippet } from "@/components/terminal-snippet"
@@ -10,9 +10,6 @@ import { useLocale } from "@/lib/locale-context"
 
 type Props = { slug: string }
 
-/**
- * Detail page for a single lab project.
- */
 export function LabDetailContent({ slug }: Props) {
   const { t, locale } = useLocale()
   const project = getLabProject(slug)
@@ -36,18 +33,17 @@ export function LabDetailContent({ slug }: Props) {
           </Link>
 
           <div className="flex items-start gap-4">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden border border-border bg-secondary">
-              {project.icon ? (
-                <Image
-                  src={project.icon}
-                  alt={project.name}
-                  width={56}
-                  height={56}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <Blocks className="h-6 w-6 text-accent" />
-              )}
+            <div
+              className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden"
+              style={project.iconBg ? { backgroundColor: project.iconBg } : undefined}
+            >
+              <Image
+                src={project.icon}
+                alt={project.name}
+                width={56}
+                height={56}
+                className="h-full w-full object-contain"
+              />
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap items-center gap-2">
@@ -70,13 +66,13 @@ export function LabDetailContent({ slug }: Props) {
 
         {/* Cover image */}
         {project.coverImage && (
-          <div className="overflow-hidden border border-border">
+          <div className="overflow-hidden border border-border max-h-[520px]">
             <Image
               src={project.coverImage}
               alt={project.name}
               width={1200}
-              height={isDCB ? 675 : 900}
-              className="w-full object-cover"
+              height={isDCB ? 675 : 800}
+              className="w-full object-cover object-top"
             />
           </div>
         )}
@@ -95,7 +91,7 @@ export function LabDetailContent({ slug }: Props) {
 
         <div className="flex flex-col divide-y divide-border">
 
-          {/* Why I built this */}
+          {/* Por qué lo construí */}
           <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
             <h2 className="font-mono text-xs text-muted-foreground">{t("project.whyIBuiltThis")}</h2>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -103,7 +99,22 @@ export function LabDetailContent({ slug }: Props) {
             </p>
           </section>
 
-          {/* How it works */}
+          {/* Qué hace — feature bullets (AuraLang) */}
+          {project.features && (
+            <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
+              <h2 className="font-mono text-xs text-muted-foreground">{t("lab.whatItDoes.title")}</h2>
+              <ul className="flex flex-col gap-3">
+                {project.features.map((feat, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
+                    <span className="mt-1.5 size-1 shrink-0 rounded-full bg-muted-foreground/40" aria-hidden />
+                    {feat[locale]}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {/* Cómo funciona */}
           <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
             <h2 className="font-mono text-xs text-muted-foreground">{t("lab.howItWorks.title")}</h2>
             <div>
@@ -136,7 +147,7 @@ export function LabDetailContent({ slug }: Props) {
             </div>
           </section>
 
-          {/* Capabilities — DCB only */}
+          {/* Qué expone — DCB only */}
           {isDCB && (
             <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
               <h2 className="font-mono text-xs text-muted-foreground">{t("lab.capabilities.title")}</h2>
@@ -153,7 +164,7 @@ export function LabDetailContent({ slug }: Props) {
             </section>
           )}
 
-          {/* Modes — DCB only */}
+          {/* Modos de uso — DCB only */}
           {isDCB && (
             <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
               <h2 className="font-mono text-xs text-muted-foreground">{t("lab.modes.title")}</h2>
@@ -169,7 +180,17 @@ export function LabDetailContent({ slug }: Props) {
             </section>
           )}
 
-          {/* Tech stack */}
+          {/* Privacidad — AuraLang */}
+          {project.privacy && (
+            <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
+              <h2 className="font-mono text-xs text-muted-foreground">{t("lab.security.title")}</h2>
+              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                {project.privacy[locale]}
+              </p>
+            </section>
+          )}
+
+          {/* Build y herramientas */}
           <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
             <h2 className="font-mono text-xs text-muted-foreground">{t("about.skills.build")}</h2>
             <div className="flex flex-wrap gap-1.5">
@@ -181,7 +202,7 @@ export function LabDetailContent({ slug }: Props) {
             </div>
           </section>
 
-          {/* Links */}
+          {/* Enlaces */}
           <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
             <h2 className="font-mono text-xs text-muted-foreground">{t("lab.links")}</h2>
             <div className="flex flex-col gap-3">
