@@ -77,7 +77,7 @@ export const LAB_PROJECTS: LabProject[] = [
   {
     slug: "auralang",
     name: "AuraLang",
-    status: "review",
+    status: "active",
     icon: "/images/auralang/chrome-icon128.png",
     tagline: {
       es: "Extensión de Chrome que traduce el audio de cualquier pestaña en tiempo real — Whisper local, sin clave de API.",
@@ -119,8 +119,7 @@ export const LAB_PROJECTS: LabProject[] = [
       },
       {
         label: { es: "Chrome Web Store", en: "Chrome Web Store" },
-        href: "https://chromewebstore.google.com",
-        pending: true,
+        href: "https://chromewebstore.google.com/detail/pakdegbkjgibdjkpdniabdocffiejolo",
       },
     ],
     techBadges: ["Chrome MV3", "React 18", "TypeScript", "Whisper", "Vite", "Tailwind CSS"],
