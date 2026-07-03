@@ -18,6 +18,21 @@ export const metadata: Metadata = {
   description: PROFILE.tagline,
 }
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: PROFILE.name,
+  jobTitle: PROFILE.role,
+  url: SITE_URL,
+  email: `mailto:${PROFILE.email}`,
+  sameAs: [PROFILE.linkedInUrl, PROFILE.gitHubUrl],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Barcelona",
+    addressCountry: "ES",
+  },
+}
+
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f5f1ea" },
@@ -35,6 +50,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${syne.variable} ${ibmPlexMono.variable} font-sans antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

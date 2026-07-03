@@ -49,13 +49,16 @@ export function IPhoneFrame({
     >
       <div className="relative rounded-[2.5rem] border-[6px] border-[#1a1a1a] bg-[#1a1a1a]">
         <div className="w-[280px] overflow-hidden rounded-[2rem]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* Width/height are layout hints; h-auto keeps each screenshot's natural ratio. */}
+          <Image
             src={src || FALLBACK_IMAGE_SRC}
             alt={alt}
+            width={1179}
+            height={2556}
+            sizes="280px"
             className="block h-auto w-full"
             style={{ maxHeight: 607 }}
-            loading="lazy"
+            quality={75}
           />
         </div>
         <div className="absolute bottom-2 left-1/2 h-[4px] w-[100px] -translate-x-1/2 rounded-full bg-white/20" />
@@ -146,13 +149,16 @@ export function TerminalFrame({
           className="relative inline-block overflow-hidden rounded-lg ring-1 ring-white/5"
           style={{ height: viewportHeight }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* Width/height are layout hints; rendered height is fixed and width follows the ratio. */}
+          <Image
             src={src || FALLBACK_IMAGE_SRC}
             alt={alt}
+            width={749}
+            height={1333}
+            sizes="342px"
             className="block h-full w-auto max-h-full object-contain object-top"
             style={{ height: viewportHeight, width: "auto" }}
-            loading="lazy"
+            quality={75}
           />
         </div>
       </div>

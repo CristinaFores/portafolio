@@ -4,12 +4,11 @@ export const SITE_URL = "https://cristinafores.dev"
  * Static profile information reused in metadata and UI sections.
  */
 export const PROFILE = {
-  name: "Cristina Fores",
+  name: "Cristina Forés",
   email: "cristinaforescampos1992@gmail.com",
   linkedInUrl: "https://www.linkedin.com/in/cristina-fores",
   gitHubUrl: "https://github.com/CristinaFores",
   cvUrl: "/CV-cristina-fores-en.pdf",
-  designContextBridgeUrl: "https://github.com/CristinaFores/design-context-bridge",
   gyozaUrl: "https://gyoza.es/",
   role: "Product / AI Engineer",
   tagline:
