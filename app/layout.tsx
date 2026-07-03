@@ -10,9 +10,10 @@ import { ScrollProgress } from "@/components/scroll-progress"
 import { ThemeProvider } from "@/components/theme-provider"
 import { LocaleProvider } from "@/lib/locale-context"
 import { inter, syne, ibmPlexMono } from "@/lib/fonts"
-import { PROFILE } from "@/lib/site-config"
+import { PROFILE, SITE_URL } from "@/lib/site-config"
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: `${PROFILE.name} — ${PROFILE.role}`,
   description: PROFILE.tagline,
 }

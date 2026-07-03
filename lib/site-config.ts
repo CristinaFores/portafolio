@@ -1,3 +1,5 @@
+export const SITE_URL = "https://cristinafores.dev"
+
 /**
  * Static profile information reused in metadata and UI sections.
  */
