@@ -77,6 +77,11 @@ export const translations = {
     "footer.tagline": "Product / AI Engineer · Barcelona",
     "work.companyBadge": "Proyecto Gyoza",
 
+    "notFound.title": "Página no encontrada",
+    "notFound.description": "La página que buscas no existe o se ha movido.",
+    "notFound.backHome": "Volver al inicio",
+    "notFound.viewProjects": "Ver proyectos",
+
     "project.allProjects": "Todos los proyectos",
     "project.visitProject": "Ver proyecto",
     "project.viewInFigma": "Ver en Figma",
@@ -215,6 +220,11 @@ export const translations = {
     "footer.tagline": "Product / AI Engineer · Barcelona",
 
     "work.companyBadge": "Gyoza project",
+
+    "notFound.title": "Page not found",
+    "notFound.description": "The page you are looking for does not exist or has been moved.",
+    "notFound.backHome": "Back to home",
+    "notFound.viewProjects": "View projects",
 
     "project.allProjects": "All Projects",
     "project.visitProject": "Visit project",

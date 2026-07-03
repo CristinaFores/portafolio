@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: `Sobre mí — ${PROFILE.name}`,
   description:
     "Product / AI Engineer especializada en React, React Native, Next.js, arquitectura de interfaz, Zustand, TanStack Query y herramientas MCP.",
+  alternates: { canonical: "/about" },
 }
 
 export default function AboutPage() {

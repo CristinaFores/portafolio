@@ -10,11 +10,27 @@ import { ScrollProgress } from "@/components/scroll-progress"
 import { ThemeProvider } from "@/components/theme-provider"
 import { LocaleProvider } from "@/lib/locale-context"
 import { inter, syne, ibmPlexMono } from "@/lib/fonts"
-import { PROFILE } from "@/lib/site-config"
+import { PROFILE, SITE_URL } from "@/lib/site-config"
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: `${PROFILE.name} — ${PROFILE.role}`,
   description: PROFILE.tagline,
+}
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: PROFILE.name,
+  jobTitle: PROFILE.role,
+  url: SITE_URL,
+  email: `mailto:${PROFILE.email}`,
+  sameAs: [PROFILE.linkedInUrl, PROFILE.gitHubUrl],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Barcelona",
+    addressCountry: "ES",
+  },
 }
 
 export const viewport: Viewport = {
@@ -34,6 +50,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${syne.variable} ${ibmPlexMono.variable} font-sans antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
