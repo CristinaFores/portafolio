@@ -33,8 +33,8 @@ export const LAB_PROJECTS: LabProject[] = [
     icon: "/images/dcb/logo-128.png",
     iconBg: "transparent",
     tagline: {
-      es: "Servidor MCP que expone Figma a agentes de IA: tokens, capas y espaciado, sin capturas de pantalla.",
-      en: "MCP server that exposes Figma to AI agents: tokens, layers and spacing — no screenshots.",
+      es: 'Para que la IA "vea" tus diseños sin depender de imágenes. Pasa datos limpios de Figma (capas, espaciados, tokens) directo a tus agentes de IA a través de MCP.',
+      en: 'So AI can "see" your designs without relying on images. Passes clean Figma data (layers, spacing, tokens) straight to your AI agents through MCP.',
     },
     whyBuilt: {
       es: "MCP (Model Context Protocol) es el protocolo que permite a los agentes de IA llamar a herramientas externas en lugar de interpretar capturas de pantalla. Cuando vi que nadie había conectado Figma con los agentes de forma que expusiera los tokens reales — no los píxeles — lo construí.",
@@ -80,12 +80,12 @@ export const LAB_PROJECTS: LabProject[] = [
     status: "active",
     icon: "/images/auralang/chrome-icon128.png",
     tagline: {
-      es: "Extensión de Chrome que traduce el audio de cualquier pestaña en tiempo real — Whisper local, sin clave de API.",
-      en: "Chrome extension that translates any tab's audio in real time — local Whisper, no API key.",
+      es: "Traduce al vuelo el audio de cualquier pestaña. Es totalmente privado: Whisper se ejecuta directamente en tu máquina, sin enviar datos fuera.",
+      en: "Translates any tab's audio on the fly. Fully private: Whisper runs directly on your machine, no data ever leaves it.",
     },
     whyBuilt: {
-      es: "Usaba herramientas de IA y recursos técnicos en inglés constantemente y perdía contexto cada vez que tenía que pausar y traducir manualmente. Quería escuchar el audio traducido en tiempo real, sin depender de claves de API ni de un backend propio. La transcripción ocurre en el dispositivo con Whisper — solo el texto transcrito sale a red para traducirse.",
-      en: "I constantly used AI tools and technical content in English and kept losing context whenever I had to pause and translate manually. I wanted to hear translated audio in real time, without depending on API keys or a backend of my own. Transcription happens on-device with Whisper — only the transcribed text goes out over the network to be translated.",
+      es: "Millones de personas consumen contenido en idiomas que no dominan y pierden contexto cada vez que pausan para traducir. Quise resolver eso: traducción de audio en tiempo real, sin claves de API ni backend propio. La transcripción ocurre en el dispositivo con Whisper — solo el texto transcrito sale a red para traducirse.",
+      en: "Millions of people consume content in languages they don't fully command and lose context every time they pause to translate. I set out to fix that: real-time audio translation, no API keys, no self-hosted backend. Transcription runs on-device with Whisper — only the transcribed text leaves the network to be translated.",
     },
     features: [
       {
@@ -101,8 +101,8 @@ export const LAB_PROJECTS: LabProject[] = [
         en: "Spoken translation — the original tab audio is muted; you only hear the translation.",
       },
       {
-        es: "Sin clave, sin cuenta, sin backend — la configuración vive solo en tu navegador.",
-        en: "No key, no account, no backend — settings live only in your browser.",
+        es: "Elige idioma de origen y destino, y cambia de par cuando quieras.",
+        en: "Pick source and target language, and switch pairs whenever you want.",
       },
     ],
     howItWorks: {

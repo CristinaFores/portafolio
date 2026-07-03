@@ -27,18 +27,10 @@ export const translations = {
     "hero.meta": "Barcelona · Disponible en remoto",
     "hero.viewWork": "Ver proyectos",
 
-    "now.sectionIndex": "01 — AHORA",
-    "now.headline": "Ahora",
-    "now.subhead": "En qué estoy trabajando y qué estoy construyendo ahora mismo.",
-
-    "mcp.sectionIndex": "02 — LAB",
-    "mcp.headline": "design-context-bridge",
-    "mcp.subhead":
-      "Servidor MCP que expone Figma a agentes de IA: tokens, capas y espaciado, sin capturas de pantalla.",
-    "mcp.explainer":
-      "MCP (Model Context Protocol) es el protocolo que permite a los agentes de IA llamar a herramientas externas en lugar de interpretar capturas de pantalla. Cuando vi que nadie había conectado Figma con los agentes de forma que expusiera los tokens reales — no los píxeles — lo construí.",
-    "mcp.cta": "Ver en GitHub",
-    "mcp.viewLab": "Ver el lab completo →",
+    "mcp.sectionIndex": "01 — LAB",
+    "mcp.headline": "Qué estoy construyendo",
+    "mcp.subhead": "Proyectos de código abierto que ya tengo en producción.",
+    "mcp.viewLab": "Ver el lab completo",
 
     "lab.sectionIndex": "LAB",
     "lab.title": "design-context-bridge",
@@ -62,13 +54,11 @@ export const translations = {
     "lab.whatItDoes.title": "Qué hace",
     "lab.disclaimer": "Independiente — no afiliado a Figma, Inc.",
     "lab.pageSubtitle": "Proyectos que construyo cuando la herramienta no existe.",
-    "lab.alsoBuilding": "También en el Lab",
-    "lab.auralang.description": "Extensión de Chrome que traduce el audio de cualquier pestaña en tiempo real — Whisper local, sin clave de API.",
     "lab.viewDetails": "Ver detalles",
     "lab.links": "Enlaces",
     "lab.pending": "Pendiente",
 
-    "work.sectionIndex": "03 — PROYECTOS",
+    "work.sectionIndex": "02 — PROYECTOS",
     "work.sectionTitle": "Proyectos en producción",
     "work.subhead":
       "Cada proyecto de esta lista está en producción. Ninguno es un ejercicio.",
@@ -82,7 +72,7 @@ export const translations = {
     "contact.subline":
       "Disponible en remoto para front-end, móvil y producto con IA — interfaces en producción, MCP y tooling para equipos que trabajan con agentes.",
     "contact.title": "¿Hablamos?",
-    "contact.sectionIndex": "04 — CONTACTO",
+    "contact.sectionIndex": "03 — CONTACTO",
 
     "footer.tagline": "Product / AI Engineer · Barcelona",
     "work.companyBadge": "Proyecto Gyoza",
@@ -175,18 +165,10 @@ export const translations = {
     "hero.meta": "Barcelona · Available for remote work",
     "hero.viewWork": "View projects",
 
-    "now.sectionIndex": "01 — NOW",
-    "now.headline": "Now",
-    "now.subhead": "What I'm working on and building right now.",
-
-    "mcp.sectionIndex": "02 — LAB",
-    "mcp.headline": "design-context-bridge",
-    "mcp.subhead":
-      "An MCP server that exposes Figma to AI agents: tokens, layers, and spacing — not screenshots.",
-    "mcp.explainer":
-      "MCP (Model Context Protocol) is the protocol that lets AI agents call external tools instead of interpreting screenshots. When I saw that nobody had connected Figma to agents in a way that exposed the actual tokens — not the pixels — I built it.",
-    "mcp.cta": "View on GitHub",
-    "mcp.viewLab": "View the full lab →",
+    "mcp.sectionIndex": "01 — LAB",
+    "mcp.headline": "What I'm building",
+    "mcp.subhead": "Open source projects already in production.",
+    "mcp.viewLab": "View the full lab",
 
     "lab.sectionIndex": "LAB",
     "lab.title": "design-context-bridge",
@@ -210,13 +192,11 @@ export const translations = {
     "lab.whatItDoes.title": "What it does",
     "lab.disclaimer": "Independent — not affiliated with Figma, Inc.",
     "lab.pageSubtitle": "Projects I build when the tool doesn't exist.",
-    "lab.alsoBuilding": "Also in the Lab",
-    "lab.auralang.description": "Chrome extension that translates any tab's audio in real time — local Whisper, no API key.",
     "lab.viewDetails": "View details",
     "lab.links": "Links",
     "lab.pending": "Pending",
 
-    "work.sectionIndex": "03 — SELECTED WORK",
+    "work.sectionIndex": "02 — SELECTED WORK",
     "work.sectionTitle": "Production projects",
     "work.subhead":
       "Every project on this list is in production. None of them are exercises.",
@@ -230,7 +210,7 @@ export const translations = {
     "contact.subline":
       "Available remotely for front-end, mobile, and AI product roles — production interfaces, MCP, and tooling for teams building with agents.",
     "contact.title": "Get in touch",
-    "contact.sectionIndex": "04 — CONTACT",
+    "contact.sectionIndex": "03 — CONTACT",
 
     "footer.tagline": "Product / AI Engineer · Barcelona",
 
