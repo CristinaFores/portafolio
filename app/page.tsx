@@ -2,12 +2,12 @@ import { Hero } from "@/components/hero"
 import { McpEdgeSection } from "@/components/mcp-edge-section"
 import { FeaturedProjects } from "@/components/featured-projects"
 import { ContactCTA } from "@/components/contact-cta"
+import { HomeDollyEntrance } from "@/components/home-dolly-entrance"
 
 export default function Page() {
   return (
     <>
-      <Hero />
-      <McpEdgeSection />
+      <HomeDollyEntrance hero={<Hero />} next={<McpEdgeSection />} />
       <FeaturedProjects />
       <ContactCTA />
     </>
