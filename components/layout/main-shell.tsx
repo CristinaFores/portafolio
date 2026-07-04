@@ -1,6 +1,6 @@
 "use client"
 
-import { PageTemplate } from "@/components/page-template"
+import { PageTemplate } from "@/components/layout/page-template"
 
 type MainShellProps = {
   children: React.ReactNode

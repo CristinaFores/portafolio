@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { projects, getProject } from "@/lib/data/projects"
-import { ProjectDetail } from "@/components/project-detail"
+import { ProjectDetail } from "@/components/sections/project-detail"
 import { PROFILE } from "@/lib/site-config"
 
 export async function generateStaticParams() {

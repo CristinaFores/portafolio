@@ -1,9 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { SectionHeading } from "@/components/section-heading"
-import { ParallaxBlock } from "@/components/parallax-block"
-import { ViewAllLink } from "@/components/view-all-link"
+import { SectionHeading } from "@/components/ui/section-heading"
+import { ParallaxBlock } from "@/components/ui/parallax-block"
+import { ViewAllLink } from "@/components/ui/view-all-link"
 import { ListRow } from "@/components/ui/list-row"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { useLocale } from "@/lib/locale-context"

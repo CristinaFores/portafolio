@@ -5,7 +5,7 @@ import Image from "next/image"
 import { ArrowLeft, ArrowUpRight, ArrowRight } from "lucide-react"
 import { getLabProject } from "@/lib/data/lab-projects"
 import { LAB_PROJECT } from "@/lib/data/lab-project"
-import { TerminalSnippet } from "@/components/terminal-snippet"
+import { TerminalSnippet } from "@/components/ui/terminal-snippet"
 import { useLocale } from "@/lib/locale-context"
 import { Tag } from "@/components/ui/tag"
 
