@@ -46,6 +46,7 @@ components/layout/    Global chrome (Navbar, Footer, ThemeProvider, MainShell).
 ## Next.js / App Router conventions
 
 - Routes live under `app/`; route-level composition (page assembly) belongs in the page file, not in a component.
+- Server Components are the default. Add `'use client'` only when the component genuinely needs browser APIs, event handlers, hooks, or context — and add it to the leaf component that needs it, not to a page or a wrapper above it. Never add the directive preemptively.
 - `next/image` is required for all raster images — always pass an accurate `sizes` prop matching the rendered box, not a viewport-relative default.
 - No new client-only state library — locale state uses a single `LocaleProvider` (`lib/locale-context.tsx`); don't add a second context/store for similar concerns without discussing scope first.
 
