@@ -133,9 +133,7 @@ const isDCB = slug === "design-context-bridge"
                 <div className="flex flex-wrap items-center gap-2">
                   {project.howItWorks.pipeline.map((step, i) => (
                     <span key={step} className="flex items-center gap-2">
-                      <span className="border border-border px-2 py-1 font-mono text-[11px] text-foreground">
-                        {step}
-                      </span>
+                      <Tag variant="muted">{step}</Tag>
                       {i < project.howItWorks.pipeline!.length - 1 && (
                         <ArrowRight className="h-3 w-3 shrink-0 text-muted-foreground/40" />
                       )}
@@ -194,9 +192,9 @@ const isDCB = slug === "design-context-bridge"
             <h2 className="font-mono text-xs text-muted-foreground">{t("about.skills.build")}</h2>
             <div className="flex flex-wrap gap-1.5">
               {project.techBadges.map((badge) => (
-                <span key={badge} className="border border-border px-2 py-1 font-mono text-[11px] text-muted-foreground">
+                <Tag key={badge} variant="muted">
                   {badge}
-                </span>
+                </Tag>
               ))}
             </div>
           </section>
