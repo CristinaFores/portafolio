@@ -13,3 +13,6 @@ node_modules/
 
 # pnpm is the sole package manager — block npm lockfile recurrence
 package-lock.json
+
+# TypeScript incremental build cache — regenerated locally, not build output
+tsconfig.tsbuildinfo
