@@ -9,6 +9,7 @@ import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { useParallaxY } from "@/hooks/use-parallax-y"
 import { PROFILE } from "@/lib/site-config"
+import { ButtonLink } from "@/components/ui/button-link"
 
 /** Renders the headline with the "AI"/"IA" keyword in the accent color. */
 function Headline({ text }: { text: string }) {
@@ -97,20 +98,12 @@ export function Hero() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href="/#projects"
-              onClick={scrollToProjects}
-              className="btn-primary inline-flex h-10 items-center px-5 text-sm font-medium"
-            >
+            <ButtonLink variant="primary" href="/#projects" onClick={scrollToProjects}>
               {t("hero.viewWork")}
-            </Link>
-            <Link
-              href="/#connect"
-              onClick={scrollToConnect}
-              className="btn-outline inline-flex h-10 items-center px-5 text-sm font-medium"
-            >
+            </ButtonLink>
+            <ButtonLink variant="outline" href="/#connect" onClick={scrollToConnect}>
               {t("contact.title")}
-            </Link>
+            </ButtonLink>
           </div>
         </motion.div>
 

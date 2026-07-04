@@ -10,6 +10,7 @@ import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { cn } from "@/lib/utils"
+import { TextLink } from "@/components/ui/text-link"
 
 /** Splits "Project Name — Description" into parts for styling; returns null if no separator. */
 function splitProjectTitle(title: string): { name: string; description: string } | null {
@@ -120,26 +121,22 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
               {(project.url || project.figmaUrl) && (
                 <div className="flex flex-wrap items-center gap-4 pt-1">
                   {project.url && (
-                    <a
+                    <TextLink
                       href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-underline inline-flex items-center gap-1 text-sm text-foreground hover:text-accent"
+                      className="inline-flex items-center gap-1 text-sm text-foreground hover:text-accent"
                     >
                       {t("project.visitProject")}
                       <ArrowUpRight className="h-3 w-3" />
-                    </a>
+                    </TextLink>
                   )}
                   {project.figmaUrl && (
-                    <a
+                    <TextLink
                       href={project.figmaUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-underline inline-flex items-center gap-1 text-sm text-foreground hover:text-accent"
+                      className="inline-flex items-center gap-1 text-sm text-foreground hover:text-accent"
                     >
                       {t("project.viewInFigma")}
                       <ArrowUpRight className="h-3 w-3" />
-                    </a>
+                    </TextLink>
                   )}
                 </div>
               )}

@@ -1,7 +1,7 @@
 "use client"
 
-import Link from "next/link"
 import { useLocale } from "@/lib/locale-context"
+import { TextLink } from "@/components/ui/text-link"
 
 export default function NotFound() {
   const { t } = useLocale()
@@ -14,12 +14,12 @@ export default function NotFound() {
       </h1>
       <p className="max-w-md text-muted-foreground">{t("notFound.description")}</p>
       <div className="flex flex-wrap items-center justify-center gap-6">
-        <Link href="/" className="link-underline text-foreground hover:text-accent">
+        <TextLink href="/" className="text-foreground hover:text-accent">
           {t("notFound.backHome")}
-        </Link>
-        <Link href="/projects" className="link-underline text-foreground hover:text-accent">
+        </TextLink>
+        <TextLink href="/projects" className="text-foreground hover:text-accent">
           {t("notFound.viewProjects")}
-        </Link>
+        </TextLink>
       </div>
     </section>
   )

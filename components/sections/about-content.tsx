@@ -1,11 +1,12 @@
 "use client"
 
-import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
+import { TextLink } from "@/components/ui/text-link"
+import { ButtonLink } from "@/components/ui/button-link"
 
 const SKILL_TAGS: Record<string, string[]> = {
   programming: ["TypeScript", "React", "React Native", "Next.js", "Expo", "Vue 3"],
@@ -82,15 +83,13 @@ export function AboutContent() {
               <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                 <div className="flex flex-col gap-1.5">
                   <h3 className="font-medium text-foreground">{t("about.experience.gyoza.title")}</h3>
-                  <Link
+                  <TextLink
                     href={PROFILE.gyozaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-underline inline-flex w-fit items-center gap-1 font-mono text-xs text-accent"
+                    className="inline-flex w-fit items-center gap-1 font-mono text-xs text-accent"
                   >
                     gyoza.es
                     <ArrowUpRight className="h-3 w-3" aria-hidden />
-                  </Link>
+                  </TextLink>
                 </div>
                 <span className="shrink-0 font-mono text-xs text-muted-foreground/70">
                   {t("about.experience.gyoza.date")}
@@ -161,14 +160,9 @@ export function AboutContent() {
         </Section>
 
         <motion.div {...fadeUp()} className="border-t border-border pt-8">
-          <a
-            href={PROFILE.cvUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline inline-flex h-10 items-center px-5 text-sm font-medium"
-          >
+          <ButtonLink variant="outline" href={PROFILE.cvUrl}>
             {t("nav.cv")}
-          </a>
+          </ButtonLink>
         </motion.div>
       </div>
     </div>
