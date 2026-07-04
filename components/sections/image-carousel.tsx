@@ -4,7 +4,7 @@ import { useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { ProjectImage } from "@/lib/data/projects"
-import { IPhoneFrame, MacBookFrame, TerminalFrame, WireframeFrame } from "@/components/device-frame"
+import { IPhoneFrame, MacBookFrame, TerminalFrame, WireframeFrame } from "@/components/ui/device-frame"
 import { useLocale } from "@/lib/locale-context"
 
 type DeviceImageProps = {

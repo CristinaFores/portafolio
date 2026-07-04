@@ -1,9 +1,9 @@
 "use client"
 
 import { getFeaturedProjects } from "@/lib/data/projects"
-import { ProjectCaseRow } from "@/components/project-case-row"
-import { SectionHeading } from "@/components/section-heading"
-import { ViewAllLink } from "@/components/view-all-link"
+import { ProjectCaseRow } from "@/components/sections/project-case-row"
+import { SectionHeading } from "@/components/ui/section-heading"
+import { ViewAllLink } from "@/components/ui/view-all-link"
 import { useLocale } from "@/lib/locale-context"
 
 /**

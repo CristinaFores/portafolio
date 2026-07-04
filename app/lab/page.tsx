@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { LabContent } from "@/components/lab-content"
+import { LabContent } from "@/components/sections/lab-content"
 import { PROFILE } from "@/lib/site-config"
 
 export const metadata: Metadata = {
