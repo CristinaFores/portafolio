@@ -10,3 +10,6 @@ node_modules/
 .next/
 .env*.local
 .DS_Store
+
+# pnpm is the sole package manager — block npm lockfile recurrence
+package-lock.json
