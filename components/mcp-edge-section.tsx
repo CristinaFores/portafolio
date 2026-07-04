@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react"
 import { SectionHeading } from "@/components/section-heading"
 import { ParallaxBlock } from "@/components/parallax-block"
 import { ViewAllLink } from "@/components/view-all-link"
+import { Tag } from "@/components/ui/tag"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
@@ -56,9 +57,7 @@ export function McpEdgeSection() {
                     </p>
 
                     <div className="flex flex-wrap gap-1.5 pt-0.5">
-                      <span className="border border-border bg-secondary px-2 py-0.5 font-mono text-[11px] text-foreground/80">
-                        {t(`lab.status.${project.status}`)}
-                      </span>
+                      <Tag>{t(`lab.status.${project.status}`)}</Tag>
                     </div>
                   </div>
 

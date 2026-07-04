@@ -35,10 +35,9 @@ export function SectionHeading({
       </motion.p>
       <motion.h2
         {...fadeUp({ y: 10, duration: 0.35, delay: 0.04 })}
-        className={`font-display text-balance font-semibold leading-[1.12] tracking-[-0.02em] ${
+        className={`text-heading-md font-display text-balance font-semibold leading-[1.12] tracking-[-0.02em] ${
           inverse ? "text-inverse-foreground" : "text-foreground"
         }`}
-        style={{ fontSize: "clamp(1.75rem, 4vw, 2.5rem)" }}
       >
         {title}
       </motion.h2>

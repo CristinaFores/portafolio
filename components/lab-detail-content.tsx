@@ -7,6 +7,7 @@ import { getLabProject } from "@/lib/data/lab-projects"
 import { LAB_PROJECT } from "@/lib/data/lab-project"
 import { TerminalSnippet } from "@/components/terminal-snippet"
 import { useLocale } from "@/lib/locale-context"
+import { Tag } from "@/components/ui/tag"
 
 type Props = { slug: string }
 
@@ -53,9 +54,7 @@ const isDCB = slug === "design-context-bridge"
                 >
                   {project.name}
                 </h1>
-                <span className="border border-border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
-                  {t(`lab.status.${project.status}`)}
-                </span>
+                <Tag variant="status">{t(`lab.status.${project.status}`)}</Tag>
               </div>
               <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
                 {project.tagline[locale]}
