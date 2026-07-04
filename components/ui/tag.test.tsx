@@ -20,4 +20,11 @@ describe("Tag", () => {
 
     expect(screen.getByText("Live")).toHaveClass("uppercase", "text-accent")
   })
+
+  it("applies the muted variant classes", () => {
+    render(<Tag variant="muted">TypeScript</Tag>)
+
+    expect(screen.getByText("TypeScript")).toHaveClass("text-muted-foreground")
+    expect(screen.getByText("TypeScript")).not.toHaveClass("bg-secondary")
+  })
 })

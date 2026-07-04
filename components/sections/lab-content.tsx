@@ -73,14 +73,12 @@ export function LabContent() {
                 </p>
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {project.techBadges.slice(0, 4).map((badge) => (
-                    <span key={badge} className="border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+                    <Tag key={badge} variant="muted">
                       {badge}
-                    </span>
+                    </Tag>
                   ))}
                   {project.techBadges.length > 4 && (
-                    <span className="border border-border px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
-                      +{project.techBadges.length - 4}
-                    </span>
+                    <Tag variant="muted">+{project.techBadges.length - 4}</Tag>
                   )}
                 </div>
                 <span className="mt-1 inline-flex items-center gap-1 text-xs text-muted-foreground/60 transition-colors group-hover:text-accent">

@@ -130,14 +130,14 @@ export function Hero() {
       </div>
 
       {!reduced && (
-        <a
+        <Link
           href="/#projects"
           onClick={scrollToProjects}
           className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 font-mono text-[10px] text-muted-foreground/50 transition-colors hover:text-muted-foreground md:flex"
           aria-label={t("hero.viewWork")}
         >
           <ChevronDown className="h-4 w-4 animate-bounce-subtle" aria-hidden />
-        </a>
+        </Link>
       )}
     </section>
   )
