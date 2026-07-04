@@ -43,10 +43,6 @@
     @apply md:justify-center;
   }
 
-  .home-section-compact {
-    @apply flex flex-col border-t border-border px-6 py-20 md:py-24;
-  }
-
   .home-section-muted {
     @apply bg-muted;
   }
