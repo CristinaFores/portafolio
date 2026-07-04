@@ -48,10 +48,7 @@ const isDCB = slug === "design-context-bridge"
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap items-center gap-2">
-                <h1
-                  className="font-semibold leading-tight tracking-[-0.025em]"
-                  style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
-                >
+                <h1 className="text-heading-md font-semibold leading-tight tracking-[-0.025em]">
                   {project.name}
                 </h1>
                 <Tag variant="status">{t(`lab.status.${project.status}`)}</Tag>
