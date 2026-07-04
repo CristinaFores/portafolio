@@ -13,7 +13,7 @@ import { useMotion } from "@/hooks/use-motion"
  * Home teaser for the Lab. Same row pattern as FeaturedProjects/ProjectCaseRow
  * so both list sections on the home page share one visual language.
  */
-export function McpEdgeSection() {
+export function LabTeaserSection() {
   const { t, locale } = useLocale()
   const { staggerItem } = useMotion()
 
@@ -22,9 +22,9 @@ export function McpEdgeSection() {
       <ParallaxBlock className="mx-auto w-full max-w-5xl" range={20}>
         <div className="flex flex-col gap-8 max-lg:gap-6">
           <SectionHeading
-            index={t("mcp.sectionIndex")}
-            title={t("mcp.headline")}
-            subtitle={t("mcp.subhead")}
+            index={t("lab.home.sectionIndex")}
+            title={t("lab.home.headline")}
+            subtitle={t("lab.home.subhead")}
           />
 
           <div className="flex flex-col">
@@ -41,7 +41,7 @@ export function McpEdgeSection() {
             ))}
           </div>
 
-          <ViewAllLink href="/lab" label={t("mcp.viewLab")} />
+          <ViewAllLink href="/lab" label={t("lab.home.viewLab")} />
         </div>
       </ParallaxBlock>
     </section>
