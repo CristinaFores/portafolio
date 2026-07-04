@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ArrowLeft, ArrowUpRight, Blocks } from "lucide-react"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { useLocale } from "@/lib/locale-context"
+import { Tag } from "@/components/ui/tag"
 
 /**
  * Lab index — list of projects, each linking to its detail page.
@@ -26,10 +27,7 @@ export function LabContent() {
           </Link>
           <div className="flex flex-col gap-3">
             <p className="font-mono text-xs text-muted-foreground">{t("lab.sectionIndex")}</p>
-            <h1
-              className="font-semibold leading-tight tracking-[-0.025em]"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
-            >
+            <h1 className="text-heading-lg font-semibold leading-tight tracking-[-0.025em]">
               Lab
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
@@ -67,9 +65,7 @@ export function LabContent() {
                   <h2 className="text-base font-semibold text-foreground transition-colors group-hover:text-accent">
                     {project.name}
                   </h2>
-                  <span className="border border-border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-accent">
-                    {t(`lab.status.${project.status}`)}
-                  </span>
+                  <Tag variant="status">{t(`lab.status.${project.status}`)}</Tag>
                 </div>
                 <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
                   {project.tagline[locale]}

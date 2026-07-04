@@ -21,10 +21,7 @@ export function ContactCTA() {
         >
           <div className="flex max-w-xl flex-col gap-4">
             <p className="font-mono text-xs text-muted-foreground">{t("contact.sectionIndex")}</p>
-            <h2
-              className="text-balance font-semibold leading-[1.15] tracking-[-0.02em] text-foreground"
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)" }}
-            >
+            <h2 className="text-heading-sm text-balance font-semibold leading-[1.15] tracking-[-0.02em] text-foreground">
               {t("contact.headline")}
             </h2>
             <p className="text-pretty text-base leading-relaxed text-muted-foreground">

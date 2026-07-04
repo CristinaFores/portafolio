@@ -63,6 +63,11 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      fontSize: {
+        'heading-lg': 'clamp(2rem, 5vw, 3.5rem)',
+        'heading-md': 'clamp(1.75rem, 4vw, 2.5rem)',
+        'heading-sm': 'clamp(1.5rem, 3.5vw, 2.25rem)',
+      },
       keyframes: {
         'bounce-subtle': {
           '0%, 100%': { transform: 'translateY(0)' },

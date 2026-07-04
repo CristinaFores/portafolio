@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useMotion } from "@/hooks/use-motion"
+import { Tag } from "@/components/ui/tag"
 
 type ProjectCaseRowProps = {
   slug: string
@@ -67,12 +68,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
           {stackTags.length > 0 && (
             <div className="flex flex-wrap gap-1.5 pt-0.5">
               {stackTags.map((tech) => (
-                <span
-                  key={tech}
-                  className="border border-border bg-secondary px-2 py-0.5 font-mono text-[11px] text-foreground/80"
-                >
-                  {tech}
-                </span>
+                <Tag key={tech}>{tech}</Tag>
               ))}
             </div>
           )}
