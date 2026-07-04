@@ -1,4 +1,4 @@
-type TagProps = {
+export type TagProps = {
   children: React.ReactNode
   variant?: "default" | "status"
 }
