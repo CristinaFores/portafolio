@@ -1,90 +1,75 @@
-# Cristina Forés Campos Portfolio
+# Cristina Forés Campos — Portfolio
 
-Portfolio personal de Product / AI Engineer. Next.js App Router, i18n ES/EN, animaciones con Framer Motion y despliegue en Vercel.
+Personal portfolio for a Product / AI Engineer. Built with Next.js App Router, bilingual (ES/EN), animated with Framer Motion, deployed on Vercel.
 
 ## Stack
 
 - Next.js 16 (App Router)
 - React 19
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS v3
 - Framer Motion
-- Vercel Analytics
+- Vitest + React Testing Library
+- pnpm (sole package manager)
 
-## Requisitos
-
-- Node.js 20+
-- pnpm
-
-## Desarrollo local
+## Getting started
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-App en `http://localhost:3000`.
+App runs at `http://localhost:3000`.
 
 ## Scripts
 
-| Comando       | Descripción              |
-| ------------- | ------------------------ |
-| `pnpm dev`    | Servidor de desarrollo   |
-| `pnpm build`  | Build de producción      |
-| `pnpm start`  | Servidor de producción   |
-| `pnpm lint`   | ESLint                   |
+| Command | Description |
+|---|---|
+| `pnpm dev` | Start the dev server |
+| `pnpm build` | Production build |
+| `pnpm start` | Serve the production build |
+| `pnpm lint` | ESLint |
+| `pnpm typecheck` | `tsc --noEmit` |
+| `pnpm test` | Run the Vitest suite once |
+| `pnpm test:watch` | Vitest in watch mode |
 
-## Rutas
+CI (`.github/workflows/ci.yml`) runs lint → typecheck → test → build on every PR and push to `main`.
 
-| Ruta                 | Descripción                          |
-| -------------------- | ------------------------------------ |
-| `/`                  | Home — hero, Now, Lab, proyectos     |
-| `/about`             | Sobre mí                             |
-| `/lab`               | design-context-bridge (MCP)          |
-| `/projects`          | Listado completo de proyectos      |
-| `/projects/[slug]`   | Detalle de cada case study           |
+## Project structure
 
-## Estructura
+Components are split by responsibility, not by page/feature — this is a presentational site, not a set of bounded contexts. See [`DESIGN.md`](./DESIGN.md) for the full rationale.
 
 ```
-app/              Rutas y layout global
-components/       UI (hero, navbar, project-detail, page-template…)
-hooks/            use-motion, use-translated-project
+app/                    Routes and global layout (App Router)
+components/
+  ui/                   Pure presentational primitives (Tag, ListRow, SectionHeading...)
+                        No i18n, no data fetching, no route knowledge — props in, markup out.
+  sections/             Page-composed sections (Hero, FeaturedProjects, LabContent...)
+                        Own data, i18n (useLocale), motion, and behavior; compose ui/ primitives.
+  layout/               Global chrome (Navbar, Footer, ThemeProvider, MainShell)
+hooks/                  use-motion, use-parallax-y, use-translated-project
 lib/
-  data/           projects, lab-project, now, traducciones
-  motion.ts       Variantes compartidas de animación
-  site-config.ts  Perfil, links, metadata
-  translations.ts Diccionario i18n ES/EN
-public/images/    Capturas de proyectos
+  data/                 projects, lab-projects, project translations, now
+  translations.ts       ES/EN dictionary
+  locale-context.tsx    Locale provider + t() helper (client-side, localStorage-persisted)
+  motion.ts             Shared Framer Motion variants
+  site-config.ts        Profile, links, site metadata
+public/images/           Project screenshots
 ```
 
-## Personalización
+## Internationalization
 
-| Qué                    | Dónde                                      |
-| ---------------------- | ------------------------------------------ |
-| Perfil y links         | `lib/site-config.ts`                       |
-| Proyectos              | `lib/data/projects.ts`                     |
-| Traducciones proyectos | `lib/data/project-translations.ts`         |
-| Textos UI              | `lib/translations.ts`                      |
-| Sección Now            | `lib/data/now.ts`                          |
-| Lab / MCP              | `lib/data/lab-project.ts`                  |
-| Home                   | `components/hero.tsx`, `featured-projects.tsx`, `contact-cta.tsx` |
-| About                  | `components/about-content.tsx`             |
-| Nav / footer           | `components/navbar.tsx`, `components/footer.tsx` |
+ES/EN via a client-side `LocaleProvider` (`lib/locale-context.tsx`): locale is resolved from `localStorage` or the browser's `navigator.language`, exposed through a `useLocale()` hook returning `{ locale, setLocale, t, dict }`. There is no locale-prefixed routing — the same URL renders both languages.
 
-## Animaciones
+## Testing
 
-- Transición entre páginas: `components/page-template.tsx` (curtain fade)
-- Scroll / entrada: `hooks/use-motion.ts` + `lib/motion.ts`
-- Respeta `prefers-reduced-motion`
-
-## Build de producción
-
-```bash
-pnpm build
-pnpm start
-```
+Vitest + React Testing Library + jsdom. `ui/` primitives are pure (no hooks/context), so they're tested without providers. Tests live next to the component they cover (e.g. `components/ui/tag.test.tsx`).
 
 ## Deploy
 
-Configurado para Vercel (`vercel.json` usa `pnpm install`).
+Deployed on Vercel. `vercel.json` forces a clean install (`rm -rf node_modules && pnpm install`) to avoid stale `node_modules` on redeploys.
+
+## More docs
+
+- [`DESIGN.md`](./DESIGN.md) — design tokens, typography scale, component API contracts
+- [`AGENTS.md`](./AGENTS.md) — conventions and guardrails for AI agents working in this repo
