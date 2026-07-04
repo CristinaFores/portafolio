@@ -27,10 +27,10 @@ export const translations = {
     "hero.meta": "Barcelona · Disponible en remoto",
     "hero.viewWork": "Ver proyectos",
 
-    "mcp.sectionIndex": "01 — LAB",
-    "mcp.headline": "Qué estoy construyendo",
-    "mcp.subhead": "Proyectos de código abierto que ya tengo en producción.",
-    "mcp.viewLab": "Ver el lab completo",
+    "lab.home.sectionIndex": "01 — LAB",
+    "lab.home.headline": "Qué estoy construyendo",
+    "lab.home.subhead": "Proyectos de código abierto que ya tengo en producción.",
+    "lab.home.viewLab": "Ver el lab completo",
 
     "lab.sectionIndex": "LAB",
     "lab.title": "design-context-bridge",
@@ -170,10 +170,10 @@ export const translations = {
     "hero.meta": "Barcelona · Available for remote work",
     "hero.viewWork": "View projects",
 
-    "mcp.sectionIndex": "01 — LAB",
-    "mcp.headline": "What I'm building",
-    "mcp.subhead": "Open source projects already in production.",
-    "mcp.viewLab": "View the full lab",
+    "lab.home.sectionIndex": "01 — LAB",
+    "lab.home.headline": "What I'm building",
+    "lab.home.subhead": "Open source projects already in production.",
+    "lab.home.viewLab": "View the full lab",
 
     "lab.sectionIndex": "LAB",
     "lab.title": "design-context-bridge",
