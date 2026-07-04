@@ -53,6 +53,7 @@ export function LabContent() {
                     alt={project.name}
                     width={64}
                     height={64}
+                    sizes="64px"
                     className="h-full w-full object-contain"
                   />
                 ) : (

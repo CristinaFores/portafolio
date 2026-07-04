@@ -13,9 +13,9 @@ export function ViewAllLink({ href, label }: ViewAllLinkProps) {
   return (
     <Link
       href={href}
-      className="group inline-flex items-center gap-2 text-sm font-medium text-foreground link-underline hover:text-accent"
+      className="group inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent"
     >
-      {label}
+      <span className="link-underline">{label}</span>
       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
     </Link>
   )
