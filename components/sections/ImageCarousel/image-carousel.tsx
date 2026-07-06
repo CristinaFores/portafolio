@@ -1,47 +1,15 @@
 "use client"
 
-import { useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { ProjectImage } from "@/types/project"
-import { IPhoneFrame, MacBookFrame, TerminalFrame, WireframeFrame } from "@/components/ui/DeviceFrame/device-frame"
 import { useLocale } from "@/lib/i18n/locale-context"
+import { useCarousel } from "./use-carousel"
+import { DeviceImage } from "./device-image"
+import { slideVariants } from "./slide-variants"
 
-type DeviceImageProps = {
-  image: ProjectImage
-}
-
-type ImageCarouselProps = {
+export type ImageCarouselProps = {
   images: ProjectImage[]
-}
-
-function DeviceImage({ image }: DeviceImageProps) {
-  const portraitClass = "[zoom:0.8] sm:[zoom:1]"
-
-  if (image.type === "terminal") {
-    return (
-      <div className={portraitClass}>
-        <TerminalFrame src={image.src} alt={image.alt} />
-      </div>
-    )
-  }
-  if (image.type === "mobile") {
-    return (
-      <div className={portraitClass}>
-        <IPhoneFrame src={image.src} alt={image.alt} />
-      </div>
-    )
-  }
-  if (image.type === "wireframe") {
-    return <WireframeFrame src={image.src} alt={image.alt} />
-  }
-  return <MacBookFrame src={image.src} alt={image.alt} />
-}
-
-const slideVariants = {
-  enter: (dir: number) => ({ x: dir > 0 ? 180 : -180, opacity: 0 }),
-  center: { x: 0, opacity: 1 },
-  exit: (dir: number) => ({ x: dir > 0 ? -180 : 180, opacity: 0 }),
 }
 
 /**
@@ -49,26 +17,7 @@ const slideVariants = {
  */
 export function ImageCarousel({ images }: ImageCarouselProps) {
   const { t } = useLocale()
-  const [current, setCurrent] = useState(0)
-  const [direction, setDirection] = useState(0)
-
-  const goTo = useCallback(
-    (index: number) => {
-      setDirection(index > current ? 1 : -1)
-      setCurrent(index)
-    },
-    [current]
-  )
-
-  const goNext = useCallback(() => {
-    setDirection(1)
-    setCurrent((prev) => (prev + 1) % images.length)
-  }, [images.length])
-
-  const goPrev = useCallback(() => {
-    setDirection(-1)
-    setCurrent((prev) => (prev - 1 + images.length) % images.length)
-  }, [images.length])
+  const { current, direction, goTo, goNext, goPrev } = useCarousel(images.length)
 
   if (images.length === 0) return null
 
