@@ -12,6 +12,7 @@ import { useLocale } from "@/lib/i18n/locale-context"
 import { EASE } from "@/lib/motion"
 import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
+import { ROUTES } from "@/lib/routes"
 
 function isActive(href: string, pathname: string): boolean {
   if (href === "/") return pathname === "/"
@@ -19,10 +20,10 @@ function isActive(href: string, pathname: string): boolean {
 }
 
 const navLinks = [
-  { href: "/", labelKey: "nav.home" as const },
-  { href: "/about", labelKey: "nav.about" as const },
-  { href: "/lab", labelKey: "nav.lab" as const },
-  { href: "/projects", labelKey: "nav.work" as const },
+  { href: ROUTES.home, labelKey: "nav.home" as const },
+  { href: ROUTES.about, labelKey: "nav.about" as const },
+  { href: ROUTES.lab, labelKey: "nav.lab" as const },
+  { href: ROUTES.projects, labelKey: "nav.work" as const },
 ]
 
 type NavControlsProps = {
@@ -206,7 +207,7 @@ export function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Link href="/" className="group flex items-center gap-2.5">
+        <Link href={ROUTES.home} className="group flex items-center gap-2.5">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-[#f5f1ea]">
             <Image
               src="/cristina-portrait.webp"

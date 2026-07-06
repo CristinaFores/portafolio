@@ -8,6 +8,7 @@ import { LAB_PROJECT } from "@/lib/data/lab-project"
 import { TerminalSnippet } from "@/components/ui/TerminalSnippet/terminal-snippet"
 import { useLocale } from "@/lib/i18n/locale-context"
 import { Tag } from "@/components/ui/Tag/tag"
+import { ROUTES } from "@/lib/routes"
 
 type Props = { slug: string }
 
@@ -26,7 +27,7 @@ const isDCB = slug === "design-context-bridge"
         {/* Header */}
         <header className="flex flex-col gap-6">
           <Link
-            href="/lab"
+            href={ROUTES.lab}
             className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />

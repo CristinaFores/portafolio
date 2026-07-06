@@ -2,6 +2,7 @@
 
 import { useLocale } from "@/lib/i18n/locale-context"
 import { TextLink } from "@/components/ui/TextLink/text-link"
+import { ROUTES } from "@/lib/routes"
 
 export default function NotFound() {
   const { t } = useLocale()
@@ -14,10 +15,10 @@ export default function NotFound() {
       </h1>
       <p className="max-w-md text-muted-foreground">{t("notFound.description")}</p>
       <div className="flex flex-wrap items-center justify-center gap-6">
-        <TextLink href="/" className="text-foreground hover:text-accent">
+        <TextLink href={ROUTES.home} className="text-foreground hover:text-accent">
           {t("notFound.backHome")}
         </TextLink>
-        <TextLink href="/projects" className="text-foreground hover:text-accent">
+        <TextLink href={ROUTES.projects} className="text-foreground hover:text-accent">
           {t("notFound.viewProjects")}
         </TextLink>
       </div>
