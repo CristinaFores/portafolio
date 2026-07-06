@@ -15,26 +15,15 @@ export interface UserTestInsight {
   finding: string
 }
 
-export interface Project {
+export interface ProjectBase {
   slug: string
   /** When set (e.g. "Gyoza"), a company badge is shown on the card and detail. */
   company?: "Gyoza"
   /** When true, shown on the home page featured section (one per client). */
   featured?: boolean
-  title: string
-  subtitle: string
   year: string
   stack: string[]
   tags: string[]
-  challenge: string
-  myRole: string
-  features: string[]
-  results: string[]
-  howItWorks?: string[]
-  whyBuilt?: string[]
-  uxProcess?: UxProcess[]
-  userTestInsights?: UserTestInsight[]
-  keyFindings?: string[]
   figmaUrl?: string
   images: ProjectImage[]
   cover: string
@@ -51,3 +40,11 @@ export interface ProjectTranslation {
   imageAlts: string[]
   howItWorks?: string[]
 }
+
+export type Project = ProjectBase &
+  ProjectTranslation & {
+    whyBuilt?: string[]
+    uxProcess?: UxProcess[]
+    userTestInsights?: UserTestInsight[]
+    keyFindings?: string[]
+  }

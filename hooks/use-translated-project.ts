@@ -17,23 +17,25 @@ export function useTranslatedProject(slug: string): Project | null {
 
   return useMemo(() => {
     if (!project) return null
-    if (!translation) return project
 
-    const images = project.images.map((img, i) => ({
-      ...img,
-      alt: translation.imageAlts[i] ?? img.alt,
-    }))
+    const images = translation
+      ? project.images.map((img, i) => ({
+          ...img,
+          alt: translation.imageAlts[i] ?? img.alt,
+        }))
+      : project.images
 
     return {
       ...project,
-      title: translation.title,
-      subtitle: translation.subtitle,
-      challenge: translation.challenge,
-      myRole: translation.myRole,
-      features: translation.features,
-      results: translation.results,
+      title: translation?.title ?? "",
+      subtitle: translation?.subtitle ?? "",
+      challenge: translation?.challenge ?? "",
+      myRole: translation?.myRole ?? "",
+      features: translation?.features ?? [],
+      results: translation?.results ?? [],
+      imageAlts: translation?.imageAlts ?? [],
       images,
-      ...(translation.howItWorks != null && { howItWorks: translation.howItWorks }),
+      ...(translation?.howItWorks != null && { howItWorks: translation.howItWorks }),
     }
   }, [project, translation])
 }

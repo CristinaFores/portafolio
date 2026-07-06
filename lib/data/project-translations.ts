@@ -642,31 +642,6 @@ export const projectTranslations: Record<Locale, ProjectTranslations> = {
       ],
       imageAlts: [],
     },
-    "goiko-invoicing": {
-      title: "Goiko — Invoicing",
-      subtitle: "Invoice and billing management for franchisees",
-      challenge:
-        "Franchisees needed a dedicated screen to view and manage invoices and billing data, with a clear structure and the option to export or filter.",
-      myRole:
-        "I built the frontend with Vue 3 and Pinia: invoice list, filters and integration with the billing API; UI with Naive UI so it felt consistent with other Goiko tools.",
-      features: [
-        "Invoice list with search and filters",
-        "Billing and payment status views",
-        "Vue 3 Composition API and Pinia for state",
-        "Naive UI component set",
-      ],
-      results: [
-        "Franchisees can access billing without going through the main ordering app",
-        "Aligned UX with other Goiko internal tools",
-      ],
-      howItWorks: [
-        "Franchisee logs in and opens the invoicing app.",
-        "Invoice list is displayed with search and filters to find specific periods or statuses.",
-        "Billing and payment status views give a clear picture of what is paid or pending.",
-        "Data comes from the billing API; export or further actions depend on backend capabilities.",
-      ],
-      imageAlts: [],
-    },
     "goiko-online-menu": {
       title: "Goiko — Digital Menu",
       subtitle: "Browse the full menu online or via QR in the restaurant",
