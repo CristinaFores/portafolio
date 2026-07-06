@@ -5,6 +5,7 @@ import { ProjectCaseRow } from "@/components/sections/ProjectCaseRow/project-cas
 import { SectionHeading } from "@/components/ui/SectionHeading/section-heading"
 import { ViewAllLink } from "@/components/ui/ViewAllLink/view-all-link"
 import { useLocale } from "@/lib/i18n/locale-context"
+import { ROUTES } from "@/lib/routes"
 
 /**
  * Project case-study rows on the home page (one per client, curated set).
@@ -28,7 +29,7 @@ export function FeaturedProjects() {
           ))}
         </div>
 
-        <ViewAllLink href="/projects" label={t("work.viewAll")} />
+        <ViewAllLink href={ROUTES.projects} label={t("work.viewAll")} />
       </div>
     </section>
   )

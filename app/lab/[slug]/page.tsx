@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { getLabProject, LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { LabDetailContent } from "@/components/sections/LabDetailContent/lab-detail-content"
 import { PROFILE } from "@/lib/site-config"
+import { ROUTES } from "@/lib/routes"
 
 export function generateStaticParams() {
   return LAB_PROJECTS.map((p) => ({ slug: p.slug }))
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${project.name} — Lab — ${PROFILE.name}`,
     description: project.tagline.es,
-    alternates: { canonical: `/lab/${slug}` },
+    alternates: { canonical: ROUTES.labProject(slug) },
   }
 }
 

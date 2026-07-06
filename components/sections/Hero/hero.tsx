@@ -10,6 +10,7 @@ import { useMotion } from "@/hooks/use-motion"
 import { useParallaxY } from "@/hooks/use-parallax-y"
 import { PROFILE } from "@/lib/site-config"
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
+import { ROUTES } from "@/lib/routes"
 
 /** Renders the headline with the "AI"/"IA" keyword in the accent color. */
 function Headline({ text }: { text: string }) {
@@ -47,14 +48,14 @@ export function Hero() {
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault()
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" })
-    history.replaceState(null, "", "/#projects")
+    history.replaceState(null, "", ROUTES.homeProjects)
     window.dispatchEvent(new HashChangeEvent("hashchange"))
   }
 
   const scrollToConnect = (e: React.MouseEvent) => {
     e.preventDefault()
     document.getElementById("connect")?.scrollIntoView({ behavior: "smooth", block: "start" })
-    history.replaceState(null, "", "/#connect")
+    history.replaceState(null, "", ROUTES.homeConnect)
     window.dispatchEvent(new HashChangeEvent("hashchange"))
   }
 
@@ -98,10 +99,10 @@ export function Hero() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <ButtonLink variant="primary" href="/#projects" onClick={scrollToProjects}>
+            <ButtonLink variant="primary" href={ROUTES.homeProjects} onClick={scrollToProjects}>
               {t("hero.viewWork")}
             </ButtonLink>
-            <ButtonLink variant="outline" href="/#connect" onClick={scrollToConnect}>
+            <ButtonLink variant="outline" href={ROUTES.homeConnect} onClick={scrollToConnect}>
               {t("contact.title")}
             </ButtonLink>
           </div>
@@ -124,7 +125,7 @@ export function Hero() {
 
       {!reduced && (
         <Link
-          href="/#projects"
+          href={ROUTES.homeProjects}
           onClick={scrollToProjects}
           className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 font-mono text-[10px] text-muted-foreground/50 transition-colors hover:text-muted-foreground md:flex"
           aria-label={t("hero.viewWork")}

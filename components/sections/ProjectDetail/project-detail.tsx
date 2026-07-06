@@ -11,6 +11,7 @@ import { useLocale } from "@/lib/i18n/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { cn } from "@/lib/class-names"
 import { TextLink } from "@/components/ui/TextLink/text-link"
+import { ROUTES } from "@/lib/routes"
 
 /** Splits "Project Name — Description" into parts for styling; returns null if no separator. */
 function splitProjectTitle(title: string): { name: string; description: string } | null {
@@ -99,7 +100,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
         <header className="flex flex-col gap-8">
           <div>
             <Link
-              href="/#projects"
+              href={ROUTES.homeProjects}
               className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
@@ -261,7 +262,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
         >
           {prev ? (
             <Link
-              href={`/projects/${prev.slug}`}
+              href={ROUTES.project(prev.slug)}
               className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5" />
@@ -272,7 +273,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           )}
           {next ? (
             <Link
-              href={`/projects/${next.slug}`}
+              href={ROUTES.project(next.slug)}
               className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ProjectNavLabel title={getProjectTranslation(next.slug, locale)?.title ?? next.slug} align="right" />

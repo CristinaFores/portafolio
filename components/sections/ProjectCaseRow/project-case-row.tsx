@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useMotion } from "@/hooks/use-motion"
 import { ListRow } from "@/components/ui/ListRow/list-row"
+import { ROUTES } from "@/lib/routes"
 
 type ProjectCaseRowProps = {
   slug: string
@@ -22,7 +23,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
 
   if (!project) return null
 
-  const href = `/projects/${project.slug}`
+  const href = ROUTES.project(project.slug)
   const stackTags = project.stack.slice(0, 4)
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -30,7 +31,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
     const currentHash = typeof window !== "undefined" ? window.location.hash : ""
     if (currentHash === "#projects") return
     e.preventDefault()
-    history.pushState(null, "", "/#projects")
+    history.pushState(null, "", ROUTES.homeProjects)
     router.push(href)
   }
 

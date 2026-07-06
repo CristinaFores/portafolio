@@ -6,6 +6,7 @@ import { ArrowUpRight, Blocks } from "lucide-react"
 import type { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { useLocale } from "@/lib/i18n/locale-context"
 import { Tag } from "@/components/ui/Tag/tag"
+import { ROUTES } from "@/lib/routes"
 
 export type LabProjectRowProps = {
   project: (typeof LAB_PROJECTS)[number]
@@ -19,7 +20,7 @@ export function LabProjectRow({ project }: LabProjectRowProps) {
 
   return (
     <Link
-      href={`/lab/${project.slug}`}
+      href={ROUTES.labProject(project.slug)}
       className="group grid gap-6 border-t border-border py-8 transition-colors hover:border-foreground/30 sm:grid-cols-[64px_1fr]"
     >
       <div

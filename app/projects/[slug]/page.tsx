@@ -4,6 +4,7 @@ import { projects, getProject } from "@/lib/data/projects"
 import { getProjectTranslation } from "@/lib/data/project-translations"
 import { ProjectDetail } from "@/components/sections/ProjectDetail/project-detail"
 import { PROFILE } from "@/lib/site-config"
+import { ROUTES } from "@/lib/routes"
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -23,7 +24,7 @@ export async function generateMetadata({
   return {
     title: `${translation?.title ?? slug} — ${PROFILE.name}`,
     description: translation?.subtitle,
-    alternates: { canonical: `/projects/${slug}` },
+    alternates: { canonical: ROUTES.project(slug) },
   }
 }
 

@@ -8,6 +8,7 @@ import { ListRow } from "@/components/ui/ListRow/list-row"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { useLocale } from "@/lib/i18n/locale-context"
 import { useMotion } from "@/hooks/use-motion"
+import { ROUTES } from "@/lib/routes"
 
 /**
  * Home teaser for the Lab. Same row pattern as FeaturedProjects/ProjectCaseRow
@@ -31,7 +32,7 @@ export function LabTeaserSection() {
             {LAB_PROJECTS.map((project, i) => (
               <motion.article key={project.slug} {...staggerItem(i, { step: 0.03, y: 12 })}>
                 <ListRow
-                  href={`/lab/${project.slug}`}
+                  href={ROUTES.labProject(project.slug)}
                   title={project.name}
                   subtitle={project.tagline[locale]}
                   media={{ src: project.icon, fit: "contain" }}
@@ -41,7 +42,7 @@ export function LabTeaserSection() {
             ))}
           </div>
 
-          <ViewAllLink href="/lab" label={t("lab.home.viewLab")} />
+          <ViewAllLink href={ROUTES.lab} label={t("lab.home.viewLab")} />
         </div>
       </ParallaxBlock>
     </section>
