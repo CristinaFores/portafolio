@@ -1,15 +1,4 @@
-import type { Locale } from "@/lib/i18n/translations"
-
-interface ToolGroup {
-  label: Record<Locale, string>
-  tools: string[]
-}
-
-interface Mode {
-  name: Record<Locale, string>
-  description: Record<Locale, string>
-  status: Record<Locale, string>
-}
+import type { Mode, ToolGroup } from "@/types/lab"
 
 /**
  * Factual content for the design-context-bridge lab page, sourced from the
