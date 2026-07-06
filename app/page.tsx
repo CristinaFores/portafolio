@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
-import { Hero } from "@/components/sections/hero"
-import { LabTeaserSection } from "@/components/sections/lab-teaser-section"
+import { Hero } from "@/components/sections/Hero/hero"
+import { LabTeaserSection } from "@/components/sections/LabTeaserSection/lab-teaser-section"
 import { FeaturedProjects } from "@/components/sections/featured-projects"
-import { ContactCTA } from "@/components/sections/contact-cta"
-import { HomeDollyEntrance } from "@/components/sections/home-dolly-entrance"
+import { ContactCTA } from "@/components/sections/ContactCta/contact-cta"
+import { HomeDollyEntrance } from "@/components/sections/HomeDollyEntrance/home-dolly-entrance"
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },

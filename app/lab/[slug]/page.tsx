@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getLabProject, LAB_PROJECTS } from "@/lib/data/lab-projects"
-import { LabDetailContent } from "@/components/sections/lab-detail-content"
+import { LabDetailContent } from "@/components/sections/LabDetailContent/lab-detail-content"
 import { PROFILE } from "@/lib/site-config"
 
 export function generateStaticParams() {
