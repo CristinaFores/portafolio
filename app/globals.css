@@ -24,11 +24,11 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground transition-all duration-200 hover:-translate-y-px hover:opacity-90 active:translate-y-0;
+    @apply bg-primary text-primary-foreground transition-colors duration-200 hover:opacity-90;
   }
 
   .btn-outline {
-    @apply border border-border text-foreground transition-all duration-200 hover:-translate-y-px hover:bg-secondary active:translate-y-0;
+    @apply border border-border text-foreground transition-colors duration-200 hover:bg-secondary;
   }
 
   .home-section {

@@ -2,7 +2,7 @@
 
 import { getProjectsForDisplay } from "@/lib/data/projects"
 import { ProjectCaseRow } from "@/components/sections/project-case-row"
-import { SectionHeading } from "@/components/ui/section-heading"
+import { PageHeader } from "@/components/ui/page-header"
 import { useLocale } from "@/lib/locale-context"
 
 /**
@@ -15,8 +15,8 @@ export function AllProjects() {
   return (
     <div className="px-6 pb-28 pt-28 md:pt-32">
       <div className="mx-auto flex max-w-5xl flex-col gap-14 md:gap-16">
-        <SectionHeading
-          index={t("work.allIndex")}
+        <PageHeader
+          eyebrow={t("work.allIndex")}
           title={t("work.allTitle")}
           subtitle={t("work.allSubhead")}
         />

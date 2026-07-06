@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
+import { TextLink } from "@/components/ui/text-link"
 
 /**
  * Global footer with copyright and social/contact links.
@@ -19,25 +20,18 @@ export function Footer() {
           © {new Date().getFullYear()} {PROFILE.name} · {t("footer.tagline")}
         </p>
         <div className="flex items-center gap-4 font-mono text-xs">
-          <a href={`mailto:${PROFILE.email}`} className="link-underline text-muted-foreground hover:text-accent">
+          <TextLink
+            href={`mailto:${PROFILE.email}`}
+            className="text-muted-foreground hover:text-accent"
+          >
             Email
-          </a>
-          <a
-            href={PROFILE.linkedInUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-underline text-muted-foreground hover:text-accent"
-          >
+          </TextLink>
+          <TextLink href={PROFILE.linkedInUrl} className="text-muted-foreground hover:text-accent">
             LinkedIn
-          </a>
-          <a
-            href={PROFILE.gitHubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-underline text-muted-foreground hover:text-accent"
-          >
+          </TextLink>
+          <TextLink href={PROFILE.gitHubUrl} className="text-muted-foreground hover:text-accent">
             GitHub
-          </a>
+          </TextLink>
         </div>
       </div>
     </motion.footer>

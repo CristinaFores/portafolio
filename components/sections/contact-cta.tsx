@@ -4,6 +4,8 @@ import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
+import { ButtonLink } from "@/components/ui/button-link"
+import { TextLink } from "@/components/ui/text-link"
 
 /**
  * Contact section with direct outreach links.
@@ -30,39 +32,25 @@ export function ContactCTA() {
           </div>
 
           <div className="flex w-full flex-col gap-3 sm:w-auto">
-            <a
+            <ButtonLink
+              variant="primary"
               href={`mailto:${PROFILE.email}`}
-              className="btn-primary inline-flex h-10 items-center justify-center px-5 text-sm font-medium"
+              className="justify-center"
             >
               {PROFILE.email}
-            </a>
+            </ButtonLink>
             <div className="flex flex-wrap gap-3 font-mono text-xs text-muted-foreground">
-              <a
-                href={PROFILE.linkedInUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline hover:text-foreground"
-              >
+              <TextLink href={PROFILE.linkedInUrl} className="hover:text-accent">
                 {t("nav.linkedIn")}
-              </a>
+              </TextLink>
               <span className="text-muted-foreground/30">·</span>
-              <a
-                href={PROFILE.gitHubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline hover:text-foreground"
-              >
+              <TextLink href={PROFILE.gitHubUrl} className="hover:text-accent">
                 {t("nav.gitHub")}
-              </a>
+              </TextLink>
               <span className="text-muted-foreground/30">·</span>
-              <a
-                href={PROFILE.cvUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline hover:text-foreground"
-              >
+              <TextLink href={PROFILE.cvUrl} className="hover:text-accent">
                 {t("nav.cv")}
-              </a>
+              </TextLink>
             </div>
           </div>
         </motion.div>
