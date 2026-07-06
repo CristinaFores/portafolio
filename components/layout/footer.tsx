@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useLocale } from "@/lib/locale-context"
+import { useLocale } from "@/lib/i18n/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
 import { TextLink } from "@/components/ui/TextLink/text-link"

@@ -8,8 +8,8 @@ import { Footer } from "@/components/layout/footer"
 import { MainShell } from "@/components/layout/main-shell"
 import { ScrollProgress } from "@/components/layout/scroll-progress"
 import { ThemeProvider } from "@/components/layout/theme-provider"
-import { LocaleProvider } from "@/lib/locale-context"
-import { inter, syne, ibmPlexMono } from "@/lib/fonts"
+import { LocaleProvider } from "@/lib/i18n/locale-context"
+import { inter, syne, ibmPlexMono } from "@/styles/fonts"
 import { PROFILE, SITE_URL } from "@/lib/site-config"
 
 export const metadata: Metadata = {

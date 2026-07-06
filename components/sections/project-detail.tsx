@@ -7,9 +7,9 @@ import { getAdjacentProjects } from "@/lib/data/projects"
 import { getProjectTranslation } from "@/lib/data/project-translations"
 import { ImageCarousel } from "@/components/sections/image-carousel"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
-import { useLocale } from "@/lib/locale-context"
+import { useLocale } from "@/lib/i18n/locale-context"
 import { useMotion } from "@/hooks/use-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/class-names"
 import { TextLink } from "@/components/ui/TextLink/text-link"
 
 /** Splits "Project Name — Description" into parts for styling; returns null if no separator. */

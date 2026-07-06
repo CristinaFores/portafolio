@@ -1,6 +1,6 @@
 "use client"
 
-import { useLocale } from "@/lib/locale-context"
+import { useLocale } from "@/lib/i18n/locale-context"
 import { TextLink } from "@/components/ui/TextLink/text-link"
 
 export default function NotFound() {

@@ -8,18 +8,8 @@
  * - Keep wording consistent across projects (e.g. always "Homepage", "News section", "Welcome screen", "Results screen").
  */
 
-import type { Locale } from "../translations"
-
-export interface ProjectTranslation {
-  title: string
-  subtitle: string
-  challenge: string
-  myRole: string
-  features: string[]
-  results: string[]
-  imageAlts: string[]
-  howItWorks?: string[]
-}
+import type { Locale } from "@/types/i18n"
+import type { ProjectTranslation } from "@/types/project"
 
 type ProjectTranslations = Record<string, ProjectTranslation>
 

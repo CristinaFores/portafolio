@@ -1,7 +1,7 @@
 "use client"
 
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
-import { useLocale } from "@/lib/locale-context"
+import { useLocale } from "@/lib/i18n/locale-context"
 import { PageHeader } from "@/components/ui/PageHeader/page-header"
 import { LabProjectRow } from "@/components/sections/lab-project-row"
 

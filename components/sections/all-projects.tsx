@@ -3,7 +3,7 @@
 import { getProjectsForDisplay } from "@/lib/data/projects"
 import { ProjectCaseRow } from "@/components/sections/project-case-row"
 import { PageHeader } from "@/components/ui/PageHeader/page-header"
-import { useLocale } from "@/lib/locale-context"
+import { useLocale } from "@/lib/i18n/locale-context"
 
 /**
  * Full project listing for the /projects route.
