@@ -37,7 +37,6 @@ export const translations = {
     "lab.status.wip": "WIP",
     "lab.status.review": "En revisión",
     "lab.status.active": "En producción",
-    "lab.backToHome": "Volver al inicio",
     "lab.howItWorks.title": "Cómo funciona",
     "lab.howItWorks.step1":
       "El servidor MCP se conecta al archivo de Figma vía API y expone su estructura — nodos, estilos, variables — como herramientas que cualquier agente compatible puede invocar.",
@@ -180,7 +179,6 @@ export const translations = {
     "lab.status.wip": "WIP",
     "lab.status.review": "In review",
     "lab.status.active": "Live",
-    "lab.backToHome": "Back to home",
     "lab.howItWorks.title": "How it works",
     "lab.howItWorks.step1":
       "The MCP server connects to the Figma file via API and exposes its structure — nodes, styles, variables — as tools any compatible agent can call.",

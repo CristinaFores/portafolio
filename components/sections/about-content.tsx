@@ -7,6 +7,7 @@ import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
 import { TextLink } from "@/components/ui/text-link"
 import { ButtonLink } from "@/components/ui/button-link"
+import { PageHeader } from "@/components/ui/page-header"
 
 const SKILL_TAGS: Record<string, string[]> = {
   programming: ["TypeScript", "React", "React Native", "Next.js", "Expo", "Vue 3"],
@@ -60,14 +61,8 @@ export function AboutContent() {
   return (
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
-        <header className="flex max-w-3xl flex-col gap-5">
-          <p className="font-mono text-xs text-muted-foreground">Product / AI Engineer</p>
-          <h1
-            className="font-semibold leading-tight tracking-[-0.02em]"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
-          >
-            {t("about.title")}
-          </h1>
+        <div className="flex max-w-3xl flex-col gap-5">
+          <PageHeader eyebrow="Product / AI Engineer" title={t("about.title")} />
           <div className="flex max-w-2xl flex-col gap-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>{t("about.bio.1")}</p>
             <p>{t("about.bio.2")}</p>
@@ -75,7 +70,7 @@ export function AboutContent() {
             <p>{t("about.bio.4")}</p>
           </div>
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>
-        </header>
+        </div>
 
         <Section label={t("about.experience.title")} sectionIndex={0}>
           <div className="flex max-w-3xl flex-col gap-10">

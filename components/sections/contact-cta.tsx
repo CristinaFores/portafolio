@@ -40,15 +40,15 @@ export function ContactCTA() {
               {PROFILE.email}
             </ButtonLink>
             <div className="flex flex-wrap gap-3 font-mono text-xs text-muted-foreground">
-              <TextLink href={PROFILE.linkedInUrl} className="hover:text-foreground">
+              <TextLink href={PROFILE.linkedInUrl} className="hover:text-accent">
                 {t("nav.linkedIn")}
               </TextLink>
               <span className="text-muted-foreground/30">·</span>
-              <TextLink href={PROFILE.gitHubUrl} className="hover:text-foreground">
+              <TextLink href={PROFILE.gitHubUrl} className="hover:text-accent">
                 {t("nav.gitHub")}
               </TextLink>
               <span className="text-muted-foreground/30">·</span>
-              <TextLink href={PROFILE.cvUrl} className="hover:text-foreground">
+              <TextLink href={PROFILE.cvUrl} className="hover:text-accent">
                 {t("nav.cv")}
               </TextLink>
             </div>
