@@ -265,7 +265,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
               className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5" />
-              <ProjectNavLabel title={getProjectTranslation(prev.slug, locale)?.title ?? prev.title} />
+              <ProjectNavLabel title={getProjectTranslation(prev.slug, locale)?.title ?? prev.slug} />
             </Link>
           ) : (
             <span />
@@ -275,7 +275,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
               href={`/projects/${next.slug}`}
               className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <ProjectNavLabel title={getProjectTranslation(next.slug, locale)?.title ?? next.title} align="right" />
+              <ProjectNavLabel title={getProjectTranslation(next.slug, locale)?.title ?? next.slug} align="right" />
               <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
           ) : (
