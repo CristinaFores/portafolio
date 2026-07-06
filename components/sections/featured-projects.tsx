@@ -2,7 +2,7 @@
 
 import { getFeaturedProjects } from "@/lib/data/projects"
 import { ProjectCaseRow } from "@/components/sections/project-case-row"
-import { SectionHeading } from "@/components/ui/section-heading"
+import { SectionHeading } from "@/components/ui/SectionHeading/section-heading"
 import { ViewAllLink } from "@/components/ui/ViewAllLink/view-all-link"
 import { useLocale } from "@/lib/i18n/locale-context"
 
