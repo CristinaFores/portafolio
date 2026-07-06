@@ -16,3 +16,6 @@ package-lock.json
 
 # TypeScript incremental build cache — regenerated locally, not build output
 tsconfig.tsbuildinfo
+
+# .atl
+.atl/*
