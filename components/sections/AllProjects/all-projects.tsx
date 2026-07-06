@@ -1,7 +1,7 @@
 "use client"
 
 import { getProjectsForDisplay } from "@/lib/data/projects"
-import { ProjectCaseRow } from "@/components/sections/project-case-row"
+import { ProjectCaseRow } from "@/components/sections/ProjectCaseRow/project-case-row"
 import { PageHeader } from "@/components/ui/PageHeader/page-header"
 import { useLocale } from "@/lib/i18n/locale-context"
 

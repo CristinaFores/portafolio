@@ -3,7 +3,7 @@
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { useLocale } from "@/lib/i18n/locale-context"
 import { PageHeader } from "@/components/ui/PageHeader/page-header"
-import { LabProjectRow } from "@/components/sections/lab-project-row"
+import { LabProjectRow } from "@/components/sections/LabProjectRow/lab-project-row"
 
 /**
  * Lab index — list of projects, each linking to its detail page.
