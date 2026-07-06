@@ -24,3 +24,14 @@ export interface LabProject {
   techBadges: string[]
   coverImage?: string
 }
+
+export interface ToolGroup {
+  label: Record<Locale, string>
+  tools: string[]
+}
+
+export interface Mode {
+  name: Record<Locale, string>
+  description: Record<Locale, string>
+  status: Record<Locale, string>
+}
