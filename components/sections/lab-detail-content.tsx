@@ -5,9 +5,9 @@ import Image from "next/image"
 import { ArrowLeft, ArrowUpRight, ArrowRight } from "lucide-react"
 import { getLabProject } from "@/lib/data/lab-projects"
 import { LAB_PROJECT } from "@/lib/data/lab-project"
-import { TerminalSnippet } from "@/components/ui/terminal-snippet"
-import { useLocale } from "@/lib/locale-context"
-import { Tag } from "@/components/ui/tag"
+import { TerminalSnippet } from "@/components/ui/TerminalSnippet/terminal-snippet"
+import { useLocale } from "@/lib/i18n/locale-context"
+import { Tag } from "@/components/ui/Tag/tag"
 
 type Props = { slug: string }
 

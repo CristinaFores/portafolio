@@ -2,7 +2,7 @@ import type { MouseEventHandler, ReactNode } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
-import { Tag, type TagProps } from "@/components/ui/tag"
+import { Tag, type TagProps } from "@/components/ui/Tag/tag"
 
 type ListRowTag = {
   label: string

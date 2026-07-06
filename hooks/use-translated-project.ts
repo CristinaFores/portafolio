@@ -3,8 +3,8 @@
 import { useMemo } from "react"
 import { getProject } from "@/lib/data/projects"
 import { getProjectTranslation } from "@/lib/data/project-translations"
-import { useLocale } from "@/lib/locale-context"
-import type { Project } from "@/lib/data/projects"
+import { useLocale } from "@/lib/i18n/locale-context"
+import type { Project } from "@/types/project"
 
 /**
  * Returns a project with all user-facing text in the current locale.

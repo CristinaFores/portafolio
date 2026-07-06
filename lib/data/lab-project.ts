@@ -1,4 +1,4 @@
-import type { Locale } from "@/lib/translations"
+import type { Locale } from "@/lib/i18n/translations"
 
 interface ToolGroup {
   label: Record<Locale, string>

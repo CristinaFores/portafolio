@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
-import { LocaleProvider } from "@/lib/locale-context"
+import { LocaleProvider } from "@/lib/i18n/locale-context"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { LabProjectRow } from "./lab-project-row"
 

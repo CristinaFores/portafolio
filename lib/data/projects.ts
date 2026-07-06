@@ -1,45 +1,6 @@
-export interface ProjectImage {
-  src: string
-  /** Screen/section description — "desktop" or "mobile". Do not include project name. */
-  alt: string
-  type: "mobile" | "desktop" | "terminal" | "wireframe"
-}
+import type { Project } from "@/types/project"
 
-export interface UxProcess {
-  title: string
-  description: string
-}
-
-export interface UserTestInsight {
-  area: string
-  finding: string
-}
-
-export interface Project {
-  slug: string
-  /** When set (e.g. "Gyoza"), a company badge is shown on the card and detail. */
-  company?: "Gyoza"
-  /** When true, shown on the home page featured section (one per client). */
-  featured?: boolean
-  title: string
-  subtitle: string
-  year: string
-  stack: string[]
-  tags: string[]
-  challenge: string
-  myRole: string
-  features: string[]
-  results: string[]
-  howItWorks?: string[]
-  whyBuilt?: string[]
-  uxProcess?: UxProcess[]
-  userTestInsights?: UserTestInsight[]
-  keyFindings?: string[]
-  figmaUrl?: string
-  images: ProjectImage[]
-  cover: string
-  url?: string
-}
+export type { Project }
 
 export const projects: Project[] = [
   {

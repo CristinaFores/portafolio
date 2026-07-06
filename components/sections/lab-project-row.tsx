@@ -4,8 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight, Blocks } from "lucide-react"
 import type { LAB_PROJECTS } from "@/lib/data/lab-projects"
-import { useLocale } from "@/lib/locale-context"
-import { Tag } from "@/components/ui/tag"
+import { useLocale } from "@/lib/i18n/locale-context"
+import { Tag } from "@/components/ui/Tag/tag"
 
 export type LabProjectRowProps = {
   project: (typeof LAB_PROJECTS)[number]
