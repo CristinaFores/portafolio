@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { AboutContent } from "@/components/sections/about-content"
+import { AboutContent } from "@/components/sections/AboutContent/about-content"
 import { PROFILE } from "@/lib/site-config"
 
 export const metadata: Metadata = {
