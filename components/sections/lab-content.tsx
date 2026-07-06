@@ -2,7 +2,7 @@
 
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { useLocale } from "@/lib/locale-context"
-import { PageHeader } from "@/components/ui/page-header"
+import { PageHeader } from "@/components/ui/PageHeader/page-header"
 import { LabProjectRow } from "@/components/sections/lab-project-row"
 
 /**

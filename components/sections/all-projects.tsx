@@ -2,7 +2,7 @@
 
 import { getProjectsForDisplay } from "@/lib/data/projects"
 import { ProjectCaseRow } from "@/components/sections/project-case-row"
-import { PageHeader } from "@/components/ui/page-header"
+import { PageHeader } from "@/components/ui/PageHeader/page-header"
 import { useLocale } from "@/lib/locale-context"
 
 /**

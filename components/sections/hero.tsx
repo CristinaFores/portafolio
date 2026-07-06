@@ -9,7 +9,7 @@ import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { useParallaxY } from "@/hooks/use-parallax-y"
 import { PROFILE } from "@/lib/site-config"
-import { ButtonLink } from "@/components/ui/button-link"
+import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 
 /** Renders the headline with the "AI"/"IA" keyword in the accent color. */
 function Headline({ text }: { text: string }) {

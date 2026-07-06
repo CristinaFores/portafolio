@@ -4,7 +4,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useMotion } from "@/hooks/use-motion"
-import { ListRow } from "@/components/ui/list-row"
+import { ListRow } from "@/components/ui/ListRow/list-row"
 
 type ProjectCaseRowProps = {
   slug: string

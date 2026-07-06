@@ -5,9 +5,9 @@ import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
-import { TextLink } from "@/components/ui/text-link"
-import { ButtonLink } from "@/components/ui/button-link"
-import { PageHeader } from "@/components/ui/page-header"
+import { TextLink } from "@/components/ui/TextLink/text-link"
+import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
+import { PageHeader } from "@/components/ui/PageHeader/page-header"
 
 const SKILL_TAGS: Record<string, string[]> = {
   programming: ["TypeScript", "React", "React Native", "Next.js", "Expo", "Vue 3"],
@@ -64,10 +64,10 @@ export function AboutContent() {
         <div className="flex max-w-3xl flex-col gap-5">
           <PageHeader eyebrow="Product / AI Engineer" title={t("about.title")} />
           <div className="flex max-w-2xl flex-col gap-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            <p>{t("about.bio.1")}</p>
-            <p>{t("about.bio.2")}</p>
-            <p>{t("about.bio.3")}</p>
-            <p>{t("about.bio.4")}</p>
+            <p className="text-m leading-relaxed text-muted-foreground/100">{t("about.bio.1")}</p>
+            <p className="text-m leading-relaxed text-muted-foreground/100">{t("about.bio.2")}</p>
+            <p className="text-m leading-relaxed text-muted-foreground/100">{t("about.bio.3")}</p>
+            <p className="text-m leading-relaxed text-muted-foreground/100">{t("about.bio.4")}</p>
           </div>
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>
         </div>

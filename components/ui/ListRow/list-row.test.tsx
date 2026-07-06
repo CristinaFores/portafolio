@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react"
 import { describe, expect, it, vi } from "vitest"
-import { ListRow } from "./list-row"
+import { ListRow } from "@/components/ui/ListRow/list-row"
 
 describe("ListRow", () => {
   it("renders title and subtitle", () => {

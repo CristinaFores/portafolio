@@ -4,8 +4,8 @@ import { motion } from "framer-motion"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { PROFILE } from "@/lib/site-config"
-import { ButtonLink } from "@/components/ui/button-link"
-import { TextLink } from "@/components/ui/text-link"
+import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
+import { TextLink } from "@/components/ui/TextLink/text-link"
 
 /**
  * Contact section with direct outreach links.

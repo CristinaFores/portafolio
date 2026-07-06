@@ -10,7 +10,7 @@ import { useTranslatedProject } from "@/hooks/use-translated-project"
 import { useLocale } from "@/lib/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { cn } from "@/lib/utils"
-import { TextLink } from "@/components/ui/text-link"
+import { TextLink } from "@/components/ui/TextLink/text-link"
 
 /** Splits "Project Name — Description" into parts for styling; returns null if no separator. */
 function splitProjectTitle(title: string): { name: string; description: string } | null {
