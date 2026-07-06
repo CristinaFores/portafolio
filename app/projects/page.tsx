@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { AllProjects } from "@/components/sections/all-projects"
+import { AllProjects } from "@/components/sections/AllProjects/all-projects"
 import { PROFILE } from "@/lib/site-config"
 
 export const metadata: Metadata = {
