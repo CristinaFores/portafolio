@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { PROFILE } from "@/lib/site-config"
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
@@ -18,15 +18,15 @@ import { BIO_PARAGRAPH_KEYS, EXPERIENCE_ITEMS, SKILL_GROUPS } from "./about-data
  * Los datos viven en `about-data.ts`; este componente solo compone.
  */
 export function AboutContent() {
-  const { t, dict } = useLocale()
+  const t = useTranslations()
   const { fadeUp } = useMotion()
-  const educationItems = dict["about.education.items"] as readonly {
+  const educationItems = t.raw("about.education.items") as readonly {
     year: string
     label: string
   }[]
 
   const resolveBullets = (key?: string) =>
-    key ? (dict[key as keyof typeof dict] as readonly string[]).slice(0, 4) : undefined
+    key ? (t.raw(key) as readonly string[]).slice(0, 4) : undefined
 
   return (
     <div className="px-6 pb-24 pt-28">
@@ -35,7 +35,9 @@ export function AboutContent() {
           <PageHeader eyebrow="Product / AI Engineer" title={t("about.title")} />
           <div className="flex max-w-2xl flex-col gap-4 text-base sm:text-lg">
             {BIO_PARAGRAPH_KEYS.map((key) => (
-              <Paragraph key={key}>{t(key)}</Paragraph>
+              <Paragraph key={key} className="[&_strong]:font-medium [&_strong]:text-foreground">
+                {t.rich(key, { strong: (chunks) => <strong>{chunks}</strong> })}
+              </Paragraph>
             ))}
           </div>
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>

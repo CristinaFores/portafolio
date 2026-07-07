@@ -1,6 +1,9 @@
-import { render, screen } from "@testing-library/react"
+import { render as rtlRender, screen } from "@testing-library/react"
+import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { describe, expect, it } from "vitest"
 import { TextLink } from "./text-link"
+
+const render: typeof rtlRender = (ui, options) => rtlRender(ui, { wrapper: I18nWrapper, ...options })
 
 describe("TextLink", () => {
   it("renders children", () => {
@@ -41,7 +44,7 @@ describe("TextLink", () => {
   it("renders internal paths without target", () => {
     render(<TextLink href="/projects">Projects</TextLink>)
     const link = screen.getByRole("link")
-    expect(link).toHaveAttribute("href", "/projects")
+    expect(link).toHaveAttribute("href", "/es/projects")
     expect(link).not.toHaveAttribute("target")
   })
 

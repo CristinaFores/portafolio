@@ -7,7 +7,7 @@ import { ViewAllLink } from "@/components/ui/ViewAllLink/view-all-link"
 import { ListRow } from "@/components/ui/ListRow/list-row"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { useTranslatedLabProject } from "@/hooks/use-translated-lab-project/use-translated-lab-project"
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { ROUTES } from "@/lib/routes"
 
@@ -19,7 +19,7 @@ type LabTeaserRowProps = {
 
 /** One teaser row — resolves its own translated tagline via the merge hook. */
 function LabTeaserRow({ slug, name, index }: LabTeaserRowProps) {
-  const { t } = useLocale()
+  const t = useTranslations()
   const { staggerItem } = useMotion()
   const project = useTranslatedLabProject(slug)
 
@@ -43,7 +43,7 @@ function LabTeaserRow({ slug, name, index }: LabTeaserRowProps) {
  * so both list sections on the home page share one visual language.
  */
 export function LabTeaserSection() {
-  const { t } = useLocale()
+  const t = useTranslations()
 
   return (
     <section className="home-section">

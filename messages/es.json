@@ -1,0 +1,189 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "lab": "Lab",
+    "work": "Proyectos",
+    "linkedIn": "LinkedIn ↗",
+    "gitHub": "GitHub ↗",
+    "cv": "Ver CV",
+    "email": "Enviar email",
+    "toggleMenu": "Abrir o cerrar menú",
+    "themeLight": "Usar tema claro",
+    "themeDark": "Usar tema oscuro",
+    "tagline": "Product · AI Engineer"
+  },
+  "hero": {
+    "headline": "Si no existe, lo construyo.",
+    "subtitle": "Frontend de producto en React y React Native — agentes, servidores MCP y automatización.",
+    "meta": "Barcelona · Disponible en remoto",
+    "viewWork": "Ver proyectos"
+  },
+  "lab": {
+    "home": {
+      "sectionIndex": "01 — LAB",
+      "headline": "Qué estoy construyendo",
+      "subhead": "Proyectos de código abierto que ya tengo en producción.",
+      "viewLab": "Ver el lab completo"
+    },
+    "sectionIndex": "LAB",
+    "title": "design-context-bridge",
+    "status": {
+      "wip": "WIP",
+      "review": "En revisión",
+      "active": "En producción"
+    },
+    "howItWorks": {
+      "title": "Cómo funciona",
+      "step1": "El servidor MCP se conecta al archivo de Figma vía API y expone su estructura — nodos, estilos, variables — como herramientas que cualquier agente compatible puede invocar.",
+      "step2": "Cuando un agente de IA (Cursor, Claude) necesita contexto de diseño, llama a esas herramientas en vez de pedir una captura de pantalla.",
+      "step3": "El agente recibe datos estructurados — tokens, capas, espaciado — y los usa para generar código que respeta el sistema de diseño desde el primer prompt."
+    },
+    "capabilities": {
+      "title": "Qué expone"
+    },
+    "about": {
+      "title": "Sobre MCP"
+    },
+    "modes": {
+      "title": "Modos de uso"
+    },
+    "clients": {
+      "title": "Clientes compatibles"
+    },
+    "install": {
+      "title": "Instalación"
+    },
+    "security": {
+      "title": "Privacidad"
+    },
+    "whatItDoes": {
+      "title": "Qué hace"
+    },
+    "disclaimer": "Independiente — no afiliado a Figma, Inc.",
+    "pageSubtitle": "Proyectos que construyo cuando la herramienta no existe.",
+    "viewDetails": "Ver detalles",
+    "links": "Enlaces",
+    "pending": "Pendiente"
+  },
+  "work": {
+    "sectionIndex": "02 — PROYECTOS",
+    "sectionTitle": "Proyectos en producción",
+    "subhead": "Cada proyecto de esta lista está en producción. Ninguno es un ejercicio.",
+    "viewAll": "Ver todos los proyectos",
+    "allIndex": "PROYECTOS",
+    "allTitle": "Todos los proyectos",
+    "allSubhead": "Trabajo web y móvil en producción con React, React Native, Next.js y Vue. Ningún proyecto de demostración.",
+    "companyBadge": "Proyecto Gyoza"
+  },
+  "contact": {
+    "headline": "¿Hablamos?",
+    "subline": "Disponible en remoto para front-end, móvil y producto con IA — interfaces en producción, MCP y tooling para equipos que trabajan con agentes.",
+    "title": "¿Hablamos?",
+    "sectionIndex": "03 — CONTACTO"
+  },
+  "footer": {
+    "tagline": "Product / AI Engineer · Barcelona"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o se ha movido.",
+    "backHome": "Volver al inicio",
+    "viewProjects": "Ver proyectos"
+  },
+  "project": {
+    "allProjects": "Todos los proyectos",
+    "visitProject": "Ver proyecto",
+    "viewInFigma": "Ver en Figma",
+    "theChallenge": "El reto",
+    "myRole": "Mi rol",
+    "keyFeatures": "Características principales",
+    "howItWorks": "Cómo funciona",
+    "whyIBuiltThis": "Por qué lo construí",
+    "uxProcess": "Proceso UX",
+    "userTestInsights": "Insights de tests de usuario",
+    "keyFindings": "Hallazgos clave",
+    "theOutcome": "El resultado",
+    "gallery": "Galería",
+    "prevImage": "Imagen anterior",
+    "nextImage": "Imagen siguiente",
+    "goToImage": "Ir a la imagen"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "bio": {
+      "1": "Product & AI Engineer. Construyo interfaces de producto en React, React Native y Next.js, conectándolas con las herramientas de IA que transforman el desarrollo.",
+      "2": "En Gyoza lideré la implementación de proyectos como Wetour (comunidad en Next.js con foco en SEO) y Turbowash (app IoT en React Native que controla pagos físicos, loyalty y la activación de hardware), además de contribuir en Goiko.",
+      "3": "Mi trabajo se apoya en arquitecturas de interfaz escalables y en la gestión de estado y datos asíncronos con <strong>Zustand</strong> y <strong>TanStack Query</strong>. En paralelo construyo design-context-bridge, un servidor MCP que da a los agentes de IA contexto real de diseño desde Figma.",
+      "4": "En poco más de un año pasé de la ingeniería frontend pura a poner en producción mi propio servidor <strong>MCP</strong>, compatible con Cursor, Claude Code y Windsurf. Cuando una herramienta que necesito no existe, la construyo — y me aseguro de que llegue a producción.",
+      "availability": "Barcelona · Disponible en remoto."
+    },
+    "skills": {
+      "title": "Skills",
+      "programming": "Lenguajes y frameworks",
+      "state": "Estado y datos",
+      "forms": "Formularios y validación",
+      "mobile": "Desarrollo móvil",
+      "automation": "Automatización e IA",
+      "ui": "UI y estilos",
+      "build": "Build y herramientas",
+      "quality": "Calidad de código",
+      "languages": "Idiomas",
+      "langs": {
+        "native": "Español / Catalán (nativo)",
+        "english": "Inglés (Intermedio)"
+      }
+    },
+    "education": {
+      "title": "Educación",
+      "items": [
+        {
+          "year": "2022",
+          "label": "ISDI Coders — Full Stack Web Development · Barcelona\nJun 2022 – Dic 2022\nReact, JavaScript/TypeScript, Node.js/Express, MongoDB, testing (Jest/Cypress), Figma, Scrum."
+        }
+      ]
+    },
+    "experience": {
+      "title": "Experiencia profesional",
+      "gyoza": {
+        "title": "GYOZA TECHNOLOGY STUDIO S.L. — Desarrollo front-end (Remoto)",
+        "date": "Agosto 2023 – Marzo 2026",
+        "summary": "Desarrollo de productos web y móviles para clientes y plataformas internas, contribuyendo en proyectos como <strong>Goiko</strong>, <strong>Wetour</strong>, <strong>Turbowash</strong> e integraciones con dispositivos de pago.",
+        "bullets": [
+          "Liderazgo en la implementación de proyectos clave, planteando arquitecturas React escalables y adaptadas a cada cliente.",
+          "Construcción de interfaces y funcionalidades con React, React Native (Expo) y Next.js.",
+          "Implementación de flujos de compra, pago, validación y experiencia end-to-end.",
+          "Integración de APIs, servicios externos y datos asíncronos con Axios, TanStack Query y Zustand.",
+          "Trabajo en productos con dispositivos Android, terminales de pago, loyalty y activación de máquinas vía pulsos."
+        ]
+      },
+      "freelance": {
+        "title": "Software Developer — Freelancer · Remoto (España)",
+        "date": "Feb 2022 – Agosto 2023",
+        "summary": "Desarrollo de UI web con React y APIs Node.js/Express, incluyendo integración con MongoDB. Trabajé en proyectos pequeños y medianos: formularios, autenticación, integración/consumo de APIs y componentes reutilizables."
+      }
+    },
+    "coreStack": {
+      "title": "Stack principal",
+      "text": "React · React Native · Expo · Vite · Next.js · Vue 3 · TypeScript · Zustand · TanStack Query · Pinia · Formik · Yup · Axios · Firebase · Google Maps API · i18next · Sass · n8n · Git"
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Cristina Forés — Product & AI Engineer",
+      "description": "Frontend de producto en React y React Native — agentes, servidores MCP y automatización."
+    },
+    "about": {
+      "title": "Sobre mí",
+      "description": "Product & AI Engineer especializada en React, React Native, Next.js, arquitectura de interfaz, Zustand, TanStack Query y herramientas MCP."
+    },
+    "lab": {
+      "title": "Lab",
+      "description": "Proyectos open source en producción: design-context-bridge (servidor MCP que expone Figma a agentes de IA) y AuraLang (traducción de audio en tiempo real con Whisper local)."
+    },
+    "projects": {
+      "title": "Proyectos",
+      "description": "Proyectos web y móvil en producción con React, React Native, Next.js y Vue."
+    }
+  }
+}

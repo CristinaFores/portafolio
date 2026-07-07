@@ -1,14 +1,13 @@
 "use client"
 
-import Link from "next/link"
 import Image from "next/image"
 import { createPortal } from "react-dom"
-import { usePathname } from "next/navigation"
 import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
+import { useLocale, useTranslations, type Locale } from "next-intl"
 import { cn } from "@/lib/class-names"
-import { useLocale } from "@/i18n/locale-context"
+import { Link, usePathname, useRouter } from "@/i18n/navigation"
 import { EASE } from "@/lib/motion"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { PROFILE } from "@/lib/site-config"
@@ -27,8 +26,8 @@ const navLinks = [
 ]
 
 type NavControlsProps = {
-  locale: "es" | "en"
-  setLocale: (locale: "es" | "en") => void
+  locale: Locale
+  setLocale: (locale: Locale) => void
   mounted: boolean
   resolvedTheme: string | undefined
   toggleTheme: () => void
@@ -134,7 +133,12 @@ export function Navbar() {
   const [visible, setVisible] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { setTheme, resolvedTheme } = useTheme()
-  const { locale, setLocale, t } = useLocale()
+  const t = useTranslations()
+  const locale = useLocale()
+  const router = useRouter()
+  const setLocale = (next: Locale) => {
+    router.replace(pathname, { locale: next })
+  }
   const lastScrollY = useRef(0)
 
   useEffect(() => {

@@ -1,6 +1,9 @@
-import { render, screen } from "@testing-library/react"
+import { render as rtlRender, screen } from "@testing-library/react"
+import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { describe, expect, it } from "vitest"
 import { ViewAllLink } from "./view-all-link"
+
+const render: typeof rtlRender = (ui, options) => rtlRender(ui, { wrapper: I18nWrapper, ...options })
 
 describe("ViewAllLink", () => {
   it("wraps only the label text in the underline span", () => {
@@ -27,6 +30,6 @@ describe("ViewAllLink", () => {
   it("renders the href on the link", () => {
     render(<ViewAllLink href="/projects" label="View all projects" />)
 
-    expect(screen.getByRole("link")).toHaveAttribute("href", "/projects")
+    expect(screen.getByRole("link")).toHaveAttribute("href", "/es/projects")
   })
 })

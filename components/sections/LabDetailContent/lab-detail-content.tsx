@@ -1,18 +1,18 @@
 "use client"
 
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import Image from "next/image"
 import { ArrowLeft, ArrowUpRight, ArrowRight } from "lucide-react"
 import { useTranslatedLabProject, useTranslatedLabProjectDetail } from "@/hooks/use-translated-lab-project/use-translated-lab-project"
 import { TerminalSnippet } from "@/components/ui/TerminalSnippet/terminal-snippet"
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 import { Tag } from "@/components/ui/Tag/tag"
 import { ROUTES } from "@/lib/routes"
 
 type Props = { slug: string }
 
 export function LabDetailContent({ slug }: Props) {
-  const { t } = useLocale()
+  const t = useTranslations()
   const project = useTranslatedLabProject(slug)
   const detail = useTranslatedLabProjectDetail(slug)
 

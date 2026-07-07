@@ -1,4 +1,5 @@
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
+import { isStaticFileHref } from "@/lib/link-target"
 
 export type ButtonLinkProps = {
   href: string
@@ -46,7 +47,7 @@ export function ButtonLink({
     )
   }
 
-  if (href.startsWith("mailto:") || href.startsWith("tel:")) {
+  if (href.startsWith("mailto:") || href.startsWith("tel:") || isStaticFileHref(href)) {
     return (
       <a href={href} onClick={onClick} aria-label={ariaLabel} className={classes}>
         {children}

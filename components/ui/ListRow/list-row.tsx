@@ -1,5 +1,5 @@
 import type { MouseEventHandler, ReactNode } from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { Tag, type TagProps } from "@/components/ui/Tag/tag"

@@ -1,10 +1,10 @@
 "use client"
 
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import Image from "next/image"
 import { ArrowUpRight, Blocks } from "lucide-react"
 import { useTranslatedLabProject } from "@/hooks/use-translated-lab-project/use-translated-lab-project"
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 import { Tag } from "@/components/ui/Tag/tag"
 import { ROUTES } from "@/lib/routes"
 
@@ -16,7 +16,7 @@ export type LabProjectRowProps = {
  * Single row in the Lab index — thumbnail, name, status, tagline, tech badges.
  */
 export function LabProjectRow({ slug }: LabProjectRowProps) {
-  const { t } = useLocale()
+  const t = useTranslations()
   const project = useTranslatedLabProject(slug)
 
   if (!project) return null

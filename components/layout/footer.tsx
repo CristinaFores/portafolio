@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { PROFILE } from "@/lib/site-config"
 import { TextLink } from "@/components/ui/TextLink/text-link"
@@ -10,7 +10,7 @@ import { TextLink } from "@/components/ui/TextLink/text-link"
  * Global footer with copyright and social/contact links.
  */
 export function Footer() {
-  const { t } = useLocale()
+  const t = useTranslations()
   const { fadeUp } = useMotion()
 
   return (
