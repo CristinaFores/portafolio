@@ -112,10 +112,11 @@
   "about": {
     "title": "About Me",
     "bio": {
-      "1": "I build product interfaces in React, React Native, and Next.js, and connect them with the AI tooling that is transforming development.",
-      "2": "At Gyoza I led the implementation of Wetour (a Next.js community with an SEO focus) and Turbowash (a React Native app controlling laundry machines: payments, loyalty, and remote activation), alongside contributing to Goiko.",
+      "1": "I build product interfaces in <strong>React</strong>, <strong>React Native</strong> and <strong>Next.js</strong>, and connect them with the AI tooling that is transforming development.",
+      "2": "At Gyoza I led the implementation of Wetour (a <strong>Next.js</strong> community with an SEO focus) and Turbowash (a <strong>React Native</strong> app controlling laundry machines: payments, loyalty, and remote activation), alongside contributing to Goiko.",
       "3": "My work is grounded in scalable UI architecture and in state and async data management with <strong>Zustand</strong> and <strong>TanStack Query</strong>.",
-      "4": "In little over a year I went from pure frontend engineering to shipping design-context-bridge: my own <strong>MCP</strong> server in production, compatible with Cursor, Claude Code, and Windsurf, giving AI agents real design context from Figma. When a tool I need doesn't exist, I build it.",
+      "4": "In little over a year I went from pure frontend engineering to shipping design-context-bridge: my own <strong>MCP</strong> server in production, compatible with Cursor, Claude Code, and Windsurf, giving <strong>AI agents</strong> real design context from <strong>Figma</strong>.",
+      "5": "When a tool I need doesn't exist, I build it.",
       "availability": "Barcelona · Available for remote work."
     },
     "skills": {

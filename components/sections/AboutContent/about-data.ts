@@ -1,13 +1,5 @@
 import { PROFILE } from "@/lib/site-config"
 
-/** Claves i18n de los párrafos de la bio, en orden de lectura. */
-export const BIO_PARAGRAPH_KEYS = [
-  "about.bio.1",
-  "about.bio.2",
-  "about.bio.3",
-  "about.bio.4",
-] as const
-
 export type ExperienceItem = {
   id: string
   titleKey: string

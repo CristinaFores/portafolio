@@ -6,12 +6,12 @@ import { useMotion } from "@/hooks/use-motion/use-motion"
 import { PROFILE } from "@/lib/site-config"
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { PageHeader } from "@/components/ui/PageHeader/page-header"
-import { Paragraph } from "@/components/ui/Paragraph/paragraph"
 import { SectionRow } from "@/components/ui/SectionRow/section-row"
 import { EducationCard } from "@/components/sections/EducationCard/education-card"
 import { ExperienceCard } from "@/components/sections/ExperienceCard/experience-card"
 import { SkillCard } from "@/components/sections/SkillCard/skill-card"
-import { BIO_PARAGRAPH_KEYS, EXPERIENCE_ITEMS, SKILL_GROUPS } from "./about-data"
+import { BioParagraphs } from "./bio-paragraphs"
+import { EXPERIENCE_ITEMS, SKILL_GROUPS } from "./about-data"
 
 /**
  * Cuerpo de la página About: bio, experiencia, skills y educación.
@@ -34,11 +34,7 @@ export function AboutContent() {
         <div className="flex max-w-3xl flex-col gap-5">
           <PageHeader eyebrow="Product / AI Engineer" title={t("about.title")} />
           <div className="flex max-w-2xl flex-col gap-4 text-base sm:text-lg">
-            {BIO_PARAGRAPH_KEYS.map((key) => (
-              <Paragraph key={key} className="[&_strong]:font-medium [&_strong]:text-foreground">
-                {t.rich(key, { strong: (chunks) => <strong>{chunks}</strong> })}
-              </Paragraph>
-            ))}
+            <BioParagraphs />
           </div>
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>
         </div>
