@@ -25,7 +25,7 @@ describe("AboutContent", () => {
   it("renders every bio paragraph", () => {
     renderAbout()
 
-    expect(screen.getByText(/Product & AI Engineer\./)).toBeInTheDocument()
+    expect(screen.getByText(/Construyo interfaces de producto/)).toBeInTheDocument()
     expect(BIO_PARAGRAPH_KEYS.length).toBeGreaterThan(0)
   })
 

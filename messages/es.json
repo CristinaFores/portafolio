@@ -112,10 +112,10 @@
   "about": {
     "title": "Sobre mí",
     "bio": {
-      "1": "Product & AI Engineer. Construyo interfaces de producto en React, React Native y Next.js, conectándolas con las herramientas de IA que transforman el desarrollo.",
-      "2": "En Gyoza lideré la implementación de proyectos como Wetour (comunidad en Next.js con foco en SEO) y Turbowash (app IoT en React Native que controla pagos físicos, loyalty y la activación de hardware), además de contribuir en Goiko.",
-      "3": "Mi trabajo se apoya en arquitecturas de interfaz escalables y en la gestión de estado y datos asíncronos con <strong>Zustand</strong> y <strong>TanStack Query</strong>. En paralelo construyo design-context-bridge, un servidor MCP que da a los agentes de IA contexto real de diseño desde Figma.",
-      "4": "En poco más de un año pasé de la ingeniería frontend pura a poner en producción mi propio servidor <strong>MCP</strong>, compatible con Cursor, Claude Code y Windsurf. Cuando una herramienta que necesito no existe, la construyo — y me aseguro de que llegue a producción.",
+      "1": "Construyo interfaces de producto en React, React Native y Next.js, y las conecto con las herramientas de IA que están transformando el desarrollo.",
+      "2": "En Gyoza lideré la implementación de Wetour (comunidad en Next.js con foco en SEO) y Turbowash (app en React Native que controla máquinas de lavado: pagos, fidelización y activación remota), además de contribuir en Goiko.",
+      "3": "Mi trabajo se apoya en arquitecturas de interfaz escalables y en la gestión de estado y datos asíncronos con <strong>Zustand</strong> y <strong>TanStack Query</strong>.",
+      "4": "En poco más de un año pasé de la ingeniería frontend pura a publicar design-context-bridge: mi propio servidor <strong>MCP</strong> en producción, compatible con Cursor, Claude Code y Windsurf, que da a los agentes de IA contexto real de diseño desde Figma. Cuando una herramienta que necesito no existe, la construyo.",
       "availability": "Barcelona · Disponible en remoto."
     },
     "skills": {
