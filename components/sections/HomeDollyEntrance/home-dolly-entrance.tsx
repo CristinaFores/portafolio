@@ -31,16 +31,17 @@ export function HomeDollyEntrance({ hero, next }: HomeDollyEntranceProps) {
   })
 
   // Hero: grows toward the viewer and dissolves.
-  const heroScale = useTransform(scrollYProgress, [0, 0.55], [1, 1.5])
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const heroBlur = useTransform(scrollYProgress, [0, 0.55], [0, 8])
+  const heroScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.5])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0])
+  const heroBlur = useTransform(scrollYProgress, [0, 0.4], [0, 8])
   const heroFilter = useMotionTemplate`blur(${heroBlur}px)`
   const heroPointerEvents = useTransform(heroOpacity, (o) => (o < 0.1 ? "none" : "auto"))
 
-  // Next section: arrives from depth.
-  const nextScale = useTransform(scrollYProgress, [0.35, 1], [0.85, 1])
-  const nextOpacity = useTransform(scrollYProgress, [0.35, 0.9], [0, 1])
-  const nextBlur = useTransform(scrollYProgress, [0.35, 0.9], [6, 0])
+  // Next section: arrives from depth, then holds fully sharp and pinned for
+  // the rest of the track so it gets real dwell time before scrolling on.
+  const nextScale = useTransform(scrollYProgress, [0.25, 0.6], [0.85, 1])
+  const nextOpacity = useTransform(scrollYProgress, [0.25, 0.55], [0, 1])
+  const nextBlur = useTransform(scrollYProgress, [0.25, 0.55], [6, 0])
   const nextFilter = useMotionTemplate`blur(${nextBlur}px)`
   const nextPointerEvents = useTransform(nextOpacity, (o) => (o < 0.5 ? "none" : "auto"))
 
@@ -54,7 +55,7 @@ export function HomeDollyEntrance({ hero, next }: HomeDollyEntranceProps) {
   }
 
   return (
-    <div ref={trackRef} className="relative h-[220vh]">
+    <div ref={trackRef} className="relative h-[300vh]">
       <div className="sticky top-0 h-svh overflow-hidden">
         <motion.div
           style={{
