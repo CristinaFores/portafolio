@@ -10,7 +10,7 @@ describe("LabProjectRow", () => {
   it("renders the project name and links to its detail page", () => {
     render(
       <LocaleProvider>
-        <LabProjectRow project={project} />
+        <LabProjectRow slug={project.slug} />
       </LocaleProvider>,
     )
     expect(screen.getByText(project.name)).toBeInTheDocument()

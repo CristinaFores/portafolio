@@ -3,20 +3,23 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowUpRight, Blocks } from "lucide-react"
-import type { LAB_PROJECTS } from "@/lib/data/lab-projects"
+import { useTranslatedLabProject } from "@/hooks/use-translated-lab-project"
 import { useLocale } from "@/i18n/locale-context"
 import { Tag } from "@/components/ui/Tag/tag"
 import { ROUTES } from "@/lib/routes"
 
 export type LabProjectRowProps = {
-  project: (typeof LAB_PROJECTS)[number]
+  slug: string
 }
 
 /**
  * Single row in the Lab index — thumbnail, name, status, tagline, tech badges.
  */
-export function LabProjectRow({ project }: LabProjectRowProps) {
-  const { t, locale } = useLocale()
+export function LabProjectRow({ slug }: LabProjectRowProps) {
+  const { t } = useLocale()
+  const project = useTranslatedLabProject(slug)
+
+  if (!project) return null
 
   return (
     <Link
@@ -49,7 +52,7 @@ export function LabProjectRow({ project }: LabProjectRowProps) {
           <Tag variant="status">{t(`lab.status.${project.status}`)}</Tag>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          {project.tagline[locale]}
+          {project.tagline}
         </p>
         <div className="flex flex-wrap gap-1.5 pt-1">
           {project.techBadges.slice(0, 4).map((badge) => (
