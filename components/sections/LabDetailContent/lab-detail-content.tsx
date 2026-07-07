@@ -3,8 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, ArrowUpRight, ArrowRight } from "lucide-react"
-import { getLabProject } from "@/lib/data/lab-projects"
-import { LAB_PROJECT } from "@/lib/data/lab-project"
+import { useTranslatedLabProject, useTranslatedLabProjectDetail } from "@/hooks/use-translated-lab-project"
 import { TerminalSnippet } from "@/components/ui/TerminalSnippet/terminal-snippet"
 import { useLocale } from "@/i18n/locale-context"
 import { Tag } from "@/components/ui/Tag/tag"
@@ -13,8 +12,9 @@ import { ROUTES } from "@/lib/routes"
 type Props = { slug: string }
 
 export function LabDetailContent({ slug }: Props) {
-  const { t, locale } = useLocale()
-  const project = getLabProject(slug)
+  const { t } = useLocale()
+  const project = useTranslatedLabProject(slug)
+  const detail = useTranslatedLabProjectDetail(slug)
 
   if (!project) return null
 
@@ -55,7 +55,7 @@ const isDCB = slug === "design-context-bridge"
                 <Tag variant="status">{t(`lab.status.${project.status}`)}</Tag>
               </div>
               <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
-                {project.tagline[locale]}
+                {project.tagline}
               </p>
             </div>
           </div>
@@ -75,12 +75,12 @@ const isDCB = slug === "design-context-bridge"
         )}
 
         {/* Install command — DCB only */}
-        {isDCB && (
+        {isDCB && detail && (
           <TerminalSnippet
-            command={LAB_PROJECT.installCommand}
+            command={detail.installCommand}
             output={[
               "✓ MCP server ready",
-              `✓ ${LAB_PROJECT.supportedClients.length} compatible clients detected`,
+              `✓ ${detail.supportedClients.length} compatible clients detected`,
               "→ listening on stdio",
             ]}
           />
@@ -92,7 +92,7 @@ const isDCB = slug === "design-context-bridge"
           <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
             <h2 className="font-mono text-xs text-muted-foreground">{t("project.whyIBuiltThis")}</h2>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {project.whyBuilt[locale]}
+              {project.whyBuilt}
             </p>
           </section>
 
@@ -104,7 +104,7 @@ const isDCB = slug === "design-context-bridge"
                 {project.features.map((feat, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
                     <span className="mt-1.5 size-1 shrink-0 rounded-full bg-muted-foreground/40" aria-hidden />
-                    {feat[locale]}
+                    {feat}
                   </li>
                 ))}
               </ul>
@@ -122,7 +122,7 @@ const isDCB = slug === "design-context-bridge"
                       <span className="shrink-0 font-mono text-xs text-muted-foreground/50">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      {step[locale]}
+                      {step}
                     </li>
                   ))}
                 </ol>
@@ -143,13 +143,13 @@ const isDCB = slug === "design-context-bridge"
           </section>
 
           {/* Qué expone — DCB only */}
-          {isDCB && (
+          {isDCB && detail && (
             <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
               <h2 className="font-mono text-xs text-muted-foreground">{t("lab.capabilities.title")}</h2>
               <div className="flex flex-col gap-3">
-                {LAB_PROJECT.toolGroups.map((group) => (
-                  <div key={group.label.en} className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
-                    <span className="shrink-0 text-sm font-medium text-foreground sm:w-44">{group.label[locale]}</span>
+                {detail.toolGroups.map((group) => (
+                  <div key={group.label} className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
+                    <span className="shrink-0 text-sm font-medium text-foreground sm:w-44">{group.label}</span>
                     <span className="font-mono text-[11px] leading-relaxed text-muted-foreground">
                       {group.tools.join(" · ")}
                     </span>
@@ -160,15 +160,15 @@ const isDCB = slug === "design-context-bridge"
           )}
 
           {/* Modos de uso — DCB only */}
-          {isDCB && (
+          {isDCB && detail && (
             <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
               <h2 className="font-mono text-xs text-muted-foreground">{t("lab.modes.title")}</h2>
               <div className="grid gap-4 sm:grid-cols-2">
-                {LAB_PROJECT.modes.map((mode) => (
-                  <div key={mode.name.en} className="flex flex-col gap-1">
-                    <span className="text-sm font-medium text-foreground">{mode.name[locale]}</span>
-                    <span className="text-sm leading-relaxed text-muted-foreground">{mode.description[locale]}</span>
-                    <span className="font-mono text-[11px] text-muted-foreground/60">{mode.status[locale]}</span>
+                {detail.modes.map((mode) => (
+                  <div key={mode.name} className="flex flex-col gap-1">
+                    <span className="text-sm font-medium text-foreground">{mode.name}</span>
+                    <span className="text-sm leading-relaxed text-muted-foreground">{mode.description}</span>
+                    <span className="font-mono text-[11px] text-muted-foreground/60">{mode.status}</span>
                   </div>
                 ))}
               </div>
@@ -180,7 +180,7 @@ const isDCB = slug === "design-context-bridge"
             <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
               <h2 className="font-mono text-xs text-muted-foreground">{t("lab.security.title")}</h2>
               <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                {project.privacy[locale]}
+                {project.privacy}
               </p>
             </section>
           )}
@@ -202,10 +202,10 @@ const isDCB = slug === "design-context-bridge"
             <h2 className="font-mono text-xs text-muted-foreground">{t("lab.links")}</h2>
             <div className="flex flex-col gap-3">
               {project.links.map((link) => (
-                <div key={link.label.en} className="flex items-center gap-3">
+                <div key={link.href} className="flex items-center gap-3">
                   {link.pending ? (
                     <span className="text-sm text-muted-foreground/50">
-                      {link.label[locale]}
+                      {link.label}
                       <span className="ml-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground/40">
                         {t("lab.pending")}
                       </span>
@@ -217,7 +217,7 @@ const isDCB = slug === "design-context-bridge"
                       rel="noopener noreferrer"
                       className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent"
                     >
-                      {link.label[locale]}
+                      {link.label}
                       <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </a>
                   )}

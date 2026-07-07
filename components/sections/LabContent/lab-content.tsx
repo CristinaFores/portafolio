@@ -23,7 +23,7 @@ export function LabContent() {
 
         <div className="flex flex-col">
           {LAB_PROJECTS.map((project) => (
-            <LabProjectRow key={project.slug} project={project} />
+            <LabProjectRow key={project.slug} slug={project.slug} />
           ))}
         </div>
 
