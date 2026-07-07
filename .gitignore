@@ -19,3 +19,6 @@ tsconfig.tsbuildinfo
 
 # .atl
 .atl/*
+
+# Test coverage output
+coverage/

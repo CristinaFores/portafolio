@@ -13,3 +13,22 @@ class IntersectionObserverStub {
 }
 
 vi.stubGlobal("IntersectionObserver", IntersectionObserverStub)
+
+// jsdom has no matchMedia; framer-motion's useReducedMotion and our
+// useParallaxY read it. Default: no media query matches (motion enabled,
+// desktop breakpoint not matched). Tests override window.matchMedia when they
+// need a specific query to match.
+vi.stubGlobal(
+  "matchMedia",
+  (query: string): MediaQueryList =>
+    ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      addListener: () => {},
+      removeListener: () => {},
+      dispatchEvent: () => false,
+    }) as unknown as MediaQueryList,
+)
