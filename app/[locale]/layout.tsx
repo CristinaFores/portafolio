@@ -15,10 +15,28 @@ import { ThemeProvider } from "@/components/layout/theme-provider"
 import { inter, syne, ibmPlexMono } from "@/styles/fonts"
 import { PROFILE, SITE_URL } from "@/lib/site-config"
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: `${PROFILE.name} — ${PROFILE.role}`,
-  description: PROFILE.tagline,
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const otherLocales = routing.locales.filter((l) => l !== locale)
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: `${PROFILE.name} — ${PROFILE.role}`,
+    description: PROFILE.tagline,
+    openGraph: {
+      type: "website",
+      siteName: `${PROFILE.name} — ${PROFILE.role}`,
+      locale,
+      alternateLocale: otherLocales,
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
+  }
 }
 
 const personJsonLd = {

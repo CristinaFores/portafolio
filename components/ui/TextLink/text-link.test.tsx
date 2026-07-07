@@ -1,9 +1,11 @@
-import { render as rtlRender, screen } from "@testing-library/react"
+import type { ReactElement } from "react"
+import { render as rtlRender, screen, type RenderOptions } from "@testing-library/react"
 import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { describe, expect, it } from "vitest"
 import { TextLink } from "./text-link"
 
-const render: typeof rtlRender = (ui, options) => rtlRender(ui, { wrapper: I18nWrapper, ...options })
+const render = (ui: ReactElement, options?: RenderOptions) =>
+  rtlRender(ui, { wrapper: I18nWrapper, ...options })
 
 describe("TextLink", () => {
   it("renders children", () => {

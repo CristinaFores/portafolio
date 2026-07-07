@@ -4,7 +4,7 @@ import { setRequestLocale } from "next-intl/server"
 import { getLabProject, LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { getLabTranslation } from "@/lib/data/lab-translations"
 import { LabDetailContent } from "@/components/sections/LabDetailContent/lab-detail-content"
-import { PROFILE } from "@/lib/site-config"
+import { PROFILE, SITE_URL } from "@/lib/site-config"
 import { ROUTES } from "@/lib/routes"
 import { localeAlternates } from "@/lib/seo"
 import { toLocale } from "@/i18n/locale"
@@ -35,5 +35,26 @@ export default async function LabProjectPage({ params }: PageProps) {
   const project = getLabProject(slug)
   if (!project) notFound()
 
-  return <LabDetailContent slug={slug} />
+  const translation = getLabTranslation(slug, locale)
+  const repoUrl = project.links.find((link) => link.href.includes("github.com"))?.href
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: project.name,
+    description: translation?.tagline,
+    url: `${SITE_URL}/${locale}${ROUTES.labProject(slug)}`,
+    ...(repoUrl ? { sameAs: [repoUrl] } : {}),
+    applicationCategory: "DeveloperApplication",
+    author: { "@type": "Person", name: PROFILE.name, url: SITE_URL },
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <LabDetailContent slug={slug} />
+    </>
+  )
 }

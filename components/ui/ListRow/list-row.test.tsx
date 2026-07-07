@@ -1,9 +1,11 @@
-import { fireEvent, render as rtlRender, screen } from "@testing-library/react"
+import type { ReactElement } from "react"
+import { fireEvent, render as rtlRender, screen, type RenderOptions } from "@testing-library/react"
 import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { describe, expect, it, vi } from "vitest"
 import { ListRow } from "@/components/ui/ListRow/list-row"
 
-const render: typeof rtlRender = (ui, options) => rtlRender(ui, { wrapper: I18nWrapper, ...options })
+const render = (ui: ReactElement, options?: RenderOptions) =>
+  rtlRender(ui, { wrapper: I18nWrapper, ...options })
 
 describe("ListRow", () => {
   it("renders title and subtitle", () => {

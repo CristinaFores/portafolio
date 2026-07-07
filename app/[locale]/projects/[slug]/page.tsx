@@ -4,7 +4,7 @@ import { setRequestLocale } from "next-intl/server"
 import { projects, getProject } from "@/lib/data/projects"
 import { getProjectTranslation } from "@/lib/data/project-translations"
 import { ProjectDetail } from "@/components/sections/ProjectDetail/project-detail"
-import { PROFILE } from "@/lib/site-config"
+import { PROFILE, SITE_URL } from "@/lib/site-config"
 import { ROUTES } from "@/lib/routes"
 import { localeAlternates } from "@/lib/seo"
 import { toLocale } from "@/i18n/locale"
@@ -35,5 +35,23 @@ export default async function ProjectPage({ params }: PageProps) {
   const project = getProject(slug)
   if (!project) notFound()
 
-  return <ProjectDetail slug={slug} />
+  const translation = getProjectTranslation(slug, locale)
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: translation?.title ?? slug,
+    description: translation?.subtitle,
+    url: `${SITE_URL}/${locale}${ROUTES.project(slug)}`,
+    author: { "@type": "Person", name: PROFILE.name, url: SITE_URL },
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProjectDetail slug={slug} />
+    </>
+  )
 }
