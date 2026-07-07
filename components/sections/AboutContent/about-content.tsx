@@ -44,7 +44,7 @@ export function AboutContent() {
           <div className="flex max-w-2xl flex-col gap-4">
             <BioParagraphs />
           </div>
-          <blockquote className="mt-2 max-w-2xl border-l-2 border-accent pl-5 font-display text-xl font-semibold leading-snug tracking-tight text-foreground sm:text-2xl">
+          <blockquote className="mt-2 max-w-2xl border-l-2 border-accent pl-5 font-display text-base font-semibold leading-snug tracking-tight text-foreground">
             {t("about.bio.motto")}
           </blockquote>
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>
