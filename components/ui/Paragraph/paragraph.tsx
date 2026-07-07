@@ -13,7 +13,7 @@ export function Paragraph({ children, className }: ParagraphProps) {
   return (
     <p
       className={cn(
-        "max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg",
+        "max-w-xl text-pretty text-base leading-relaxed text-muted-foreground",
         className,
       )}
     >

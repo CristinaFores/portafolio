@@ -41,7 +41,7 @@ export function AboutContent() {
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
         <div className="flex max-w-3xl flex-col gap-5">
           <PageHeader eyebrow="Product / AI Engineer" title={t("about.title")} />
-          <div className="flex max-w-2xl flex-col gap-4 text-base sm:text-lg">
+          <div className="flex max-w-2xl flex-col gap-4">
             <BioParagraphs />
           </div>
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>

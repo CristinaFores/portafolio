@@ -18,7 +18,7 @@ describe("AboutContent", () => {
     renderAbout()
 
     const experienceEntries = Object.values(esMessages.about.experience).filter(
-      (value): value is { title: string } => typeof value === "object" && value !== null,
+      (value) => typeof value === "object" && value !== null,
     )
     expect(experienceEntries.length).toBeGreaterThan(0)
     for (const entry of experienceEntries) {
