@@ -11,7 +11,8 @@ import { EducationCard } from "@/components/sections/EducationCard/education-car
 import { ExperienceCard } from "@/components/sections/ExperienceCard/experience-card"
 import { SkillCard } from "@/components/sections/SkillCard/skill-card"
 import { BioParagraphs } from "./bio-paragraphs"
-import { EXPERIENCE_ITEMS, SKILL_GROUPS } from "./about-data"
+import { RICH_TAGS } from "./rich-tags"
+import { EXPERIENCE_LINKS, SKILL_GROUPS } from "./about-data"
 
 /**
  * Cuerpo de la página About: bio, experiencia, skills y educación.
@@ -25,8 +26,15 @@ export function AboutContent() {
     label: string
   }[]
 
-  const resolveBullets = (key?: string) =>
-    key ? (t.raw(key) as readonly string[]).slice(0, 4) : undefined
+  const experience = t.raw("about.experience") as Record<string, unknown>
+  const experienceIds = Object.keys(experience).filter(
+    (id) => typeof experience[id] === "object" && experience[id] !== null,
+  )
+
+  const resolveBullets = (id: string) => {
+    const entry = experience[id] as { bullets?: readonly string[] }
+    return entry.bullets?.slice(0, 4)
+  }
 
   return (
     <div className="px-6 pb-24 pt-28">
@@ -41,15 +49,14 @@ export function AboutContent() {
 
         <SectionRow label={t("about.experience.title")} sectionIndex={0}>
           <div className="flex max-w-3xl flex-col gap-10">
-            {EXPERIENCE_ITEMS.map((item) => (
+            {experienceIds.map((id) => (
               <ExperienceCard
-                key={item.id}
-                title={t(item.titleKey)}
-                date={t(item.dateKey)}
-                summary={t(item.summaryKey)}
-                summaryIsHtml={item.summaryIsHtml}
-                bullets={resolveBullets(item.bulletsKey)}
-                link={item.link}
+                key={id}
+                title={t(`about.experience.${id}.title`)}
+                date={t(`about.experience.${id}.date`)}
+                summary={t.rich(`about.experience.${id}.summary`, RICH_TAGS)}
+                bullets={resolveBullets(id)}
+                link={EXPERIENCE_LINKS[id]}
               />
             ))}
           </div>

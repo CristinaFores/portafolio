@@ -4,9 +4,7 @@ import { TextLink } from "@/components/ui/TextLink/text-link"
 export type ExperienceCardProps = {
   title: string
   date: string
-  summary: string
-  /** Renderiza el summary como HTML (para resaltados con strong). */
-  summaryIsHtml?: boolean
+  summary: React.ReactNode
   bullets?: readonly string[]
   link?: { href: string; label: string }
 }
@@ -15,7 +13,7 @@ export type ExperienceCardProps = {
  * Card de experiencia profesional: título y enlace a la izquierda,
  * fecha alineada a la derecha, summary y bullets debajo.
  */
-export function ExperienceCard({ title, date, summary, summaryIsHtml, bullets, link }: ExperienceCardProps) {
+export function ExperienceCard({ title, date, summary, bullets, link }: ExperienceCardProps) {
   return (
     <article className="flex flex-col gap-3">
       <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
@@ -33,14 +31,9 @@ export function ExperienceCard({ title, date, summary, summaryIsHtml, bullets, l
         </div>
         <span className="shrink-0 font-mono text-xs text-muted-foreground/70">{date}</span>
       </div>
-      {summaryIsHtml ? (
-        <p
-          className="text-sm leading-relaxed text-muted-foreground [&_strong]:font-medium [&_strong]:text-foreground"
-          dangerouslySetInnerHTML={{ __html: summary }}
-        />
-      ) : (
-        <p className="text-sm leading-relaxed text-muted-foreground">{summary}</p>
-      )}
+      <p className="text-sm leading-relaxed text-muted-foreground [&_strong]:font-medium [&_strong]:text-foreground [&_em]:italic">
+        {summary}
+      </p>
       {bullets && bullets.length > 0 ? (
         <ul className="flex flex-col gap-2 pt-1">
           {bullets.map((bullet) => (

@@ -4,7 +4,6 @@ import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { PROFILE } from "@/lib/site-config"
 import { AboutContent } from "./about-content"
 import esMessages from "@/messages/es.json"
-import { EXPERIENCE_ITEMS } from "./about-data"
 
 function renderAbout() {
   return render(
@@ -15,12 +14,16 @@ function renderAbout() {
 }
 
 describe("AboutContent", () => {
-  it("renders one experience card per experience item", () => {
+  it("renders one experience card per experience entry in the messages", () => {
     renderAbout()
 
-    expect(screen.getByText(/GYOZA TECHNOLOGY STUDIO/)).toBeInTheDocument()
-    expect(screen.getByText(/Freelancer/)).toBeInTheDocument()
-    expect(EXPERIENCE_ITEMS).toHaveLength(2)
+    const experienceEntries = Object.values(esMessages.about.experience).filter(
+      (value): value is { title: string } => typeof value === "object" && value !== null,
+    )
+    expect(experienceEntries.length).toBeGreaterThan(0)
+    for (const entry of experienceEntries) {
+      expect(screen.getByRole("heading", { name: entry.title })).toBeInTheDocument()
+    }
   })
 
   it("renders one paragraph per numbered bio entry in the messages", () => {

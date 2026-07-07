@@ -1,35 +1,13 @@
 import { PROFILE } from "@/lib/site-config"
 
-export type ExperienceItem = {
-  id: string
-  titleKey: string
-  dateKey: string
-  summaryKey: string
-  /** El summary contiene HTML (strong) y se renderiza como tal. */
-  summaryIsHtml?: boolean
-  /** Clave i18n de la lista de bullets asociada a la experiencia. */
-  bulletsKey?: string
-  link?: { href: string; label: string }
+/**
+ * Metadatos no traducibles por experiencia (enlaces externos). Las entradas
+ * de experiencia viven en `messages/*.json` bajo `about.experience.*`;
+ * añadir una entrada allí (en ambos idiomas) basta para que se renderice.
+ */
+export const EXPERIENCE_LINKS: Record<string, { href: string; label: string }> = {
+  gyoza: { href: PROFILE.gyozaUrl, label: "gyoza.es" },
 }
-
-/** Experiencia profesional. Añadir una entrada aquí basta para que se renderice. */
-export const EXPERIENCE_ITEMS: readonly ExperienceItem[] = [
-  {
-    id: "gyoza",
-    titleKey: "about.experience.gyoza.title",
-    dateKey: "about.experience.gyoza.date",
-    summaryKey: "about.experience.gyoza.summary",
-    summaryIsHtml: true,
-    bulletsKey: "about.experience.gyoza.bullets",
-    link: { href: PROFILE.gyozaUrl, label: "gyoza.es" },
-  },
-  {
-    id: "freelance",
-    titleKey: "about.experience.freelance.title",
-    dateKey: "about.experience.freelance.date",
-    summaryKey: "about.experience.freelance.summary",
-  },
-]
 
 export type SkillGroupItem = {
   id: string
