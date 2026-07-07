@@ -4,14 +4,14 @@ import { getFeaturedProjects } from "@/lib/data/projects"
 import { ProjectCaseRow } from "@/components/sections/ProjectCaseRow/project-case-row"
 import { SectionHeading } from "@/components/ui/SectionHeading/section-heading"
 import { ViewAllLink } from "@/components/ui/ViewAllLink/view-all-link"
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 import { ROUTES } from "@/lib/routes"
 
 /**
  * Project case-study rows on the home page (one per client, curated set).
  */
 export function FeaturedProjects() {
-  const { t } = useLocale()
+  const t = useTranslations()
   const projects = getFeaturedProjects()
 
   return (

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { ProjectImage } from "@/types/project"
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 import { useCarousel } from "./use-carousel"
 import { DeviceImage } from "./device-image"
 import { slideVariants } from "./slide-variants"
@@ -16,7 +16,7 @@ export type ImageCarouselProps = {
  * Animated carousel for project screenshots with fixed viewport behavior.
  */
 export function ImageCarousel({ images }: ImageCarouselProps) {
-  const { t } = useLocale()
+  const t = useTranslations()
   const { current, direction, goTo, goNext, goPrev } = useCarousel(images.length)
 
   if (images.length === 0) return null

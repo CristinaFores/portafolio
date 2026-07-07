@@ -34,12 +34,12 @@ If `pnpm <script>` fails locally with `ERR_PNPM_IGNORED_BUILDS` (postinstall scr
 The component tree is split into three layers — see [`DESIGN.md`](./DESIGN.md) for full rationale:
 
 ```
-components/ui/       Pure primitives. No i18n, no data fetching, no route knowledge.
-components/sections/  Own data, i18n (useLocale), motion, behavior. Compose ui/ primitives.
+components/ui/       Pure primitives. No message keys, no data fetching.
+components/sections/  Own data, i18n (useTranslations), motion, behavior. Compose ui/ primitives.
 components/layout/    Global chrome (Navbar, Footer, ThemeProvider, MainShell).
 ```
 
-- **`components/ui/*` must never import `useLocale`, `lib/translations.ts`, or any `lib/data/*` module.** Strings and callbacks flow down from `sections/` as props. Breaking this invariant is the single most common way to regress this codebase's structure.
+- **`components/ui/*` must never import `useTranslations`, `messages/*`, or any `lib/data/*` module.** Strings and callbacks flow down from `sections/` as props. The one i18n import allowed in `ui/` is the locale-aware `Link` from `@/i18n/navigation` (routing, not content). Breaking this invariant is the single most common way to regress this codebase's structure.
 - Do not create a `features/*` or `shared/*` folder structure. At this component count, feature folders create dumping grounds for cross-cutting components (Hero, ContactCTA). Keep the three-layer split.
 - Before adding a new component, decide its layer using the tie-breaker: does it own data/i18n/behavior? → `sections/`. Is it pure/presentational only? → `ui/`. Is it global site chrome? → `layout/`.
 
@@ -48,7 +48,8 @@ components/layout/    Global chrome (Navbar, Footer, ThemeProvider, MainShell).
 - Routes live under `app/`; route-level composition (page assembly) belongs in the page file, not in a component.
 - Server Components are the default. Add `'use client'` only when the component genuinely needs browser APIs, event handlers, hooks, or context — and add it to the leaf component that needs it, not to a page or a wrapper above it. Never add the directive preemptively.
 - `next/image` is required for all raster images — always pass an accurate `sizes` prop matching the rendered box, not a viewport-relative default.
-- No new client-only state library — locale state uses a single `LocaleProvider` (`lib/locale-context.tsx`); don't add a second context/store for similar concerns without discussing scope first.
+- No new client-only state library — the locale lives in the URL prefix and flows through next-intl (`i18n/`); don't add a context/store for locale or similar concerns without discussing scope first.
+- Internal navigation must use `Link`/`useRouter`/`usePathname` from `@/i18n/navigation`, never from `next/link`/`next/navigation` directly, so the locale prefix is preserved. Static file hrefs (e.g. the CV PDF) are the exception and render as plain anchors.
 
 ## TypeScript rules
 

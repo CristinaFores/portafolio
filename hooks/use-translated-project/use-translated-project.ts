@@ -3,7 +3,7 @@
 import { useMemo } from "react"
 import { getProject } from "@/lib/data/projects"
 import { getProjectTranslation } from "@/lib/data/project-translations"
-import { useLocale } from "@/i18n/locale-context"
+import { useLocale } from "next-intl"
 import type { Project } from "@/types/project"
 
 /**
@@ -11,7 +11,7 @@ import type { Project } from "@/types/project"
  * Falls back to original project content when translation is missing.
  */
 export function useTranslatedProject(slug: string): Project | null {
-  const { locale } = useLocale()
+  const locale = useLocale()
   const project = getProject(slug)
   const translation = getProjectTranslation(slug, locale)
 

@@ -1,15 +1,15 @@
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
-import { LocaleProvider } from "@/i18n/locale-context"
+import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { PROFILE } from "@/lib/site-config"
 import { AboutContent } from "./about-content"
 import { BIO_PARAGRAPH_KEYS, EXPERIENCE_ITEMS } from "./about-data"
 
 function renderAbout() {
   return render(
-    <LocaleProvider>
+    <I18nWrapper>
       <AboutContent />
-    </LocaleProvider>,
+    </I18nWrapper>,
   )
 }
 
@@ -25,7 +25,7 @@ describe("AboutContent", () => {
   it("renders every bio paragraph", () => {
     renderAbout()
 
-    expect(screen.getByText(/Product \/ AI Engineer\./)).toBeInTheDocument()
+    expect(screen.getByText(/Construyo interfaces de producto/)).toBeInTheDocument()
     expect(BIO_PARAGRAPH_KEYS.length).toBeGreaterThan(0)
   })
 

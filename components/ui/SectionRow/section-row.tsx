@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useMotion } from "@/hooks/use-motion"
+import { useMotion } from "@/hooks/use-motion/use-motion"
 
 export type SectionRowProps = {
   label: string

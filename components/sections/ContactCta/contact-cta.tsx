@@ -1,8 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useLocale } from "@/i18n/locale-context"
-import { useMotion } from "@/hooks/use-motion"
+import { useTranslations } from "next-intl"
+import { useMotion } from "@/hooks/use-motion/use-motion"
 import { PROFILE } from "@/lib/site-config"
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { TextLink } from "@/components/ui/TextLink/text-link"
@@ -11,7 +11,7 @@ import { TextLink } from "@/components/ui/TextLink/text-link"
  * Contact section with direct outreach links.
  */
 export function ContactCTA() {
-  const { t } = useLocale()
+  const t = useTranslations()
   const { fadeUp } = useMotion()
 
   return (

@@ -1,11 +1,11 @@
 "use client"
 
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 import { TextLink } from "@/components/ui/TextLink/text-link"
 import { ROUTES } from "@/lib/routes"
 
 export default function NotFound() {
-  const { t } = useLocale()
+  const t = useTranslations()
 
   return (
     <section className="flex min-h-[60vh] flex-col items-center justify-center gap-6 px-6 text-center">

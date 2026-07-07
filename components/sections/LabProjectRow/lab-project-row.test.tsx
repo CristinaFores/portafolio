@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
-import { LocaleProvider } from "@/i18n/locale-context"
+import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { LabProjectRow } from "./lab-project-row"
 
@@ -9,11 +9,11 @@ describe("LabProjectRow", () => {
 
   it("renders the project name and links to its detail page", () => {
     render(
-      <LocaleProvider>
+      <I18nWrapper>
         <LabProjectRow slug={project.slug} />
-      </LocaleProvider>,
+      </I18nWrapper>,
     )
     expect(screen.getByText(project.name)).toBeInTheDocument()
-    expect(screen.getByRole("link")).toHaveAttribute("href", `/lab/${project.slug}`)
+    expect(screen.getByRole("link")).toHaveAttribute("href", `/es/lab/${project.slug}`)
   })
 })

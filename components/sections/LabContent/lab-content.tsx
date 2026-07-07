@@ -1,7 +1,7 @@
 "use client"
 
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 import { PageHeader } from "@/components/ui/PageHeader/page-header"
 import { LabProjectRow } from "@/components/sections/LabProjectRow/lab-project-row"
 
@@ -9,7 +9,7 @@ import { LabProjectRow } from "@/components/sections/LabProjectRow/lab-project-r
  * Lab index — list of projects, each linking to its detail page.
  */
 export function LabContent() {
-  const { t } = useLocale()
+  const t = useTranslations()
 
   return (
     <div className="px-6 pb-24 pt-28">

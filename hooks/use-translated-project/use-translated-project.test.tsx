@@ -1,11 +1,11 @@
 import { renderHook } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
 import type { ReactNode } from "react"
-import { LocaleProvider } from "@/i18n/locale-context"
+import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { useTranslatedProject } from "./use-translated-project"
 
 function wrapper({ children }: { children: ReactNode }) {
-  return <LocaleProvider>{children}</LocaleProvider>
+  return <I18nWrapper>{children}</I18nWrapper>
 }
 
 describe("useTranslatedProject", () => {

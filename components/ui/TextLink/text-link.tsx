@@ -1,4 +1,5 @@
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
+import { isStaticFileHref } from "@/lib/link-target"
 
 export type TextLinkProps = {
   href: string
@@ -35,7 +36,7 @@ export function TextLink({
     )
   }
 
-  if (href.startsWith("mailto:") || href.startsWith("tel:")) {
+  if (href.startsWith("mailto:") || href.startsWith("tel:") || isStaticFileHref(href)) {
     return (
       <a href={href} aria-label={ariaLabel} className={classes}>
         {children}

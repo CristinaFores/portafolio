@@ -1,14 +1,14 @@
 "use client"
 
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react"
 import { getAdjacentProjects } from "@/lib/data/projects"
 import { getProjectTranslation } from "@/lib/data/project-translations"
 import { ImageCarousel } from "@/components/sections/ImageCarousel/image-carousel"
-import { useTranslatedProject } from "@/hooks/use-translated-project"
-import { useLocale } from "@/i18n/locale-context"
-import { useMotion } from "@/hooks/use-motion"
+import { useTranslatedProject } from "@/hooks/use-translated-project/use-translated-project"
+import { useLocale, useTranslations } from "next-intl"
+import { useMotion } from "@/hooks/use-motion/use-motion"
 import { cn } from "@/lib/class-names"
 import { TextLink } from "@/components/ui/TextLink/text-link"
 import { ROUTES } from "@/lib/routes"
@@ -87,7 +87,8 @@ function BulletItem({ text }: BulletItemProps) {
  */
 export function ProjectDetail({ slug }: ProjectDetailProps) {
   const project = useTranslatedProject(slug)
-  const { t, locale } = useLocale()
+  const t = useTranslations()
+  const locale = useLocale()
   const { fadeUp } = useMotion()
 
   if (!project) return null

@@ -6,12 +6,12 @@ How the visual system is encoded. Future visual changes should touch tokens here
 
 ```
 components/
-  ui/         Pure primitives. No i18n, no data, no route knowledge. Props in, markup out.
-  sections/   Own data, i18n (useLocale), motion, and behavior. Compose ui/ primitives.
+  ui/         Pure primitives. No message keys, no data. Props in, markup out.
+  sections/   Own data, i18n (useTranslations), motion, and behavior. Compose ui/ primitives.
   layout/     Global chrome (Navbar, Footer, ThemeProvider, MainShell).
 ```
 
-**Invariant:** `ui/` never imports `useLocale`, translation dictionaries, or route/data hooks. Strings and callbacks flow down from `sections/` as props. This is what keeps primitives like `ListRow` reusable and testable without providers.
+**Invariant:** `ui/` never imports `useTranslations`, message dictionaries, or data hooks. Strings and callbacks flow down from `sections/` as props. The one i18n import allowed is the locale-aware `Link` from `@/i18n/navigation` (routing, not content) — primitives that render internal links are tested with the shared `test-utils/i18n-wrapper.tsx` provider.
 
 **Why not feature folders:** this is a ~25-component presentational portfolio — pages share UI, not bounded contexts with state or services. A `features/*` split would produce a `shared/misc` dumping ground for components like `Hero` or `ContactCTA` that don't belong to any single feature. The three-layer split matches the actual shape of the code.
 

@@ -1,13 +1,13 @@
 "use client"
 
 import { useRef } from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useLocale } from "@/i18n/locale-context"
-import { useMotion } from "@/hooks/use-motion"
-import { useParallaxY } from "@/hooks/use-parallax-y"
+import { useTranslations } from "next-intl"
+import { useMotion } from "@/hooks/use-motion/use-motion"
+import { useParallaxY } from "@/hooks/use-parallax-y/use-parallax-y"
 import { PROFILE } from "@/lib/site-config"
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { ROUTES } from "@/lib/routes"
@@ -34,7 +34,7 @@ function Headline({ text }: { text: string }) {
  * Mobile: typography-first + subtle corner portrait peek.
  */
 export function Hero() {
-  const { t } = useLocale()
+  const t = useTranslations()
   const { reduced } = useMotion()
   const sectionRef = useRef<HTMLElement>(null)
   const { y: portraitY, enabled: parallaxOn } = useParallaxY(sectionRef, { range: 44 })

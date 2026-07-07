@@ -1,6 +1,11 @@
-import { fireEvent, render, screen } from "@testing-library/react"
+import type { ReactElement } from "react"
+import { fireEvent, render as rtlRender, screen, type RenderOptions } from "@testing-library/react"
+import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { describe, expect, it, vi } from "vitest"
 import { ListRow } from "@/components/ui/ListRow/list-row"
+
+const render = (ui: ReactElement, options?: RenderOptions) =>
+  rtlRender(ui, { wrapper: I18nWrapper, ...options })
 
 describe("ListRow", () => {
   it("renders title and subtitle", () => {
@@ -13,7 +18,7 @@ describe("ListRow", () => {
   it("renders the href on the link", () => {
     render(<ListRow href="/projects/foo" title="Project Foo" subtitle="Description" />)
 
-    expect(screen.getByRole("link")).toHaveAttribute("href", "/projects/foo")
+    expect(screen.getByRole("link")).toHaveAttribute("href", "/es/projects/foo")
   })
 
   it("renders N tags", () => {

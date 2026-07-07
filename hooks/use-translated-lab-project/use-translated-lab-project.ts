@@ -4,7 +4,7 @@ import { useMemo } from "react"
 import { getLabProject } from "@/lib/data/lab-projects"
 import { getLabTranslation, getLabDetailTranslation } from "@/lib/data/lab-translations"
 import { LAB_PROJECT } from "@/lib/data/lab-project"
-import { useLocale } from "@/i18n/locale-context"
+import { useLocale } from "next-intl"
 import type { LabProject, LabProjectDetail } from "@/types/lab"
 
 /**
@@ -12,7 +12,7 @@ import type { LabProject, LabProjectDetail } from "@/types/lab"
  * Falls back to empty strings when translation is missing.
  */
 export function useTranslatedLabProject(slug: string): LabProject | null {
-  const { locale } = useLocale()
+  const locale = useLocale()
   const project = getLabProject(slug)
   const translation = getLabTranslation(slug, locale)
 
@@ -44,7 +44,7 @@ export function useTranslatedLabProject(slug: string): LabProject | null {
  * with all user-facing text in the current locale.
  */
 export function useTranslatedLabProjectDetail(slug: string): LabProjectDetail | null {
-  const { locale } = useLocale()
+  const locale = useLocale()
   const translation = getLabDetailTranslation(slug, locale)
 
   return useMemo(() => {

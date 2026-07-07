@@ -11,6 +11,13 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./vitest.setup.ts"],
     globals: true,
+    server: {
+      deps: {
+        // Process next-intl through Vite so the "next/navigation" alias
+        // below applies (Node alone cannot resolve that bare ESM import).
+        inline: ["next-intl"],
+      },
+    },
     coverage: {
       provider: "v8",
       include: ["components/**", "hooks/**", "lib/**", "i18n/**"],
@@ -20,6 +27,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": dirname,
+      // next-intl imports "next/navigation" as bare ESM; point it at the
+      // real file so Vitest can resolve it through pnpm's symlinks.
+      "next/navigation": path.resolve(dirname, "node_modules/next/navigation.js"),
     },
   },
 })

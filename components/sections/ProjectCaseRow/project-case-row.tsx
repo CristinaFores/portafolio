@@ -2,8 +2,8 @@
 
 import { usePathname, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
-import { useTranslatedProject } from "@/hooks/use-translated-project"
-import { useMotion } from "@/hooks/use-motion"
+import { useTranslatedProject } from "@/hooks/use-translated-project/use-translated-project"
+import { useMotion } from "@/hooks/use-motion/use-motion"
 import { ListRow } from "@/components/ui/ListRow/list-row"
 import { ROUTES } from "@/lib/routes"
 

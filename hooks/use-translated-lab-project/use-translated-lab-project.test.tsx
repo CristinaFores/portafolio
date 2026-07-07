@@ -1,24 +1,12 @@
 import { renderHook } from "@testing-library/react"
-import { beforeEach, describe, expect, it } from "vitest"
-import { LocaleProvider } from "@/i18n/locale-context"
+import { describe, expect, it } from "vitest"
+import { createI18nWrapper } from "@/test-utils/i18n-wrapper"
 import { useTranslatedLabProject, useTranslatedLabProjectDetail } from "./use-translated-lab-project"
 
-const STORAGE_KEY = "portfolio-locale"
-
-function setLocale(locale: "es" | "en") {
-  localStorage.setItem(STORAGE_KEY, locale)
-}
-
 describe("useTranslatedLabProject", () => {
-  beforeEach(() => {
-    localStorage.clear()
-  })
-
   it("resolves the tagline and links in Spanish when locale is es", () => {
-    setLocale("es")
-
     const { result } = renderHook(() => useTranslatedLabProject("auralang"), {
-      wrapper: LocaleProvider,
+      wrapper: createI18nWrapper("es"),
     })
 
     expect(result.current?.tagline).toMatch(/al vuelo/)
@@ -26,10 +14,8 @@ describe("useTranslatedLabProject", () => {
   })
 
   it("resolves the tagline and links in English when locale is en", () => {
-    setLocale("en")
-
     const { result } = renderHook(() => useTranslatedLabProject("auralang"), {
-      wrapper: LocaleProvider,
+      wrapper: createI18nWrapper("en"),
     })
 
     expect(result.current?.tagline).toMatch(/on the fly/)
@@ -37,20 +23,16 @@ describe("useTranslatedLabProject", () => {
   })
 
   it("falls back to null when the slug does not exist", () => {
-    setLocale("en")
-
     const { result } = renderHook(() => useTranslatedLabProject("does-not-exist"), {
-      wrapper: LocaleProvider,
+      wrapper: createI18nWrapper("en"),
     })
 
     expect(result.current).toBeNull()
   })
 
   it("keeps untranslated base fields (pipeline, tech badges) intact", () => {
-    setLocale("es")
-
     const { result } = renderHook(() => useTranslatedLabProject("auralang"), {
-      wrapper: LocaleProvider,
+      wrapper: createI18nWrapper("es"),
     })
 
     expect(result.current?.howItWorks.pipeline).toEqual([
@@ -64,15 +46,9 @@ describe("useTranslatedLabProject", () => {
 })
 
 describe("useTranslatedLabProjectDetail", () => {
-  beforeEach(() => {
-    localStorage.clear()
-  })
-
   it("resolves modes and tool group labels for design-context-bridge in the active locale", () => {
-    setLocale("es")
-
     const { result } = renderHook(() => useTranslatedLabProjectDetail("design-context-bridge"), {
-      wrapper: LocaleProvider,
+      wrapper: createI18nWrapper("es"),
     })
 
     expect(result.current?.modes[1].name).toBe("Modo REST API")
@@ -81,10 +57,8 @@ describe("useTranslatedLabProjectDetail", () => {
   })
 
   it("returns null for any slug other than design-context-bridge", () => {
-    setLocale("en")
-
     const { result } = renderHook(() => useTranslatedLabProjectDetail("auralang"), {
-      wrapper: LocaleProvider,
+      wrapper: createI18nWrapper("en"),
     })
 
     expect(result.current).toBeNull()

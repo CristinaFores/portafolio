@@ -1,21 +1,42 @@
 import React from "react"
 import type { Metadata, Viewport } from "next"
+import { notFound } from "next/navigation"
+import { hasLocale, NextIntlClientProvider, type Locale } from "next-intl"
+import { setRequestLocale } from "next-intl/server"
 import { Analytics } from "@vercel/analytics/next"
 
-import "./globals.css"
+import "../globals.css"
+import { routing } from "@/i18n/routing"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { MainShell } from "@/components/layout/main-shell"
 import { ScrollProgress } from "@/components/layout/scroll-progress"
 import { ThemeProvider } from "@/components/layout/theme-provider"
-import { LocaleProvider } from "@/i18n/locale-context"
 import { inter, syne, ibmPlexMono } from "@/styles/fonts"
 import { PROFILE, SITE_URL } from "@/lib/site-config"
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: `${PROFILE.name} — ${PROFILE.role}`,
-  description: PROFILE.tagline,
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const otherLocales = routing.locales.filter((l) => l !== locale)
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: `${PROFILE.name} — ${PROFILE.role}`,
+    description: PROFILE.tagline,
+    openGraph: {
+      type: "website",
+      siteName: `${PROFILE.name} — ${PROFILE.role}`,
+      locale,
+      alternateLocale: otherLocales,
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
+  }
 }
 
 const personJsonLd = {
@@ -40,13 +61,23 @@ export const viewport: Viewport = {
   ],
 }
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export default async function LocaleLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode
+  params: Promise<{ locale: string }>
 }>) {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+  setRequestLocale(locale)
+
   return (
-    <html lang="es" suppressHydrationWarning data-scroll-behavior="smooth">
+    <html lang={locale} suppressHydrationWarning data-scroll-behavior="smooth">
       <body
         className={`${inter.variable} ${syne.variable} ${ibmPlexMono.variable} font-sans antialiased`}
       >
@@ -63,13 +94,13 @@ export default function RootLayout({
           // and uncomment the toggle in navbar.tsx to bring it back.
           forcedTheme="light"
         >
-          <LocaleProvider>
+          <NextIntlClientProvider>
             <Navbar />
             <ScrollProgress />
             <MainShell>{children}</MainShell>
             <Footer />
             <Analytics />
-          </LocaleProvider>
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

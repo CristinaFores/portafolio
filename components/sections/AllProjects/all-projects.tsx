@@ -3,13 +3,13 @@
 import { getProjectsForDisplay } from "@/lib/data/projects"
 import { ProjectCaseRow } from "@/components/sections/ProjectCaseRow/project-case-row"
 import { PageHeader } from "@/components/ui/PageHeader/page-header"
-import { useLocale } from "@/i18n/locale-context"
+import { useTranslations } from "next-intl"
 
 /**
  * Full project listing for the /projects route.
  */
 export function AllProjects() {
-  const { t } = useLocale()
+  const t = useTranslations()
   const projects = getProjectsForDisplay()
 
   return (
