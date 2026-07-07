@@ -116,8 +116,8 @@
       "2": "At Gyoza I led the implementation of Wetour (a <strong>Next.js</strong> community with an SEO focus) and Turbowash (a <strong>React Native</strong> app controlling laundry machines: payments, loyalty, and remote activation), alongside contributing to Goiko.",
       "3": "My work is grounded in scalable UI architecture and in state and async data management with <strong>Zustand</strong> and <strong>TanStack Query</strong>.",
       "4": "In little over a year I went from pure frontend engineering to shipping design-context-bridge: my own <strong>MCP</strong> server in production, compatible with Cursor, Claude Code, and Windsurf, giving <strong>AI agents</strong> real design context from <strong>Figma</strong>.",
-      "5": "<em>When a tool I need doesn't exist, I build it.</em>",
-      "availability": "Barcelona · Available for remote work."
+      "availability": "Barcelona · Available for remote work.",
+      "motto": "When a tool I need doesn't exist, I build it."
     },
     "skills": {
       "title": "Skills",
