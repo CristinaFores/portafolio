@@ -3,7 +3,7 @@
 import { useMemo } from "react"
 import { getProject } from "@/lib/data/projects"
 import { getProjectTranslation } from "@/lib/data/project-translations"
-import { useLocale } from "@/lib/i18n/locale-context"
+import { useLocale } from "@/i18n/locale-context"
 import type { Project } from "@/types/project"
 
 /**
