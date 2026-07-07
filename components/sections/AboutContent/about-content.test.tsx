@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
-import { LocaleProvider } from "@/lib/i18n/locale-context"
+import { LocaleProvider } from "@/i18n/locale-context"
 import { PROFILE } from "@/lib/site-config"
 import { AboutContent } from "./about-content"
 import { BIO_PARAGRAPH_KEYS, EXPERIENCE_ITEMS } from "./about-data"

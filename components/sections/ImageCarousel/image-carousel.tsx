@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { ProjectImage } from "@/types/project"
-import { useLocale } from "@/lib/i18n/locale-context"
+import { useLocale } from "@/i18n/locale-context"
 import { useCarousel } from "./use-carousel"
 import { DeviceImage } from "./device-image"
 import { slideVariants } from "./slide-variants"

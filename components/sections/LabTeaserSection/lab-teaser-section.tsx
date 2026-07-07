@@ -6,7 +6,7 @@ import { ParallaxBlock } from "@/components/ui/ParallaxBlock/parallax-block"
 import { ViewAllLink } from "@/components/ui/ViewAllLink/view-all-link"
 import { ListRow } from "@/components/ui/ListRow/list-row"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
-import { useLocale } from "@/lib/i18n/locale-context"
+import { useLocale } from "@/i18n/locale-context"
 import { useMotion } from "@/hooks/use-motion"
 import { ROUTES } from "@/lib/routes"
 
