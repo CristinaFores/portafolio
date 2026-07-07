@@ -40,30 +40,31 @@ CI (`.github/workflows/ci.yml`) runs lint → typecheck → test → build on ev
 Components are split by responsibility, not by page/feature — this is a presentational site, not a set of bounded contexts. See [`DESIGN.md`](./DESIGN.md) for the full rationale.
 
 ```
-app/                    Routes and global layout (App Router)
+app/[locale]/           Routes and layout per locale (App Router, /es and /en)
 components/
   ui/                   Pure presentational primitives (Tag, ListRow, SectionHeading...)
-                        No i18n, no data fetching, no route knowledge — props in, markup out.
+                        No message keys, no data fetching — props in, markup out.
   sections/             Page-composed sections (Hero, FeaturedProjects, LabContent...)
-                        Own data, i18n (useLocale), motion, and behavior; compose ui/ primitives.
+                        Own data, i18n (useTranslations), motion, and behavior; compose ui/ primitives.
   layout/               Global chrome (Navbar, Footer, ThemeProvider, MainShell)
 hooks/                  use-motion, use-parallax-y, use-translated-project
+i18n/                   next-intl setup: routing, request config, locale-aware navigation
+messages/               es.json / en.json translation dictionaries
 lib/
   data/                 projects, lab-projects, project translations, now
-  translations.ts       ES/EN dictionary
-  locale-context.tsx    Locale provider + t() helper (client-side, localStorage-persisted)
   motion.ts             Shared Framer Motion variants
   site-config.ts        Profile, links, site metadata
+proxy.ts                next-intl middleware: locale detection and redirects
 public/images/           Project screenshots
 ```
 
 ## Internationalization
 
-ES/EN via a client-side `LocaleProvider` (`lib/locale-context.tsx`): locale is resolved from `localStorage` or the browser's `navigator.language`, exposed through a `useLocale()` hook returning `{ locale, setLocale, t, dict }`. There is no locale-prefixed routing — the same URL renders both languages.
+ES/EN via [next-intl](https://next-intl.dev) with locale-prefixed routing (`/es/...`, `/en/...`; `/` redirects to the detected locale). Every page prerenders statically in both languages with localized metadata, `hreflang` alternates, and a per-locale sitemap. Messages live in `messages/{locale}.json`; components read them with `useTranslations()`, and rich text (e.g. `<strong>` in the About bios) renders through `t.rich()`. Internal navigation uses the locale-aware `Link`/`useRouter` from `i18n/navigation.ts` so the prefix is preserved; static file hrefs (like the CV PDF) render as plain anchors.
 
 ## Testing
 
-Vitest + React Testing Library + jsdom. `ui/` primitives are pure (no hooks/context), so they're tested without providers. Tests live next to the component they cover (e.g. `components/ui/tag.test.tsx`).
+Vitest + React Testing Library + jsdom. `ui/` primitives take strings as props, but the ones that render internal links use the locale-aware `Link`, so tests wrap renders with `test-utils/i18n-wrapper.tsx` (a `NextIntlClientProvider` preloaded with the JSON messages). Tests live next to the component they cover (e.g. `components/ui/tag.test.tsx`).
 
 ## Deploy
 
