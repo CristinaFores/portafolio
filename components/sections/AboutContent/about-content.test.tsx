@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest"
 import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 import { PROFILE } from "@/lib/site-config"
 import { AboutContent } from "./about-content"
-import { BIO_PARAGRAPH_KEYS, EXPERIENCE_ITEMS } from "./about-data"
+import esMessages from "@/messages/es.json"
 
 function renderAbout() {
   return render(
@@ -14,19 +14,26 @@ function renderAbout() {
 }
 
 describe("AboutContent", () => {
-  it("renders one experience card per experience item", () => {
+  it("renders one experience card per experience entry in the messages", () => {
     renderAbout()
 
-    expect(screen.getByText(/GYOZA TECHNOLOGY STUDIO/)).toBeInTheDocument()
-    expect(screen.getByText(/Freelancer/)).toBeInTheDocument()
-    expect(EXPERIENCE_ITEMS).toHaveLength(2)
+    const experienceEntries = Object.values(esMessages.about.experience).filter(
+      (value) => typeof value === "object" && value !== null,
+    )
+    expect(experienceEntries.length).toBeGreaterThan(0)
+    for (const entry of experienceEntries) {
+      expect(screen.getByRole("heading", { name: entry.title })).toBeInTheDocument()
+    }
   })
 
-  it("renders every bio paragraph", () => {
+  it("renders one paragraph per numbered bio entry in the messages", () => {
     renderAbout()
 
+    const bioKeys = Object.keys(esMessages.about.bio).filter((key) => /^\d+$/.test(key))
+    expect(bioKeys.length).toBeGreaterThan(0)
     expect(screen.getByText(/Construyo interfaces de producto/)).toBeInTheDocument()
-    expect(BIO_PARAGRAPH_KEYS.length).toBeGreaterThan(0)
+    expect(screen.getByText(/Cuando una herramienta que necesito no existe/)).toBeInTheDocument()
+    expect(screen.getByText("Zustand", { selector: "strong" })).toBeInTheDocument()
   })
 
   it("links the CV button to the profile CV url", () => {

@@ -112,11 +112,12 @@
   "about": {
     "title": "Sobre mí",
     "bio": {
-      "1": "Construyo interfaces de producto en React, React Native y Next.js, y las conecto con las herramientas de IA que están transformando el desarrollo.",
-      "2": "En Gyoza lideré la implementación de Wetour (comunidad en Next.js con foco en SEO) y Turbowash (app en React Native que controla máquinas de lavado: pagos, fidelización y activación remota), además de contribuir en Goiko.",
+      "1": "Construyo interfaces de producto en <strong>React</strong>, <strong>React Native</strong> y <strong>Next.js</strong>, y las conecto con las herramientas de IA que están transformando el desarrollo.",
+      "2": "En Gyoza lideré la implementación de Wetour (comunidad en <strong>Next.js</strong> con foco en SEO) y Turbowash (app en <strong>React Native</strong> que controla máquinas de lavado: pagos, fidelización y activación remota), además de contribuir en Goiko.",
       "3": "Mi trabajo se apoya en arquitecturas de interfaz escalables y en la gestión de estado y datos asíncronos con <strong>Zustand</strong> y <strong>TanStack Query</strong>.",
-      "4": "En poco más de un año pasé de la ingeniería frontend pura a publicar design-context-bridge: mi propio servidor <strong>MCP</strong> en producción, compatible con Cursor, Claude Code y Windsurf, que da a los agentes de IA contexto real de diseño desde Figma. Cuando una herramienta que necesito no existe, la construyo.",
-      "availability": "Barcelona · Disponible en remoto."
+      "4": "En poco más de un año pasé de la ingeniería frontend pura a publicar design-context-bridge: mi propio servidor <strong>MCP</strong> en producción, compatible con <strong>Cursor</strong>, <strong>Claude Code</strong> y <strong>Windsurf</strong>, que da a los <strong>agentes de IA</strong> contexto real de diseño desde <strong>Figma</strong>",
+      "availability": "Barcelona · Disponible en remoto.",
+      "motto": "Cuando una herramienta que necesito no existe, la construyo."
     },
     "skills": {
       "title": "Skills",

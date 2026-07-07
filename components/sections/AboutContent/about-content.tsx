@@ -6,12 +6,13 @@ import { useMotion } from "@/hooks/use-motion/use-motion"
 import { PROFILE } from "@/lib/site-config"
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { PageHeader } from "@/components/ui/PageHeader/page-header"
-import { Paragraph } from "@/components/ui/Paragraph/paragraph"
 import { SectionRow } from "@/components/ui/SectionRow/section-row"
 import { EducationCard } from "@/components/sections/EducationCard/education-card"
 import { ExperienceCard } from "@/components/sections/ExperienceCard/experience-card"
 import { SkillCard } from "@/components/sections/SkillCard/skill-card"
-import { BIO_PARAGRAPH_KEYS, EXPERIENCE_ITEMS, SKILL_GROUPS } from "./about-data"
+import { BioParagraphs } from "./bio-paragraphs"
+import { RICH_TAGS } from "./rich-tags"
+import { EXPERIENCE_LINKS, SKILL_GROUPS } from "./about-data"
 
 /**
  * Cuerpo de la página About: bio, experiencia, skills y educación.
@@ -25,35 +26,40 @@ export function AboutContent() {
     label: string
   }[]
 
-  const resolveBullets = (key?: string) =>
-    key ? (t.raw(key) as readonly string[]).slice(0, 4) : undefined
+  const experience = t.raw("about.experience") as Record<string, unknown>
+  const experienceIds = Object.keys(experience).filter(
+    (id) => typeof experience[id] === "object" && experience[id] !== null,
+  )
+
+  const resolveBullets = (id: string) => {
+    const entry = experience[id] as { bullets?: readonly string[] }
+    return entry.bullets?.slice(0, 4)
+  }
 
   return (
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
         <div className="flex max-w-3xl flex-col gap-5">
           <PageHeader eyebrow="Product / AI Engineer" title={t("about.title")} />
-          <div className="flex max-w-2xl flex-col gap-4 text-base sm:text-lg">
-            {BIO_PARAGRAPH_KEYS.map((key) => (
-              <Paragraph key={key} className="[&_strong]:font-medium [&_strong]:text-foreground">
-                {t.rich(key, { strong: (chunks) => <strong>{chunks}</strong> })}
-              </Paragraph>
-            ))}
+          <div className="flex max-w-2xl flex-col gap-4">
+            <BioParagraphs />
           </div>
+          <blockquote className="mt-2 max-w-2xl border-l-2 border-accent pl-5 font-display text-base font-semibold leading-snug tracking-tight text-foreground">
+            {t("about.bio.motto")}
+          </blockquote>
           <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>
         </div>
 
         <SectionRow label={t("about.experience.title")} sectionIndex={0}>
           <div className="flex max-w-3xl flex-col gap-10">
-            {EXPERIENCE_ITEMS.map((item) => (
+            {experienceIds.map((id) => (
               <ExperienceCard
-                key={item.id}
-                title={t(item.titleKey)}
-                date={t(item.dateKey)}
-                summary={t(item.summaryKey)}
-                summaryIsHtml={item.summaryIsHtml}
-                bullets={resolveBullets(item.bulletsKey)}
-                link={item.link}
+                key={id}
+                title={t(`about.experience.${id}.title`)}
+                date={t(`about.experience.${id}.date`)}
+                summary={t.rich(`about.experience.${id}.summary`, RICH_TAGS)}
+                bullets={resolveBullets(id)}
+                link={EXPERIENCE_LINKS[id]}
               />
             ))}
           </div>

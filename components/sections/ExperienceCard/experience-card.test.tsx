@@ -41,8 +41,17 @@ describe("ExperienceCard", () => {
     expect(screen.queryByRole("list")).not.toBeInTheDocument()
   })
 
-  it("renders HTML in the summary when summaryIsHtml is set", () => {
-    render(<ExperienceCard {...baseProps} summary="Worked on <strong>Goiko</strong>" summaryIsHtml />)
+  it("renders rich nodes in the summary", () => {
+    render(
+      <ExperienceCard
+        {...baseProps}
+        summary={
+          <>
+            Worked on <strong>Goiko</strong>
+          </>
+        }
+      />,
+    )
 
     expect(screen.getByText("Goiko").tagName).toBe("STRONG")
   })
