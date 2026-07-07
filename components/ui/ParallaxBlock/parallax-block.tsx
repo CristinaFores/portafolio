@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import { motion } from "framer-motion"
-import { useParallaxY } from "@/hooks/use-parallax-y"
+import { useParallaxY } from "@/hooks/use-parallax-y/use-parallax-y"
 
 type ParallaxBlockProps = {
   children: React.ReactNode

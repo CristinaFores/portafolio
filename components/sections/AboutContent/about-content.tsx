@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useLocale } from "@/i18n/locale-context"
-import { useMotion } from "@/hooks/use-motion"
+import { useMotion } from "@/hooks/use-motion/use-motion"
 import { PROFILE } from "@/lib/site-config"
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { PageHeader } from "@/components/ui/PageHeader/page-header"

@@ -92,13 +92,13 @@ export const es = {
 
   "about.title": "Sobre mí",
   "about.bio.1":
-    "Product / AI Engineer. Construyo interfaces de producto en React, React Native y Next.js — y las herramientas de IA que las rodean.",
+    "Product & AI Engineer. Construyo interfaces de producto en React, React Native y Next.js, conectándolas con las herramientas de IA que transforman el desarrollo.",
   "about.bio.2":
-    "En Gyoza lideré la implementación de proyectos como Wetour (comunidad en Next.js con foco en SEO) y Turbowash (app IoT en React Native que controla pagos físicos, loyalty y la activación de máquinas), además de contribuir en Goiko.",
+    "En Gyoza lideré la implementación de proyectos como Wetour (comunidad en Next.js con foco en SEO) y Turbowash (app IoT en React Native que controla pagos físicos, loyalty y la activación de hardware), además de contribuir en Goiko.",
   "about.bio.3":
-    "Mi trabajo se apoya en arquitecturas de interfaz escalables y en la gestión de estado y datos asíncronos con Zustand y TanStack Query. En paralelo construyo design-context-bridge, un servidor MCP que da a los agentes de IA contexto real de diseño desde Figma.",
+    "Mi trabajo se apoya en arquitecturas de interfaz escalables y en la gestión de estado y datos asíncronos con <strong>Zustand</strong> y <strong>TanStack Query</strong>. En paralelo construyo design-context-bridge, un servidor MCP que da a los agentes de IA contexto real de diseño desde Figma.",
   "about.bio.4":
-    "En poco más de un año pasé de frontend a construir mi propio servidor MCP en producción, compatible con Cursor, Claude Code y Windsurf. Cuando una herramienta no existe, la construyo — y me aseguro de que llegue a producción.",
+    "En poco más de un año pasé de la ingeniería frontend pura a poner en producción mi propio servidor <strong>MCP</strong>, compatible con Cursor, Claude Code y Windsurf. Cuando una herramienta que necesito no existe, la construyo — y me aseguro de que llegue a producción.",
   "about.bio.availability":
     "Barcelona · Disponible en remoto.",
   "about.skills.title": "Skills",

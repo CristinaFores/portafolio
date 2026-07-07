@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, ArrowUpRight, ArrowRight } from "lucide-react"
-import { useTranslatedLabProject, useTranslatedLabProjectDetail } from "@/hooks/use-translated-lab-project"
+import { useTranslatedLabProject, useTranslatedLabProjectDetail } from "@/hooks/use-translated-lab-project/use-translated-lab-project"
 import { TerminalSnippet } from "@/components/ui/TerminalSnippet/terminal-snippet"
 import { useLocale } from "@/i18n/locale-context"
 import { Tag } from "@/components/ui/Tag/tag"

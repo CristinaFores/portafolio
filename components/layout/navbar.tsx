@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/class-names"
 import { useLocale } from "@/i18n/locale-context"
 import { EASE } from "@/lib/motion"
-import { useMotion } from "@/hooks/use-motion"
+import { useMotion } from "@/hooks/use-motion/use-motion"
 import { PROFILE } from "@/lib/site-config"
 import { ROUTES } from "@/lib/routes"
 

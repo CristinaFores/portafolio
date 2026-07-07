@@ -6,9 +6,9 @@ import { ParallaxBlock } from "@/components/ui/ParallaxBlock/parallax-block"
 import { ViewAllLink } from "@/components/ui/ViewAllLink/view-all-link"
 import { ListRow } from "@/components/ui/ListRow/list-row"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
-import { useTranslatedLabProject } from "@/hooks/use-translated-lab-project"
+import { useTranslatedLabProject } from "@/hooks/use-translated-lab-project/use-translated-lab-project"
 import { useLocale } from "@/i18n/locale-context"
-import { useMotion } from "@/hooks/use-motion"
+import { useMotion } from "@/hooks/use-motion/use-motion"
 import { ROUTES } from "@/lib/routes"
 
 type LabTeaserRowProps = {
