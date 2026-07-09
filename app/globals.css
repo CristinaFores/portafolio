@@ -95,6 +95,7 @@
     --destructive: var(--light-sienna);
     --destructive-foreground: var(--light-bone);
     --border: var(--light-sand);
+    --border-accent: var(--light-sienna);
     --input: var(--light-sand);
     --ring: var(--light-sienna);
     --olive: var(--light-taupe-soft);
@@ -137,7 +138,6 @@
   * {
     @apply border-border;
   }
-
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;

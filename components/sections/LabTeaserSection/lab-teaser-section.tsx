@@ -6,62 +6,83 @@ import { ParallaxBlock } from "@/components/ui/ParallaxBlock/parallax-block"
 import { ViewAllLink } from "@/components/ui/ViewAllLink/view-all-link"
 import { ListRow } from "@/components/ui/ListRow/list-row"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
-import { useTranslatedLabProject } from "@/hooks/use-translated-lab-project/use-translated-lab-project"
 import { useTranslations } from "next-intl"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { ROUTES } from "@/lib/routes"
 
 type LabTeaserRowProps = {
-  slug: string
-  name: string
+  project: {
+    id: string
+    slug: string
+    href: string
+    title: string
+    subtitle: string
+    media: { src: string, alt: string }
+    tags: { label: string }[]
+    badge: string
+  }
   index: number
 }
 
-/** One teaser row — resolves its own translated tagline via the merge hook. */
-function LabTeaserRow({ slug, name, index }: LabTeaserRowProps) {
+
+export function LabTeaserRow({ project, index  }: LabTeaserRowProps) {
   const t = useTranslations()
   const { staggerItem } = useMotion()
-  const project = useTranslatedLabProject(slug)
-
-  if (!project) return null
 
   return (
     <motion.article {...staggerItem(index, { step: 0.03, y: 12 })}>
-      <ListRow
-        href={ROUTES.labProject(slug)}
-        title={name}
-        subtitle={project.tagline}
-        media={{ src: project.icon, fit: "contain" }}
-        tags={[{ label: t(`lab.status.${project.status}`) }]}
-      />
+      <ListRow 
+        key={project.id}
+        href={project.href}
+        title={project.title}
+        subtitle={project.subtitle}
+        media={project.media}
+        tags={project.tags}
+        badge={project.badge}
+       />
     </motion.article>
   )
 }
 
 /**
- * Home teaser for the Lab. Same row pattern as FeaturedProjects/ProjectCaseRow
- * so both list sections on the home page share one visual language.
+ * Home LAB
  */
+
 export function LabTeaserSection() {
   const t = useTranslations()
+
+    const labProjects = LAB_PROJECTS.map((project) => ({
+    id: crypto.randomUUID(),
+    slug: project.slug,
+    href: ROUTES.labProject(project.slug),
+    title: t(`lab.projects.${project.slug}.title`),
+    subtitle: t(`lab.projects.${project.slug}.subtitle`),
+    media: { src: project.icon, alt: project.name },
+    tags: project.techBadges.map((badge) => ({ label: badge })),
+    badge: `${t(`constants.status.${project.status}`)}`,
+  }))
 
   return (
     <section className="home-section">
       <ParallaxBlock className="mx-auto w-full max-w-5xl" range={20}>
         <div className="flex flex-col gap-8 max-lg:gap-6">
+
+          <div className="flex justify-between items-center">
           <SectionHeading
-            index={t("lab.home.sectionIndex")}
+            eyebrow={t("lab.home.sectionIndex")}
             title={t("lab.home.headline")}
-            subtitle={t("lab.home.subhead")}
+            subtitle={t("lab.home.subtitle")}
           />
+            <ViewAllLink className="hidden md:flex self-start"  href={ROUTES.lab} label={t("lab.home.viewLab")} />
+            </div>
 
           <div className="flex flex-col">
-            {LAB_PROJECTS.map((project, i) => (
-              <LabTeaserRow key={project.slug} slug={project.slug} name={project.name} index={i} />
+            {labProjects.map((project, index) => (
+              <LabTeaserRow project={project} index={index} key={project.id} />
             ))}
           </div>
 
-          <ViewAllLink href={ROUTES.lab} label={t("lab.home.viewLab")} />
+         <ViewAllLink className="md:hidden" href={ROUTES.lab} label={t("lab.home.viewLab")} />
         </div>
       </ParallaxBlock>
     </section>

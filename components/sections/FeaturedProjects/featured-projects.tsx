@@ -18,9 +18,8 @@ export function FeaturedProjects() {
     <section id="projects" className="home-section home-section-muted">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 max-lg:gap-6">
         <SectionHeading
-          index={t("work.sectionIndex")}
+          eyebrow={t("work.sectionIndex")}
           title={t("work.sectionTitle")}
-          subtitle={t("work.subhead")}
         />
 
         <div className="flex flex-col">

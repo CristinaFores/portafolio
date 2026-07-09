@@ -12,23 +12,6 @@ import { PROFILE } from "@/lib/site-config"
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { ROUTES } from "@/lib/routes"
 
-/** Renders the headline with the "AI"/"IA" keyword in the accent color. */
-function Headline({ text }: { text: string }) {
-  return (
-    <>
-      {text.split(/(\bAI\b|\bIA\b)/).map((part, i) =>
-        part === "AI" || part === "IA" ? (
-          <span key={i} className="text-accent">
-            {part}
-          </span>
-        ) : (
-          <span key={i}>{part}</span>
-        ),
-      )}
-    </>
-  )
-}
-
 /**
  * Hero — copy on the left, portrait on the right (desktop only).
  * Mobile: typography-first + subtle corner portrait peek.
@@ -89,8 +72,10 @@ export function Hero() {
                   className="h-full w-full object-contain object-top"
                 />
               </div>
-              <h1 className="hero-headline font-semibold leading-[1.05] tracking-[-0.03em] text-foreground max-lg:text-[clamp(2rem,8.5vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
-                <Headline text={t("hero.headline")} />
+              <h1 className="hero-headline font-bold leading-[1.05] tracking-[-0.03em] text-foreground max-lg:text-[clamp(2rem,8.5vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
+          
+                {t("hero.headline1")} <br /> 
+                <span className="text-accent">{t("hero.headline2")}</span>
               </h1>
             </div>
             <p className="max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">

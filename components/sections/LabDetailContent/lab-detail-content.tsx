@@ -3,45 +3,118 @@
 import { Link } from "@/i18n/navigation"
 import Image from "next/image"
 import { ArrowLeft, ArrowUpRight, ArrowRight } from "lucide-react"
-import { useTranslatedLabProject, useTranslatedLabProjectDetail } from "@/hooks/use-translated-lab-project/use-translated-lab-project"
 import { TerminalSnippet } from "@/components/ui/TerminalSnippet/terminal-snippet"
 import { useTranslations } from "next-intl"
 import { Tag } from "@/components/ui/Tag/tag"
 import { ROUTES } from "@/lib/routes"
+import { getLabProject } from "@/lib/data/lab-projects"
+import { LabModeBase, LabToolGroupBase } from "@/types/lab"
+interface LabelSectionProps {
+  label: string
+}
 
-type Props = { slug: string }
+const LabelSection = ({ label }: LabelSectionProps) => {
+  return (
+    <h2 className="font-mono text-xs text-muted-foreground tracking-wider">{label}</h2>
+  )
+}
 
-export function LabDetailContent({ slug }: Props) {
+interface DescriptionSectionProps {
+  description: string
+}
+
+const DescriptionSection = ({ description }: DescriptionSectionProps) => {
+  return (
+    <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground tracking-wider">{description}</p>
+  )
+}
+interface ListNumberSectionProps {
+  list: string[]
+}
+
+const ListNumberSection = ({ list }: ListNumberSectionProps) => {
+  return (
+    <ol className="flex flex-col gap-4 max-w-3xl">
+      {list.map((item, i) => (
+        <li key={i} className="flex items-start gap-3">
+          <span className="shrink-0 font-mono text-xs text-muted-foreground/50 relative top-1">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <p className="text-sm leading-relaxed text-muted-foreground">{item}</p>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+interface LinkExternalSectionProps {
+  href: string
+  label: string
+}
+
+const LinkExternalSection = ({ href, label }: LinkExternalSectionProps) => {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent">
+      {label}
+      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+    </a>
+  )
+}
+
+interface BlockSectionProps {
+  children: React.ReactNode
+}
+
+const BlockSection = ({ children }: BlockSectionProps) => {
+  return (
+    <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">{children}</section>
+  )
+}
+
+interface BackButtonProps {
+  href: string
+  label: string
+}
+
+const BackButton = ({ href, label }: BackButtonProps) => {
+  return (
+    <Link
+      href={href}
+      className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+    >
+      <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
+      {label}
+    </Link>
+  )
+}
+interface LabDetailContentProps {
+  slug: string
+}
+
+export function LabDetailContent({ slug }: LabDetailContentProps) {
   const t = useTranslations()
-  const project = useTranslatedLabProject(slug)
-  const detail = useTranslatedLabProjectDetail(slug)
+  const project = getLabProject(slug)
+
+  const features = t.raw(`lab.projects.${slug}.features`) as unknown as string[]
+  const howItWorksSteps = t.raw(`lab.projects.${slug}.howItWorksSteps`) as unknown as string[]
+  const toolGroups = t.raw(`lab.projects.${slug}.toolGroups`) as unknown as LabToolGroupBase[]
+  const modes = t.raw(`lab.projects.${slug}.modes`) as unknown as LabModeBase[]
+  const privacy = t.raw(`lab.projects.${slug}.privacy`) as unknown as string[]
+  const disclaimer = t.raw(`lab.projects.${slug}.disclaimer`) as unknown as string[]
 
   if (!project) return null
-
-const isDCB = slug === "design-context-bridge"
 
   return (
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
-
-        {/* Header */}
         <header className="flex flex-col gap-6">
-          <Link
-            href={ROUTES.lab}
-            className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
-            Lab
-          </Link>
+           <BackButton href={ROUTES.lab} label={t("lab.back.label")} />
 
           <div className="flex items-start gap-4">
-            <div
-              className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden"
-              style={project.iconBg ? { backgroundColor: project.iconBg } : undefined}
-            >
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden"  >
               <Image
                 src={project.icon}
-                alt={project.name}
+                alt={t(`lab.projects.${slug}.title`)}
                 width={56}
                 height={56}
                 className="h-full w-full object-contain"
@@ -50,12 +123,12 @@ const isDCB = slug === "design-context-bridge"
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap items-center gap-2">
                 <h1 className="text-heading-md font-semibold leading-tight tracking-[-0.025em]">
-                  {project.name}
+                  {t(`lab.projects.${slug}.title`)}
                 </h1>
-                <Tag variant="status">{t(`lab.status.${project.status}`)}</Tag>
+                <Tag variant="status">{t(`lab.projects.${slug}.status`)}</Tag>
               </div>
               <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
-                {project.tagline}
+                {t(`lab.projects.${slug}.tagline`)}
               </p>
             </div>
           </div>
@@ -75,161 +148,116 @@ const isDCB = slug === "design-context-bridge"
         )}
 
         {/* Install command — DCB only */}
-        {isDCB && detail && (
+        {project.installCommand && (
           <TerminalSnippet
-            command={detail.installCommand}
+            command={project.installCommand}
             output={[
               "✓ MCP server ready",
-              `✓ ${detail.supportedClients.length} compatible clients detected`,
+              `✓ ${project.supportedClients?.length || 0} compatible clients detected`,
               "→ listening on stdio",
             ]}
           />
         )}
 
-        <div className="flex flex-col divide-y divide-border">
-
+      <div className="flex flex-col divide-y divide-border">
           {/* Por qué lo construí */}
-          <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
-            <h2 className="font-mono text-xs text-muted-foreground">{t("project.whyIBuiltThis")}</h2>
-            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {project.whyBuilt}
-            </p>
-          </section>
+          <BlockSection>
+            <LabelSection label={t("project.whyIBuiltThis")} />
+            <DescriptionSection description={t(`lab.projects.${slug}.whyBuilt`)} />
+          </BlockSection>
 
           {/* Qué hace — feature bullets (AuraLang) */}
-          {project.features && (
-            <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
-              <h2 className="font-mono text-xs text-muted-foreground">{t("lab.whatItDoes.title")}</h2>
+          {features.length > 0 && (
+            <BlockSection>
+              <LabelSection label={t("lab.whatItDoes.title")} />
               <ul className="flex flex-col gap-3">
-                {project.features.map((feat, i) => (
+                {features.map((feat, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
                     <span className="mt-1.5 size-1 shrink-0 rounded-full bg-muted-foreground/40" aria-hidden />
                     {feat}
                   </li>
                 ))}
               </ul>
-            </section>
+            </BlockSection>
           )}
 
           {/* Cómo funciona */}
-          <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
-            <h2 className="font-mono text-xs text-muted-foreground">{t("lab.howItWorks.title")}</h2>
+          {howItWorksSteps.length > 0 && (
+          <BlockSection>
+            <LabelSection label={t("lab.howItWorks.title")} />
             <div>
-              {project.howItWorks.steps && (
-                <ol className="flex flex-col gap-4">
-                  {project.howItWorks.steps.map((step, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
-                      <span className="shrink-0 font-mono text-xs text-muted-foreground/50">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {step}
-                    </li>
-                  ))}
-                </ol>
-              )}
-              {project.howItWorks.pipeline && (
-                <div className="flex flex-wrap items-center gap-2">
-                  {project.howItWorks.pipeline.map((step, i) => (
-                    <span key={step} className="flex items-center gap-2">
-                      <Tag variant="muted">{step}</Tag>
-                      {i < project.howItWorks.pipeline!.length - 1 && (
-                        <ArrowRight className="h-3 w-3 shrink-0 text-muted-foreground/40" />
-                      )}
-                    </span>
-                  ))}
-                </div>
+              {howItWorksSteps.length > 0 && (
+                <ListNumberSection list={howItWorksSteps} />
               )}
             </div>
-          </section>
-
+          </BlockSection>
+          )}
           {/* Qué expone — DCB only */}
-          {isDCB && detail && (
-            <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
-              <h2 className="font-mono text-xs text-muted-foreground">{t("lab.capabilities.title")}</h2>
+          {project?.isToolGroup && (
+            <BlockSection>
+              <LabelSection label={t("lab.capabilities.title")} />
               <div className="flex flex-col gap-3">
-                {detail.toolGroups.map((group) => (
-                  <div key={group.label} className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
-                    <span className="shrink-0 text-sm font-medium text-foreground sm:w-44">{group.label}</span>
+                {toolGroups.map((group) => (
+                  <div key={group.name} className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
+                    <span className="shrink-0 text-sm font-medium text-foreground sm:w-50">{group.name}</span>
                     <span className="font-mono text-[11px] leading-relaxed text-muted-foreground">
                       {group.tools.join(" · ")}
                     </span>
                   </div>
                 ))}
               </div>
-            </section>
+            </BlockSection>
           )}
 
           {/* Modos de uso — DCB only */}
-          {isDCB && detail && (
-            <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
-              <h2 className="font-mono text-xs text-muted-foreground">{t("lab.modes.title")}</h2>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {detail.modes.map((mode) => (
-                  <div key={mode.name} className="flex flex-col gap-1">
+          {modes.length > 0 && (
+            <BlockSection>
+              <LabelSection label={t("lab.modes.title")} />
+              <div className="grid gap-6">
+                {modes.map((mode) => (
+                  <div key={mode.name} className="flex flex-col">
                     <span className="text-sm font-medium text-foreground">{mode.name}</span>
                     <span className="text-sm leading-relaxed text-muted-foreground">{mode.description}</span>
-                    <span className="font-mono text-[11px] text-muted-foreground/60">{mode.status}</span>
+                    <span className="font-mono text-[12px] text-muted-foreground">{mode.status}</span>
+                    <blockquote className="mt-2 border-l-2 border-accent pl-3 font-display text-sm font-medium leading-snug tracking-tight text-foreground">
+                      {mode.status}
+                    </blockquote>
                   </div>
                 ))}
               </div>
-            </section>
+            </BlockSection>
           )}
-
           {/* Privacidad — AuraLang */}
-          {project.privacy && (
-            <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
-              <h2 className="font-mono text-xs text-muted-foreground">{t("lab.security.title")}</h2>
-              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                {project.privacy}
-              </p>
-            </section>
+          {privacy.length > 0 && (
+            <BlockSection>
+              <LabelSection label={t("lab.security.title")} />
+              <DescriptionSection description={t(`lab.projects.${slug}.privacy`)} />
+            </BlockSection>
           )}
-
           {/* Build y herramientas */}
-          <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
-            <h2 className="font-mono text-xs text-muted-foreground">{t("about.skills.build")}</h2>
+          <BlockSection>
+            <LabelSection label={t("about.skills.build")} />
             <div className="flex flex-wrap gap-1.5">
-              {project.techBadges.map((badge) => (
+              {project.techBadges?.map((badge) => (
                 <Tag key={badge} variant="muted">
                   {badge}
                 </Tag>
               ))}
             </div>
-          </section>
+          </BlockSection>
 
           {/* Enlaces */}
-          <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">
-            <h2 className="font-mono text-xs text-muted-foreground">{t("lab.links")}</h2>
+          <BlockSection>
+            <LabelSection label={t("lab.links")} />
             <div className="flex flex-col gap-3">
               {project.links.map((link) => (
-                <div key={link.href} className="flex items-center gap-3">
-                  {link.pending ? (
-                    <span className="text-sm text-muted-foreground/50">
-                      {link.label}
-                      <span className="ml-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground/40">
-                        {t("lab.pending")}
-                      </span>
-                    </span>
-                  ) : (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent"
-                    >
-                      {link.label}
-                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </a>
-                  )}
-                </div>
+               <LinkExternalSection key={link.href} href={link.href} label={link.label} />
               ))}
             </div>
-          </section>
-
+          </BlockSection>
         </div>
-
-        {isDCB && (
-          <p className="font-mono text-[11px] text-muted-foreground/55">{t("lab.disclaimer")}</p>
+        {disclaimer.length > 0 && (
+          <p className="font-mono text-[11px] text-muted-foreground/55">{disclaimer}</p>
         )}
       </div>
     </div>

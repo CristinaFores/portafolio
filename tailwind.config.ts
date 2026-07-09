@@ -12,9 +12,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-geist)', 'system-ui', 'sans-serif'],
         display: ['var(--font-syne)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+        mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
         // HEX tokens live in app/globals.css. Relative color syntax keeps

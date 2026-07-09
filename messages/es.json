@@ -1,4 +1,11 @@
 {
+  "constants": {
+    "status": {
+      "wip": "WIP",
+      "review": "En revisión",
+      "active": "En producción"
+    }
+  },
   "nav": {
     "home": "Inicio",
     "about": "Sobre mí",
@@ -14,7 +21,8 @@
     "tagline": "Product · AI Engineer"
   },
   "hero": {
-    "headline": "Si no existe, lo construyo.",
+    "headline1": "Si no existe,",
+    "headline2": "lo construyo.",
     "subtitle": "Frontend de producto en React y React Native — agentes, servidores MCP y automatización.",
     "meta": "Barcelona · Disponible en remoto",
     "viewWork": "Ver proyectos"
@@ -23,21 +31,17 @@
     "home": {
       "sectionIndex": "01 — LAB",
       "headline": "Qué estoy construyendo",
-      "subhead": "Proyectos de código abierto que ya tengo en producción.",
+      "subtitle": "Proyectos y experimentos.",
       "viewLab": "Ver el lab completo"
     },
-    "sectionIndex": "LAB",
-    "title": "design-context-bridge",
-    "status": {
-      "wip": "WIP",
-      "review": "En revisión",
-      "active": "En producción"
-    },
+    "eyebrow": "LAB",
+    "title": "Lab",
+    "subtitle": "El sitio donde acaban las ideas.",
+    "viewDetails": "Ver detalles",
+    "links": "Enlaces",
+    "pending": "Pendiente",
     "howItWorks": {
-      "title": "Cómo funciona",
-      "step1": "El servidor MCP se conecta al archivo de Figma vía API y expone su estructura — nodos, estilos, variables — como herramientas que cualquier agente compatible puede invocar.",
-      "step2": "Cuando un agente de IA (Cursor, Claude) necesita contexto de diseño, llama a esas herramientas en vez de pedir una captura de pantalla.",
-      "step3": "El agente recibe datos estructurados — tokens, capas, espaciado — y los usa para generar código que respeta el sistema de diseño desde el primer prompt."
+      "title": "Cómo funciona"
     },
     "capabilities": {
       "title": "Qué expone"
@@ -49,10 +53,10 @@
       "title": "Modos de uso"
     },
     "clients": {
-      "title": "Clientes compatibles"
+      "title": "Clientes soportados"
     },
     "install": {
-      "title": "Instalación"
+      "title": "Instalar"
     },
     "security": {
       "title": "Privacidad"
@@ -60,16 +64,112 @@
     "whatItDoes": {
       "title": "Qué hace"
     },
-    "disclaimer": "Independiente — no afiliado a Figma, Inc.",
-    "pageSubtitle": "Proyectos que construyo cuando la herramienta no existe.",
-    "viewDetails": "Ver detalles",
-    "links": "Enlaces",
-    "pending": "Pendiente"
+    "back": {
+      "label": "Volver al lab"
+    },
+    "projects": {
+      "design-context-bridge": {
+        "status": "En producción",
+        "title": "design-context-bridge",
+        "subtitle": "Para que la IA 'vea' tus diseños sin depender de imágenes. Pasa datos limpios de Figma (capas, espaciados, tokens) directo a tus agentes de IA a través de MCP.",
+        "tagline": "Para que la IA 'vea' tus diseños sin depender de imágenes. Pasa datos limpios de Figma (capas, espaciados, tokens) directo a tus agentes de IA a través de MCP.",
+        "whyBuilt": "MCP (Model Context Protocol) es el protocolo que permite a los agentes de IA llamar a herramientas externas en lugar de interpretar capturas de pantalla. Cuando vi que nadie había conectado Figma con los agentes de forma que expusiera los tokens reales — no los píxeles — lo construí.",
+        "howItWorksSteps": [
+          "El servidor MCP se conecta al archivo de Figma vía API y expone su estructura — nodos, estilos, variables — como herramientas que cualquier agente compatible puede invocar.",
+          "Cuando un agente de IA (Cursor, Claude) necesita contexto de diseño, llama a esas herramientas en vez de pedir una captura de pantalla.",
+          "El agente recibe datos estructurados — tokens, capas, espaciado — y los usa para generar código que respeta el sistema de diseño desde el primer prompt."
+        ],
+        "features": [
+          "Cualquier agente compatible con MCP — Cursor, Claude, Windsurf, VS Code, OpenCode.",
+          "El agente  accede a los datos reales de Figma",
+          "El agente recibe datos estructurados — tokens, capas, espaciado — y los usa para generar código que respeta el sistema de diseño desde el primer prompt."
+        ],
+        "toolGroups": [
+          {
+            "name": "Lectura de selección",
+            "tools": [
+              "get_current_selection",
+              "get_selected_colors",
+              "get_selected_texts"
+            ]
+          },
+          {
+            "name": "Navegación del archivo",
+            "tools": [
+              "get_all_pages",
+              "get_frame_by_name",
+              "get_node_info"
+            ]
+          },
+          {
+            "name": "Extracción del sistema de diseño",
+            "tools": [
+              "extract_design_system",
+              "get_variables"
+            ]
+          },
+          {
+            "name": "Extracción de assets",
+            "tools": [
+              "find_assets",
+              "export_image"
+            ]
+          },
+          {
+            "name": "Análisis de estructura",
+            "tools": [
+              "analyze_structure",
+              "get_component_variants"
+            ]
+          }
+        ],
+        "privacy": "",
+        "modes": [
+          {
+            "name": "Plugin Mode",
+            "description": "Envía la selección de Figma en tiempo real desde el plugin de escritorio.",
+            "status": "Se debe instalar el plugin en Figma en la aplicación de desktop para poder usarlo. Disponible en github."
+          },
+          {
+            "name": "REST API Mode",
+            "description": "Lee cualquier URL de Figma usando un token de acceso personal.",
+            "status": "Depende de la API de Figma. Y los limites de uso que tengas por tu cuenta."
+          }
+        ],
+        "disclaimer": "Independiente — no afiliado a Figma, Inc."
+      },
+      "auralang": {
+        "status": "En producción",
+        "title": "AuraLang",
+        "subtitle": "Traduce al vuelo el audio de cualquier pestaña. Es totalmente privado: Whisper se ejecuta directamente en tu máquina, sin enviar datos fuera.",
+        "tagline": "Traduce al vuelo el audio de cualquier pestaña. Es totalmente privado: Whisper se ejecuta directamente en tu máquina, sin enviar datos fuera.",
+        "whyBuilt": "Millones de personas consumen contenido en idiomas que no dominan y pierden contexto cada vez que pausan para traducir. Quise resolver eso: traducción de audio en tiempo real, sin claves de API ni backend propio. La transcripción ocurre en el dispositivo con Whisper — solo el texto transcrito sale a red para traducirse.",
+        "features": [
+          "Cualquier pestaña con audio — vídeos, llamadas, podcasts, directos.",
+          "Transcripción en el dispositivo — Whisper corre en local; el audio nunca sale de tu máquina.",
+          "Traducción hablada — el audio original se silencia; solo escuchas la traducción.",
+          "Elige idioma de origen y destino, y cambia de par cuando quieras."
+        ],
+        "privacy": "Sin backend, sin telemetría, sin cuenta. La transcripción ocurre en tu dispositivo; solo el texto transcrito se envía a Google Translate para obtener la traducción. La configuración (idiomas, tema) se almacena en chrome.storage.local en tu máquina.",
+        "howItWorksSteps": [
+          "Selecciona el audio de cualquier pestaña y elige el idioma de origen y destino.",
+          "La primera vez se descarga el modelo Whisper en el dispositivo.",
+          "Una vez descargado, el audio se transcribe en tiempo real y se traduce en el dispositivo.",
+          "La traducción se reproduce en el dispositivo y se silencia el audio original."
+        ],
+        "modes": [
+          {
+            "name": "Chrome Extension Mode",
+            "description": "Sigue el audio en la pestaña seleccionada en el Chrome Extension en tiempo real."
+          }
+        ],
+        "disclaimer": "Open source — no afiliado a Google, Inc."
+      }
+    }
   },
   "work": {
     "sectionIndex": "02 — PROYECTOS",
-    "sectionTitle": "Proyectos en producción",
-    "subhead": "Cada proyecto de esta lista está en producción. Ninguno es un ejercicio.",
+    "sectionTitle": "Proyectos desarrollados en Gyoza",
     "viewAll": "Ver todos los proyectos",
     "allIndex": "PROYECTOS",
     "allTitle": "Todos los proyectos",

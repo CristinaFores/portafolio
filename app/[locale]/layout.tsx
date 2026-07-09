@@ -12,7 +12,7 @@ import { Footer } from "@/components/layout/footer"
 import { MainShell } from "@/components/layout/main-shell"
 import { ScrollProgress } from "@/components/layout/scroll-progress"
 import { ThemeProvider } from "@/components/layout/theme-provider"
-import { inter, syne, ibmPlexMono } from "@/styles/fonts"
+import { geist, syne, geistMono } from "@/styles/fonts"
 import { PROFILE, SITE_URL } from "@/lib/site-config"
 
 export async function generateMetadata({
@@ -79,7 +79,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning data-scroll-behavior="smooth">
       <body
-        className={`${inter.variable} ${syne.variable} ${ibmPlexMono.variable} font-sans antialiased`}
+        className={`${geist.variable} ${syne.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <script
           type="application/ld+json"

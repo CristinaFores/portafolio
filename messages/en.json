@@ -1,4 +1,11 @@
 {
+  "constants": {
+    "status": {
+      "wip": "WIP",
+      "review": "In review",
+      "active": "Live"
+    }
+  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -14,7 +21,8 @@
     "tagline": "Product · AI Engineer"
   },
   "hero": {
-    "headline": "If it doesn't exist, I build it.",
+    "headline1": "If it doesn't exist,",
+    "headline2": "I build it.",
     "subtitle": "Product frontend in React and React Native — agents, MCP servers, and automation.",
     "meta": "Barcelona · Available for remote work",
     "viewWork": "View projects"
@@ -23,16 +31,10 @@
     "home": {
       "sectionIndex": "01 — LAB",
       "headline": "What I'm building",
-      "subhead": "Open source projects already in production.",
       "viewLab": "View the full lab"
     },
     "sectionIndex": "LAB",
     "title": "design-context-bridge",
-    "status": {
-      "wip": "WIP",
-      "review": "In review",
-      "active": "Live"
-    },
     "howItWorks": {
       "title": "How it works",
       "step1": "The MCP server connects to the Figma file via API and exposes its structure — nodes, styles, variables — as tools any compatible agent can call.",
@@ -68,8 +70,7 @@
   },
   "work": {
     "sectionIndex": "02 — SELECTED WORK",
-    "sectionTitle": "Production projects",
-    "subhead": "Every project on this list is in production. None of them are exercises.",
+    "sectionTitle": "Projects developed at Gyoza",
     "viewAll": "View all projects",
     "allIndex": "PROJECTS",
     "allTitle": "All projects",
