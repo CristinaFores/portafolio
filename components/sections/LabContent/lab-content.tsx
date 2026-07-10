@@ -19,7 +19,7 @@ export function LabContent() {
     title: t(`lab.projects.${project.slug}.title`),
     subtitle: t(`lab.projects.${project.slug}.subtitle`),
     media: { src: project.icon, alt: project.name },
-    tags: project.techBadges.map((badge) => ({ label: badge })),
+    tags: project.techBadges?.map((badge) => ({ label: badge })).slice(0, 3) ?? [],
     badge: `${t(`constants.status.${project.status}`)}`,
   }))
 

@@ -42,7 +42,7 @@ export function ProjectCaseRow({ slug, index }: ProjectCaseRowProps) {
         onClick={handleClick}
         title={project.title}
         subtitle={project.subtitle}
-        media={{ src: project.cover || "/placeholder.svg", fit: "cover" }}
+        media={{ src: project.cover || "/placeholder.svg", alt: project.title }}
         tags={stackTags.map((tech) => ({ label: tech }))}
       />
     </motion.article>

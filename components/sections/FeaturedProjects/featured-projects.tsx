@@ -17,18 +17,20 @@ export function FeaturedProjects() {
   return (
     <section id="projects" className="home-section home-section-muted">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 max-lg:gap-6">
+        <div className="flex justify-between items-center">
         <SectionHeading
-          eyebrow={t("work.sectionIndex")}
-          title={t("work.sectionTitle")}
+          eyebrow={t("work.index")}
+          title={t("work.headline")}
+          subtitle={t("work.subtitle")}
         />
-
+        <ViewAllLink href={ROUTES.projects} label={t("work.viewAll")} />
+        </div>
         <div className="flex flex-col">
           {projects.map((project, i) => (
             <ProjectCaseRow key={project.slug} slug={project.slug} index={i} />
           ))}
         </div>
-
-        <ViewAllLink href={ROUTES.projects} label={t("work.viewAll")} />
+        <ViewAllLink className="md:hidden" href={ROUTES.projects} label={t("work.viewAll")} />
       </div>
     </section>
   )

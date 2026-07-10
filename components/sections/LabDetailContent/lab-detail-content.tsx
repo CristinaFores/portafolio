@@ -1,92 +1,19 @@
 "use client"
 
-import { Link } from "@/i18n/navigation"
 import Image from "next/image"
-import { ArrowLeft, ArrowUpRight, ArrowRight } from "lucide-react"
 import { TerminalSnippet } from "@/components/ui/TerminalSnippet/terminal-snippet"
 import { useTranslations } from "next-intl"
 import { Tag } from "@/components/ui/Tag/tag"
+import { LabelSection } from "@/components/ui/LabelSection/label-section"
+import { DescriptionSection } from "@/components/ui/DescriptionSection/description-section"
+import { ListNumberSection } from "@/components/ui/ListNumberSection/list-number-section"
+import { LinkExternalSection } from "@/components/ui/LinkExternalSection/link-external-section"
+import { BlockSection } from "@/components/ui/BlockSection/block-section"
+import { BackButton } from "@/components/ui/BackButton/back-button"
 import { ROUTES } from "@/lib/routes"
 import { getLabProject } from "@/lib/data/lab-projects"
 import { LabModeBase, LabToolGroupBase } from "@/types/lab"
-interface LabelSectionProps {
-  label: string
-}
 
-const LabelSection = ({ label }: LabelSectionProps) => {
-  return (
-    <h2 className="font-mono text-xs text-muted-foreground tracking-wider">{label}</h2>
-  )
-}
-
-interface DescriptionSectionProps {
-  description: string
-}
-
-const DescriptionSection = ({ description }: DescriptionSectionProps) => {
-  return (
-    <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground tracking-wider">{description}</p>
-  )
-}
-interface ListNumberSectionProps {
-  list: string[]
-}
-
-const ListNumberSection = ({ list }: ListNumberSectionProps) => {
-  return (
-    <ol className="flex flex-col gap-4 max-w-3xl">
-      {list.map((item, i) => (
-        <li key={i} className="flex items-start gap-3">
-          <span className="shrink-0 font-mono text-xs text-muted-foreground/50 relative top-1">
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <p className="text-sm leading-relaxed text-muted-foreground">{item}</p>
-        </li>
-      ))}
-    </ol>
-  )
-}
-
-interface LinkExternalSectionProps {
-  href: string
-  label: string
-}
-
-const LinkExternalSection = ({ href, label }: LinkExternalSectionProps) => {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-accent">
-      {label}
-      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-    </a>
-  )
-}
-
-interface BlockSectionProps {
-  children: React.ReactNode
-}
-
-const BlockSection = ({ children }: BlockSectionProps) => {
-  return (
-    <section className="grid gap-4 py-8 md:grid-cols-[200px_1fr]">{children}</section>
-  )
-}
-
-interface BackButtonProps {
-  href: string
-  label: string
-}
-
-const BackButton = ({ href, label }: BackButtonProps) => {
-  return (
-    <Link
-      href={href}
-      className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-    >
-      <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
-      {label}
-    </Link>
-  )
-}
 interface LabDetailContentProps {
   slug: string
 }

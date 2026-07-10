@@ -168,8 +168,9 @@
     }
   },
   "work": {
-    "sectionIndex": "02 — PROYECTOS",
-    "sectionTitle": "Proyectos desarrollados en Gyoza",
+    "index": "02 — PROYECTOS",
+    "headline": "Proyectos",
+    "subtitle": "Realizados en Gyoza como Frontend Developer",
     "viewAll": "Ver todos los proyectos",
     "allIndex": "PROYECTOS",
     "allTitle": "Todos los proyectos",

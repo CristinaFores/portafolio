@@ -252,11 +252,11 @@ export const projects: ProjectBase[] = [
  * Order: Goiko ordering → Turbowash terminal → Wetour → Wayvo → AEE → Pulse
  */
 const FEATURED_ORDER = [
-  "goiko-ordering",
+  "goiko-online-menu",
+  "goiko-customer-area",
   "turbowash-terminal",
   "wetour",
   "wayvo",
-  "aee-corporate-web",
   "pulse-video-manager",
 ] as const
 
