@@ -1,8 +1,8 @@
 "use client"
 
-import { useLayoutEffect } from "react"
-import { usePathname } from "next/navigation"
 import { motion, useReducedMotion } from "framer-motion"
+import { usePathname } from "next/navigation"
+import { useLayoutEffect } from "react"
 
 const EASE = [0.22, 1, 0.36, 1] as const
 

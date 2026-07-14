@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import { hasLocale, type Locale } from "next-intl"
+
 import { routing } from "./routing"
 
 /**

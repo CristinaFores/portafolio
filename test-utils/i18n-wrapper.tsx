@@ -1,7 +1,8 @@
-import type { ReactNode } from "react"
 import { NextIntlClientProvider, type Locale } from "next-intl"
-import esMessages from "@/messages/es.json"
+import type { ReactNode } from "react"
+
 import enMessages from "@/messages/en.json"
+import esMessages from "@/messages/es.json"
 
 const messagesByLocale = { es: esMessages, en: enMessages } as const
 

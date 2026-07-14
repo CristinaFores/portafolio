@@ -2,17 +2,19 @@
 
 import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
-import { useMotion } from "@/hooks/use-motion/use-motion"
-import { PROFILE } from "@/lib/site-config"
-import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
-import { PageHeader } from "@/components/ui/PageHeader/page-header"
-import { SectionRow } from "@/components/ui/SectionRow/section-row"
+
 import { EducationCard } from "@/components/sections/EducationCard/education-card"
 import { ExperienceCard } from "@/components/sections/ExperienceCard/experience-card"
 import { SkillCard } from "@/components/sections/SkillCard/skill-card"
+import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
+import { SectionHeading } from "@/components/ui/SectionHeading/section-heading"
+import { SectionRow } from "@/components/ui/SectionRow/section-row"
+import { useMotion } from "@/hooks/use-motion/use-motion"
+import { PROFILE } from "@/lib/site-config"
+
+import { EXPERIENCE_LINKS, SKILL_GROUPS } from "./about-data"
 import { BioParagraphs } from "./bio-paragraphs"
 import { RICH_TAGS } from "./rich-tags"
-import { EXPERIENCE_LINKS, SKILL_GROUPS } from "./about-data"
 
 /**
  * Cuerpo de la página About: bio, experiencia, skills y educación.
@@ -40,14 +42,20 @@ export function AboutContent() {
     <div className="px-6 pb-24 pt-28">
       <div className="mx-auto flex max-w-5xl flex-col gap-12">
         <div className="flex max-w-3xl flex-col gap-5">
-          <PageHeader eyebrow="Product / AI Engineer" title={t("about.title")} />
+          <SectionHeading
+            headingLevel="h1"
+            eyebrow="Product / AI Engineer"
+            title={t("about.title")}
+          />
           <div className="flex max-w-2xl flex-col gap-4">
             <BioParagraphs />
           </div>
           <blockquote className="mt-2 max-w-2xl border-l-2 border-accent pl-5 font-display text-base font-semibold leading-snug tracking-tight text-foreground">
             {t("about.bio.motto")}
           </blockquote>
-          <p className="text-sm text-muted-foreground/75">{t("about.bio.availability")}</p>
+          <p className="text-sm text-muted-foreground/75">
+            {t("about.bio.availability")}
+          </p>
         </div>
 
         <SectionRow label={t("about.experience.title")} sectionIndex={0}>
@@ -71,7 +79,9 @@ export function AboutContent() {
               <SkillCard
                 key={group.id}
                 label={t(group.labelKey)}
-                skills={group.tags ?? (group.tagKeys ?? []).map((key) => t(key))}
+                skills={
+                  group.tags ?? (group.tagKeys ?? []).map((key) => t(key))
+                }
               />
             ))}
           </div>
@@ -80,7 +90,11 @@ export function AboutContent() {
         <SectionRow label={t("about.education.title")} sectionIndex={2}>
           <div className="flex max-w-3xl flex-col gap-6">
             {educationItems.map((item) => (
-              <EducationCard key={item.year} year={item.year} label={item.label} />
+              <EducationCard
+                key={item.year}
+                year={item.year}
+                label={item.label}
+              />
             ))}
           </div>
         </SectionRow>

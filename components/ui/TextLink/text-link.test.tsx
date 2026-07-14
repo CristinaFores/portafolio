@@ -1,7 +1,10 @@
-import type { ReactElement } from "react"
 import { render as rtlRender, screen, type RenderOptions } from "@testing-library/react"
-import { I18nWrapper } from "@/test-utils/i18n-wrapper"
+import type { ReactElement } from "react"
 import { describe, expect, it } from "vitest"
+
+import { I18nWrapper } from "@/test-utils/i18n-wrapper"
+
+
 import { TextLink } from "./text-link"
 
 const render = (ui: ReactElement, options?: RenderOptions) =>

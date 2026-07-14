@@ -1,6 +1,5 @@
 "use client"
 
-import { useRef, type ReactNode } from "react"
 import {
   motion,
   useScroll,
@@ -8,6 +7,7 @@ import {
   useMotionTemplate,
   useReducedMotion,
 } from "framer-motion"
+import { useRef, type ReactNode } from "react"
 
 type HomeDollyEntranceProps = {
   hero: ReactNode

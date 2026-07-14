@@ -50,8 +50,6 @@
 
 @layer base {
   :root {
-    --radius: 0rem;
-
     /* Bone & Sienna — Light palette */
     --light-bone: #f5f1ea; /* Fondo principal */
     --light-ink: #1a1816; /* Texto principal */
@@ -95,6 +93,7 @@
     --destructive: var(--light-sienna);
     --destructive-foreground: var(--light-bone);
     --border: var(--light-sand);
+    --border-accent: var(--light-sienna);
     --input: var(--light-sand);
     --ring: var(--light-sienna);
     --olive: var(--light-taupe-soft);
@@ -137,7 +136,6 @@
   * {
     @apply border-border;
   }
-
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;

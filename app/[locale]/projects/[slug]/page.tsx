@@ -1,26 +1,33 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { setRequestLocale } from "next-intl/server"
-import { projects, getProject } from "@/lib/data/projects"
-import { getProjectTranslation } from "@/lib/data/project-translations"
+import { setRequestLocale, getTranslations } from "next-intl/server"
+
 import { ProjectDetail } from "@/components/sections/ProjectDetail/project-detail"
-import { PROFILE, SITE_URL } from "@/lib/site-config"
+import { toLocale } from "@/i18n/locale"
+import { PROJECTS, getProject } from "@/lib/data/projects"
 import { ROUTES } from "@/lib/routes"
 import { localeAlternates } from "@/lib/seo"
-import { toLocale } from "@/i18n/locale"
+import { PROFILE, SITE_URL } from "@/lib/site-config"
+import type { ProjectTranslation } from "@/types/project"
 
 type PageProps = { params: Promise<{ locale: string; slug: string }> }
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }))
+  return PROJECTS.map((project) => ({ slug: project.slug }))
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { locale: rawLocale, slug } = await params
   const locale = toLocale(rawLocale)
   const project = getProject(slug)
   if (!project) return {}
-  const translation = getProjectTranslation(slug, locale)
+  const t = await getTranslations({ locale })
+  const key = `project.items.${slug}`
+  const translation = t.has(key)
+    ? (t.raw(key) as ProjectTranslation)
+    : undefined
   return {
     title: `${translation?.title ?? slug} — ${PROFILE.name}`,
     description: translation?.subtitle,
@@ -33,9 +40,14 @@ export default async function ProjectPage({ params }: PageProps) {
   const locale = toLocale(rawLocale)
   setRequestLocale(locale)
   const project = getProject(slug)
+
   if (!project) notFound()
 
-  const translation = getProjectTranslation(slug, locale)
+  const t = await getTranslations({ locale })
+  const key = `project.items.${slug}`
+  const translation = t.has(key)
+    ? (t.raw(key) as ProjectTranslation)
+    : undefined
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",

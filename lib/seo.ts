@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import type { Locale } from "next-intl"
+
 import { routing } from "@/i18n/routing"
 
 /**

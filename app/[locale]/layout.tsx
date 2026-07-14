@@ -1,19 +1,19 @@
-import React from "react"
+import { Analytics } from "@vercel/analytics/next"
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
 import { hasLocale, NextIntlClientProvider, type Locale } from "next-intl"
 import { setRequestLocale } from "next-intl/server"
-import { Analytics } from "@vercel/analytics/next"
+import React from "react"
 
 import "../globals.css"
-import { routing } from "@/i18n/routing"
-import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { MainShell } from "@/components/layout/main-shell"
+import { Navbar } from "@/components/layout/navbar"
 import { ScrollProgress } from "@/components/layout/scroll-progress"
 import { ThemeProvider } from "@/components/layout/theme-provider"
-import { inter, syne, ibmPlexMono } from "@/styles/fonts"
+import { routing } from "@/i18n/routing"
 import { PROFILE, SITE_URL } from "@/lib/site-config"
+import { geist, syne, geistMono } from "@/styles/fonts"
 
 export async function generateMetadata({
   params,
@@ -79,7 +79,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning data-scroll-behavior="smooth">
       <body
-        className={`${inter.variable} ${syne.variable} ${ibmPlexMono.variable} font-sans antialiased`}
+        className={`${geist.variable} ${syne.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <script
           type="application/ld+json"

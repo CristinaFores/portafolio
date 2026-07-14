@@ -1,33 +1,17 @@
 "use client"
 
-import { useRef } from "react"
-import { Link } from "@/i18n/navigation"
-import Image from "next/image"
-import { ChevronDown } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
+import { ChevronDown } from "lucide-react"
+import Image from "next/image"
 import { useTranslations } from "next-intl"
+import { useRef } from "react"
+
+import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { useParallaxY } from "@/hooks/use-parallax-y/use-parallax-y"
-import { PROFILE } from "@/lib/site-config"
-import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
+import { Link } from "@/i18n/navigation"
 import { ROUTES } from "@/lib/routes"
-
-/** Renders the headline with the "AI"/"IA" keyword in the accent color. */
-function Headline({ text }: { text: string }) {
-  return (
-    <>
-      {text.split(/(\bAI\b|\bIA\b)/).map((part, i) =>
-        part === "AI" || part === "IA" ? (
-          <span key={i} className="text-accent">
-            {part}
-          </span>
-        ) : (
-          <span key={i}>{part}</span>
-        ),
-      )}
-    </>
-  )
-}
+import { PROFILE } from "@/lib/site-config"
 
 /**
  * Hero — copy on the left, portrait on the right (desktop only).
@@ -89,8 +73,10 @@ export function Hero() {
                   className="h-full w-full object-contain object-top"
                 />
               </div>
-              <h1 className="hero-headline font-semibold leading-[1.05] tracking-[-0.03em] text-foreground max-lg:text-[clamp(2rem,8.5vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
-                <Headline text={t("hero.headline")} />
+              <h1 className="hero-headline font-bold leading-[1.05] tracking-[-0.03em] text-foreground max-lg:text-[clamp(2rem,8.5vw,2.875rem)] lg:pr-0 lg:text-[clamp(2.5rem,6vw,4rem)]">
+          
+                {t("hero.headline1")} <br /> 
+                <span className="text-accent">{t("hero.headline2")}</span>
               </h1>
             </div>
             <p className="max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">

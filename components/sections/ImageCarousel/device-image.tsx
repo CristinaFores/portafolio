@@ -1,5 +1,5 @@
-import type { ProjectImage } from "@/types/project"
 import { IPhoneFrame, MacBookFrame, TerminalFrame, WireframeFrame } from "@/components/ui/DeviceFrame/device-frame"
+import type { ProjectImage } from "@/types/project"
 
 export type DeviceImageProps = {
   image: ProjectImage

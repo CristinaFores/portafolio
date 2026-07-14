@@ -1,17 +1,18 @@
 "use client"
 
-import Image from "next/image"
-import { createPortal } from "react-dom"
-import { useEffect, useRef, useState, useSyncExternalStore } from "react"
-import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 import { useLocale, useTranslations, type Locale } from "next-intl"
-import { cn } from "@/lib/class-names"
-import { Link, usePathname, useRouter } from "@/i18n/navigation"
-import { EASE } from "@/lib/motion"
+import { useTheme } from "next-themes"
+import { useEffect, useRef, useState, useSyncExternalStore } from "react"
+import { createPortal } from "react-dom"
+
 import { useMotion } from "@/hooks/use-motion/use-motion"
-import { PROFILE } from "@/lib/site-config"
+import { Link, usePathname, useRouter } from "@/i18n/navigation"
+import { cn } from "@/lib/class-names"
+import { EASE } from "@/lib/motion"
 import { ROUTES } from "@/lib/routes"
+import { PROFILE } from "@/lib/site-config"
 
 function isActive(href: string, pathname: string): boolean {
   if (href === "/") return pathname === "/"
@@ -95,7 +96,14 @@ type NavLinkProps = {
   size?: "sm" | "lg"
 }
 
-function NavLinkItem({ href, label, active, onClick, layoutId = "nav-underline", size = "sm" }: NavLinkProps) {
+function NavLinkItem({
+  href,
+  label,
+  active,
+  onClick,
+  layoutId = "nav-underline",
+  size = "sm",
+}: NavLinkProps) {
   return (
     <Link
       href={href}
@@ -103,7 +111,9 @@ function NavLinkItem({ href, label, active, onClick, layoutId = "nav-underline",
       className={cn(
         "relative inline-block w-fit py-1 transition-colors",
         size === "lg" ? "text-3xl font-semibold tracking-tight" : "text-sm",
-        active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+        active
+          ? "text-foreground"
+          : "text-muted-foreground hover:text-foreground",
       )}
     >
       {label}

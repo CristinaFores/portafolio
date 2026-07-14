@@ -1,8 +1,9 @@
-import type { ReactElement } from "react"
 import { fireEvent, render as rtlRender, screen, type RenderOptions } from "@testing-library/react"
-import { I18nWrapper } from "@/test-utils/i18n-wrapper"
+import type { ReactElement } from "react"
 import { describe, expect, it, vi } from "vitest"
+
 import { ListRow } from "@/components/ui/ListRow/list-row"
+import { I18nWrapper } from "@/test-utils/i18n-wrapper"
 
 const render = (ui: ReactElement, options?: RenderOptions) =>
   rtlRender(ui, { wrapper: I18nWrapper, ...options })
@@ -48,36 +49,25 @@ describe("ListRow", () => {
         href="/projects/foo"
         title="Project Foo"
         subtitle="Description"
-        media={{ src: "/cover.png", alt: "Project Foo cover", fit: "cover" }}
+        media={{ src: "/cover.png", alt: "Project Foo cover" }}
       />
     )
 
     const image = screen.getByAltText("Project Foo cover")
-    expect(image).toHaveAttribute("sizes", "48px")
+    expect(image).toHaveAttribute("sizes", "64px")
   })
 
-  it("applies cover fit vs contain fit classes based on media.fit", () => {
-    const { rerender } = render(
+  it("renders the media image with object-contain", () => {
+    render(
       <ListRow
         href="/projects/foo"
         title="Project Foo"
         subtitle="Description"
-        media={{ src: "/cover.png", alt: "cover media", fit: "cover" }}
+        media={{ src: "/cover.png", alt: "cover media" }}
       />
     )
 
-    expect(screen.getByAltText("cover media")).toHaveClass("object-cover")
-
-    rerender(
-      <ListRow
-        href="/projects/foo"
-        title="Project Foo"
-        subtitle="Description"
-        media={{ src: "/icon.png", alt: "contain media", fit: "contain" }}
-      />
-    )
-
-    expect(screen.getByAltText("contain media")).toHaveClass("object-contain")
+    expect(screen.getByAltText("cover media")).toHaveClass("object-contain")
   })
 
   it("fires onClick when provided", () => {

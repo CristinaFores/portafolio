@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest"
+
 import { enterProps, fadeUpProps, pageEnterProps, staggerItemProps } from "./motion"
 
 describe("motion prop factories", () => {

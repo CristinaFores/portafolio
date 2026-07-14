@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
-import { useMotion } from "@/hooks/use-motion/use-motion"
-import { PROFILE } from "@/lib/site-config"
+
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { TextLink } from "@/components/ui/TextLink/text-link"
+import { useMotion } from "@/hooks/use-motion/use-motion"
+import { PROFILE } from "@/lib/site-config"
 
 /**
  * Contact section with direct outreach links.
@@ -22,7 +23,11 @@ export function ContactCTA() {
           className="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between"
         >
           <div className="flex max-w-xl flex-col gap-4">
-            <p className="font-mono text-xs text-muted-foreground">{t("contact.sectionIndex")}</p>
+            <p
+              className={`font-mono text-xs uppercase tracking-[0.08em] text-accent font-medium`}
+            >
+              {t("contact.sectionIndex")}
+            </p>
             <h2 className="text-heading-sm text-balance font-semibold leading-[1.15] tracking-[-0.02em] text-foreground">
               {t("contact.headline")}
             </h2>
@@ -40,7 +45,10 @@ export function ContactCTA() {
               {PROFILE.email}
             </ButtonLink>
             <div className="flex flex-wrap gap-3 font-mono text-xs text-muted-foreground">
-              <TextLink href={PROFILE.linkedInUrl} className="hover:text-accent">
+              <TextLink
+                href={PROFILE.linkedInUrl}
+                className="hover:text-accent"
+              >
                 {t("nav.linkedIn")}
               </TextLink>
               <span className="text-muted-foreground/30">·</span>

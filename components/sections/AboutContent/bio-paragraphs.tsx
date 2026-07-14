@@ -1,7 +1,9 @@
 "use client"
 
 import { useTranslations } from "next-intl"
+
 import { Paragraph } from "@/components/ui/Paragraph/paragraph"
+
 import { RICH_TAGS, RICH_TEXT_CLASSES } from "./rich-tags"
 
 /**

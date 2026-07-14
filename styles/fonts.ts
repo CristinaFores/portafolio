@@ -1,8 +1,8 @@
-import { Inter, IBM_Plex_Mono, Syne } from "next/font/google"
+import { Geist, Geist_Mono, Syne } from "next/font/google"
 
-export const inter = Inter({
+export const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
   display: "swap",
 })
 
@@ -13,9 +13,9 @@ export const syne = Syne({
   display: "swap",
 })
 
-export const ibmPlexMono = IBM_Plex_Mono({
+export const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-geist-mono",
   weight: ["400", "500"],
   display: "swap",
 })

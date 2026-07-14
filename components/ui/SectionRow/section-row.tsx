@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+
 import { useMotion } from "@/hooks/use-motion/use-motion"
 
 export type SectionRowProps = {
@@ -13,7 +14,11 @@ export type SectionRowProps = {
  * Fila de sección con etiqueta lateral en monoespaciada y contenido a la derecha.
  * Anima su entrada con un fade-up escalonado según `sectionIndex`.
  */
-export function SectionRow({ label, children, sectionIndex = 0 }: SectionRowProps) {
+export function SectionRow({
+  label,
+  children,
+  sectionIndex = 0,
+}: SectionRowProps) {
   const { fadeUp } = useMotion()
   return (
     <motion.section

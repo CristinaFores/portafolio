@@ -1,6 +1,7 @@
 "use client"
 
 import { useTranslations } from "next-intl"
+
 import { TextLink } from "@/components/ui/TextLink/text-link"
 import { ROUTES } from "@/lib/routes"
 

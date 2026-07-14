@@ -1,33 +1,46 @@
 "use client"
 
-import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { useTranslations } from "next-intl"
-import { PageHeader } from "@/components/ui/PageHeader/page-header"
-import { LabProjectRow } from "@/components/sections/LabProjectRow/lab-project-row"
+
+import PageContent from "@/components/layout/PageContent/page-content"
+import { ListRow } from "@/components/ui/ListRow/list-row"
+import { LAB_PROJECTS } from "@/lib/data/lab-projects"
+import { ROUTES } from "@/lib/routes"
 
 /**
- * Lab index — list of projects, each linking to its detail page.
+ * Lab content
  */
+
 export function LabContent() {
   const t = useTranslations()
 
+  const labProjects = LAB_PROJECTS.map((project) => ({
+    id: crypto.randomUUID(),
+    href: ROUTES.labProject(project.slug),
+    title: t(`lab.projects.${project.slug}.title`),
+    subtitle: t(`lab.projects.${project.slug}.subtitle`),
+    media: { src: project.icon, alt: project.name },
+    tags: project.stack?.map((badge) => ({ label: badge })).slice(0, 3) ?? [],
+    badge: `${t(`constants.status.${project.status}`)}`,
+  }))
+
   return (
-    <div className="px-6 pb-24 pt-28">
-      <div className="mx-auto flex max-w-5xl flex-col gap-12">
-
-        <PageHeader
-          eyebrow={t("lab.sectionIndex")}
-          title="Lab"
-          subtitle={t("lab.pageSubtitle")}
+    <PageContent
+      eyebrow="lab.eyebrow"
+      title="lab.title"
+      subtitle="lab.subtitle"
+    >
+      {labProjects.map((project) => (
+        <ListRow
+          key={project.id}
+          href={project.href}
+          title={project.title}
+          subtitle={project.subtitle}
+          media={project.media}
+          tags={project.tags}
+          badge={project.badge}
         />
-
-        <div className="flex flex-col">
-          {LAB_PROJECTS.map((project) => (
-            <LabProjectRow key={project.slug} slug={project.slug} />
-          ))}
-        </div>
-
-      </div>
-    </div>
+      ))}
+    </PageContent>
   )
 }
