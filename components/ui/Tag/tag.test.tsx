@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
+
 import { Tag } from "./tag"
 
 describe("Tag", () => {
@@ -12,7 +13,7 @@ describe("Tag", () => {
   it("applies the default variant classes", () => {
     render(<Tag>React</Tag>)
 
-    expect(screen.getByText("React")).toHaveClass("bg-secondary", "text-foreground")
+    expect(screen.getByText("React")).toHaveClass("border", "font-mono", "text-muted-foreground")
   })
 
   it("applies the status variant classes", () => {
