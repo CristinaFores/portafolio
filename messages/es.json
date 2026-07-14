@@ -208,7 +208,415 @@
     "gallery": "Galería",
     "prevImage": "Imagen anterior",
     "nextImage": "Imagen siguiente",
-    "goToImage": "Ir a la imagen"
+    "goToImage": "Ir a la imagen",
+    "items": {
+      "turbowash-terminal": {
+        "title": "Turbowash — Kiosko de pago",
+        "subtitle": "La app de la pantalla del kiosco en el túnel de lavado",
+        "challenge": "Turbowash necesitaba la pantalla que el cliente toca en el kiosco del túnel: que se viera bien a pleno sol, aceptar tarjeta y efectivo, y hablar con la máquina de lavado por señales de pulso para arrancar, pausar y terminar.",
+        "myRole": "Desarrollé el frontend en React Native (Expo). Lo más delicado fue conectar en tiempo real con el hardware por pulsos: cada estado del lavado (inicio, pausa, fin) se refleja en la app y se envía a la máquina.",
+        "features": [
+          "Pago con tarjeta y efectivo",
+          "Lavado por tiempo o por euros",
+          "Comunicación por pulsos con el hardware en tiempo real",
+          "Interfaz pensada para exterior (contraste alto, botones grandes)"
+        ],
+        "results": [
+          "En uso en más de 5 túneles con transacciones reales cada día",
+          "Los clientes usan el kiosco sin explicaciones; no hace falta formación"
+        ],
+        "howItWorks": [
+          "El cliente elige tipo de lavado y paga en el kiosco (tarjeta o efectivo).",
+          "El hardware recibe pulsos y arranca el ciclo de lavado.",
+          "La pantalla muestra cuenta atrás e importe; permite pausar y reanudar por pulsos.",
+          "Los socios pueden aplicar precios de club y canjear cupones."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — terminal",
+          "Lavado en curso — terminal",
+          "Pantalla de fin — terminal"
+        ]
+      },
+      "turbowash-portal": {
+        "title": "Turbowash — Área de cliente",
+        "subtitle": "Vehículos, facturas y cupones en un solo sitio",
+        "challenge": "Los clientes de Turbowash necesitaban un sitio donde ver su historial de lavados, dar de alta o editar vehículos, descargar facturas y usar los cupones de fidelidad, con un aspecto cuidado y navegación clara.",
+        "myRole": "Desarrollé el frontend del área de cliente: perfil, alta y edición de vehículos con selector de tipo y color, historial de facturas y bloque de cupones. Todo conectado a la API de Turbowash.",
+        "features": [
+          "Gestión de vehículos con selector de tipo y color",
+          "Historial de lavados con detalle",
+          "Descarga de facturas y datos de facturación",
+          "Cupones de fidelidad para canjear en el kiosco"
+        ],
+        "results": [
+          "Área de cliente clara y estable en producción para los usuarios de Turbowash",
+          "Menos consultas a soporte sobre facturas y datos de cuenta"
+        ],
+        "howItWorks": [
+          "El usuario entra y ve el resumen con el QR para usar en el túnel.",
+          "Puede añadir o editar vehículos (tipo y color).",
+          "El historial de lavados y las facturas están disponibles para descargar.",
+          "Los cupones de fidelidad se muestran en la app y se canjean en el kiosco."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — móvil",
+          "Verificación — móvil",
+          "Resumen — móvil",
+          "Código QR — móvil",
+          "Historial de lavados — móvil",
+          "Lista de vehículos — móvil"
+        ]
+      },
+      "wetour": {
+        "title": "Wetour — Plataforma de la comunidad",
+        "subtitle": "Red Wezone: eventos, centros y feed de la comunidad",
+        "challenge": "Wezone, una red de más de 11 centros y miles de socios, necesitaba una web donde la comunidad pudiera descubrir eventos, ver centros deportivos y participar en publicaciones y retos, con buena presencia en buscadores.",
+        "myRole": "Desarrollé el frontend en Next.js con foco en SEO y rendimiento. Participé en investigación UX y en el diseño de la arquitectura de páginas y flujos de inscripción a eventos y pagos.",
+        "features": [
+          "Directorio de más de 300 centros deportivos",
+          "Cientos de eventos al mes con inscripción y pago",
+          "Gamificación: retos y pasaporte WZN",
+          "Feed de publicaciones de la comunidad"
+        ],
+        "results": [
+          "Plataforma en producción con crecimiento orgánico gracias al SEO",
+          "Nueva vía de ingresos con inscripciones de pago a eventos"
+        ],
+        "howItWorks": [
+          "El usuario explora centros y eventos en el directorio y en el mapa.",
+          "Se inscribe a eventos y paga cuando aplica; suma retos y pasaporte WZN.",
+          "El feed muestra publicaciones y actividad de la comunidad.",
+          "El equipo gestiona contenidos vía CMS; los datos alimentan BI."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — escritorio",
+          "Detalle de evento — escritorio",
+          "Vista de mapa — escritorio",
+          "Mapa con filtros — escritorio",
+          "Evento en el mapa — escritorio",
+          "Pantalla de bienvenida — móvil",
+          "Listado de eventos — móvil",
+          "Detalle de evento — móvil",
+          "Vista de mapa — móvil",
+          "Mapa con filtros — móvil"
+        ]
+      },
+      "goiko-ordering": {
+        "title": "Goiko — Pedidos online",
+        "subtitle": "Pedidos a domicilio y recogida en más de 100 locales",
+        "challenge": "Goiko, con más de 100 locales en España, necesitaba una web de pedidos a medida: domicilio y recogida, menú sincronizado con cocina y TPV, pagos seguros y seguimiento del repartidor en el mapa.",
+        "myRole": "Me encargué del frontend completo de la plataforma de pedidos: desde la elección de restaurante por ubicación hasta el checkout con Paycomet, pasando por el carrito, la programación de pedidos y el seguimiento en tiempo real en Google Maps.",
+        "features": [
+          "Asignación de restaurante por dirección o geolocalización (domicilio y recogida)",
+          "Login sin contraseña por enlace mágico en el email",
+          "Seguimiento del pedido con posición del repartidor en el mapa",
+          "Menú sincronizado con Deliverect en todos los locales",
+          "Pago con tarjeta (Paycomet, tokenización) y cupones ligados al BI de Goiko",
+          "Pedidos programados y upselling en carrito y checkout"
+        ],
+        "results": [
+          "Plataforma en producción con pedidos reales cada día en todos los locales",
+          "Integración con los TPV y cocina vía Deliverect",
+          "Menos dependencia de apps externas de reparto"
+        ],
+        "howItWorks": [
+          "El usuario introduce dirección o permite ubicación; se asigna el restaurante.",
+          "El menú viene de Deliverect; el carrito permite combos y personalización.",
+          "En checkout: pago con Paycomet, login por enlace mágico y opción de pedido programado.",
+          "Tras confirmar, se sigue al repartidor en el mapa; los cupones se validan contra el BI de Goiko."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — móvil",
+          "Flujo de pasos — móvil",
+          "Paso de dirección — móvil",
+          "Paso de horario — móvil",
+          "Lista de productos — móvil",
+          "Estado preparando — móvil",
+          "Estado en reparto — móvil",
+          "Estado entregado — móvil"
+        ]
+      },
+      "turbowash-admin": {
+        "title": "Turbowash — Panel de administración",
+        "subtitle": "Panel interno para ubicaciones, precios y operación del día a día",
+        "challenge": "Turbowash necesitaba una herramienta interna para que el equipo gestionara ubicaciones, configuraciones de lavado, precios y datos operativos sin depender de desarrollo en cada cambio.",
+        "myRole": "Desarrollé el frontend del panel de administración: tablas de datos con filtros y paginación, formularios con validación (Formik/Yup) e integración con la API para que el equipo pudiera actualizar y consultar datos por su cuenta.",
+        "features": [
+          "Gestión de ubicaciones y terminales",
+          "Precios y configuración de lavados",
+          "Tablas con ordenación, filtros y paginación",
+          "Flujos de formularios con validación y manejo de errores"
+        ],
+        "results": [
+          "El equipo operativo puede actualizar configuración y consultar datos de forma autónoma",
+          "Una sola SPA en React alineada con el resto del stack front de Turbowash"
+        ],
+        "howItWorks": [
+          "El equipo entra en el panel de administración.",
+          "Gestiona ubicaciones y terminales desde tablas con filtros y paginación.",
+          "Actualiza precios y configuración de lavados mediante formularios con validación.",
+          "Los cambios se guardan vía API; el equipo operativo puede trabajar sin depender de desarrollo para el día a día."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — escritorio",
+          "Lista de ubicaciones — escritorio",
+          "Detalle de ubicación — escritorio",
+          "Formulario de ubicación — escritorio",
+          "Lista de ubicaciones — móvil",
+          "Detalle de ubicación — móvil"
+        ]
+      },
+      "goiko-customer-area": {
+        "title": "Goiko — Área de cliente",
+        "subtitle": "Cuenta, historial de pedidos, direcciones guardadas y fidelidad",
+        "challenge": "Goiko necesitaba un área de cliente donde los usuarios gestionaran su perfil, historial de pedidos, direcciones guardadas y beneficios de fidelidad, con una experiencia coherente en todos los dispositivos.",
+        "myRole": "Desarrollé el frontend: perfil y direcciones con Google Maps, historial de pedidos y flujo de repetir pedido, Firebase Auth y bloque de QR/fidelidad para reutilizar datos en el checkout.",
+        "features": [
+          "Gestión de perfil y direcciones con Google Maps",
+          "Historial de pedidos y flujo de repetir pedido",
+          "Firebase Authentication y reCAPTCHA opcional",
+          "Códigos QR y sección de fidelidad"
+        ],
+        "results": [
+          "Área de cliente unificada que acompaña al flujo principal de pedidos de Goiko",
+          "Reutilización de direcciones y preferencias para un checkout más rápido"
+        ],
+        "howItWorks": [
+          "El usuario inicia sesión con Firebase (email o social); tiene acceso al perfil y a las direcciones guardadas.",
+          "Puede añadir o editar direcciones con Google Maps; se reutilizan en el checkout de la app de pedidos.",
+          "Ve el historial de pedidos y puede lanzar un «repetir pedido» desde uno anterior.",
+          "La sección de fidelidad y QR da acceso a los beneficios ligados a la cuenta Goiko."
+        ],
+        "imageAlts": []
+      },
+      "goiko-online-menu": {
+        "title": "Goiko — Menú digital",
+        "subtitle": "Menú completo online o por QR en el restaurante",
+        "challenge": "Goiko quería un menú digital independiente que se pudiera abrir en el local por QR o por enlace: fácil de navegar y buscar, con el mismo aspecto y datos que la app de pedidos.",
+        "myRole": "Desarrollé el frontend: estructura del menú, búsqueda y filtros, imágenes con lazy loading e i18n; analytics con GTM para ver cómo se usa el menú.",
+        "features": [
+          "Navegación completa del menú con categorías y búsqueda",
+          "Detalle de producto e información nutricional",
+          "i18n y maquetación responsive",
+          "Soporte de código QR para uso en el local"
+        ],
+        "results": [
+          "Menú independiente utilizable desde QR o enlace directo",
+          "Datos de producto y marca compartidos con la app principal de pedidos"
+        ],
+        "howItWorks": [
+          "El usuario abre el menú por QR en el local o por un enlace compartido.",
+          "Navega por categorías o usa la búsqueda; el detalle del producto muestra descripción e información nutricional.",
+          "El contenido es multiidioma (i18n) y responsive; las imágenes se cargan en lazy.",
+          "El menú es solo lectura; el pedido se hace en la app principal de Goiko. Los analytics (GTM) registran el uso."
+        ],
+        "imageAlts": [
+          "Lista de productos — móvil",
+          "Detalle de producto — móvil"
+        ]
+      },
+      "goiko-table-ordering": {
+        "title": "Goiko — Pedidos en mesa",
+        "subtitle": "Pedir desde la mesa dentro del restaurante",
+        "challenge": "Goiko quería un flujo sencillo para que los clientes pidieran desde la mesa en una app dedicada: pocos pasos y confirmación clara para cocina.",
+        "myRole": "Desarrollé el frontend de pedidos en mesa: flujo, validación de formularios e integración con el backend de pedidos; GTM para analytics y ver uso.",
+        "features": [
+          "Flujo de pedido por mesa",
+          "Selección de menú y carrito con validación",
+          "Confirmación de pedido y estado",
+          "Integración de analytics (GTM)"
+        ],
+        "results": [
+          "Pedidos en restaurante más rápidos sin depender de dispositivos del personal",
+          "Misma imagen que el resto de productos digitales de Goiko"
+        ],
+        "howItWorks": [
+          "El cliente abre la app de pedidos en mesa e indica o identifica su mesa.",
+          "Navega el menú, añade productos al carrito y confirma; los formularios validan la selección.",
+          "El pedido se envía a cocina; la pantalla muestra confirmación y estado.",
+          "Los analytics (GTM) registran el uso para que el equipo pueda ver cómo funciona el flujo."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — móvil",
+          "Lista de productos — móvil",
+          "Detalle de producto — móvil"
+        ]
+      },
+      "aee-corporate-web": {
+        "title": "AEE — Web corporativa",
+        "subtitle": "Sitio de la empresa con contenido en CMS y varios idiomas",
+        "challenge": "AEE necesitaba una web corporativa moderna con contenido gestionado en un CMS (Strapi), varios idiomas y una estructura que pudiera crecer con nuevas secciones y campañas.",
+        "myRole": "Desarrollé el frontend con Next.js: renderizado de bloques Strapi, i18n (i18next), maquetación responsive y carruseles/secciones para campañas, para que marketing pudiera actualizar contenido sin tocar código.",
+        "features": [
+          "Páginas dinámicas con Strapi Blocks renderer",
+          "Multiidioma (i18next) y formato de fechas",
+          "Maquetación responsive y optimización de imágenes",
+          "Carruseles y secciones dinámicas"
+        ],
+        "results": [
+          "El equipo de marketing puede actualizar contenido sin tocar código",
+          "Estructura SEO-friendly y marca consistente"
+        ],
+        "howItWorks": [
+          "El contenido se edita en Strapi (CMS); las páginas se construyen a partir de bloques (texto, imágenes, carruseles, etc.).",
+          "El frontend en Next.js obtiene y renderiza esos bloques; la maquetación es responsive y orientada al SEO.",
+          "El multiidioma se resuelve con i18next; textos y fechas se adaptan al idioma elegido.",
+          "Nuevas secciones o campañas se añaden desde el CMS; la estructura del sitio permite crecer sin tocar código."
+        ],
+        "imageAlts": [
+          "Portada — escritorio",
+          "Sección Noticias — escritorio",
+          "Sección Explorar — escritorio",
+          "Sección Espacio e Igualdad — escritorio",
+          "Portada — móvil",
+          "Sección Actualidad — móvil"
+        ]
+      },
+      "pulse-video-manager": {
+        "title": "Pulse — Biblioteca de vídeos y listas",
+        "subtitle": "Biblioteca de vídeos, listas de reproducción y programación diaria de entrenamientos",
+        "challenge": "Un equipo de fitness/contenidos necesitaba una app para gestionar una biblioteca de vídeos, organizar listas de reproducción, etiquetar contenido y programar los entrenamientos \"de hoy\", con una UX clara y orden por arrastre.",
+        "myRole": "Desarrollé el frontend: CRUD de vídeos y listas, ordenación con arrastre (FormKit), gestión de etiquetas, vista Hoy e integración de reproductor (Media Chrome / Castable).",
+        "features": [
+          "Biblioteca de vídeos con subida, metadatos y etiquetas",
+          "Listas de reproducción con reordenación por arrastre",
+          "Página Hoy para entrenamientos programados",
+          "Auth y layout responsive con sidebar/nav"
+        ],
+        "results": [
+          "El equipo de contenidos puede mantener listas y programación sin intervención de desarrollo",
+          "Experiencia de reproducción y programación consistente"
+        ],
+        "howItWorks": [
+          "El equipo sube vídeos, añade metadatos y etiquetas; la biblioteca se navega y filtra.",
+          "Se crean listas de reproducción y se reordenan vídeos con arrastrar y soltar (p. ej. FormKit).",
+          "La vista «Hoy» muestra los entrenamientos programados del día; los reproductores consumen esa programación.",
+          "La reproducción usa Media Chrome / Castable; el auth define quién puede gestionar contenido."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — escritorio",
+          "Vista Hoy — escritorio",
+          "Biblioteca de vídeos — escritorio",
+          "Lista de etiquetas — escritorio",
+          "Vista Hoy — móvil",
+          "Biblioteca de vídeos — móvil",
+          "Lista de listas de reproducción — móvil",
+          "Lista de etiquetas — móvil"
+        ]
+      },
+      "time-tracking-billing": {
+        "title": "Control de tiempo — Facturación y licencias",
+        "subtitle": "Facturación, licencias y gestión de clientes del producto de control de tiempo",
+        "challenge": "El producto de control de tiempo necesitaba una app de administración para facturación, gestión de licencias y datos de clientes, con auth segura y una visión clara para los gestores de cuenta.",
+        "myRole": "Desarrollé el frontend: auth (Firebase, Google OAuth), gestión de clientes y licencias, vistas de facturación e integración con la API backend.",
+        "features": [
+          "Google OAuth y Firebase para autenticación",
+          "Gestión de clientes y licencias",
+          "Vistas de facturación y suscripciones",
+          "Búsqueda, filtros y tablas responsive"
+        ],
+        "results": [
+          "Los gestores de cuenta pueden manejar licencias y facturación en un solo lugar",
+          "Acceso seguro y UX consistente con la app de workspace"
+        ],
+        "howItWorks": [
+          "El gestor inicia sesión con Google OAuth o Firebase; el acceso está restringido a roles autorizados.",
+          "Consulta y gestiona clientes y licencias desde la interfaz de administración.",
+          "Las vistas de facturación y suscripciones muestran estado e historial; los datos vienen de la API backend.",
+          "La búsqueda y los filtros en las tablas permiten localizar clientes o licencias concretos."
+        ],
+        "imageAlts": []
+      },
+      "time-tracking-workspace": {
+        "title": "Control de tiempo — Espacio de trabajo",
+        "subtitle": "Registrar tiempo, gestionar proyectos y clientes y facturas",
+        "challenge": "Los usuarios necesitaban un espacio para registrar tiempo, gestionar proyectos y clientes, y generar o consultar facturas, con rangos de fechas, listados y navegación sencilla.",
+        "myRole": "Desarrollé el frontend: formularios de registro de tiempo, gestión de proyectos y clientes, vistas de facturas e historial con selector de rango de fechas.",
+        "features": [
+          "Registro de tiempo e historial con selector de rango de fechas",
+          "Gestión de proyectos y clientes",
+          "Gestión y generación de facturas",
+          "i18n y maquetación responsive"
+        ],
+        "results": [
+          "Los equipos pueden registrar tiempo y gestionar proyectos en una sola app",
+          "Alineado con la app de facturación para una suite de producto completa"
+        ],
+        "howItWorks": [
+          "El usuario registra tiempo en proyectos y clientes mediante formularios de registro.",
+          "Proyectos y clientes se gestionan en sus propias secciones y se vinculan a tiempo y facturas.",
+          "El listado y el historial de facturas están disponibles; se puede filtrar por rango de fechas para revisar o generar facturas.",
+          "i18n y maquetación responsive permiten usar la app en distintos idiomas y dispositivos."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — escritorio",
+          "Inicio — escritorio"
+        ]
+      },
+      "wayvo": {
+        "title": "Wayvo — Planificador de viajes",
+        "subtitle": "Planifica el viaje y sigue el itinerario día a día en el móvil",
+        "challenge": "Wayvo necesitaba una app móvil para que los viajeros planificaran viajes con itinerarios asistidos por IA, planes día a día, recomendaciones y desbloqueo premium opcional, con auth y notificaciones push.",
+        "myRole": "Desarrollé el frontend en React Native (Expo): listado y detalle de viajes, pestañas de itinerario, checklist, vistas de alojamiento y actividades, auth (Firebase, Apple/Google Sign-In) y deep linking.",
+        "features": [
+          "Listado de viajes (próximos/pasados) y detalle con itinerario",
+          "Plan día a día con actividades y recomendaciones",
+          "Checklist y enlaces a alojamiento",
+          "Firebase auth, Apple/Google Sign-In, notificaciones push"
+        ],
+        "results": [
+          "Los viajeros pueden planificar y seguir el viaje desde una sola app",
+          "Desbloqueo de contenido premium y engagement vía push"
+        ],
+        "howItWorks": [
+          "El usuario inicia sesión con Firebase, Apple o Google; el listado de viajes muestra próximos y pasados.",
+          "Abre un viaje y ve el itinerario día a día con actividades y recomendaciones.",
+          "Checklist y enlaces a alojamiento ayudan a preparar y reservar; parte del contenido puede desbloquearse con premium.",
+          "Las notificaciones push mantienen el engagement; el deep linking permite abrir un viaje o sección concreta."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — móvil",
+          "Login — móvil",
+          "Chat — móvil",
+          "Detalle de viaje — móvil",
+          "Itinerario — móvil"
+        ]
+      },
+      "wezone-plan-recommendator": {
+        "title": "Wezone — Recomendador de planes",
+        "subtitle": "Responde unas preguntas y recibe el plan recomendado por email",
+        "challenge": "Wezone quería un flujo web corto donde los socios respondieran unas preguntas (centro, objetivos, preferencias) y recibieran un plan recomendado, con opción de formulario para recibir el resultado por email.",
+        "myRole": "Desarrollé el frontend: formulario multi-paso (selección de centro, preguntas), vista de resultado, formulario de contacto e integración con la API de recomendación.",
+        "features": [
+          "Selección de centro y preguntas paso a paso",
+          "Resultado de recomendación y CTA",
+          "Formulario de contacto para recibir el plan por email",
+          "i18n y maquetación responsive"
+        ],
+        "results": [
+          "Los socios obtienen una recomendación clara sin ir al centro",
+          "Captación de leads y seguimiento para el equipo comercial"
+        ],
+        "howItWorks": [
+          "El socio elige su centro Wezone en el primer paso del flujo.",
+          "Responde un breve cuestionario (objetivos, preferencias) en un formulario multi-paso.",
+          "La app llama a la API de recomendación y muestra el plan sugerido y un CTA.",
+          "Opcionalmente rellena un formulario de contacto para recibir el plan por email; el equipo comercial puede hacer seguimiento."
+        ],
+        "imageAlts": [
+          "Pantalla de bienvenida — escritorio",
+          "Flujo de pasos — escritorio",
+          "Flujo de pasos — escritorio",
+          "CTA — escritorio",
+          "Pantalla de resultados — escritorio",
+          "Pantalla de bienvenida — móvil",
+          "Flujo de pasos — móvil",
+          "Flujo de pasos — móvil",
+          "CTA — móvil",
+          "Pantalla de resultados — móvil"
+        ]
+      }
+    }
   },
   "about": {
     "title": "Sobre mí",

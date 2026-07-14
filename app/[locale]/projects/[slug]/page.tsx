@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { setRequestLocale } from "next-intl/server"
+import { setRequestLocale, getTranslations } from "next-intl/server"
 import { projects, getProject } from "@/lib/data/projects"
-import { getProjectTranslation } from "@/lib/data/project-translations"
 import { ProjectDetail } from "@/components/sections/ProjectDetail/project-detail"
+import type { ProjectTranslation } from "@/types/project"
 import { PROFILE, SITE_URL } from "@/lib/site-config"
 import { ROUTES } from "@/lib/routes"
 import { localeAlternates } from "@/lib/seo"
@@ -20,7 +20,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const locale = toLocale(rawLocale)
   const project = getProject(slug)
   if (!project) return {}
-  const translation = getProjectTranslation(slug, locale)
+  const t = await getTranslations({ locale })
+  const key = `project.items.${slug}`
+  const translation = t.has(key) ? (t.raw(key) as ProjectTranslation) : undefined
   return {
     title: `${translation?.title ?? slug} — ${PROFILE.name}`,
     description: translation?.subtitle,
@@ -35,7 +37,9 @@ export default async function ProjectPage({ params }: PageProps) {
   const project = getProject(slug)
   if (!project) notFound()
 
-  const translation = getProjectTranslation(slug, locale)
+  const t = await getTranslations({ locale })
+  const key = `project.items.${slug}`
+  const translation = t.has(key) ? (t.raw(key) as ProjectTranslation) : undefined
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",

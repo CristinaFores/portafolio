@@ -2,18 +2,18 @@
 
 import { useMemo } from "react"
 import { getProject } from "@/lib/data/projects"
-import { getProjectTranslation } from "@/lib/data/project-translations"
-import { useLocale } from "next-intl"
-import type { Project } from "@/types/project"
+import { useTranslations } from "next-intl"
+import type { Project, ProjectTranslation } from "@/types/project"
 
 /**
  * Returns a project with all user-facing text in the current locale.
  * Falls back to original project content when translation is missing.
  */
 export function useTranslatedProject(slug: string): Project | null {
-  const locale = useLocale()
+  const t = useTranslations()
   const project = getProject(slug)
-  const translation = getProjectTranslation(slug, locale)
+  const key = `project.items.${slug}`
+  const translation = t.has(key) ? (t.raw(key) as ProjectTranslation) : undefined
 
   return useMemo(() => {
     if (!project) return null

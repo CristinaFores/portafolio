@@ -4,10 +4,9 @@ import { Link } from "@/i18n/navigation"
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react"
 import { getAdjacentProjects } from "@/lib/data/projects"
-import { getProjectTranslation } from "@/lib/data/project-translations"
 import { ImageCarousel } from "@/components/sections/ImageCarousel/image-carousel"
 import { useTranslatedProject } from "@/hooks/use-translated-project/use-translated-project"
-import { useLocale, useTranslations } from "next-intl"
+import { useTranslations } from "next-intl"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { cn } from "@/lib/class-names"
 import { TextLink } from "@/components/ui/TextLink/text-link"
@@ -88,7 +87,10 @@ function BulletItem({ text }: BulletItemProps) {
 export function ProjectDetail({ slug }: ProjectDetailProps) {
   const project = useTranslatedProject(slug)
   const t = useTranslations()
-  const locale = useLocale()
+  const projectTitle = (projectSlug: string) => {
+    const key = `project.items.${projectSlug}.title`
+    return t.has(key) ? t(key) : projectSlug
+  }
   const { fadeUp } = useMotion()
 
   if (!project) return null
@@ -267,7 +269,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
               className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-x-0.5" />
-              <ProjectNavLabel title={getProjectTranslation(prev.slug, locale)?.title ?? prev.slug} />
+              <ProjectNavLabel title={projectTitle(prev.slug)} />
             </Link>
           ) : (
             <span />
@@ -277,7 +279,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
               href={ROUTES.project(next.slug)}
               className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <ProjectNavLabel title={getProjectTranslation(next.slug, locale)?.title ?? next.slug} align="right" />
+              <ProjectNavLabel title={projectTitle(next.slug)} align="right" />
               <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
           ) : (
