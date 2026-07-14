@@ -2,7 +2,7 @@ export type TagVariant = "default" | "status" | "muted"
 
 export type TagProps = {
   children: React.ReactNode
-  variant?: TagVariant
+  variant?: TagVariant | undefined
 }
 
 /**
@@ -16,12 +16,15 @@ export type TagProps = {
 const VARIANT_CLASSES: Record<TagVariant, string> = {
   default: "px-2 text-xs text-muted-foreground",
   muted: "px-2 text-xs text-foreground/80",
-  status: "uppercase tracking-wider text-accent border-[var(--border-accent)] px-1.5 text-[11px]",
+  status:
+    "uppercase tracking-wider text-accent border-[var(--border-accent)] px-1.5 text-[11px]",
 }
 
 export function Tag({ children, variant = "default" }: TagProps) {
   return (
-    <span className={`border py-0.5 font-mono font-medium ${VARIANT_CLASSES[variant]}`}>
+    <span
+      className={`border py-0.5 font-mono font-medium ${VARIANT_CLASSES[variant]}`}
+    >
       {children}
     </span>
   )

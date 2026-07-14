@@ -95,7 +95,14 @@ type NavLinkProps = {
   size?: "sm" | "lg"
 }
 
-function NavLinkItem({ href, label, active, onClick, layoutId = "nav-underline", size = "sm" }: NavLinkProps) {
+function NavLinkItem({
+  href,
+  label,
+  active,
+  onClick,
+  layoutId = "nav-underline",
+  size = "sm",
+}: NavLinkProps) {
   return (
     <Link
       href={href}
@@ -103,7 +110,9 @@ function NavLinkItem({ href, label, active, onClick, layoutId = "nav-underline",
       className={cn(
         "relative inline-block w-fit py-1 transition-colors",
         size === "lg" ? "text-3xl font-semibold tracking-tight" : "text-sm",
-        active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+        active
+          ? "text-foreground"
+          : "text-muted-foreground hover:text-foreground",
       )}
     >
       {label}

@@ -38,11 +38,7 @@ function FillFrameImage({ src, alt, sizes, className }: FillFrameImageProps) {
  * Renders a mobile screenshot inside an iPhone-style frame.
  * Height adapts to the image's natural aspect ratio (capped at 607px).
  */
-export function IPhoneFrame({
-  src,
-  alt,
-  className = "",
-}: DeviceFrameProps) {
+export function IPhoneFrame({ src, alt, className = "" }: DeviceFrameProps) {
   return (
     <div
       className={`relative inline-flex items-center justify-center ${className}`}
@@ -72,11 +68,7 @@ export function IPhoneFrame({
  * Frame viewport matches standard desktop ratio (1512×945, 16:10); image uses object-contain so it fits without cropping.
  * On mobile, the frame scales to fit the viewport (max-w-full) so it is fully visible.
  */
-export function MacBookFrame({
-  src,
-  alt,
-  className = "",
-}: DeviceFrameProps) {
+export function MacBookFrame({ src, alt, className = "" }: DeviceFrameProps) {
   return (
     <div
       className={`relative flex w-full max-w-[720px] flex-col items-center ${className}`}
@@ -103,11 +95,7 @@ export function MacBookFrame({
 /**
  * Renders a screenshot in a lightweight wireframe container.
  */
-export function WireframeFrame({
-  src,
-  alt,
-  className = "",
-}: DeviceFrameProps) {
+export function WireframeFrame({ src, alt, className = "" }: DeviceFrameProps) {
   return (
     <div
       className={`relative inline-flex items-center justify-center ${className}`}
@@ -132,18 +120,12 @@ export function WireframeFrame({
  * Viewport height matches the phone frame (same as IPhoneFrame content area) so it fits in the carousel;
  * width grows to match the image aspect ratio.
  */
-export function TerminalFrame({
-  src,
-  alt,
-  className = "",
-}: DeviceFrameProps) {
+export function TerminalFrame({ src, alt, className = "" }: DeviceFrameProps) {
   // Same height as IPhoneFrame image area: 280 * (2556/1179) ≈ 607px
   const viewportHeight = 607
 
   return (
-    <div
-      className={`relative inline-flex flex-col items-center ${className}`}
-    >
+    <div className={`relative inline-flex flex-col items-center ${className}`}>
       <div className="relative rounded-2xl border-[10px] border-[#2c2c2c] bg-[#2c2c2c]">
         <div
           className="relative inline-block overflow-hidden rounded-lg ring-1 ring-white/5"

@@ -1,5 +1,8 @@
 {
   "cSpell.words": [
     "auralang"
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.semi": false,
 }

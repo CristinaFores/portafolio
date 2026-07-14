@@ -50,8 +50,6 @@
 
 @layer base {
   :root {
-    --radius: 0rem;
-
     /* Bone & Sienna — Light palette */
     --light-bone: #f5f1ea; /* Fondo principal */
     --light-ink: #1a1816; /* Texto principal */

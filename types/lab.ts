@@ -25,7 +25,7 @@ export interface LabProjectBase {
   status: "wip" | "review" | "active"
   icon: string
   links: LabLinkBase[]
-  techBadges?: string[]
+  stack?: string[]
   coverImage?: string
   howItWorks?: string[]
   installCommand?: string

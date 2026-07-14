@@ -1,8 +1,9 @@
 "use client"
 
-import { useMemo } from "react"
-import { getProject } from "@/lib/data/projects"
 import { useTranslations } from "next-intl"
+import { useMemo } from "react"
+
+import { getProject } from "@/lib/data/projects"
 import type { Project, ProjectTranslation } from "@/types/project"
 
 /**
@@ -13,7 +14,9 @@ export function useTranslatedProject(slug: string): Project | null {
   const t = useTranslations()
   const project = getProject(slug)
   const key = `project.items.${slug}`
-  const translation = t.has(key) ? (t.raw(key) as ProjectTranslation) : undefined
+  const translation = t.has(key)
+    ? (t.raw(key) as ProjectTranslation)
+    : undefined
 
   return useMemo(() => {
     if (!project) return null
@@ -35,7 +38,9 @@ export function useTranslatedProject(slug: string): Project | null {
       results: translation?.results ?? [],
       imageAlts: translation?.imageAlts ?? [],
       images,
-      ...(translation?.howItWorks != null && { howItWorks: translation.howItWorks }),
+      ...(translation?.howItWorks != null && {
+        howItWorks: translation.howItWorks,
+      }),
     }
   }, [project, translation])
 }

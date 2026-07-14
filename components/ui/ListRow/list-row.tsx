@@ -1,9 +1,10 @@
-import type { MouseEventHandler, ReactNode } from "react"
-import { Link } from "@/i18n/navigation"
-import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
-import { Tag, type TagProps } from "@/components/ui/Tag/tag"
 import { Blocks } from "lucide-react"
+import Image from "next/image"
+import type { MouseEventHandler, ReactNode } from "react"
+
+import { Tag, type TagProps } from "@/components/ui/Tag/tag"
+import { Link } from "@/i18n/navigation"
 
 type ListRowTag = {
   label: string
@@ -30,7 +31,15 @@ export type ListRowProps = {
  * Pure/presentational — data, i18n, motion, and click behavior live in the
  * section that composes this primitive (see design ADR-2).
  */
-export function ListRow({ href, title, subtitle, media, badge, tags, onClick }: ListRowProps) {
+export function ListRow({
+  href,
+  title,
+  subtitle,
+  media,
+  badge,
+  tags,
+  onClick,
+}: ListRowProps) {
   return (
     <Link
       href={href}
@@ -49,15 +58,13 @@ export function ListRow({ href, title, subtitle, media, badge, tags, onClick }: 
           />
         </div>
       ) : (
-          <Blocks className="h-6 w-6 text-accent" />
+        <Blocks className="h-6 w-6 text-accent" />
       )}
 
       <div className="flex min-w-0 flex-1 flex-col gap-2.5">
         <h3 className="text-base font-medium leading-snug text-foreground transition-colors group-hover:text-accent flex items-center gap-4">
           {title}
-           {badge && (
-          <Tag variant="status">{badge}</Tag>
-        )}
+          {badge && <Tag variant="status">{badge}</Tag>}
         </h3>
         <p className="line-clamp-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           {subtitle}

@@ -4,7 +4,8 @@
       "wip": "WIP",
       "review": "En revisión",
       "active": "En producción"
-    }
+    },
+    "alt": "Imagen de proyecto"
   },
   "nav": {
     "home": "Inicio",
@@ -42,6 +43,9 @@
     "pending": "Pendiente",
     "howItWorks": {
       "title": "Cómo funciona"
+    },
+    "whyIBuiltThis": {
+      "title": "Por qué lo construí"
     },
     "capabilities": {
       "title": "Qué expone"
@@ -174,7 +178,7 @@
     "viewAll": "Ver todos los proyectos",
     "allIndex": "PROYECTOS",
     "allTitle": "Todos los proyectos",
-    "allSubhead": "Trabajo web y móvil en producción con React, React Native, Next.js y Vue. Ningún proyecto de demostración.",
+    "allSubhead": "Trabajo web y móvil en producción con React, React Native, Next.js y Vue.",
     "companyBadge": "Proyecto Gyoza"
   },
   "contact": {
@@ -193,22 +197,18 @@
     "viewProjects": "Ver proyectos"
   },
   "project": {
-    "allProjects": "Todos los proyectos",
-    "visitProject": "Ver proyecto",
-    "viewInFigma": "Ver en Figma",
     "theChallenge": "El reto",
     "myRole": "Mi rol",
     "keyFeatures": "Características principales",
     "howItWorks": "Cómo funciona",
-    "whyIBuiltThis": "Por qué lo construí",
-    "uxProcess": "Proceso UX",
-    "userTestInsights": "Insights de tests de usuario",
-    "keyFindings": "Hallazgos clave",
     "theOutcome": "El resultado",
     "gallery": "Galería",
     "prevImage": "Imagen anterior",
     "nextImage": "Imagen siguiente",
     "goToImage": "Ir a la imagen",
+    "stack": "Stack",
+    "projectUrl": "Enlace al proyecto",
+    "backToProject": "Volver al proyecto",
     "items": {
       "turbowash-terminal": {
         "title": "Turbowash — Kiosko de pago",

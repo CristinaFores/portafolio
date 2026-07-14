@@ -14,8 +14,11 @@ export function Footer() {
   const { fadeUp } = useMotion()
 
   return (
-    <motion.footer {...fadeUp()} className="border-t border-border bg-background">
-      <div className="mx-auto flex max-w-5xl flex-row flex-wrap items-center justify-between gap-4 px-6 py-5">
+    <motion.footer
+      {...fadeUp()}
+      className="border-t border-border bg-background"
+    >
+      <div className="mx-auto flex max-w-5xl flex-row flex-wrap items-center justify-between gap-4 py-8">
         <p className="font-mono text-xs text-muted-foreground">
           © {new Date().getFullYear()} {PROFILE.name} · {t("footer.tagline")}
         </p>
@@ -26,10 +29,16 @@ export function Footer() {
           >
             Email
           </TextLink>
-          <TextLink href={PROFILE.linkedInUrl} className="text-muted-foreground hover:text-accent">
+          <TextLink
+            href={PROFILE.linkedInUrl}
+            className="text-muted-foreground hover:text-accent"
+          >
             LinkedIn
           </TextLink>
-          <TextLink href={PROFILE.gitHubUrl} className="text-muted-foreground hover:text-accent">
+          <TextLink
+            href={PROFILE.gitHubUrl}
+            className="text-muted-foreground hover:text-accent"
+          >
             GitHub
           </TextLink>
         </div>

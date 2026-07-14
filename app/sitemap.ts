@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 import { SITE_URL } from "@/lib/site-config"
 import { routing } from "@/i18n/routing"
-import { projects } from "@/lib/data/projects"
+import { PROJECTS } from "@/lib/data/projects"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 
 type RouteDef = {
@@ -15,7 +15,7 @@ const routes: RouteDef[] = [
   { path: "/about", changeFrequency: "monthly", priority: 0.6 },
   { path: "/projects", changeFrequency: "monthly", priority: 0.9 },
   { path: "/lab", changeFrequency: "monthly", priority: 0.7 },
-  ...projects.map((project) => ({
+  ...PROJECTS.map((project) => ({
     path: `/projects/${project.slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.8,

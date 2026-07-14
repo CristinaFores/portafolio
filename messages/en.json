@@ -4,7 +4,8 @@
       "wip": "WIP",
       "review": "In review",
       "active": "Live"
-    }
+    },
+    "alt": "Project icon"
   },
   "nav": {
     "home": "Home",
@@ -31,15 +32,15 @@
     "home": {
       "sectionIndex": "01 — LAB",
       "headline": "What I'm building",
-      "viewLab": "View the full lab"
+      "viewLab": "View the full lab",
+      "subtitle": "Projects and experiments."
     },
-    "sectionIndex": "LAB",
     "title": "design-context-bridge",
     "howItWorks": {
-      "title": "How it works",
-      "step1": "The MCP server connects to the Figma file via API and exposes its structure — nodes, styles, variables — as tools any compatible agent can call.",
-      "step2": "When an AI agent (Cursor, Claude) needs design context, it calls those tools instead of asking for a screenshot.",
-      "step3": "The agent receives structured data — tokens, layers, spacing — and uses it to generate code that respects the design system from the first prompt."
+      "title": "How it works"
+    },
+    "whyIBuiltThis": {
+      "title": "Why I built this"
     },
     "capabilities": {
       "title": "What it exposes"
@@ -62,20 +63,124 @@
     "whatItDoes": {
       "title": "What it does"
     },
-    "disclaimer": "Independent — not affiliated with Figma, Inc.",
-    "pageSubtitle": "Projects I build when the tool doesn't exist.",
     "viewDetails": "View details",
     "links": "Links",
-    "pending": "Pending"
+    "pending": "Pending",
+    "eyebrow": "LAB",
+    "subtitle": "Where ideas end up.",
+    "back": {
+      "label": "Back to the lab"
+    },
+    "projects": {
+      "design-context-bridge": {
+        "status": "Live",
+        "title": "design-context-bridge",
+        "subtitle": "So AI can 'see' your designs without relying on images. It passes clean Figma data (layers, spacing, tokens) straight to your AI agents through MCP.",
+        "tagline": "So AI can 'see' your designs without relying on images. It passes clean Figma data (layers, spacing, tokens) straight to your AI agents through MCP.",
+        "whyBuilt": "MCP (Model Context Protocol) is the protocol that lets AI agents call external tools instead of interpreting screenshots. When I saw that no one had connected Figma to agents in a way that exposed the real tokens — not the pixels — I built it.",
+        "howItWorksSteps": [
+          "The MCP server connects to the Figma file via API and exposes its structure — nodes, styles, variables — as tools any compatible agent can call.",
+          "When an AI agent (Cursor, Claude) needs design context, it calls those tools instead of asking for a screenshot.",
+          "The agent receives structured data — tokens, layers, spacing — and uses it to generate code that respects the design system from the first prompt."
+        ],
+        "features": [
+          "Any MCP-compatible agent — Cursor, Claude, Windsurf, VS Code, OpenCode.",
+          "The agent accesses the real Figma data.",
+          "The agent receives structured data — tokens, layers, spacing — and uses it to generate code that respects the design system from the first prompt."
+        ],
+        "toolGroups": [
+          {
+            "name": "Selection reading",
+            "tools": [
+              "get_current_selection",
+              "get_selected_colors",
+              "get_selected_texts"
+            ]
+          },
+          {
+            "name": "File navigation",
+            "tools": [
+              "get_all_pages",
+              "get_frame_by_name",
+              "get_node_info"
+            ]
+          },
+          {
+            "name": "Design system extraction",
+            "tools": [
+              "extract_design_system",
+              "get_variables"
+            ]
+          },
+          {
+            "name": "Asset extraction",
+            "tools": [
+              "find_assets",
+              "export_image"
+            ]
+          },
+          {
+            "name": "Structure analysis",
+            "tools": [
+              "analyze_structure",
+              "get_component_variants"
+            ]
+          }
+        ],
+        "privacy": "",
+        "modes": [
+          {
+            "name": "Plugin Mode",
+            "description": "Sends the Figma selection in real time from the desktop plugin.",
+            "status": "You must install the plugin in the Figma desktop app to use it. Available on GitHub."
+          },
+          {
+            "name": "REST API Mode",
+            "description": "Reads any Figma URL using a personal access token.",
+            "status": "Depends on the Figma API and the usage limits of your account."
+          }
+        ],
+        "disclaimer": "Independent — not affiliated with Figma, Inc."
+      },
+      "auralang": {
+        "status": "Live",
+        "title": "AuraLang",
+        "subtitle": "Translates any tab's audio on the fly. Fully private: Whisper runs directly on your machine, with no data leaving it.",
+        "tagline": "Translates any tab's audio on the fly. Fully private: Whisper runs directly on your machine, with no data leaving it.",
+        "whyBuilt": "Millions of people consume content in languages they don't master and lose context every time they pause to translate. I wanted to solve that: real-time audio translation, with no API keys or backend of my own. Transcription happens on-device with Whisper — only the transcribed text goes over the network to be translated.",
+        "features": [
+          "Any tab with audio — videos, calls, podcasts, live streams.",
+          "On-device transcription — Whisper runs locally; the audio never leaves your machine.",
+          "Spoken translation — the original audio is muted; you only hear the translation.",
+          "Pick source and target language, and switch pairs whenever you want."
+        ],
+        "privacy": "No backend, no telemetry, no account. Transcription happens on your device; only the transcribed text is sent to Google Translate to get the translation. Settings (languages, theme) are stored in chrome.storage.local on your machine.",
+        "howItWorksSteps": [
+          "Select the audio from any tab and choose the source and target language.",
+          "The first time, the Whisper model is downloaded to the device.",
+          "Once downloaded, the audio is transcribed in real time and translated on-device.",
+          "The translation plays on the device and the original audio is muted."
+        ],
+        "modes": [
+          {
+            "name": "Chrome Extension Mode",
+            "description": "Follows the audio in the selected tab in the Chrome Extension in real time."
+          }
+        ],
+        "disclaimer": "Open source — not affiliated with Google, Inc."
+      }
+    }
   },
   "work": {
-    "sectionIndex": "02 — SELECTED WORK",
-    "sectionTitle": "Projects developed at Gyoza",
+    "index": "02 — PROJECTS",
+    "headline": "Projects",
+    "subtitle": "Built at Gyoza as a Frontend Developer",
     "viewAll": "View all projects",
     "allIndex": "PROJECTS",
     "allTitle": "All projects",
-    "allSubhead": "Web and mobile work in production with React, React Native, Next.js and Vue. No demo projects.",
-    "companyBadge": "Gyoza project"
+    "allSubhead": "Web and mobile work in production with React, React Native, Next.js and Vue.",
+    "companyBadge": "Gyoza project",
+    "projectUrl": "Project URL"
   },
   "contact": {
     "headline": "Get in touch",
@@ -93,22 +198,16 @@
     "viewProjects": "View projects"
   },
   "project": {
-    "allProjects": "All Projects",
-    "visitProject": "Visit project",
-    "viewInFigma": "View in Figma",
     "theChallenge": "The Challenge",
     "myRole": "My Role",
     "keyFeatures": "Key Features",
     "howItWorks": "How It Works",
-    "whyIBuiltThis": "Why I Built This",
-    "uxProcess": "UX Process",
-    "userTestInsights": "User Testing Insights",
-    "keyFindings": "Key Findings",
     "theOutcome": "The Outcome",
     "gallery": "Gallery",
     "prevImage": "Previous image",
     "nextImage": "Next image",
     "goToImage": "Go to image",
+    "backToProject": "Back to project",
     "items": {
       "turbowash-terminal": {
         "title": "Turbowash — Payment Kiosk",

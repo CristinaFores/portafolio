@@ -26,7 +26,7 @@ export async function generateMetadata({
 
   return {
     title: `${project.name} — Lab — ${PROFILE.name}`,
-    description: t.raw(`lab.projects.${slug}.tagline`),
+    description: t(`projects.${slug}.tagline`),
     alternates: localeAlternates(locale, ROUTES.labProject(slug)),
   };
 }
