@@ -1,16 +1,17 @@
 "use client"
 
-import { useRef } from "react"
-import { Link } from "@/i18n/navigation"
-import Image from "next/image"
-import { ChevronDown } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
+import { ChevronDown } from "lucide-react"
+import Image from "next/image"
 import { useTranslations } from "next-intl"
+import { useRef } from "react"
+
+import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { useParallaxY } from "@/hooks/use-parallax-y/use-parallax-y"
-import { PROFILE } from "@/lib/site-config"
-import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
+import { Link } from "@/i18n/navigation"
 import { ROUTES } from "@/lib/routes"
+import { PROFILE } from "@/lib/site-config"
 
 /**
  * Hero — copy on the left, portrait on the right (desktop only).

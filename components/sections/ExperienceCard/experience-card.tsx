@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react"
+
 import { TextLink } from "@/components/ui/TextLink/text-link"
 
 export type ExperienceCardProps = {

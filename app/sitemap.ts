@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next"
-import { SITE_URL } from "@/lib/site-config"
+
 import { routing } from "@/i18n/routing"
-import { PROJECTS } from "@/lib/data/projects"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
+import { PROJECTS } from "@/lib/data/projects"
+import { SITE_URL } from "@/lib/site-config"
 
 type RouteDef = {
   path: string

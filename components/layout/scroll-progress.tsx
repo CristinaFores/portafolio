@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
+import { useEffect, useState } from "react"
 
 /** Thin accent bar tracking scroll depth across the page. */
 export function ScrollProgress() {

@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
+
+import { TextLink } from "@/components/ui/TextLink/text-link"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { PROFILE } from "@/lib/site-config"
-import { TextLink } from "@/components/ui/TextLink/text-link"
 
 /**
  * Global footer with copyright and social/contact links.

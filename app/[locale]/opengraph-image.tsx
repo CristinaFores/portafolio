@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og"
 import { getTranslations } from "next-intl/server"
+
 import { toLocale } from "@/i18n/locale"
 import { PROFILE, SITE_URL } from "@/lib/site-config"
 

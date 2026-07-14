@@ -1,7 +1,8 @@
 "use client"
 
-import { useRef } from "react"
 import { motion } from "framer-motion"
+import { useRef } from "react"
+
 import { useParallaxY } from "@/hooks/use-parallax-y/use-parallax-y"
 
 type ParallaxBlockProps = {

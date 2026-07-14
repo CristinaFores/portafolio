@@ -1,9 +1,12 @@
 import { render, screen } from "@testing-library/react"
 import { describe, expect, it } from "vitest"
-import { I18nWrapper } from "@/test-utils/i18n-wrapper"
+
 import { PROFILE } from "@/lib/site-config"
-import { AboutContent } from "./about-content"
 import esMessages from "@/messages/es.json"
+import { I18nWrapper } from "@/test-utils/i18n-wrapper"
+
+import { AboutContent } from "./about-content"
+
 
 function renderAbout() {
   return render(

@@ -2,11 +2,13 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import type { ProjectImage } from "@/types/project"
 import { useTranslations } from "next-intl"
-import { useCarousel } from "./use-carousel"
+
+import type { ProjectImage } from "@/types/project"
+
 import { DeviceImage } from "./device-image"
 import { slideVariants } from "./slide-variants"
+import { useCarousel } from "./use-carousel"
 
 export type ImageCarouselProps = {
   images: ProjectImage[]

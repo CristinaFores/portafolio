@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { getLabProject, LAB_PROJECTS } from "@/lib/data/lab-projects";
+
 import { LabDetailContent } from "@/components/sections/LabDetailContent/lab-detail-content";
-import { PROFILE } from "@/lib/site-config";
+import { toLocale } from "@/i18n/locale";
+import { getLabProject, LAB_PROJECTS } from "@/lib/data/lab-projects";
 import { ROUTES } from "@/lib/routes";
 import { localeAlternates } from "@/lib/seo";
-import { toLocale } from "@/i18n/locale";
+import { PROFILE } from "@/lib/site-config";
 
 type PageProps = { params: Promise<{ locale: string; slug: string }> };
 

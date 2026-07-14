@@ -1,6 +1,7 @@
 "use client"
 
 import { useReducedMotion } from "framer-motion"
+
 import {
   enterProps,
   fadeUpProps,

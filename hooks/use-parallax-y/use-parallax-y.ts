@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { useReducedMotion, useScroll, useTransform } from "framer-motion"
+import { useEffect, useState } from "react"
 import type { RefObject } from "react"
 
 type ParallaxOptions = {

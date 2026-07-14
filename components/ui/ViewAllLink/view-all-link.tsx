@@ -1,5 +1,6 @@
-import { Link } from "@/i18n/navigation"
 import { ArrowRight } from "lucide-react"
+
+import { Link } from "@/i18n/navigation"
 
 
 type ViewAllLinkProps = {

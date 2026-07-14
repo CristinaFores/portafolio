@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { setRequestLocale, getTranslations } from "next-intl/server"
-import { PROJECTS, getProject } from "@/lib/data/projects"
+
 import { ProjectDetail } from "@/components/sections/ProjectDetail/project-detail"
-import type { ProjectTranslation } from "@/types/project"
-import { PROFILE, SITE_URL } from "@/lib/site-config"
+import { toLocale } from "@/i18n/locale"
+import { PROJECTS, getProject } from "@/lib/data/projects"
 import { ROUTES } from "@/lib/routes"
 import { localeAlternates } from "@/lib/seo"
-import { toLocale } from "@/i18n/locale"
+import { PROFILE, SITE_URL } from "@/lib/site-config"
+import type { ProjectTranslation } from "@/types/project"
 
 type PageProps = { params: Promise<{ locale: string; slug: string }> }
 

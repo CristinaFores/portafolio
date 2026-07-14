@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { useTranslations } from "next-intl"
 
+import { PageContentContainer } from "@/components/layout/PageContent/page-content"
 import { BlockSection } from "@/components/ui/BlockSection/block-section"
 import { DescriptionSection } from "@/components/ui/DescriptionSection/description-section"
 import { DetailHeader } from "@/components/ui/detail/detail-header"
@@ -14,7 +15,6 @@ import { TerminalSnippet } from "@/components/ui/TerminalSnippet/terminal-snippe
 import { getLabProject } from "@/lib/data/lab-projects"
 import { ROUTES } from "@/lib/routes"
 import { LabModeBase, LabToolGroupBase } from "@/types/lab"
-import { PageContentContainer } from "@/components/layout/PageContent/page-content"
 
 const BulletItem = ({ text }: { text: string }) => (
   <li className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">

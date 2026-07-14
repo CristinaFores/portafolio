@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
-import { useMotion } from "@/hooks/use-motion/use-motion"
-import { PROFILE } from "@/lib/site-config"
+
 import { ButtonLink } from "@/components/ui/ButtonLink/button-link"
 import { TextLink } from "@/components/ui/TextLink/text-link"
+import { useMotion } from "@/hooks/use-motion/use-motion"
+import { PROFILE } from "@/lib/site-config"
 
 /**
  * Contact section with direct outreach links.
