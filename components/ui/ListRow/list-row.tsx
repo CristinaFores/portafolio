@@ -47,7 +47,7 @@ export function ListRow({
       className="group flex items-start gap-5 border-t border-border  py-8 transition-colors hover:border-border md:gap-6 md:py-10"
     >
       {media && media.src ? (
-        <div className="relative hidden h-16 w-16 shrink-0 overflow-hidden rounded-md md:block">
+        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-md md:h-16 md:w-16">
           <Image
             src={media.src}
             alt={media.alt ?? ""}

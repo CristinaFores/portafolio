@@ -4,10 +4,6 @@ export interface LabLinkBase {
   label: string
 }
 
-export interface LabLink extends LabLinkBase {
-  label: string
-}
-
 export interface LabModeBase {
   name: string
   description: string

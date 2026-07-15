@@ -1,4 +1,14 @@
 {
+  "blog": {
+    "metaTitle": "Blog",
+    "metaDescription": "Notes and articles on frontend development, AI and product.",
+    "index": "Blog",
+    "title": "Writing",
+    "subtitle": "Notes on development, AI and product.",
+    "readMore": "Read more",
+    "backToBlog": "Back to the blog",
+    "empty": "No posts published yet."
+  },
   "constants": {
     "status": {
       "wip": "WIP",
@@ -184,7 +194,7 @@
   },
   "contact": {
     "headline": "Get in touch",
-    "subline": "Available remotely for front-end, mobile, and AI product roles — production interfaces, MCP, and tooling for teams building with agents.",
+    "subline": "Available remotely for front-end, mobile, and AI product: production interfaces, MCP servers, and tooling for teams building with agents.",
     "title": "Get in touch",
     "sectionIndex": "03 — CONTACT"
   },
@@ -203,6 +213,8 @@
     "keyFeatures": "Key Features",
     "howItWorks": "How It Works",
     "theOutcome": "The Outcome",
+    "stack": "Stack",
+    "projectUrl": "Project Link",
     "gallery": "Gallery",
     "prevImage": "Previous image",
     "nextImage": "Next image",
@@ -624,7 +636,6 @@
       "2": "At Gyoza I led the implementation of Wetour (a <strong>Next.js</strong> community with an SEO focus) and Turbowash (a <strong>React Native</strong> app controlling laundry machines: payments, loyalty, and remote activation), alongside contributing to Goiko.",
       "3": "My work is grounded in scalable UI architecture and in state and async data management with <strong>Zustand</strong> and <strong>TanStack Query</strong>.",
       "4": "In little over a year I went from pure frontend engineering to shipping design-context-bridge: my own <strong>MCP</strong> server in production, compatible with Cursor, Claude Code, and Windsurf, giving <strong>AI agents</strong> real design context from <strong>Figma</strong>.",
-      "availability": "Barcelona · Available for remote work.",
       "motto": "When a tool I need doesn't exist, I build it."
     },
     "skills": {

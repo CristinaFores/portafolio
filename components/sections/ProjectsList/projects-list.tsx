@@ -19,8 +19,10 @@ interface ProjectsListProps {
 export function ProjectsList({ isFeatured = false }: ProjectsListProps) {
   const t = useTranslations()
 
-  const allProjects = PROJECTS.map((project: ProjectBase) => ({
-    id: crypto.randomUUID(),
+  const source = isFeatured ? getFeaturedProjects() : PROJECTS
+
+  const projects = source.map((project: ProjectBase) => ({
+    id: project.slug,
     href: ROUTES.project(project.slug),
     title: t(`project.items.${project.slug}.title`),
     subtitle: t(`project.items.${project.slug}.subtitle`),
@@ -30,22 +32,6 @@ export function ProjectsList({ isFeatured = false }: ProjectsListProps) {
     },
     tags: project.stack.map((tech) => ({ label: tech })).slice(0, 3),
   }))
-
-  const featuredProjects = getFeaturedProjects().map(
-    (project: ProjectBase) => ({
-      id: crypto.randomUUID(),
-      href: ROUTES.project(project.slug),
-      title: project.title,
-      subtitle: project.subtitle,
-      media: {
-        src: project.icon || "/placeholder.svg",
-        alt: project.title,
-      },
-      tags: project.stack.map((tech) => ({ label: tech })).slice(0, 3),
-    }),
-  )
-
-  const projects = isFeatured ? featuredProjects : allProjects
 
   return (
     <ul className="flex flex-col gap-6">

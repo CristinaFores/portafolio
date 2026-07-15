@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/next"
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
-import { hasLocale, NextIntlClientProvider, type Locale } from "next-intl"
+import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { setRequestLocale } from "next-intl/server"
 import React from "react"
 

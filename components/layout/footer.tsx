@@ -17,9 +17,9 @@ export function Footer() {
   return (
     <motion.footer
       {...fadeUp()}
-      className="border-t border-border bg-background"
+      className="border-t border-border bg-background mt-auto"
     >
-      <div className="mx-auto flex max-w-5xl flex-row flex-wrap items-center justify-between gap-4 py-8">
+      <div className="mx-auto flex max-w-5xl flex-row flex-wrap items-center justify-between gap-4 px-6 md:px-[0px] py-8">
         <p className="font-mono text-xs text-muted-foreground">
           © {new Date().getFullYear()} {PROFILE.name} · {t("footer.tagline")}
         </p>

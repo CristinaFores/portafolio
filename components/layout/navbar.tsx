@@ -3,7 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { useLocale, useTranslations, type Locale } from "next-intl"
-import { useTheme } from "next-themes"
 import { useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { createPortal } from "react-dom"
 
@@ -29,61 +28,43 @@ const navLinks = [
 type NavControlsProps = {
   locale: Locale
   setLocale: (locale: Locale) => void
-  mounted: boolean
-  resolvedTheme: string | undefined
-  toggleTheme: () => void
-  t: (key: string) => string
   onClose?: () => void
 }
 
-function NavControls({
-  locale,
-  setLocale,
-  mounted,
-  resolvedTheme,
-  toggleTheme,
-  t,
-  onClose,
-}: NavControlsProps) {
-  const isDark = mounted && resolvedTheme === "dark"
-  void isDark
-  void toggleTheme
-
+function NavControls({ locale, setLocale, onClose }: NavControlsProps) {
   return (
-    <>
-      <div className="flex h-8 overflow-hidden border border-border">
-        <button
-          type="button"
-          onClick={() => {
-            setLocale("es")
-            onClose?.()
-          }}
-          className={cn(
-            "flex h-full min-h-8 flex-1 items-center justify-center px-2.5 text-xs font-medium transition-colors",
-            locale === "es"
-              ? "bg-primary text-primary-foreground"
-              : "bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground",
-          )}
-        >
-          ES
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setLocale("en")
-            onClose?.()
-          }}
-          className={cn(
-            "flex h-full min-h-8 flex-1 items-center justify-center border-l border-border px-2.5 text-xs font-medium transition-colors",
-            locale === "en"
-              ? "bg-primary text-primary-foreground"
-              : "bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground",
-          )}
-        >
-          EN
-        </button>
-      </div>
-    </>
+    <div className="flex h-8 overflow-hidden border border-border">
+      <button
+        type="button"
+        onClick={() => {
+          setLocale("es")
+          onClose?.()
+        }}
+        className={cn(
+          "flex h-full min-h-8 flex-1 items-center justify-center px-2.5 text-xs font-medium transition-colors",
+          locale === "es"
+            ? "bg-primary text-primary-foreground"
+            : "bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground",
+        )}
+      >
+        ES
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          setLocale("en")
+          onClose?.()
+        }}
+        className={cn(
+          "flex h-full min-h-8 flex-1 items-center justify-center border-l border-border px-2.5 text-xs font-medium transition-colors",
+          locale === "en"
+            ? "bg-primary text-primary-foreground"
+            : "bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground",
+        )}
+      >
+        EN
+      </button>
+    </div>
   )
 }
 
@@ -142,7 +123,6 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [visible, setVisible] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { setTheme, resolvedTheme } = useTheme()
   const t = useTranslations()
   const locale = useLocale()
   const router = useRouter()
@@ -207,20 +187,17 @@ export function Navbar() {
     return () => mq.removeEventListener("change", onChange)
   }, [mobileOpen])
 
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark")
-  }
-
   return (
-    <header
+    <motion.header
       ref={headerRef}
+      animate={{ y: visible ? 0 : "-100%" }}
+      transition={{ duration: reduced ? 0 : 0.3, ease: [0.4, 0, 0.2, 1] }}
       className={cn(
-        "fixed left-0 right-0 top-0 z-50 border-b border-border backdrop-blur-md transition-all duration-300",
+        "fixed left-0 right-0 top-0 z-50 border-b border-border backdrop-blur-md transition-colors duration-300",
         scrolled ? "bg-background/90" : "bg-transparent",
-        visible ? "translate-y-0" : "-translate-y-full",
       )}
     >
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 md:px-[0px] py-4">
         <Link href={ROUTES.home} className="group flex items-center gap-2.5">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-[#f5f1ea]">
             <Image
@@ -252,14 +229,7 @@ export function Navbar() {
             </li>
           ))}
           <li className="flex items-center gap-2">
-            <NavControls
-              locale={locale}
-              setLocale={setLocale}
-              mounted={mounted}
-              resolvedTheme={resolvedTheme}
-              toggleTheme={toggleTheme}
-              t={t}
-            />
+            <NavControls locale={locale} setLocale={setLocale} />
           </li>
         </ul>
         <button
@@ -314,10 +284,6 @@ export function Navbar() {
                     <NavControls
                       locale={locale}
                       setLocale={setLocale}
-                      mounted={mounted}
-                      resolvedTheme={resolvedTheme}
-                      toggleTheme={toggleTheme}
-                      t={t}
                       onClose={() => setMobileOpen(false)}
                     />
                   </li>
@@ -327,6 +293,6 @@ export function Navbar() {
           </AnimatePresence>,
           document.body,
         )}
-    </header>
+    </motion.header>
   )
 }

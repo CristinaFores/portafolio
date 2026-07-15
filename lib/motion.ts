@@ -3,14 +3,13 @@
  * Always pass `reduced` from `useReducedMotion()` — never hardcode variants in components.
  */
 
-import type { Transition, Variants } from "framer-motion"
+import type { Transition } from "framer-motion"
 
 export const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
-export const VIEWPORT = { once: true, margin: "-50px" } as const
+const VIEWPORT = { once: true, margin: "-50px" } as const
 
-export const STAGGER_CHILD = 0.05
-export const STAGGER_ROW = 0.03
+const STAGGER_CHILD = 0.05
 
 const INSTANT: Transition = { duration: 0 }
 
@@ -64,7 +63,13 @@ export function staggerItemProps(
   opts: { step?: number; y?: number } = {},
 ) {
   const { step = STAGGER_CHILD, y = 12 } = opts
-  return fadeUpProps(reduced, { delay: index * step, y, duration: 0.35, margin: "-40px" })
+  // Cap the cascade so long lists that reveal on scroll don't accumulate lag.
+  return fadeUpProps(reduced, {
+    delay: Math.min(index, 6) * step,
+    y,
+    duration: 0.3,
+    margin: "-40px",
+  })
 }
 
 /** Quick fade for inner page headers — no stagger, minimal movement. */
@@ -84,20 +89,3 @@ export function pageEnterProps(reduced: boolean | null, opts: FadeOptions = {}) 
   } as const
 }
 
-export const staggerContainer: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: STAGGER_CHILD } },
-}
-
-export const staggerContainerReduced: Variants = {
-  hidden: {},
-  visible: {},
-}
-
-/** @deprecated Use fadeUpProps(reduced) via useMotion() */
-export const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: VIEWPORT,
-  transition: { duration: 0.5, ease: EASE },
-} as const

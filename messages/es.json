@@ -1,4 +1,14 @@
 {
+  "blog": {
+    "metaTitle": "Blog",
+    "metaDescription": "Notas y artículos sobre desarrollo frontend, IA y producto.",
+    "index": "Blog",
+    "title": "Escritos",
+    "subtitle": "Notas sobre desarrollo, IA y producto.",
+    "readMore": "Leer más",
+    "backToBlog": "Volver al blog",
+    "empty": "Aún no hay artículos publicados."
+  },
   "constants": {
     "status": {
       "wip": "WIP",
@@ -183,7 +193,7 @@
   },
   "contact": {
     "headline": "¿Hablamos?",
-    "subline": "Disponible en remoto para front-end, móvil y producto con IA — interfaces en producción, MCP y tooling para equipos que trabajan con agentes.",
+    "subline": "Disponible en remoto para front-end, móvil y producto de IA: interfaces en producción, servidores MCP y tooling para equipos que construyen con agentes.",
     "title": "¿Hablamos?",
     "sectionIndex": "03 — CONTACTO"
   },
@@ -625,7 +635,6 @@
       "2": "En Gyoza lideré la implementación de Wetour (comunidad en <strong>Next.js</strong> con foco en SEO) y Turbowash (app en <strong>React Native</strong> que controla máquinas de lavado: pagos, fidelización y activación remota), además de contribuir en Goiko.",
       "3": "Mi trabajo se apoya en arquitecturas de interfaz escalables y en la gestión de estado y datos asíncronos con <strong>Zustand</strong> y <strong>TanStack Query</strong>.",
       "4": "En poco más de un año pasé de la ingeniería frontend pura a publicar design-context-bridge: mi propio servidor <strong>MCP</strong> en producción, compatible con <strong>Cursor</strong>, <strong>Claude Code</strong> y <strong>Windsurf</strong>, que da a los <strong>agentes de IA</strong> contexto real de diseño desde <strong>Figma</strong>",
-      "availability": "Barcelona · Disponible en remoto.",
       "motto": "Cuando una herramienta que necesito no existe, la construyo."
     },
     "skills": {
