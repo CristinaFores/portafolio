@@ -20,7 +20,6 @@ export function LabTeaserSection() {
   const t = useTranslations()
 
   const labProjects = LAB_PROJECTS.map((project) => ({
-    id: crypto.randomUUID(),
     slug: project.slug,
     href: ROUTES.labProject(project.slug),
     title: t(`lab.projects.${project.slug}.title`),
@@ -48,8 +47,8 @@ export function LabTeaserSection() {
           </div>
 
           <div className="flex flex-col">
-            {labProjects.map((labProject) => (
-              <AnimatedList key={labProject.id} index={+labProject.id}>
+            {labProjects.map((labProject, index) => (
+              <AnimatedList key={labProject.slug} index={index}>
                 <ListRow
                   href={labProject.href}
                   media={{

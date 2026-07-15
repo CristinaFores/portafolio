@@ -15,7 +15,7 @@ export function LabContent() {
   const t = useTranslations()
 
   const labProjects = LAB_PROJECTS.map((project) => ({
-    id: crypto.randomUUID(),
+    id: project.slug,
     href: ROUTES.labProject(project.slug),
     title: t(`lab.projects.${project.slug}.title`),
     subtitle: t(`lab.projects.${project.slug}.subtitle`),
