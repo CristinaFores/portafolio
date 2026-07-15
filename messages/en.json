@@ -1,4 +1,14 @@
 {
+  "blog": {
+    "metaTitle": "Blog",
+    "metaDescription": "Notes and articles on frontend development, AI and product.",
+    "index": "Blog",
+    "title": "Writing",
+    "subtitle": "Notes on development, AI and product.",
+    "readMore": "Read more",
+    "backToBlog": "Back to the blog",
+    "empty": "No posts published yet."
+  },
   "constants": {
     "status": {
       "wip": "WIP",
@@ -184,7 +194,7 @@
   },
   "contact": {
     "headline": "Get in touch",
-    "subline": "Available remotely for front-end, mobile, and AI product roles — production interfaces, MCP, and tooling for teams building with agents.",
+    "subline": "Available remotely for front-end, mobile, and AI product: production interfaces, MCP servers, and tooling for teams building with agents.",
     "title": "Get in touch",
     "sectionIndex": "03 — CONTACT"
   },

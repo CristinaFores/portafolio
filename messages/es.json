@@ -1,4 +1,14 @@
 {
+  "blog": {
+    "metaTitle": "Blog",
+    "metaDescription": "Notas y artículos sobre desarrollo frontend, IA y producto.",
+    "index": "Blog",
+    "title": "Escritos",
+    "subtitle": "Notas sobre desarrollo, IA y producto.",
+    "readMore": "Leer más",
+    "backToBlog": "Volver al blog",
+    "empty": "Aún no hay artículos publicados."
+  },
   "constants": {
     "status": {
       "wip": "WIP",
@@ -183,7 +193,7 @@
   },
   "contact": {
     "headline": "¿Hablamos?",
-    "subline": "Disponible en remoto para front-end, móvil y producto con IA — interfaces en producción, MCP y tooling para equipos que trabajan con agentes.",
+    "subline": "Disponible en remoto para front-end, móvil y producto de IA: interfaces en producción, servidores MCP y tooling para equipos que construyen con agentes.",
     "title": "¿Hablamos?",
     "sectionIndex": "03 — CONTACTO"
   },
