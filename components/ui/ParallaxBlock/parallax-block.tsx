@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useRef } from "react"
 
 import { useParallaxY } from "@/hooks/use-parallax-y/use-parallax-y"
+import { cn } from "@/lib/class-names"
 
 type ParallaxBlockProps = {
   children: React.ReactNode
@@ -17,8 +18,9 @@ export function ParallaxBlock({ children, className = "", range = 24 }: Parallax
   const ref = useRef<HTMLDivElement>(null)
   const { y, enabled } = useParallaxY(ref, { range })
 
+  // `relative` so useScroll can measure this element's offset correctly.
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={cn("relative", className)}>
       <motion.div style={enabled ? { y } : undefined}>{children}</motion.div>
     </div>
   )
