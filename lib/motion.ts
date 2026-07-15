@@ -63,7 +63,13 @@ export function staggerItemProps(
   opts: { step?: number; y?: number } = {},
 ) {
   const { step = STAGGER_CHILD, y = 12 } = opts
-  return fadeUpProps(reduced, { delay: index * step, y, duration: 0.35, margin: "-40px" })
+  // Cap the cascade so long lists that reveal on scroll don't accumulate lag.
+  return fadeUpProps(reduced, {
+    delay: Math.min(index, 6) * step,
+    y,
+    duration: 0.3,
+    margin: "-40px",
+  })
 }
 
 /** Quick fade for inner page headers — no stagger, minimal movement. */
