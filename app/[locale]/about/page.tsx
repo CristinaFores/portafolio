@@ -9,7 +9,9 @@ import { PROFILE } from "@/lib/site-config"
 
 type PageProps = { params: Promise<{ locale: string }> }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const locale = toLocale((await params).locale)
   const t = await getTranslations({ locale, namespace: "meta.about" })
   return {

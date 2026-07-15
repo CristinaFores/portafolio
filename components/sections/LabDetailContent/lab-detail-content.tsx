@@ -3,6 +3,7 @@
 import Image from "next/image"
 
 import { PageContentContainer } from "@/components/layout/PageContent/page-content"
+import { Blockquote } from "@/components/ui/Blockquote/blockquote"
 import { BlockSection } from "@/components/ui/BlockSection/block-section"
 import { BulletList } from "@/components/ui/BulletList/bullet-list"
 import { DescriptionSection } from "@/components/ui/DescriptionSection/description-section"
@@ -126,21 +127,16 @@ export function LabDetailContent({ slug }: LabDetailContentProps) {
         {modes.length > 0 && (
           <BlockSection>
             <LabelSection label={t("lab.modes.title")} />
-            <div className="grid gap-6">
+            <div className="grid gap-4">
               {modes.map((mode) => (
                 <div key={mode.name} className="flex flex-col">
-                  <span className="text-sm font-medium text-foreground">
+                  <span className="text-sm font-bold text-foreground mb-1 ">
                     {mode.name}
                   </span>
                   <span className="text-sm leading-relaxed text-muted-foreground">
                     {mode.description}
                   </span>
-                  <span className="font-mono text-[12px] text-muted-foreground">
-                    {mode.status}
-                  </span>
-                  <blockquote className="mt-2 border-l-2 border-accent pl-3 font-display text-sm font-medium leading-snug tracking-tight text-foreground">
-                    {mode.status}
-                  </blockquote>
+                  {mode.status && <Blockquote text={mode.status} />}
                 </div>
               ))}
             </div>

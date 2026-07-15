@@ -15,7 +15,13 @@ export type ExperienceCardProps = {
  * Card de experiencia profesional: título y enlace a la izquierda,
  * fecha alineada a la derecha, summary y bullets debajo.
  */
-export function ExperienceCard({ title, date, summary, bullets, link }: ExperienceCardProps) {
+export function ExperienceCard({
+  title,
+  date,
+  summary,
+  bullets,
+  link,
+}: ExperienceCardProps) {
   return (
     <article className="flex flex-col gap-3">
       <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
@@ -31,7 +37,9 @@ export function ExperienceCard({ title, date, summary, bullets, link }: Experien
             </TextLink>
           ) : null}
         </div>
-        <span className="shrink-0 font-mono text-xs text-muted-foreground/70">{date}</span>
+        <span className="shrink-0 font-mono text-xs text-muted-foreground/70">
+          {date}
+        </span>
       </div>
       <p className="text-sm leading-relaxed text-muted-foreground [&_strong]:font-medium [&_strong]:text-foreground [&_em]:italic">
         {summary}
