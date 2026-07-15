@@ -7,7 +7,7 @@ import { ListRow } from "@/components/ui/ListRow/list-row"
 import { ParallaxBlock } from "@/components/ui/ParallaxBlock/parallax-block"
 import { SectionHeading } from "@/components/ui/SectionHeading/section-heading"
 import { ViewAllLink } from "@/components/ui/ViewAllLink/view-all-link"
-import { LAB_PROJECTS } from "@/lib/data/lab-projects"
+import { useLabProjects } from "@/hooks/use-lab-projects/use-lab-projects"
 import { ROUTES } from "@/lib/routes"
 
 /**
@@ -16,16 +16,7 @@ import { ROUTES } from "@/lib/routes"
 
 export function LabTeaserSection() {
   const t = useTranslations()
-
-  const labProjects = LAB_PROJECTS.map((project) => ({
-    slug: project.slug,
-    href: ROUTES.labProject(project.slug),
-    title: t(`lab.projects.${project.slug}.title`),
-    subtitle: t(`lab.projects.${project.slug}.subtitle`),
-    media: { src: project.icon, alt: project.name },
-    tags: project.stack?.map((badge) => ({ label: badge })).slice(0, 3) ?? [],
-    badge: `${t(`constants.status.${project.status}`)}`,
-  }))
+  const labProjects = useLabProjects()
 
   return (
     <section className="home-section">

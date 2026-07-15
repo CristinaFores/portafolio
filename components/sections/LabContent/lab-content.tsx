@@ -1,28 +1,15 @@
 "use client"
 
-import { useTranslations } from "next-intl"
-
 import PageContent from "@/components/layout/PageContent/page-content"
 import { ListRow } from "@/components/ui/ListRow/list-row"
-import { LAB_PROJECTS } from "@/lib/data/lab-projects"
-import { ROUTES } from "@/lib/routes"
+import { useLabProjects } from "@/hooks/use-lab-projects/use-lab-projects"
 
 /**
  * Lab content
  */
 
 export function LabContent() {
-  const t = useTranslations()
-
-  const labProjects = LAB_PROJECTS.map((project) => ({
-    id: project.slug,
-    href: ROUTES.labProject(project.slug),
-    title: t(`lab.projects.${project.slug}.title`),
-    subtitle: t(`lab.projects.${project.slug}.subtitle`),
-    media: { src: project.icon, alt: project.name },
-    tags: project.stack?.map((badge) => ({ label: badge })).slice(0, 3) ?? [],
-    badge: `${t(`constants.status.${project.status}`)}`,
-  }))
+  const labProjects = useLabProjects()
 
   return (
     <PageContent
@@ -32,7 +19,7 @@ export function LabContent() {
     >
       {labProjects.map((project) => (
         <ListRow
-          key={project.id}
+          key={project.slug}
           href={project.href}
           title={project.title}
           subtitle={project.subtitle}

@@ -1,10 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import { useTranslations } from "next-intl"
 
 import { PageContentContainer } from "@/components/layout/PageContent/page-content"
 import { BlockSection } from "@/components/ui/BlockSection/block-section"
+import { BulletList } from "@/components/ui/BulletList/bullet-list"
 import { DescriptionSection } from "@/components/ui/DescriptionSection/description-section"
 import { DetailHeader } from "@/components/ui/detail/detail-header"
 import { LabelSection } from "@/components/ui/LabelSection/label-section"
@@ -12,39 +12,18 @@ import { LinkExternalSection } from "@/components/ui/LinkExternalSection/link-ex
 import { ListNumberSection } from "@/components/ui/ListNumberSection/list-number-section"
 import { Tag } from "@/components/ui/Tag/tag"
 import { TerminalSnippet } from "@/components/ui/TerminalSnippet/terminal-snippet"
+import { useRawMessages } from "@/hooks/use-raw-messages/use-raw-messages"
 import { getLabProject } from "@/lib/data/lab-projects"
 import { ROUTES } from "@/lib/routes"
 import { LabModeBase, LabToolGroupBase } from "@/types/lab"
 
-const BulletItem = ({ text }: { text: string }) => (
-  <li className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
-    <span
-      className="mt-1.5 size-1 shrink-0 rounded-full bg-muted-foreground/40"
-      aria-hidden
-    />
-    {text}
-  </li>
-)
-
-export const BulletList = ({ items }: { items: string[] }) => (
-  <ul className="flex flex-col gap-3">
-    {items.map((item, index) => (
-      <BulletItem key={index} text={item} />
-    ))}
-  </ul>
-)
 interface LabDetailContentProps {
   slug: string
 }
 
 export function LabDetailContent({ slug }: LabDetailContentProps) {
-  const t = useTranslations()
+  const { t, rawList, rawText } = useRawMessages()
   const project = getLabProject(slug)
-
-  const rawList = <T,>(key: string): T[] =>
-    t.has(key) ? (t.raw(key) as unknown as T[]) : []
-  const rawText = (key: string): string =>
-    t.has(key) ? (t.raw(key) as unknown as string) : ""
 
   const features = rawList<string>(`lab.projects.${slug}.features`)
   const howItWorksSteps = rawList<string>(

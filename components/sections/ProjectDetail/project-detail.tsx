@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-import { useTranslations } from "next-intl"
 
 import { BlockSection } from "@/components/ui/BlockSection/block-section"
+import { BulletList } from "@/components/ui/BulletList/bullet-list"
 import { DescriptionSection } from "@/components/ui/DescriptionSection/description-section"
 import { DetailHeader } from "@/components/ui/detail/detail-header"
 import { LabelSection } from "@/components/ui/LabelSection/label-section"
@@ -12,13 +12,13 @@ import { LinkExternalSection } from "@/components/ui/LinkExternalSection/link-ex
 import { ListNumberSection } from "@/components/ui/ListNumberSection/list-number-section"
 import { Tag } from "@/components/ui/Tag/tag"
 import { useMotion } from "@/hooks/use-motion/use-motion"
+import { useRawMessages } from "@/hooks/use-raw-messages/use-raw-messages"
 import { Link } from "@/i18n/navigation"
 import { cn } from "@/lib/class-names"
 import { getAdjacentProjects, getProject } from "@/lib/data/projects"
 import { ROUTES } from "@/lib/routes"
 
 import { ImageCarousel } from "../ImageCarousel/image-carousel"
-import { BulletList } from "../LabDetailContent/lab-detail-content"
 
 /** Splits "Project Name — Description" into parts for styling; returns null if no separator. */
 function splitProjectTitle(
@@ -72,12 +72,7 @@ interface ProjectDetailProps {
  * Renders full information for a single project with translated content.
  */
 export function ProjectDetail({ slug }: ProjectDetailProps) {
-  const t = useTranslations()
-
-  const rawList = <T,>(key: string): T[] =>
-    t.has(key) ? (t.raw(key) as unknown as T[]) : []
-  const rawText = (key: string): string =>
-    t.has(key) ? (t.raw(key) as unknown as string) : ""
+  const { t, rawList, rawText } = useRawMessages()
 
   const findProject = getProject(slug)
 

@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react"
 
+import { BulletList } from "@/components/ui/BulletList/bullet-list"
 import { TextLink } from "@/components/ui/TextLink/text-link"
 
 export type ExperienceCardProps = {
@@ -36,14 +37,7 @@ export function ExperienceCard({ title, date, summary, bullets, link }: Experien
         {summary}
       </p>
       {bullets && bullets.length > 0 ? (
-        <ul className="flex flex-col gap-2 pt-1">
-          {bullets.map((bullet) => (
-            <li key={bullet} className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
-              <span className="mt-[9px] block h-px w-3 shrink-0 bg-muted-foreground/50" />
-              {bullet}
-            </li>
-          ))}
-        </ul>
+        <BulletList items={bullets} variant="dash" className="gap-2 pt-1" />
       ) : null}
     </article>
   )
