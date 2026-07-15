@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-import Image from "next/image"
 import { useTranslations } from "next-intl"
 
 import { BlockSection } from "@/components/ui/BlockSection/block-section"
@@ -11,12 +10,10 @@ import { DetailHeader } from "@/components/ui/detail/detail-header"
 import { LabelSection } from "@/components/ui/LabelSection/label-section"
 import { LinkExternalSection } from "@/components/ui/LinkExternalSection/link-external-section"
 import { ListNumberSection } from "@/components/ui/ListNumberSection/list-number-section"
-import { SectionRow } from "@/components/ui/SectionRow/section-row"
 import { Tag } from "@/components/ui/Tag/tag"
 import { useMotion } from "@/hooks/use-motion/use-motion"
 import { Link } from "@/i18n/navigation"
 import { cn } from "@/lib/class-names"
-import { getLabProject } from "@/lib/data/lab-projects"
 import { getAdjacentProjects, getProject } from "@/lib/data/projects"
 import { ROUTES } from "@/lib/routes"
 
@@ -68,19 +65,6 @@ function ProjectNavLabel({
   )
 }
 
-type BulletItemProps = {
-  text: string
-}
-
-function BulletItem({ text }: BulletItemProps) {
-  return (
-    <li className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground">
-      <span className="mt-[9px] block h-px w-3 shrink-0 bg-muted-foreground/50" />
-      {text}
-    </li>
-  )
-}
-
 interface ProjectDetailProps {
   slug: string
 }
@@ -89,8 +73,6 @@ interface ProjectDetailProps {
  */
 export function ProjectDetail({ slug }: ProjectDetailProps) {
   const t = useTranslations()
-
-  const key = `project.items.${slug}`
 
   const rawList = <T,>(key: string): T[] =>
     t.has(key) ? (t.raw(key) as unknown as T[]) : []

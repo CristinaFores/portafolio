@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 
 import { AnimatedList } from "@/components/ui/AnimatedList/animated-list"
@@ -8,7 +7,6 @@ import { ListRow } from "@/components/ui/ListRow/list-row"
 import { ParallaxBlock } from "@/components/ui/ParallaxBlock/parallax-block"
 import { SectionHeading } from "@/components/ui/SectionHeading/section-heading"
 import { ViewAllLink } from "@/components/ui/ViewAllLink/view-all-link"
-import { useMotion } from "@/hooks/use-motion/use-motion"
 import { LAB_PROJECTS } from "@/lib/data/lab-projects"
 import { ROUTES } from "@/lib/routes"
 

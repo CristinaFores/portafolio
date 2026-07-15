@@ -3,14 +3,13 @@
  * Always pass `reduced` from `useReducedMotion()` — never hardcode variants in components.
  */
 
-import type { Transition, Variants } from "framer-motion"
+import type { Transition } from "framer-motion"
 
 export const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
-export const VIEWPORT = { once: true, margin: "-50px" } as const
+const VIEWPORT = { once: true, margin: "-50px" } as const
 
-export const STAGGER_CHILD = 0.05
-export const STAGGER_ROW = 0.03
+const STAGGER_CHILD = 0.05
 
 const INSTANT: Transition = { duration: 0 }
 
@@ -84,20 +83,3 @@ export function pageEnterProps(reduced: boolean | null, opts: FadeOptions = {}) 
   } as const
 }
 
-export const staggerContainer: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: STAGGER_CHILD } },
-}
-
-export const staggerContainerReduced: Variants = {
-  hidden: {},
-  visible: {},
-}
-
-/** @deprecated Use fadeUpProps(reduced) via useMotion() */
-export const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: VIEWPORT,
-  transition: { duration: 0.5, ease: EASE },
-} as const
