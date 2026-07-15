@@ -3,11 +3,10 @@
 import { motion } from "framer-motion"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
-import { BlockSection } from "@/components/ui/BlockSection/block-section"
 import { BulletList } from "@/components/ui/BulletList/bullet-list"
 import { DescriptionSection } from "@/components/ui/DescriptionSection/description-section"
 import { DetailHeader } from "@/components/ui/detail/detail-header"
-import { LabelSection } from "@/components/ui/LabelSection/label-section"
+import { DetailBlock } from "@/components/ui/DetailBlock/detail-block"
 import { LinkExternalSection } from "@/components/ui/LinkExternalSection/link-external-section"
 import { ListNumberSection } from "@/components/ui/ListNumberSection/list-number-section"
 import { Tag } from "@/components/ui/Tag/tag"
@@ -122,40 +121,34 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
 
         <div className="flex flex-col divide-y divide-border">
           {/* El reto */}
-          <BlockSection>
-            <LabelSection label={t("project.theChallenge")} />
+          <DetailBlock label={t("project.theChallenge")}>
             <DescriptionSection description={challenge} />
-          </BlockSection>
+          </DetailBlock>
 
           {/* Mi rol */}
-          <BlockSection>
-            <LabelSection label={t("project.myRole")} />
+          <DetailBlock label={t("project.myRole")}>
             <DescriptionSection description={myRole} />
-          </BlockSection>
+          </DetailBlock>
 
           {/* Características clave */}
-          <BlockSection>
-            <LabelSection label={t("project.keyFeatures")} />
+          <DetailBlock label={t("project.keyFeatures")}>
             <BulletList items={features} />
-          </BlockSection>
+          </DetailBlock>
 
           {/* Qué hace */}
-          <BlockSection>
-            <LabelSection label={t("project.theOutcome")} />
+          <DetailBlock label={t("project.theOutcome")}>
             <BulletList items={results} />
-          </BlockSection>
+          </DetailBlock>
 
           {/* Cómo funciona */}
           {howItWorks && (
-            <BlockSection>
-              <LabelSection label={t("project.howItWorks")} />
+            <DetailBlock label={t("project.howItWorks")}>
               <ListNumberSection list={howItWorks} />
-            </BlockSection>
+            </DetailBlock>
           )}
 
           {/* Stack */}
-          <BlockSection>
-            <LabelSection label={t("project.stack")} />
+          <DetailBlock label={t("project.stack")}>
             <div className="flex flex-wrap gap-1.5">
               {project.stack?.map((badge) => (
                 <Tag key={badge} variant="muted">
@@ -163,14 +156,13 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
                 </Tag>
               ))}
             </div>
-          </BlockSection>
+          </DetailBlock>
 
           {/* Enlace al proyecto */}
           {project.url && (
-            <BlockSection>
-              <LabelSection label={t("project.projectUrl")} />
+            <DetailBlock label={t("project.projectUrl")}>
               <LinkExternalSection href={project.url} label={project.url} />
-            </BlockSection>
+            </DetailBlock>
           )}
 
           {/* Galería */}

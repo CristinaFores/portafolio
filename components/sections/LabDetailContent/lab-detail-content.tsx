@@ -4,11 +4,10 @@ import Image from "next/image"
 
 import { PageContentContainer } from "@/components/layout/PageContent/page-content"
 import { Blockquote } from "@/components/ui/Blockquote/blockquote"
-import { BlockSection } from "@/components/ui/BlockSection/block-section"
 import { BulletList } from "@/components/ui/BulletList/bullet-list"
 import { DescriptionSection } from "@/components/ui/DescriptionSection/description-section"
 import { DetailHeader } from "@/components/ui/detail/detail-header"
-import { LabelSection } from "@/components/ui/LabelSection/label-section"
+import { DetailBlock } from "@/components/ui/DetailBlock/detail-block"
 import { LinkExternalSection } from "@/components/ui/LinkExternalSection/link-external-section"
 import { ListNumberSection } from "@/components/ui/ListNumberSection/list-number-section"
 import { Tag } from "@/components/ui/Tag/tag"
@@ -78,33 +77,29 @@ export function LabDetailContent({ slug }: LabDetailContentProps) {
 
       <div className="flex flex-col divide-y divide-border">
         {/* Por qué lo construí */}
-        <BlockSection>
-          <LabelSection label={t(`lab.whyIBuiltThis.title`)} />
+        <DetailBlock label={t(`lab.whyIBuiltThis.title`)}>
           <DescriptionSection
             description={t(`lab.projects.${slug}.whyBuilt`)}
           />
-        </BlockSection>
+        </DetailBlock>
 
         {/* Qué hace — feature bullets (AuraLang) */}
         {features.length > 0 && (
-          <BlockSection>
-            <LabelSection label={t("lab.whatItDoes.title")} />
+          <DetailBlock label={t("lab.whatItDoes.title")}>
             <BulletList items={features} />
-          </BlockSection>
+          </DetailBlock>
         )}
 
         {/* Cómo funciona */}
         {howItWorksSteps.length > 0 && (
-          <BlockSection>
-            <LabelSection label={t("lab.howItWorks.title")} />
+          <DetailBlock label={t("lab.howItWorks.title")}>
             <ListNumberSection list={howItWorksSteps} />
-          </BlockSection>
+          </DetailBlock>
         )}
 
         {/* Qué expone — DCB only */}
         {project?.isToolGroup && (
-          <BlockSection>
-            <LabelSection label={t("lab.capabilities.title")} />
+          <DetailBlock label={t("lab.capabilities.title")}>
             <div className="flex flex-col gap-3">
               {toolGroups.map((group) => (
                 <div
@@ -120,13 +115,12 @@ export function LabDetailContent({ slug }: LabDetailContentProps) {
                 </div>
               ))}
             </div>
-          </BlockSection>
+          </DetailBlock>
         )}
 
         {/* Modos de uso — DCB only */}
         {modes.length > 0 && (
-          <BlockSection>
-            <LabelSection label={t("lab.modes.title")} />
+          <DetailBlock label={t("lab.modes.title")}>
             <div className="grid gap-4">
               {modes.map((mode) => (
                 <div key={mode.name} className="flex flex-col">
@@ -140,20 +134,18 @@ export function LabDetailContent({ slug }: LabDetailContentProps) {
                 </div>
               ))}
             </div>
-          </BlockSection>
+          </DetailBlock>
         )}
         {/* Privacidad — AuraLang */}
         {privacy.length > 0 && (
-          <BlockSection>
-            <LabelSection label={t("lab.security.title")} />
+          <DetailBlock label={t("lab.security.title")}>
             <DescriptionSection
               description={t(`lab.projects.${slug}.privacy`)}
             />
-          </BlockSection>
+          </DetailBlock>
         )}
         {/* Build y herramientas */}
-        <BlockSection>
-          <LabelSection label={t("about.skills.build")} />
+        <DetailBlock label={t("about.skills.build")}>
           <div className="flex flex-wrap gap-1.5">
             {project.stack?.map((badge) => (
               <Tag key={badge} variant="muted">
@@ -161,11 +153,10 @@ export function LabDetailContent({ slug }: LabDetailContentProps) {
               </Tag>
             ))}
           </div>
-        </BlockSection>
+        </DetailBlock>
 
         {/* Enlaces */}
-        <BlockSection>
-          <LabelSection label={t("lab.links")} />
+        <DetailBlock label={t("lab.links")}>
           <div className="flex flex-col gap-3">
             {project.links.map((link) => (
               <LinkExternalSection
@@ -175,7 +166,7 @@ export function LabDetailContent({ slug }: LabDetailContentProps) {
               />
             ))}
           </div>
-        </BlockSection>
+        </DetailBlock>
       </div>
       {disclaimer.length > 0 && (
         <p className="font-mono text-[11px] text-muted-foreground/55">
