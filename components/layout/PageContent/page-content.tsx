@@ -8,8 +8,10 @@ export const PageContentContainer = ({
   children: React.ReactNode
 }) => {
   return (
-    <main className="mx-auto flex max-w-5xl flex-col px-6 pb-24 pt-28 gap-8 sm:gap-12">
-      {children}
+    <main className="px-6 pb-24 pt-28">
+      <div className="mx-auto flex max-w-5xl flex-col gap-8 sm:gap-12">
+        {children}
+      </div>
     </main>
   )
 }
