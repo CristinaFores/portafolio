@@ -54,7 +54,7 @@ export const DetailHeader = ({
             )}
 
             {status && (
-              <Tag variant="status">{t(`lab.projects.${slug}.status`)}</Tag>
+              <Tag text={t(`lab.projects.${slug}.status`)} variant="badge" />
             )}
           </div>
           {subtitle && (

@@ -148,9 +148,7 @@ export function LabDetailContent({ slug }: LabDetailContentProps) {
         <DetailBlock label={t("about.skills.build")}>
           <div className="flex flex-wrap gap-1.5">
             {project.stack?.map((badge) => (
-              <Tag key={badge} variant="muted">
-                {badge}
-              </Tag>
+              <Tag key={badge} text={badge} variant="accent" />
             ))}
           </div>
         </DetailBlock>

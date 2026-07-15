@@ -151,9 +151,7 @@ export function ProjectDetail({ slug }: ProjectDetailProps) {
           <DetailBlock label={t("project.stack")}>
             <div className="flex flex-wrap gap-1.5">
               {project.stack?.map((badge) => (
-                <Tag key={badge} variant="muted">
-                  {badge}
-                </Tag>
+                <Tag key={badge} text={badge} variant="accent" />
               ))}
             </div>
           </DetailBlock>

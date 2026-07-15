@@ -1,7 +1,7 @@
-export type TagVariant = "default" | "status" | "muted"
+export type TagVariant = "default" | "accent" | "badge"
 
 export type TagProps = {
-  children: React.ReactNode
+  text: string
   variant?: TagVariant | undefined
 }
 
@@ -14,18 +14,17 @@ export type TagProps = {
  * accent badge for lab project status.
  */
 const VARIANT_CLASSES: Record<TagVariant, string> = {
-  default: "px-2 text-xs text-muted-foreground",
-  muted: "px-2 text-xs text-foreground/80",
-  status:
-    "uppercase tracking-wider text-accent border-[var(--border-accent)] px-1.5 text-[11px]",
+  default: "text-muted-foreground",
+  accent: "text-accent border-[var(--border-accent)]",
+  badge: "text-white bg-accent border-[var(--border-accent)]",
 }
 
-export function Tag({ children, variant = "default" }: TagProps) {
+export function Tag({ text, variant = "default" }: TagProps) {
   return (
     <span
-      className={`border py-0.5 font-mono font-medium ${VARIANT_CLASSES[variant]}`}
+      className={` tracking-wider border font-mono font-light text-xs px-2 py-0.5 text-center ${VARIANT_CLASSES[variant]}`}
     >
-      {children}
+      {text}
     </span>
   )
 }

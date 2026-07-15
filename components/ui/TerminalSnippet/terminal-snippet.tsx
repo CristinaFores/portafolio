@@ -15,7 +15,11 @@ const LINE_PAUSE_MS = 120
 /**
  * Minimal terminal mockup — typewriter reveal on viewport entry.
  */
-export function TerminalSnippet({ command, output, className = "" }: TerminalSnippetProps) {
+export function TerminalSnippet({
+  command,
+  output,
+  className = "",
+}: TerminalSnippetProps) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: "-60px" })
   const reduced = useReducedMotion()
@@ -77,8 +81,7 @@ export function TerminalSnippet({ command, output, className = "" }: TerminalSni
       </div>
       <div className="flex flex-col gap-2 px-4 py-4 font-mono text-[12px] leading-relaxed">
         <p className="text-white/90">
-          <span className="text-accent">$</span>{" "}
-          {command.slice(0, cmdChars)}
+          <span className="text-accent">$</span> {command.slice(0, cmdChars)}
           {!reduced && inView && cmdChars < command.length && (
             <span className="animate-pulse text-accent" aria-hidden>
               ▌
@@ -88,11 +91,14 @@ export function TerminalSnippet({ command, output, className = "" }: TerminalSni
         {output.slice(0, visibleLines).map((line, i) => (
           <p key={i} className="text-white/50">
             {line.slice(0, lineChars[i] ?? 0)}
-            {!reduced && inView && i === visibleLines - 1 && (lineChars[i] ?? 0) < line.length && (
-              <span className="animate-pulse text-white/30" aria-hidden>
-                ▌
-              </span>
-            )}
+            {!reduced &&
+              inView &&
+              i === visibleLines - 1 &&
+              (lineChars[i] ?? 0) < line.length && (
+                <span className="animate-pulse text-white/30" aria-hidden>
+                  ▌
+                </span>
+              )}
           </p>
         ))}
       </div>

@@ -64,7 +64,7 @@ export function ListRow({
       <div className="flex min-w-0 flex-1 flex-col gap-2.5">
         <h3 className="text-base font-medium leading-snug text-foreground transition-colors group-hover:text-accent flex items-center gap-4">
           {title}
-          {badge && <Tag variant="status">{badge}</Tag>}
+          {badge && <Tag text={badge.toString()} variant="badge" />}
         </h3>
         <p className="line-clamp-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
           {subtitle}
@@ -73,9 +73,11 @@ export function ListRow({
         {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 pt-0.5">
             {tags.map((tag) => (
-              <Tag key={tag.label} variant={tag.variant}>
-                {tag.label}
-              </Tag>
+              <Tag
+                key={tag.label}
+                text={tag.label}
+                variant={tag.variant ?? "default"}
+              />
             ))}
           </div>
         )}
