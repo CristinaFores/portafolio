@@ -220,7 +220,7 @@ export function Navbar() {
         visible ? "translate-y-0" : "-translate-y-full",
       )}
     >
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 sm:px-[0px] py-4">
         <Link href={ROUTES.home} className="group flex items-center gap-2.5">
           <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-[#f5f1ea]">
             <Image
