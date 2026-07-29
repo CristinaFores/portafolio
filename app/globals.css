@@ -46,6 +46,13 @@
   .home-section-muted {
     @apply bg-muted;
   }
+
+  .code-block__shiki pre {
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    background: transparent !important;
+  }
 }
 
 @layer base {
@@ -71,6 +78,7 @@
     --dark-cocoa-border: #3a2f26; /* Bordes */
     --dark-sienna: #e05878; /* Acento principal */
     --dark-sienna-deep: #f07898; /* Acento claro */
+    --warm: #8F5F14;
   }
 
   /* Light — primary theme */
@@ -90,6 +98,7 @@
     --muted-foreground: var(--light-taupe);
     --accent: var(--light-sienna);
     --accent-foreground: var(--light-bone);
+    --warm-accent: var(--light-sienna);
     --destructive: var(--light-sienna);
     --destructive-foreground: var(--light-bone);
     --border: var(--light-sand);

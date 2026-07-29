@@ -49,12 +49,16 @@ const config: Config = {
           foreground:
             "rgb(from var(--accent-foreground) r g b / <alpha-value>)",
         },
+        warm: {
+          DEFAULT: "rgb(from var(--warm) r g b / <alpha-value>)",
+        },
         destructive: {
           DEFAULT: "rgb(from var(--destructive) r g b / <alpha-value>)",
           foreground:
             "rgb(from var(--destructive-foreground) r g b / <alpha-value>)",
         },
         border: "rgb(from var(--border) r g b / <alpha-value>)",
+        borderAccent: "rgb(from var(--warm-accent) r g b / <alpha-value>)",
         input: "rgb(from var(--input) r g b / <alpha-value>)",
         ring: "rgb(from var(--ring) r g b / <alpha-value>)",
         olive: "rgb(from var(--olive) r g b / <alpha-value>)",

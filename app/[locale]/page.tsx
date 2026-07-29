@@ -8,6 +8,8 @@ import { HomeDollyEntrance } from "@/components/sections/HomeDollyEntrance/home-
 import { LabTeaserSection } from "@/components/sections/LabTeaserSection/lab-teaser-section"
 import { toLocale } from "@/i18n/locale"
 import { localeAlternates } from "@/lib/seo"
+import { CodeBlock } from "@/components/ui/CodeBlock/code-block"
+import { Callout } from "@/components/ui/Callout/callout"
 
 type PageProps = { params: Promise<{ locale: string }> }
 
@@ -26,6 +28,24 @@ export default async function Page({ params }: PageProps) {
     <>
       <HomeDollyEntrance hero={<Hero />} next={<LabTeaserSection />} />
       <FeaturedProjects />
+      <div className="grid gap-4  ">
+        <CodeBlock
+          code={`
+// index.js
+
+const hello = 'Hello, world!';
+console.log(hello);
+        `}
+          language="javascript"
+          filename="index.js"
+        />
+
+        <Callout
+          label="Hello, world!"
+          content={"Example content"}
+          variant="warm"
+        />
+      </div>
       <ContactCTA />
     </>
   )
